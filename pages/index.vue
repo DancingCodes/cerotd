@@ -30,26 +30,6 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section factory">
-      <div class="container">
-        <div class="factory-spotlight">
-          <AppImage
-            class="factory-spotlight-image"
-            src="/images/factory/1.webp"
-            :alt="$t('home.factory.title')"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="factory-spotlight-panel">
-            <p class="factory-kicker">{{ $t('home.factory.kicker') }}</p>
-            <h2 class="factory-title">{{ $t('home.factory.title') }}</h2>
-            <p class="factory-subtitle">{{ $t('home.factory.subtitle') }}</p>
-            <NuxtLink to="/about" class="section-link section-link-on-dark">{{ $t('home.factory.link') }}</NuxtLink>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section v-motion-slide-visible-once-bottom class="section lab">
       <div class="container">
         <div class="lab-grid">
@@ -513,85 +493,6 @@ const labItems = computed(() => {
   .section-link.section-link-light {
     color: rgba(#ffffff, 0.88);
   }
-
-  .factory {
-    background: #ffffff;
-
-    .factory-spotlight {
-      position: relative;
-      overflow: hidden;
-      min-height: 420px;
-      border-radius: 28px;
-      background: #121a28;
-
-      @media (min-width: 900px) {
-        min-height: 480px;
-      }
-    }
-
-    .factory-spotlight-image {
-      width: 100%;
-      height: 100%;
-      min-height: 420px;
-      object-fit: cover;
-      display: block;
-      filter: saturate(0.78) contrast(1.05);
-
-      @media (min-width: 900px) {
-        min-height: 480px;
-      }
-    }
-
-    .factory-spotlight-panel {
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
-      padding: 24px 22px;
-      border-radius: 20px;
-      background: rgba(7, 11, 18, 0.78);
-      border: 1px solid rgba(#ffffff, 0.1);
-      backdrop-filter: blur(10px);
-
-      @media (min-width: 900px) {
-        left: auto;
-        right: 28px;
-        bottom: 28px;
-        width: min(420px, 46%);
-        padding: 28px 26px;
-      }
-    }
-
-    .factory-kicker {
-      margin-bottom: 10px;
-      color: #5fd0dc;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .factory-title {
-      margin-bottom: 12px;
-      color: #ffffff;
-      font-size: 30px;
-      font-weight: 650;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-    }
-
-    .factory-subtitle {
-      margin-bottom: 18px;
-      color: rgba(#ffffff, 0.74);
-      font-size: 15px;
-      line-height: 1.7;
-    }
-
-    .section-link.section-link-on-dark {
-      color: #ffffff;
-    }
-  }
-
 
   .lab {
     background: var(--color-surface);

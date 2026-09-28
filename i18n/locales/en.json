@@ -113,12 +113,6 @@
         "label": "Tons annual capacity"
       }
     },
-    "factory": {
-      "kicker": "Manufacturing base",
-      "title": "Factory-direct supply",
-      "subtitle": "Blending, filling and outbound logistics in one plant — built for long-term bulk buying.",
-      "link": "View plant & certificates"
-    },
     "lab": {
       "badge": "Laboratory",
       "title": "In-house lab",
