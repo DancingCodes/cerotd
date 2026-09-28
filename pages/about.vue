@@ -293,9 +293,8 @@ function nextCertificate() {
 
 const gallerySlides = computed(() => {
   locale.value
-  // Keep src empty for now; replace with real factory photos later.
   return [1, 2, 3, 4, 5, 6].map((n) => ({
-    src: '',
+    src: `/images/factory/${n}.jpg`,
     title: t(`about.gallery.items.item${n}.title`),
     desc: t(`about.gallery.items.item${n}.desc`)
   }))

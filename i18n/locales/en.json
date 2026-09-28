@@ -38,8 +38,8 @@
       "ctaPrimary": "View Products",
       "ctaSecondary": "Talk to Sales",
       "trust1": "ISO 9001",
-      "trust2": "In-house testing",
-      "trust3": "Export-ready supply"
+      "trust2": "ISO 14001",
+      "trust3": "ISO 45001"
     },
     "products": {
       "title": "Selected products",
@@ -64,24 +64,24 @@
       }
     },
     "advantages": {
-      "title": "Proven capability",
-      "subtitle": "Capacity, certification, and technical depth you can verify.",
+      "title": "Capabilities you can verify",
+      "subtitle": "Capacity, certification and technical depth you can check.",
       "items": {
         "item1": {
           "name": "Manufacturing scale",
-          "desc": "The factory covers more than 85 mu (approx. 56,667㎡), with 10,000㎡ standardized workshops and up to 15,000 m³ oil storage."
+          "desc": "28,000 m² plant area, 15,000 m³ base-oil storage, 20+ production lines and annual capacity over 100,000 tons."
         },
         "item2": {
           "name": "Certified quality systems",
-          "desc": "Certified for ISO 9001, ISO Environmental Management and OHSAS 18001. Base oils, additives and formulas are introduced from Fortune Global 500 enterprises."
+          "desc": "Certified for ISO 9001, ISO 14001 and ISO 45001. Base oils, additives and formulas are introduced from Fortune Global 500 enterprises."
         },
         "item3": {
           "name": "Automated production",
-          "desc": "Annual capacity exceeds 100,000 tons across industrial oils, automotive oils, special oils, construction machinery oils and automotive care products."
+          "desc": "Intelligent fully automatic filling lines plus multiple 1L/4L, 18L/20L and 200L automated lines covering industrial, automotive, specialty and care products."
         },
         "item4": {
-          "name": "Technical partnership",
-          "desc": "Extensive cooperation with Lubrizol, Infineum, Rhein Chemie and domestic institutes keeps R&D competitive, with complete testing equipment for product stability."
+          "name": "R&D and testing",
+          "desc": "An 800+ m² R&D center with 72 analytical instruments covering 21 lubricant indicators to safeguard product stability."
         }
       }
     },
@@ -92,86 +92,86 @@
     },
     "stats": {
       "item1": {
-        "value": "56,000+㎡",
-        "label": "Factory area"
+        "value": "28,000㎡",
+        "label": "Plant area"
       },
       "item2": {
-        "value": "15,000㎡",
-        "label": "Workshops"
-      },
-      "item3": {
         "value": "15,000m³",
         "label": "Oil storage"
       },
+      "item3": {
+        "value": "20+",
+        "label": "Production lines"
+      },
       "item4": {
         "value": "100,000+",
-        "label": "Tons / year"
+        "label": "Tons annual capacity"
       }
     },
     "factory": {
       "title": "Plant and process",
-      "subtitle": "Automated blending, disciplined QC, and complete testing for stable batch supply.",
-      "point1": "More than 85 mu factory land, about 10,000㎡ workshops, up to 15,000 m³ storage",
-      "point2": "Annual capacity exceeds 100,000 tons across industrial, automotive and specialty oils",
-      "point3": "Technical cooperation with Lubrizol, Infineum, Rhein Chemie and research institutes"
+      "subtitle": "Automated filling, strict QC and complete testing for stable batch delivery.",
+      "point1": "28,000 m² plant area, up to 15,000 m³ base-oil storage, 36 blending tanks and 20+ production lines",
+      "point2": "Annual capacity over 100,000 tons across 21 major categories including industrial, automotive and specialty lubricants",
+      "point3": "Base-oil partners include Shell, SK, ExxonMobil, PetroChina, Sinopec and S-Oil"
     },
     "lab": {
       "badge": "Quality Control",
       "title": "In-house laboratory",
-      "subtitle": "Complete testing equipment supports batch stability from incoming materials to shipment release.",
-      "point1": "ISO-aligned quality procedures across production and release",
-      "point2": "Full QC coverage for viscosity, flash point, and stability checks",
-      "point3": "Only qualified lots are released for bulk and container orders",
-      "link": "About our capability",
+      "subtitle": "Complete testing from incoming materials to finished-lot release for stable batch delivery.",
+      "point1": "R&D center covers 800+ m² with 7 researchers",
+      "point2": "72 analytical instruments, including 41 lubricant testing units",
+      "point3": "21 lubricant indicators tested; only qualified lots are released",
+      "link": "Explore company strength",
       "items": {
         "item1": {
           "name": "Incoming inspection",
-          "desc": "Base oils and additives verified before blending."
+          "desc": "Base oils and additives are verified before blending."
         },
         "item2": {
-          "name": "In-process control",
-          "desc": "Key indicators tracked through automated production."
+          "name": "Process control",
+          "desc": "Key indicators are tracked through automated production."
         },
         "item3": {
-          "name": "Finished-product testing",
-          "desc": "Laboratory checks completed before each batch release."
+          "name": "Finished testing",
+          "desc": "Every batch is lab-tested before release."
         },
         "item4": {
           "name": "Shipment release",
-          "desc": "Traceable QC records for B2B supply confidence."
+          "desc": "Traceable QC records support B2B supply confidence."
         }
       }
     },
     "partners": {
       "title": "Partners and systems",
-      "subtitle": "Global additive partners with certified management systems behind every batch."
+      "subtitle": "Global base-oil and additive partners with certified management systems behind every batch."
     }
   },
   "about": {
     "hero": {
       "title": "About Cerotd",
-      "subtitle": "Modern comprehensive manufacturer of lubricating oils and greases"
+      "subtitle": "Integrated R&D, production, sales, training and logistics"
     },
     "intro": {
-      "title": "Modern comprehensive manufacturer of lubricating oils and greases",
-      "p1": "Cerotd (Shandong) Lubrication Technology Co., Ltd. is a modern, comprehensive and professional manufacturer of lubricating oils and greases, integrating R&D, production, sales, service, technical training and logistics distribution, and boasts a considerable industry scale and influence in the domestic market.",
-      "p2": "The company is located in Jining City, Shandong Province, known as the Hometown of Confucius and Mencius, the Land of Propriety and Righteousness. Rooted in Jibei Ershilipu New Material Industrial Park, it stands as a vibrant and promising rising star with strong growth momentum in the park. Our factory is equipped with advanced fully automatic blending production lines, and has established a strict and comprehensive quality management system.",
-      "p3": "We have long been deeply engaged in the R&D and innovation of automotive lubricants. With solid professional technical strength, we deliver high-tech, specialized and comprehensive lubricant production solutions to fully meet the lubrication needs of various types of equipment."
+      "title": "Integrated Lubricants & Greases Manufacturer",
+      "p1": "Cerotd (Shandong) Lubrication Technology Co., Ltd. is an integrated manufacturer of lubricating oils and greases covering R&D, production, sales, technical training and logistics distribution, with a strong presence in the domestic market. Located in Jining, Shandong — the hometown of Confucius and Mencius — the company is based in the Jibei New Material Industrial Park and has grown into a rising force there.",
+      "p2": "With 20 years of development, the company occupies 28,000 square meters and has a total investment of RMB 89 million. It now offers 100+ products with annual production capacity of more than 100,000 tons, covering industrial oils, automotive oils, specialty oils, construction-machinery lubricants and automotive care products. Cerotd has built a network of 1,000+ distributors across 20+ provinces, municipalities and autonomous regions in China, with annual production and sales reaching up to 150,000 tons.",
+      "p3": "We uphold the brand philosophy of being professional, dedicated and focused; pursue the vision of “helping others succeed so we can succeed”; and follow the corporate spirit of “pursuing ultimate detail to deliver perfect results,” providing more efficient, environmentally friendly and energy-saving lubrication solutions for customers worldwide."
     },
     "values": {
-      "title": "What we value",
+      "title": "What We Value",
       "items": {
         "item1": {
-          "name": "Systemized Quality",
-          "desc": "ISO quality, environmental, and occupational health & safety systems supporting stable delivery."
+          "name": "Certified quality systems",
+          "desc": "Certified to ISO 9001, ISO 14001 and ISO 45001, manufacturing lubricants and greases that meet stringent standards."
         },
         "item2": {
-          "name": "Materials & Formulas",
-          "desc": "Base oils, additives, and technical formulas introduced from Fortune Global 500 enterprise resources."
+          "name": "Materials and formulas",
+          "desc": "Base oils, additives and technical formulas are fully introduced from Fortune Global 500 enterprises, serving automotive, construction machinery, metallurgy, mining and petroleum processing."
         },
         "item3": {
-          "name": "Continuous R&D",
-          "desc": "Cooperation with global partners and research institutes to keep upgrading products and technology."
+          "name": "R&D and testing",
+          "desc": "An 800+ m² R&D center with 7 researchers and 72 analytical instruments covering 21 lubricant product indicators."
         }
       }
     },
@@ -179,65 +179,65 @@
       "title": "Company Strength",
       "items": {
         "item1": {
-          "year": "Company Strength",
-          "text": "The factory covers an area of more than 85 mu (approx. 56,667 square meters), with 10,000 square meters of standardized workshops and a maximum oil storage capacity of 15,000 cubic meters."
+          "year": "Plant capability",
+          "text": "The plant covers 28,000 square meters with base-oil storage capacity of up to 15,000 m³, including 36 blending tanks, 48 finished-oil tanks, 28 base-oil tanks and 20+ production lines."
         },
         "item2": {
-          "year": "Laboratory Testing",
-          "text": "The company has passed certifications including ISO 9001 Quality Management System, ISO Environmental Management System and OHSAS 18001 Occupational Health and Safety Management System. Base oils, additives and technical formulas are fully introduced from Fortune Global 500 enterprises."
+          "year": "Certification and materials",
+          "text": "Certified to ISO 9001, ISO 14001 and ISO 45001. Base oils, additives and technical formulas are fully introduced from Fortune Global 500 enterprises."
         },
         "item3": {
-          "year": "Automated Production",
-          "text": "Annual production capacity exceeds 100,000 tons. Products cover industrial oils, automotive oils, special oils, construction machinery oils, automotive care products and more."
+          "year": "Capacity and portfolio",
+          "text": "Annual capacity exceeds 100,000 tons, with annual production and sales up to 150,000 tons. The portfolio covers diesel engine oils, gasoline engine oils, motorcycle oils, industrial oils, hydraulic oils, transmission oils, gear oils, antifreeze and greases — 21 major categories and 320+ SKUs."
         },
         "item4": {
-          "year": "Technical Support",
-          "text": "We cooperate extensively with internationally renowned enterprises such as Lubrizol, Infineum and Rhein Chemie, as well as domestic research institutes and universities. A complete range of testing equipment helps ensure product stability."
+          "year": "Team and R&D",
+          "text": "80+ employees, with more than 60% holding college or technical-school degrees or above. The R&D center is equipped with 41 lubricant testing units and commits to excellent quality in every drop."
         }
       }
     },
     "stats": {
-      "title": "Factory metrics",
+      "title": "Plant Snapshot",
       "item1": {
-        "value": "85+",
-        "label": "Mu factory area"
+        "value": "28,000㎡",
+        "label": "Plant area"
       },
       "item2": {
-        "value": "10,000㎡",
-        "label": "Standard workshops"
+        "value": "15,000m³",
+        "label": "Base-oil storage"
       },
       "item3": {
-        "value": "15,000m³",
-        "label": "Max oil storage"
+        "value": "20+",
+        "label": "Production lines"
       },
       "item4": {
-        "value": "80,000+",
+        "value": "100,000+",
         "label": "Tons annual capacity"
       }
     },
     "trust": {
       "title": "Certified capability",
-      "subtitle": "Quality systems, laboratory testing, and export-ready supply for B2B partners.",
+      "subtitle": "Quality systems, laboratory testing and reliable supply for B2B partners.",
       "items": {
         "item1": {
           "name": "ISO 9001",
           "desc": "Quality management"
         },
         "item2": {
-          "name": "ISO EMS",
+          "name": "ISO 14001",
           "desc": "Environmental system"
         },
         "item3": {
-          "name": "OHSAS 18001",
+          "name": "ISO 45001",
           "desc": "Health & safety"
         },
         "item4": {
           "name": "Lab Testing",
-          "desc": "Full QC equipment"
+          "desc": "72 instruments / 21 indicators"
         },
         "item5": {
-          "name": "Export Supply",
-          "desc": "Bulk & container ready"
+          "name": "Stable Supply",
+          "desc": "Up to 150,000 tons annual sales"
         },
         "item6": {
           "name": "Global Inputs",
@@ -257,28 +257,28 @@
       "blank": "Image coming soon",
       "items": {
         "item1": {
-          "title": "Tank farm",
-          "desc": "Storage capacity built for stable bulk supply."
+          "title": "Plant overview",
+          "desc": "Real factory environment covering manufacturing and storage."
         },
         "item2": {
-          "title": "Production plant",
-          "desc": "Automated blending lines and standardized workshops."
+          "title": "Production floor",
+          "desc": "Standardized workshops with controlled production flow."
         },
         "item3": {
-          "title": "Blending lines",
-          "desc": "Controlled production for consistent batch quality."
+          "title": "Tank farm & logistics",
+          "desc": "Storage and turnover capacity for bulk supply."
         },
         "item4": {
-          "title": "QC laboratory",
-          "desc": "Testing and release before shipment."
+          "title": "Filling lines",
+          "desc": "Automated multi-size filling for efficient delivery."
         },
         "item5": {
-          "title": "Warehouse",
-          "desc": "Packaging and staging for export orders."
+          "title": "QC and release",
+          "desc": "Testing and release steps that protect batch consistency."
         },
         "item6": {
-          "title": "Loading area",
-          "desc": "Container and bulk dispatch preparation."
+          "title": "Full plant view",
+          "desc": "A wider look at layout and overall manufacturing capability."
         }
       }
     }
@@ -290,7 +290,7 @@
     },
     "note": {
       "title": "Specs & Grades",
-      "desc": "Coverage includes industrial oils, automotive oils, special oils, construction machinery oils, and automotive care products. Formal grades, approvals, and packaging can be confirmed by inquiry."
+      "desc": "The portfolio covers diesel engine oils, gasoline engine oils, motorcycle oils, industrial oils, hydraulic oils, transmission oils, gear oils, antifreeze and greases — 21 major categories and 320+ SKUs. Formal grades, viscosity, certifications and packaging can be confirmed on inquiry."
     },
     "listTitle": "All Products",
     "listSubtitle": "Browse published products. Specs and packaging can be confirmed by inquiry.",
@@ -300,7 +300,41 @@
     "relatedTitle": "Related Products",
     "filterAll": "All",
     "loading": "Loading products...",
-    "empty": "No products in this category yet."
+    "empty": "No products in this category yet.",
+    "lines": {
+      "title": "Core product lines",
+      "subtitle": "Automotive, industrial and specialty lubricants — grades and packaging can be matched to your duty cycle.",
+      "items": {
+        "item1": {
+          "name": "Automotive engine oils",
+          "desc": "Premium base oils and advanced additive packages in full synthetic, semi-synthetic and mineral grades, with strong shear stability and low-temperature fluidity."
+        },
+        "item2": {
+          "name": "Heavy-duty diesel engine oils",
+          "desc": "Built for severe duty and extended drain intervals, with strong detergency, oxidation stability, anti-wear protection and soot control."
+        },
+        "item3": {
+          "name": "Heavy-duty gear oils",
+          "desc": "Synthetic base oils with advanced EP/anti-wear additives for high load-carrying capacity and pitting resistance."
+        },
+        "item4": {
+          "name": "Anti-wear hydraulic oils",
+          "desc": "High VI refined base oils with efficient additive systems for stable performance under high pressure, speed and temperature."
+        },
+        "item5": {
+          "name": "Antifreeze / coolant",
+          "desc": "High-purity ethylene glycol with advanced corrosion inhibitors for freeze, boil, corrosion and scale protection."
+        },
+        "item6": {
+          "name": "Greases",
+          "desc": "Premium base oils and advanced thickeners with high-temperature stability, load capacity, water resistance and lasting lubrication."
+        },
+        "item7": {
+          "name": "Industrial oils",
+          "desc": "Anti-wear/EP protection, rust prevention, demulsibility and foam control for a wide range of industrial machinery."
+        }
+      }
+    }
   },
   "services": {
     "hero": {
@@ -358,26 +392,26 @@
   "advantages": {
     "hero": {
       "title": "Advantages",
-      "subtitle": "Factory scale, certifications, automated capacity, and global technical cooperation"
+      "subtitle": "Plant scale, certifications, automated capacity and professional R&D testing"
     },
     "pillars": {
       "title": "Capability pillars",
       "items": {
         "item1": {
-          "name": "Company Strength",
-          "desc": "The factory covers an area of more than 85 mu (approx. 56,667 square meters), with 10,000 square meters of standardized workshops and a maximum oil storage capacity of 15,000 cubic meters."
+          "name": "Plant strength",
+          "desc": "28,000 m² plant area with up to 15,000 m³ base-oil storage, including 36 blending tanks, 48 finished-oil tanks and 28 base-oil tanks."
         },
         "item2": {
-          "name": "Laboratory Testing",
-          "desc": "Certified for ISO 9001 Quality Management System, ISO Environmental Management System and OHSAS 18001. Base oils, additives and technical formulas are fully introduced from Fortune Global 500 enterprises."
+          "name": "Laboratory testing",
+          "desc": "Certified to ISO 9001, ISO 14001 and ISO 45001. The R&D center has 72 analytical instruments covering 21 product indicators."
         },
         "item3": {
-          "name": "Automated Production",
-          "desc": "Annual production capacity exceeds 100,000 tons. Products cover industrial oils, automotive oils, special oils, construction machinery oils, automotive care products and more."
+          "name": "Automated lines",
+          "desc": "20+ production lines and annual capacity over 100,000 tons covering industrial oils, automotive oils, specialty oils, construction-machinery lubricants and automotive care products."
         },
         "item4": {
-          "name": "Technical Support",
-          "desc": "Extensive cooperation with Lubrizol, Infineum, Rhein Chemie and domestic research institutes and universities. Complete testing equipment helps ensure product stability."
+          "name": "Materials and partners",
+          "desc": "Base oils, additives and formulas from Fortune Global 500 enterprises; base-oil partners include Shell, SK, ExxonMobil, PetroChina, Sinopec and S-Oil."
         }
       }
     },

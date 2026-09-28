@@ -223,22 +223,22 @@ const featuredProducts = computed(() => productsData.value?.items || [])
 const partnerLogos = [
   {
     name: 'Afton Chemical',
-    logo: '/images/partners/partner-1.png',
+    logo: '/images/partners/1.png',
     href: 'https://www.aftonchemical.com/'
   },
   {
     name: 'Infineum',
-    logo: '/images/partners/partner-2.png',
+    logo: '/images/partners/2.png',
     href: 'https://www.infineum.com/'
   },
   {
     name: 'Lubrizol',
-    logo: '/images/partners/partner-3.png',
+    logo: '/images/partners/3.png',
     href: 'https://www.lubrizol.com/'
   },
   {
     name: 'Chevron Oronite',
-    logo: '/images/partners/partner-4.png',
+    logo: '/images/partners/4.png',
     href: 'https://www.oronite.com/'
   }
 ]
@@ -990,3 +990,4 @@ const labItems = computed(() => {
   }
 }
 </style>
+
