@@ -5,7 +5,7 @@
 
 ## 项目
 
-- 名称：`cerotd-web`
+- 名称：`cerotd`
 - 类型：双语企业官网 + 轻量后台 CMS
 - 公司：Cerotd（山东润滑技术）
 - 技术栈：Nuxt 4、Vue 3、TypeScript、Sass、Cloudflare Workers / D1 / R2

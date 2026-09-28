@@ -5,7 +5,7 @@ export function getSiteUrl(event: H3Event) {
   if (configured) return configured
 
   const host = getRequestHeader(event, 'host')
-  if (!host) return 'https://cerotd-web.changyuezhang68-667.workers.dev'
+  if (!host) return 'https://cerotd.changyuezhang68-667.workers.dev'
 
   const proto = getRequestHeader(event, 'x-forwarded-proto') || 'https'
   return `${proto}://${host}`
