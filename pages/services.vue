@@ -1,0 +1,292 @@
+<template>
+  <div class="services-page">
+    <section class="page-hero page-hero-rise">
+      <div class="container">
+        <h1 class="page-hero-title">{{ $t('services.hero.title') }}</h1>
+        <p class="page-hero-subtitle">{{ $t('services.hero.subtitle') }}</p>
+      </div>
+    </section>
+
+    <section v-motion-slide-visible-once-bottom class="section list">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">{{ $t('services.list.title') }}</h2>
+        </div>
+        <div class="services-grid">
+          <article v-for="(item, index) in list" :key="item.name" class="service-card">
+            <p class="service-card-index">0{{ index + 1 }}</p>
+            <h3 class="service-card-title">{{ item.name }}</h3>
+            <p class="service-card-desc">{{ item.desc }}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section v-motion-slide-visible-once-bottom class="section process">
+      <div class="container">
+        <div class="section-header section-header-light">
+          <h2 class="section-title">{{ $t('services.process.title') }}</h2>
+          <p class="section-subtitle">{{ $t('services.process.subtitle') }}</p>
+        </div>
+        <ol class="process-flow">
+          <li v-for="(item, index) in processSteps" :key="item.step" class="process-step">
+            <div class="process-step-card">
+              <p class="process-step-index">{{ item.step }}</p>
+              <h3 class="process-step-title">{{ item.name }}</h3>
+              <p class="process-step-desc">{{ item.desc }}</p>
+            </div>
+            <span
+              v-if="index < processSteps.length - 1"
+              class="process-step-connector"
+              aria-hidden="true"
+            ></span>
+          </li>
+        </ol>
+      </div>
+    </section>
+  </div>
+</template>
+
+<script setup lang="ts">
+const { t, locale } = useI18n()
+
+usePageSeo({
+  title: t('seo.services.title'),
+  description: t('seo.services.description'),
+  path: '/services'
+})
+
+const list = computed(() => {
+  locale.value
+  return [1, 2, 3, 4].map((n) => ({
+    name: t(`services.list.items.item${n}.name`),
+    desc: t(`services.list.items.item${n}.desc`)
+  }))
+})
+
+const processSteps = computed(() => {
+  locale.value
+  return [1, 2, 3, 4].map((n) => ({
+    step: t(`services.process.items.item${n}.step`),
+    name: t(`services.process.items.item${n}.name`),
+    desc: t(`services.process.items.item${n}.desc`)
+  }))
+})
+</script>
+
+<style lang="scss" scoped>
+.services-page {
+  .page-hero-rise {
+    .page-hero-title,
+    .page-hero-subtitle {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: page-hero-rise 0.7s ease forwards;
+    }
+
+    .page-hero-subtitle {
+      animation-delay: 0.1s;
+    }
+  }
+
+  @keyframes page-hero-rise {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .page-hero {
+    padding: 88px 0 72px;
+    background:
+      radial-gradient(circle at 20% 0%, rgba(#5fd0dc, 0.14), transparent 28%),
+      linear-gradient(180deg, var(--color-ink) 0%, var(--color-ink-soft) 100%);
+    color: #ffffff;
+
+    .page-hero-title {
+      margin-bottom: 18px;
+      font-size: 56px;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .page-hero-subtitle {
+      max-width: 30ch;
+      color: #c8ced6;
+      font-size: 20px;
+      line-height: 1.7;
+    }
+  }
+
+  .section {
+    padding: 96px 0;
+
+    @media (min-width: 768px) {
+      padding: 120px 0;
+    }
+  }
+
+  .section-header {
+    margin-bottom: 48px;
+
+    .section-title {
+      margin-bottom: 14px;
+      font-size: 36px;
+      letter-spacing: -0.03em;
+      color: #111827;
+    }
+
+    .section-subtitle {
+      max-width: 48ch;
+      color: #4b5563;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+  }
+
+  .section-header.section-header-light {
+    .section-title {
+      color: #ffffff;
+    }
+
+    .section-subtitle {
+      color: #c8ced6;
+    }
+  }
+
+  .list {
+    background: #ffffff;
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+
+      @media (min-width: 900px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .service-card {
+      padding: 28px;
+      border-radius: 24px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-line);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
+      }
+
+      .service-card-index {
+        margin-bottom: 24px;
+        color: var(--color-accent);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .service-card-title {
+        margin-bottom: 12px;
+        font-size: 24px;
+        color: #111827;
+        letter-spacing: -0.02em;
+      }
+
+      .service-card-desc {
+        color: #4b5563;
+        font-size: 15px;
+        line-height: 1.7;
+      }
+    }
+  }
+
+  .process {
+    background: var(--color-ink);
+
+    .process-flow {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+
+      @media (min-width: 960px) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+    }
+
+    .process-step {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .process-step-card {
+      height: 100%;
+      padding: 26px 22px;
+      border-radius: 22px;
+      background: rgba(#ffffff, 0.04);
+      border: 1px solid rgba(#ffffff, 0.1);
+      transition: transform 0.25s ease, background 0.25s ease;
+
+      &:hover {
+        transform: translateY(-3px);
+        background: rgba(#ffffff, 0.07);
+      }
+    }
+
+    .process-step-index {
+      margin-bottom: 28px;
+      color: #5fd0dc;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .process-step-title {
+      margin-bottom: 10px;
+      color: #ffffff;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+
+    .process-step-desc {
+      color: #9aa3af;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .process-step-connector {
+      display: none;
+    }
+
+    @media (min-width: 960px) {
+      .process-step-connector {
+        display: block;
+        position: absolute;
+        top: 38px;
+        right: -14px;
+        width: 28px;
+        height: 2px;
+        background: linear-gradient(90deg, rgba(#5fd0dc, 0.15), rgba(#5fd0dc, 0.75));
+      }
+
+      .process-step-connector::after {
+        content: '';
+        position: absolute;
+        right: -1px;
+        top: 50%;
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: #5fd0dc;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+</style>

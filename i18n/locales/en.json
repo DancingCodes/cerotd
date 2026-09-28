@@ -1,0 +1,659 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "products": "Products",
+    "services": "Services",
+    "advantages": "Advantages",
+    "contact": "Contact",
+    "learnMore": "Learn More",
+    "viewProducts": "View Products",
+    "mediaBlank": "Image",
+    "news": "News",
+    "showMore": "Show more",
+    "loadingMore": "Loading...",
+    "backToTop": "Back to top",
+    "prev": "Previous",
+    "next": "Next"
+  },
+  "footer": {
+    "tagline": "Manufacturer of industrial lubricants and greases — R&D, production, QC, and export supply.",
+    "productsTitle": "Products",
+    "companyTitle": "Company",
+    "contactTitle": "Contact",
+    "aboutUs": "About Us",
+    "ourServices": "Services",
+    "ourAdvantages": "Advantages",
+    "location": "New Materials Industrial Park, Rencheng, Jining, Shandong, China — 150m south of Cenguang Rd & Lantian Rd",
+    "phone": "+86 152 6379 2384",
+    "copyright": "Cerotd (Shandong) Lubrication Technology Co., Ltd. All rights reserved.",
+    "wechatTitle": "WeChat",
+    "wechatId": "13953717716"
+  },
+  "home": {
+    "badge": "Industrial Lubricants",
+    "hero": {
+      "title": "Built for real operating conditions",
+      "subtitle": "Factory-direct oils and greases for automotive, industrial, and construction fleets.",
+      "ctaPrimary": "View Products",
+      "ctaSecondary": "Talk to Sales",
+      "trust1": "ISO 9001",
+      "trust2": "In-house testing",
+      "trust3": "Export-ready supply"
+    },
+    "products": {
+      "title": "Selected products",
+      "subtitle": "A focused range for fleet and industrial duty. Full grades available on request."
+    },
+    "services": {
+      "title": "How we support buyers",
+      "subtitle": "From grade selection to shipment coordination.",
+      "items": {
+        "item1": {
+          "name": "R&D & Selection",
+          "desc": "Match formulation direction and products to real equipment conditions."
+        },
+        "item2": {
+          "name": "Production & QC",
+          "desc": "Automated blending and complete testing equipment for batch stability."
+        },
+        "item3": {
+          "name": "Training & Logistics",
+          "desc": "Technical training support with coordinated logistics delivery."
+        }
+      }
+    },
+    "advantages": {
+      "title": "Proven capability",
+      "subtitle": "Capacity, certification, and technical depth you can verify.",
+      "items": {
+        "item1": {
+          "name": "Manufacturing scale",
+          "desc": "The factory covers more than 85 mu (approx. 56,667㎡), with 10,000㎡ standardized workshops and up to 15,000 m³ oil storage."
+        },
+        "item2": {
+          "name": "Certified quality systems",
+          "desc": "Certified for ISO 9001, ISO Environmental Management and OHSAS 18001. Base oils, additives and formulas are introduced from Fortune Global 500 enterprises."
+        },
+        "item3": {
+          "name": "Automated production",
+          "desc": "Annual capacity exceeds 100,000 tons across industrial oils, automotive oils, special oils, construction machinery oils and automotive care products."
+        },
+        "item4": {
+          "name": "Technical partnership",
+          "desc": "Extensive cooperation with Lubrizol, Infineum, Rhein Chemie and domestic institutes keeps R&D competitive, with complete testing equipment for product stability."
+        }
+      }
+    },
+    "cta": {
+      "title": "Planning a bulk order?",
+      "subtitle": "Share the market, grade, and volume. Our team responds within 24 hours.",
+      "button": "Get a Proposal"
+    },
+    "stats": {
+      "item1": {
+        "value": "56,000+㎡",
+        "label": "Factory area"
+      },
+      "item2": {
+        "value": "15,000㎡",
+        "label": "Workshops"
+      },
+      "item3": {
+        "value": "15,000m³",
+        "label": "Oil storage"
+      },
+      "item4": {
+        "value": "100,000+",
+        "label": "Tons / year"
+      }
+    },
+    "factory": {
+      "title": "Plant and process",
+      "subtitle": "Automated blending, disciplined QC, and complete testing for stable batch supply.",
+      "point1": "More than 85 mu factory land, about 10,000㎡ workshops, up to 15,000 m³ storage",
+      "point2": "Annual capacity exceeds 100,000 tons across industrial, automotive and specialty oils",
+      "point3": "Technical cooperation with Lubrizol, Infineum, Rhein Chemie and research institutes"
+    },
+    "lab": {
+      "badge": "Quality Control",
+      "title": "In-house laboratory",
+      "subtitle": "Complete testing equipment supports batch stability from incoming materials to shipment release.",
+      "point1": "ISO-aligned quality procedures across production and release",
+      "point2": "Full QC coverage for viscosity, flash point, and stability checks",
+      "point3": "Only qualified lots are released for bulk and container orders",
+      "link": "About our capability",
+      "items": {
+        "item1": {
+          "name": "Incoming inspection",
+          "desc": "Base oils and additives verified before blending."
+        },
+        "item2": {
+          "name": "In-process control",
+          "desc": "Key indicators tracked through automated production."
+        },
+        "item3": {
+          "name": "Finished-product testing",
+          "desc": "Laboratory checks completed before each batch release."
+        },
+        "item4": {
+          "name": "Shipment release",
+          "desc": "Traceable QC records for B2B supply confidence."
+        }
+      }
+    },
+    "partners": {
+      "title": "Partners and systems",
+      "subtitle": "Global additive partners with certified management systems behind every batch."
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "About Cerotd",
+      "subtitle": "Modern comprehensive manufacturer of lubricating oils and greases"
+    },
+    "intro": {
+      "title": "Modern comprehensive manufacturer of lubricating oils and greases",
+      "p1": "Cerotd (Shandong) Lubrication Technology Co., Ltd. is a modern, comprehensive and professional manufacturer of lubricating oils and greases, integrating R&D, production, sales, service, technical training and logistics distribution, and boasts a considerable industry scale and influence in the domestic market.",
+      "p2": "The company is located in Jining City, Shandong Province, known as the Hometown of Confucius and Mencius, the Land of Propriety and Righteousness. Rooted in Jibei Ershilipu New Material Industrial Park, it stands as a vibrant and promising rising star with strong growth momentum in the park. Our factory is equipped with advanced fully automatic blending production lines, and has established a strict and comprehensive quality management system.",
+      "p3": "We have long been deeply engaged in the R&D and innovation of automotive lubricants. With solid professional technical strength, we deliver high-tech, specialized and comprehensive lubricant production solutions to fully meet the lubrication needs of various types of equipment."
+    },
+    "values": {
+      "title": "What we value",
+      "items": {
+        "item1": {
+          "name": "Systemized Quality",
+          "desc": "ISO quality, environmental, and occupational health & safety systems supporting stable delivery."
+        },
+        "item2": {
+          "name": "Materials & Formulas",
+          "desc": "Base oils, additives, and technical formulas introduced from Fortune Global 500 enterprise resources."
+        },
+        "item3": {
+          "name": "Continuous R&D",
+          "desc": "Cooperation with global partners and research institutes to keep upgrading products and technology."
+        }
+      }
+    },
+    "milestones": {
+      "title": "Company Strength",
+      "items": {
+        "item1": {
+          "year": "Company Strength",
+          "text": "The factory covers an area of more than 85 mu (approx. 56,667 square meters), with 10,000 square meters of standardized workshops and a maximum oil storage capacity of 15,000 cubic meters."
+        },
+        "item2": {
+          "year": "Laboratory Testing",
+          "text": "The company has passed certifications including ISO 9001 Quality Management System, ISO Environmental Management System and OHSAS 18001 Occupational Health and Safety Management System. Base oils, additives and technical formulas are fully introduced from Fortune Global 500 enterprises."
+        },
+        "item3": {
+          "year": "Automated Production",
+          "text": "Annual production capacity exceeds 100,000 tons. Products cover industrial oils, automotive oils, special oils, construction machinery oils, automotive care products and more."
+        },
+        "item4": {
+          "year": "Technical Support",
+          "text": "We cooperate extensively with internationally renowned enterprises such as Lubrizol, Infineum and Rhein Chemie, as well as domestic research institutes and universities. A complete range of testing equipment helps ensure product stability."
+        }
+      }
+    },
+    "stats": {
+      "title": "Factory metrics",
+      "item1": {
+        "value": "85+",
+        "label": "Mu factory area"
+      },
+      "item2": {
+        "value": "10,000㎡",
+        "label": "Standard workshops"
+      },
+      "item3": {
+        "value": "15,000m³",
+        "label": "Max oil storage"
+      },
+      "item4": {
+        "value": "80,000+",
+        "label": "Tons annual capacity"
+      }
+    },
+    "trust": {
+      "title": "Certified capability",
+      "subtitle": "Quality systems, laboratory testing, and export-ready supply for B2B partners.",
+      "items": {
+        "item1": {
+          "name": "ISO 9001",
+          "desc": "Quality management"
+        },
+        "item2": {
+          "name": "ISO EMS",
+          "desc": "Environmental system"
+        },
+        "item3": {
+          "name": "OHSAS 18001",
+          "desc": "Health & safety"
+        },
+        "item4": {
+          "name": "Lab Testing",
+          "desc": "Full QC equipment"
+        },
+        "item5": {
+          "name": "Export Supply",
+          "desc": "Bulk & container ready"
+        },
+        "item6": {
+          "name": "Global Inputs",
+          "desc": "Fortune 500 materials"
+        }
+      }
+    },
+    "gallery": {
+      "title": "Factory & production",
+      "subtitle": "A closer look at our plant, tank farm, and manufacturing environment.",
+      "blank": "Image coming soon",
+      "items": {
+        "item1": {
+          "title": "Tank farm",
+          "desc": "Storage capacity built for stable bulk supply."
+        },
+        "item2": {
+          "title": "Production plant",
+          "desc": "Automated blending lines and standardized workshops."
+        },
+        "item3": {
+          "title": "Blending lines",
+          "desc": "Controlled production for consistent batch quality."
+        },
+        "item4": {
+          "title": "QC laboratory",
+          "desc": "Testing and release before shipment."
+        },
+        "item5": {
+          "title": "Warehouse",
+          "desc": "Packaging and staging for export orders."
+        },
+        "item6": {
+          "title": "Loading area",
+          "desc": "Container and bulk dispatch preparation."
+        }
+      }
+    }
+  },
+  "products": {
+    "hero": {
+      "title": "Products",
+      "subtitle": "Explore Cerotd lubricant and care solutions by series and grade."
+    },
+    "note": {
+      "title": "Specs & Grades",
+      "desc": "Coverage includes industrial oils, automotive oils, special oils, construction machinery oils, and automotive care products. Formal grades, approvals, and packaging can be confirmed by inquiry."
+    },
+    "listTitle": "All Products",
+    "listSubtitle": "Browse published products. Specs and packaging can be confirmed by inquiry.",
+    "detailCta": "Ask about this product",
+    "backToList": "Back to products",
+    "specsTitle": "Key Information",
+    "relatedTitle": "Related Products",
+    "filterAll": "All",
+    "loading": "Loading products...",
+    "empty": "No products in this category yet."
+  },
+  "services": {
+    "hero": {
+      "title": "Services",
+      "subtitle": "Covering R&D, production, sales, technical training, and logistics distribution"
+    },
+    "list": {
+      "title": "What we offer",
+      "items": {
+        "item1": {
+          "name": "Condition Review & Selection",
+          "desc": "Map equipment type, load, temperature, and maintenance cycle to product recommendations."
+        },
+        "item2": {
+          "name": "Planning & Factory Supply",
+          "desc": "Provide practical product combinations backed by factory production and QC."
+        },
+        "item3": {
+          "name": "Technical Training Support",
+          "desc": "Help teams understand key usage points and reduce misuse."
+        },
+        "item4": {
+          "name": "Logistics & Optimization",
+          "desc": "Coordinate delivery and refine recommendations based on operating feedback."
+        }
+      }
+    },
+    "process": {
+      "title": "How collaboration works",
+      "subtitle": "A clear path from first inquiry to reliable shipment.",
+      "items": {
+        "item1": {
+          "step": "01",
+          "name": "Inquiry",
+          "desc": "Share target market, grades, packaging, and volume requirements."
+        },
+        "item2": {
+          "step": "02",
+          "name": "Specification",
+          "desc": "We match products, confirm technical details, and align commercial terms."
+        },
+        "item3": {
+          "step": "03",
+          "name": "Production & QC",
+          "desc": "Blending, laboratory testing, and quality release before shipment."
+        },
+        "item4": {
+          "step": "04",
+          "name": "Delivery",
+          "desc": "Packaging, logistics coordination, and export-ready dispatch."
+        }
+      }
+    }
+  },
+  "advantages": {
+    "hero": {
+      "title": "Advantages",
+      "subtitle": "Factory scale, certifications, automated capacity, and global technical cooperation"
+    },
+    "pillars": {
+      "title": "Capability pillars",
+      "items": {
+        "item1": {
+          "name": "Company Strength",
+          "desc": "The factory covers an area of more than 85 mu (approx. 56,667 square meters), with 10,000 square meters of standardized workshops and a maximum oil storage capacity of 15,000 cubic meters."
+        },
+        "item2": {
+          "name": "Laboratory Testing",
+          "desc": "Certified for ISO 9001 Quality Management System, ISO Environmental Management System and OHSAS 18001. Base oils, additives and technical formulas are fully introduced from Fortune Global 500 enterprises."
+        },
+        "item3": {
+          "name": "Automated Production",
+          "desc": "Annual production capacity exceeds 100,000 tons. Products cover industrial oils, automotive oils, special oils, construction machinery oils, automotive care products and more."
+        },
+        "item4": {
+          "name": "Technical Support",
+          "desc": "Extensive cooperation with Lubrizol, Infineum, Rhein Chemie and domestic research institutes and universities. Complete testing equipment helps ensure product stability."
+        }
+      }
+    },
+    "compare": {
+      "title": "Working with us",
+      "items": {
+        "item1": {
+          "name": "Factory Direct",
+          "desc": "We are a factory, not a retail store or trading company, and focus on full-container or large-volume orders."
+        },
+        "item2": {
+          "name": "Application Fit",
+          "desc": "Product combinations and technical advice based on real equipment needs — not just a catalog quote."
+        },
+        "item3": {
+          "name": "Stable Delivery",
+          "desc": "Production, testing, and quality systems built for long-term supply consistency."
+        }
+      }
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Contact",
+      "subtitle": "Factory direct supply for full-container and bulk orders"
+    },
+    "info": {
+      "title": "Contact details",
+      "addressLabel": "Address",
+      "addressValue": "New Materials Industrial Park, Rencheng District, Jining, Shandong, China. 150m south of the intersection of Cenguang Road and Lantian Road.",
+      "phoneLabel": "Phone",
+      "phoneValue": "+86 152 6379 2384",
+      "hoursLabel": "Hours",
+      "hoursValue": "Mon - Fri 09:00 - 18:00",
+      "whatsappLabel": "WhatsApp",
+      "whatsappValue": "+86 152 6379 2384",
+      "telegramLabel": "Telegram",
+      "telegramValue": "{'@'}cerotdshand",
+      "wechatLabel": "WeChat",
+      "wechatValue": "13953717716",
+      "facebookLabel": "Facebook",
+      "facebookValue": "Cerotd Lubricating Oil",
+      "instagramLabel": "Instagram",
+      "instagramValue": "{'@'}hanxiansheng889"
+    },
+    "form": {
+      "title": "Send a message",
+      "name": "Name",
+      "company": "Company",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message",
+      "submit": "Submit",
+      "tip": "Our sales team usually replies within 24 hours for qualified bulk inquiries.",
+      "country": "Country / Region",
+      "im": "WeChat / WhatsApp / Telegram",
+      "bulk": "Do you intend to purchase lubricants in bulk quantity?",
+      "bulkYes": "Yes",
+      "bulkNo": "No",
+      "product": "Product Name",
+      "productPlaceholder": "Select a product",
+      "notice": "Notice: We are a factory, not a retail store or a trading company; we accept only full-container or large-volume orders. Our sales team will contact you within 24 hours; please check for the message and provide a reply.",
+      "submitting": "Submitting...",
+      "success": "Thanks. Your inquiry has been received. We will contact you within 24 hours.",
+      "error": "Submission failed. Please try again or reach us by phone / WhatsApp.",
+      "requiredName": "Please enter your name.",
+      "requiredContact": "Please provide an email or phone number.",
+      "emailOrPhoneHint": "Email or phone is required",
+      "invalidEmail": "Please enter a valid email address."
+    },
+    "social": {
+      "title": "Social & Messaging",
+      "wechatTip": "Scan or search the WeChat ID to connect"
+    }
+  },
+  "admin": {
+    "brand": "Cerotd Admin",
+    "nav": {
+      "products": "Products",
+      "viewSite": "View site",
+      "logout": "Logout",
+      "news": "News",
+      "inquiries": "Inquiries",
+      "newsCategories": "News Categories",
+      "productCategories": "Product Categories"
+    },
+    "login": {
+      "title": "Admin Login",
+      "desc": "Enter ADMIN_API_TOKEN to manage categories and products.",
+      "placeholder": "ADMIN_API_TOKEN",
+      "enter": "Enter",
+      "tokenRequired": "Token is required",
+      "invalidToken": "Invalid token",
+      "failed": "Login failed"
+    },
+    "common": {
+      "save": "Save",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "view": "View",
+      "loading": "Loading...",
+      "actions": "Actions",
+      "status": "Status",
+      "sort": "Sort",
+      "slug": "Slug",
+      "name": "Name",
+      "published": "Published",
+      "draft": "Unpublished",
+      "yes": "Yes",
+      "no": "No",
+      "saveFailed": "Save failed",
+      "deleteFailed": "Delete failed",
+      "batchDelete": "Delete selected",
+      "batchDeleteConfirm": "Delete {count} selected items?",
+      "selectedCount": "{count} selected",
+      "nameEn": "Name EN",
+      "nameZh": "Name ZH",
+      "coverUrl": "Cover",
+      "autoSlug": "auto from name EN",
+      "requiredNameEn": "Please enter the English name.",
+      "requiredNameZh": "Please enter the Chinese name.",
+      "requiredCategory": "Please select a category.",
+      "totalCount": "{count} total",
+      "prevPage": "Previous",
+      "nextPage": "Next",
+      "pageStatus": "Page {page} / {totalPages}",
+      "search": "Search",
+      "searchPlaceholder": "Search name / slug",
+      "filterAll": "All",
+      "filterPublished": "Published",
+      "filterDraft": "Unpublished",
+      "filterCategory": "Category",
+      "filterStatus": "Status",
+      "allCategories": "All categories",
+      "allStatuses": "All statuses"
+    },
+    "products": {
+      "title": "Products",
+      "subtitle": "Manage product content used by the public product pages",
+      "new": "New product",
+      "editTitle": "Edit product",
+      "createTitle": "New product",
+      "empty": "No products yet.",
+      "category": "Category",
+      "selectCategory": "Select category",
+      "summaryEn": "Summary EN",
+      "summaryZh": "Summary ZH",
+      "descriptionEn": "Description EN",
+      "descriptionZh": "Description ZH",
+      "images": "Images",
+      "specsEn": "Specs EN (one per line)",
+      "specsZh": "Specs ZH (one per line)",
+      "deleteConfirm": "Delete product \"{name}\"?",
+      "showOnHome": "Show on home"
+    },
+    "news": {
+      "title": "News",
+      "subtitle": "Manage company news and article content",
+      "new": "New article",
+      "createTitle": "Create article",
+      "editTitle": "Edit article",
+      "empty": "No articles yet.",
+      "titleEn": "Title EN",
+      "titleZh": "Title ZH",
+      "category": "Category",
+      "publishedAt": "Publish time",
+      "summaryEn": "Summary EN",
+      "summaryZh": "Summary ZH",
+      "contentEn": "Content EN",
+      "contentZh": "Content ZH",
+      "imageHint": "Click Image to upload into the article. Upload service uses Cloudflare R2.",
+      "deleteConfirm": "Delete article \"{name}\"?",
+      "requiredTitleEn": "Please enter the English title.",
+      "requiredTitleZh": "Please enter the Chinese title.",
+      "searchPlaceholder": "Search title / slug"
+    },
+    "inquiries": {
+      "title": "Inquiries",
+      "subtitle": "Contact form submissions from the website",
+      "refresh": "Refresh",
+      "empty": "No inquiries yet.",
+      "view": "View",
+      "hide": "Hide",
+      "email": "Email",
+      "phone": "Phone",
+      "country": "Country",
+      "product": "Product",
+      "im": "IM",
+      "bulk": "Bulk",
+      "locale": "Locale",
+      "message": "Message",
+      "noCompany": "No company",
+      "noMessage": "No message",
+      "bulkYes": "Yes",
+      "bulkNo": "No",
+      "deleteConfirm": "Delete inquiry from \"{name}\"?",
+      "unreadCount": "{count} unread",
+      "filterStatus": "Read status",
+      "filterRange": "Time range",
+      "filterAll": "All",
+      "filterUnread": "Unread",
+      "filterRead": "Read",
+      "rangeAll": "All time",
+      "rangeToday": "Today",
+      "range7d": "Last 7 days",
+      "range30d": "Last 30 days",
+      "read": "Read",
+      "unread": "Unread",
+      "markRead": "Mark read",
+      "markUnread": "Mark unread"
+    },
+    "upload": {
+      "button": "Upload",
+      "uploading": "Uploading...",
+      "failed": "Upload failed",
+      "addImage": "Upload image",
+      "empty": "No image yet. Click upload above.",
+      "replace": "Replace image"
+    },
+    "newsCategories": {
+      "title": "News Categories",
+      "subtitle": "Manage categories used by news articles",
+      "new": "New category",
+      "editTitle": "Edit category",
+      "createTitle": "Create category",
+      "empty": "No news categories yet.",
+      "deleteConfirm": "Delete category \"{name}\"?"
+    },
+    "productCategories": {
+      "title": "Product Categories",
+      "subtitle": "Manage product categories for the catalog",
+      "new": "New category",
+      "editTitle": "Edit category",
+      "createTitle": "New category",
+      "empty": "No categories yet.",
+      "deleteConfirm": "Delete category \"{name}\"?"
+    }
+  },
+  "seo": {
+    "siteName": "Cerotd",
+    "titleTemplate": "%s | Cerotd",
+    "home": {
+      "title": "Cerotd | Industrial Lubricants & Greases Manufacturer",
+      "description": "Cerotd (Shandong) Lubrication Technology manufactures industrial oils, automotive oils, greases and antifreeze for global B2B partners."
+    },
+    "about": {
+      "title": "About Cerotd",
+      "description": "Learn about Cerotd's manufacturing capability, quality focus and lubrication technology background."
+    },
+    "products": {
+      "title": "Lubricant Products",
+      "description": "Browse Cerotd lubricant products including engine oils, gear oils, hydraulic oils, greases and antifreeze."
+    },
+    "services": {
+      "title": "Lubrication Services",
+      "description": "OEM cooperation, formulation support and supply services for industrial and automotive lubrication needs."
+    },
+    "advantages": {
+      "title": "Why Cerotd",
+      "description": "Stable capacity, quality control and application-focused lubrication solutions for B2B buyers."
+    },
+    "contact": {
+      "title": "Contact Cerotd",
+      "description": "Contact Cerotd for product specifications, OEM cooperation and bulk lubricant inquiries."
+    },
+    "news": {
+      "title": "Company News",
+      "description": "Cerotd company updates, product launches, industry insights and exhibition news."
+    }
+  },
+  "news": {
+    "hero": {
+      "title": "News & Insights",
+      "subtitle": "Company updates, product releases and industry notes from Cerotd."
+    },
+    "listTitle": "Latest Articles",
+    "listSubtitle": "Stay informed on manufacturing, product and market developments.",
+    "filterAll": "All",
+    "loading": "Loading news...",
+    "empty": "No published articles yet.",
+    "backToList": "Back to news",
+    "detailCta": "Talk with our team"
+  }
+}
