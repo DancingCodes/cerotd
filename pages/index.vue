@@ -500,18 +500,18 @@ const labItems = computed(() => {
     .lab-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 28px;
+      gap: 32px;
       align-items: start;
 
       @media (min-width: 960px) {
         grid-template-columns: 0.95fr 1.05fr;
-        gap: 48px;
+        gap: 56px;
       }
     }
 
     .lab-badge {
       margin-bottom: 14px;
-      color: var(--color-accent);
+      color: #C8853F;
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -551,7 +551,7 @@ const labItems = computed(() => {
     .lab-panel {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 14px;
+      gap: 16px;
 
       @media (min-width: 640px) {
         grid-template-columns: repeat(2, 1fr);
@@ -559,25 +559,34 @@ const labItems = computed(() => {
     }
 
     .lab-card {
-      display: grid;
-      grid-template-columns: 42px 1fr;
-      gap: 14px;
+      display: flex;
+      flex-direction: column;
       min-height: 100%;
-      padding: 22px 20px;
-      border-radius: 18px;
+      padding: 26px 24px;
+      border-radius: 16px;
       background: #ffffff;
       border: 1px solid var(--color-line);
+      box-shadow: 0 2px 8px rgba(31, 36, 33, 0.04);
+      transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(31, 36, 33, 0.08);
+        border-color: #C8853F;
+      }
     }
 
     .lab-card-index {
-      color: var(--color-metal);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      color: #C8853F;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      line-height: 1;
     }
 
     .lab-card-title {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       color: var(--color-text);
       font-size: 18px;
       font-weight: 600;
@@ -587,7 +596,7 @@ const labItems = computed(() => {
     .lab-card-desc {
       color: var(--color-muted);
       font-size: 15px;
-      line-height: 1.7;
+      line-height: 1.75;
     }
   }
 
@@ -597,7 +606,7 @@ const labItems = computed(() => {
     .lines-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 14px;
+      gap: 16px;
 
       @media (min-width: 768px) {
         grid-template-columns: 1fr 1fr;
@@ -609,34 +618,51 @@ const labItems = computed(() => {
     }
 
     .line-card {
-      padding: 22px 20px;
-      border-radius: 20px;
-      background: var(--color-surface);
+      padding: 28px 24px;
+      border-radius: 16px;
+      background: #ffffff;
       border: 1px solid #e8edf2;
-      transition: transform 0.25s ease, border-color 0.25s ease;
+      box-shadow: 0 2px 8px rgba(31, 36, 33, 0.04);
+      transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 
       &:hover {
-        transform: translateY(-3px);
-        border-color: #cfd8e3;
+        transform: translateY(-4px);
+        border-color: #C8853F;
+        box-shadow: 0 8px 24px rgba(200, 133, 63, 0.12);
+      }
+
+      &:nth-child(1) {
+        @media (min-width: 1100px) {
+          grid-column: span 2;
+
+          .line-card-title {
+            font-size: 22px;
+          }
+
+          .line-card-desc {
+            font-size: 15px;
+            max-width: 65ch;
+          }
+        }
       }
 
       .line-card-title {
-        margin-bottom: 10px;
-        color: #0f4c56;
-        font-size: 18px;
+        margin-bottom: 12px;
+        color: #C8853F;
+        font-size: 19px;
         font-weight: 700;
-        letter-spacing: -0.01em;
+        letter-spacing: -0.02em;
       }
 
       .line-card-desc {
         color: #4b5563;
         font-size: 14px;
-        line-height: 1.7;
+        line-height: 1.75;
       }
     }
 
     .lines-actions {
-      margin-top: 28px;
+      margin-top: 32px;
     }
   }
 
@@ -648,16 +674,27 @@ const labItems = computed(() => {
       margin-top: 40px;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 18px;
+      gap: 20px;
 
-      @media (min-width: 768px) { grid-template-columns: repeat(2, 1fr); }
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
     }
 
     .advantage-card {
       overflow: hidden;
-      border-radius: 18px;
-      background: var(--color-surface);
-      border: 1px solid var(--color-line);
+      border-radius: 16px;
+      background: #ffffff;
+      border: 1px solid #e8edf2;
+      box-shadow: 0 2px 8px rgba(31, 36, 33, 0.04);
+      transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(31, 36, 33, 0.12);
+        border-color: #C8853F;
+      }
 
       .advantage-media {
         aspect-ratio: 16 / 9;
@@ -686,16 +723,20 @@ const labItems = computed(() => {
           height: 100%;
           object-fit: cover;
           display: block;
-          filter: saturate(0.8) contrast(1.05);
+          transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
       }
 
+      &:hover .advantage-media-image {
+        transform: scale(1.05);
+      }
+
       .advantage-card-body {
-        padding: 22px;
+        padding: 26px 24px;
       }
 
       .advantage-card-title {
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         color: var(--color-text);
         font-size: 22px;
         font-weight: 600;
@@ -705,7 +746,7 @@ const labItems = computed(() => {
       .advantage-card-desc {
         color: var(--color-muted);
         font-size: 15px;
-        line-height: 1.7;
+        line-height: 1.75;
       }
     }
   }
