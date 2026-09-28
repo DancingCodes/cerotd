@@ -31,23 +31,21 @@
     </section>
 
     <section v-motion-slide-visible-once-bottom class="section factory">
-      <div class="container factory-grid">
-        <div class="factory-media">
+      <div class="container">
+        <div class="factory-spotlight">
           <AppImage
-            class="factory-media-image"
+            class="factory-spotlight-image"
             src="/images/home/1.jpg"
             :alt="$t('home.factory.title')"
             loading="lazy"
             decoding="async"
           />
-        </div>
-        <div class="factory-copy">
-          <h2 class="section-title">{{ $t('home.factory.title') }}</h2>
-          <p class="section-subtitle">{{ $t('home.factory.subtitle') }}</p>
-          <ul class="factory-points">
-            <li v-for="n in 3" :key="n" class="factory-point">{{ $t(`home.factory.point${n}`) }}</li>
-          </ul>
-          <NuxtLink to="/about" class="section-link">{{ $t('home.factory.link') }}</NuxtLink>
+          <div class="factory-spotlight-panel">
+            <p class="factory-kicker">{{ $t('home.factory.kicker') }}</p>
+            <h2 class="factory-title">{{ $t('home.factory.title') }}</h2>
+            <p class="factory-subtitle">{{ $t('home.factory.subtitle') }}</p>
+            <NuxtLink to="/about" class="section-link section-link-on-dark">{{ $t('home.factory.link') }}</NuxtLink>
+          </div>
         </div>
       </div>
     </section>
@@ -519,83 +517,79 @@ const labItems = computed(() => {
   .factory {
     background: #ffffff;
 
-    .factory-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 28px;
-      align-items: center;
-
-      @media (min-width: 960px) {
-        grid-template-columns: 1.15fr 0.85fr;
-        gap: 48px;
-      }
-    }
-
-    .factory-media {
+    .factory-spotlight {
+      position: relative;
       overflow: hidden;
-      border-radius: 18px;
+      min-height: 420px;
+      border-radius: 28px;
       background: #121a28;
 
-      .factory-media-blank {
-        width: 100%;
-        aspect-ratio: 4 / 3;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background:
-          linear-gradient(135deg, rgba(#8b9aab, 0.12), transparent 42%),
-          #121a28;
-        color: #8b95a5;
-        font-size: 12px;
-        font-weight: 650;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      .factory-media-image {
-        width: 100%;
-        aspect-ratio: 4 / 3;
-        object-fit: cover;
-        display: block;
-        filter: saturate(0.82) contrast(1.04);
+      @media (min-width: 900px) {
+        min-height: 480px;
       }
     }
 
-    .section-title {
-      margin-bottom: 14px;
-      color: var(--color-text);
-      font-size: 40px;
-      font-weight: 600;
-      line-height: 1.12;
-      letter-spacing: -0.035em;
+    .factory-spotlight-image {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.78) contrast(1.05);
+
+      @media (min-width: 900px) {
+        min-height: 480px;
+      }
     }
 
-    .section-subtitle {
-      color: var(--color-muted);
-      font-size: 17px;
+    .factory-spotlight-panel {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      padding: 24px 22px;
+      border-radius: 20px;
+      background: rgba(7, 11, 18, 0.78);
+      border: 1px solid rgba(#ffffff, 0.1);
+      backdrop-filter: blur(10px);
+
+      @media (min-width: 900px) {
+        left: auto;
+        right: 28px;
+        bottom: 28px;
+        width: min(420px, 46%);
+        padding: 28px 26px;
+      }
+    }
+
+    .factory-kicker {
+      margin-bottom: 10px;
+      color: #5fd0dc;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .factory-title {
+      margin-bottom: 12px;
+      color: #ffffff;
+      font-size: 30px;
+      font-weight: 650;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+
+    .factory-subtitle {
+      margin-bottom: 18px;
+      color: rgba(#ffffff, 0.74);
+      font-size: 15px;
       line-height: 1.7;
     }
 
-    .factory-copy .section-link {
-      display: inline-block;
-      margin-top: 22px;
+    .section-link.section-link-on-dark {
+      color: #ffffff;
     }
-
-    .factory-points {
-      margin-top: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .factory-point {
-      padding-top: 14px;
-      border-top: 1px solid var(--color-line);
-      color: #3d4654;
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
   }
 
 
@@ -907,7 +901,6 @@ const labItems = computed(() => {
     }
 
     .section-copy .section-title,
-    .factory .section-title,
     .lab .section-title { font-size: 32px; }
   }
 }

@@ -107,12 +107,10 @@
       }
     },
     "factory": {
-      "title": "Plant & manufacturing",
-      "subtitle": "Own plant, tank systems and automated lines for reliable bulk supply.",
-      "point1": "28,000㎡ plant area with base-oil storage up to 15,000m³.",
-      "point2": "20+ production lines covering multi-pack filling and outbound logistics.",
-      "point3": "Annual capacity over 100,000 tons for distributors and industrial buyers.",
-      "link": "Explore plant & certificates"
+      "kicker": "Manufacturing base",
+      "title": "Factory-direct supply",
+      "subtitle": "Blending, filling and outbound logistics in one plant — built for long-term bulk buying.",
+      "link": "View plant & certificates"
     },
     "lab": {
       "badge": "Laboratory",
