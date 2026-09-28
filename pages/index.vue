@@ -95,25 +95,6 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section services">
-      <div class="container">
-        <div class="section-copy section-copy-light">
-          <h2 class="section-title">{{ $t('home.services.title') }}</h2>
-          <p class="section-subtitle">{{ $t('home.services.subtitle') }}</p>
-        </div>
-        <div class="services-list">
-          <article v-for="(item, index) in services" :key="item.name" class="service-row">
-            <p class="service-row-index">0{{ index + 1 }}</p>
-            <h3 class="service-row-title">{{ item.name }}</h3>
-            <p class="service-row-desc">{{ item.desc }}</p>
-          </article>
-        </div>
-        <div class="section-actions section-actions-light">
-          <NuxtLink to="/services" class="section-link section-link-light">{{ $t('home.services.link') }}</NuxtLink>
-        </div>
-      </div>
-    </section>
-
     <section v-motion-slide-visible-once-bottom class="section advantages">
       <div class="container">
         <div class="section-copy">
@@ -234,13 +215,6 @@ const productLines = computed(() => {
   }))
 })
 
-const services = computed(() => {
-  locale.value
-  return [1, 2, 3].map((n) => ({
-    name: t(`home.services.items.item${n}.name`),
-    desc: t(`home.services.items.item${n}.desc`)
-  }))
-})
 
 const advantages = computed(() => {
   locale.value
@@ -257,6 +231,7 @@ const labItems = computed(() => {
     desc: t(`home.lab.items.item${n}.desc`)
   }))
 })
+
 </script>
 
 <style lang="scss" scoped>
@@ -620,7 +595,9 @@ const labItems = computed(() => {
       font-size: 16px;
       line-height: 1.7;
     }
+
   }
+
 
   .lab {
     background: var(--color-surface);
@@ -628,21 +605,21 @@ const labItems = computed(() => {
     .lab-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 36px;
+      gap: 28px;
       align-items: start;
 
       @media (min-width: 960px) {
-        grid-template-columns: 0.92fr 1.08fr;
+        grid-template-columns: 0.95fr 1.05fr;
         gap: 48px;
       }
     }
 
     .lab-badge {
       margin-bottom: 14px;
-      color: var(--color-metal);
+      color: var(--color-accent);
       font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
@@ -768,52 +745,6 @@ const labItems = computed(() => {
     }
   }
 
-  .services {
-    background: var(--color-ink);
-
-    .services-list { display: flex; flex-direction: column; }
-
-    .service-row {
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 10px 18px;
-      padding: 28px 0;
-      border-top: 1px solid rgba(#ffffff, 0.1);
-
-      @media (min-width: 800px) {
-        grid-template-columns: 64px 0.85fr 1.15fr;
-        gap: 40px;
-        align-items: baseline;
-      }
-
-      &:last-child { border-bottom: 1px solid rgba(#ffffff, 0.1); }
-
-      .service-row-index {
-        color: var(--color-metal);
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-      }
-
-      .service-row-title {
-        color: #ffffff;
-        font-size: 24px;
-        font-weight: 600;
-        letter-spacing: -0.02em;
-      }
-
-      .service-row-desc {
-        grid-column: 2 / -1;
-        color: rgba(#ffffff, 0.62);
-        font-size: 16px;
-        line-height: 1.7;
-
-        @media (min-width: 800px) {
-          grid-column: auto;
-        }
-      }
-    }
-  }
 
   .advantages {
     background: #ffffff;

@@ -62,7 +62,7 @@
     },
     "advantages": {
       "title": "Why choose Cerotd",
-      "subtitle": "Buyer-facing differences — full detail on Advantages.",
+      "subtitle": "Factory-direct supply, batch consistency and verifiable quality systems.",
       "items": {
         "item1": {
           "name": "Factory-direct",
@@ -70,11 +70,11 @@
         },
         "item2": {
           "name": "Batch consistency",
-          "desc": "Production + testing loop to reduce supply variation."
+          "desc": "Production and testing loop to reduce supply variation."
         },
         "item3": {
           "name": "Duty-cycle fit",
-          "desc": "More than catalog pricing — solutions for real use cases."
+          "desc": "Solutions for real use cases — not only catalog pricing."
         },
         "item4": {
           "name": "Verifiable systems",
@@ -84,9 +84,9 @@
       "link": "See key advantages"
     },
     "cta": {
-      "title": "Planning a bulk order?",
-      "subtitle": "Share the market, grade, and volume. Our team responds within 24 hours.",
-      "button": "Get a Proposal"
+      "title": "Ready to work together?",
+      "subtitle": "Tell us your market, grades and volume — our sales team will reply soon.",
+      "button": "Contact us"
     },
     "stats": {
       "item1": {
@@ -95,7 +95,7 @@
       },
       "item2": {
         "value": "15,000m³",
-        "label": "Oil storage"
+        "label": "Base-oil storage"
       },
       "item3": {
         "value": "20+",
@@ -107,20 +107,20 @@
       }
     },
     "factory": {
-      "title": "Manufacturing Capability",
-      "subtitle": "Own plant, automated lines and batch QC for reliable bulk supply.",
-      "point1": "In-house plant and tank systems covering blending, filling and outbound logistics.",
-      "point2": "Multi-pack automated lines for industrial, automotive and care products.",
-      "point3": "Traceable batches for distributors, fleets and industrial buyers.",
-      "link": "Explore plant & company"
+      "title": "Plant & manufacturing",
+      "subtitle": "Own plant, tank systems and automated lines for reliable bulk supply.",
+      "point1": "28,000㎡ plant area with base-oil storage up to 15,000m³.",
+      "point2": "20+ production lines covering multi-pack filling and outbound logistics.",
+      "point3": "Annual capacity over 100,000 tons for distributors and industrial buyers.",
+      "link": "Explore plant & certificates"
     },
     "lab": {
-      "badge": "Quality Control",
-      "title": "Testing on every batch",
-      "subtitle": "From incoming materials to release, a verifiable QC path keeps quality stable.",
-      "point1": "Key checks are completed before release — failed batches are not shipped.",
-      "point2": "Traceable records help B2B buyers build long-term confidence.",
-      "point3": "QC works with production to reduce delivery variation.",
+      "badge": "Laboratory",
+      "title": "In-house lab",
+      "subtitle": "Our R&D center is equipped for incoming checks through finished-goods release.",
+      "point1": "R&D center over 800㎡ with a 7-person research team.",
+      "point2": "72 analytical instruments, including 41 lubricant testing units.",
+      "point3": "Up to 21 lubricant indicators can be tested to support batch stability.",
       "link": "View company strength & certificates",
       "items": {
         "item1": {
@@ -128,54 +128,54 @@
           "desc": "Base oils and additives are verified before blending."
         },
         "item2": {
-          "name": "Process control",
-          "desc": "Key indicators are tracked through automated production."
+          "name": "In-process control",
+          "desc": "Key quality indicators are tracked during production."
         },
         "item3": {
-          "name": "Finished testing",
-          "desc": "Every batch is lab-tested before release."
+          "name": "Finished-goods testing",
+          "desc": "Each batch is lab-tested before release."
         },
         "item4": {
           "name": "Shipment release",
-          "desc": "Traceable QC records support B2B supply confidence."
+          "desc": "Only qualified batches ship, with traceable records."
         }
       }
     },
     "partners": {
       "title": "Feedstock & technology partners",
-      "subtitle": "Working with global base-oil and additive partners to support formula and quality stability."
+      "subtitle": "Working with global base-oil and additive partners to support formula quality."
     },
     "lines": {
       "title": "Core product lines",
-      "subtitle": "Automotive, industrial and specialty lubricants — grades and packaging can be matched to your duty cycle.",
+      "subtitle": "Automotive, industrial and specialty lubricants — matched by duty cycle and packaging.",
       "items": {
         "item1": {
           "name": "Automotive engine oils",
-          "desc": "Premium base oils and advanced additive packages in full synthetic, semi-synthetic and mineral grades, with strong shear stability and low-temperature fluidity."
+          "desc": "Full synthetic, semi-synthetic and mineral options with shear stability and low-temp fluidity."
         },
         "item2": {
           "name": "Heavy-duty diesel engine oils",
-          "desc": "Built for severe duty and extended drain intervals, with strong detergency, oxidation stability, anti-wear protection and soot control."
+          "desc": "Built for severe duty and extended drains with detergency, anti-wear and soot control."
         },
         "item3": {
           "name": "Heavy-duty gear oils",
-          "desc": "Synthetic base oils with advanced EP/anti-wear additives for high load-carrying capacity and pitting resistance."
+          "desc": "High load-carrying EP protection for shock and heavy gear duty."
         },
         "item4": {
           "name": "Anti-wear hydraulic oils",
-          "desc": "High VI refined base oils with efficient additive systems for stable performance under high pressure, speed and temperature."
+          "desc": "Stable under high pressure and speed for precise hydraulic response."
         },
         "item5": {
           "name": "Antifreeze / coolant",
-          "desc": "High-purity ethylene glycol with advanced corrosion inhibitors for freeze, boil, corrosion and scale protection."
+          "desc": "Freeze, boil, corrosion and scale protection for cooling systems."
         },
         "item6": {
           "name": "Greases",
-          "desc": "Premium base oils and advanced thickeners with high-temperature stability, load capacity, water resistance and lasting lubrication."
+          "desc": "High-temperature stability, water resistance and load capacity for bearings and parts."
         },
         "item7": {
           "name": "Industrial oils",
-          "desc": "Anti-wear/EP protection, rust prevention, demulsibility and foam control for a wide range of industrial machinery."
+          "desc": "Anti-wear, rust prevention, demulsibility and foam control for industrial equipment."
         }
       }
     }
