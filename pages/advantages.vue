@@ -7,6 +7,20 @@
       </div>
     </section>
 
+    <section v-motion-slide-visible-once-bottom class="section compare">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">{{ $t('advantages.compare.title') }}</h2>
+        </div>
+        <div class="compare-list">
+          <article v-for="item in compare" :key="item.name" class="compare-item">
+            <h3 class="compare-item-title">{{ item.name }}</h3>
+            <p class="compare-item-desc">{{ item.desc }}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  
     <section v-motion-slide-visible-once-bottom class="section pillars">
       <div class="container">
         <div class="section-header">
@@ -22,20 +36,7 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section compare">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">{{ $t('advantages.compare.title') }}</h2>
-        </div>
-        <div class="compare-list">
-          <article v-for="item in compare" :key="item.name" class="compare-item">
-            <h3 class="compare-item-title">{{ item.name }}</h3>
-            <p class="compare-item-desc">{{ item.desc }}</p>
-          </article>
-        </div>
-      </div>
-    </section>
-  </div>
+</div>
 </template>
 
 

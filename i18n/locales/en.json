@@ -43,43 +43,45 @@
     },
     "services": {
       "title": "How we support buyers",
-      "subtitle": "From grade selection to shipment coordination.",
+      "subtitle": "Key points here — full process on the Services page.",
       "items": {
         "item1": {
-          "name": "R&D & Selection",
-          "desc": "Match formulation direction and products to real equipment conditions."
+          "name": "Application selection",
+          "desc": "Match products to equipment and duty conditions."
         },
         "item2": {
-          "name": "Production & QC",
-          "desc": "Automated blending and complete testing equipment for batch stability."
+          "name": "Production & delivery",
+          "desc": "Factory scheduling, QC release and reliable supply."
         },
         "item3": {
-          "name": "Training & Logistics",
-          "desc": "Technical training support with coordinated logistics delivery."
+          "name": "Training & logistics",
+          "desc": "Usage guidance and coordinated delivery."
         }
-      }
+      },
+      "link": "See service process"
     },
     "advantages": {
-      "title": "Capabilities you can verify",
-      "subtitle": "Capacity, certification and technical depth you can check.",
+      "title": "Why choose Cerotd",
+      "subtitle": "Buyer-facing differences — full detail on Advantages.",
       "items": {
         "item1": {
-          "name": "Manufacturing scale",
-          "desc": "28,000 m² plant area, 15,000 m³ base-oil storage, 20+ production lines and annual capacity over 100,000 tons."
+          "name": "Factory-direct",
+          "desc": "Manufacturer supply for FCL and long-term buying."
         },
         "item2": {
-          "name": "Certified quality systems",
-          "desc": "Certified for ISO 9001, ISO 14001 and ISO 45001. Partners include SK, ExxonMobil, PetroChina, Sinopec, S-Oil, Infineum, Afton, Chevron, Lubrizol and Mobil."
+          "name": "Batch consistency",
+          "desc": "Production + testing loop to reduce supply variation."
         },
         "item3": {
-          "name": "Automated production",
-          "desc": "Intelligent fully automatic filling lines plus multiple 1L/4L, 18L/20L and 200L automated lines covering industrial, automotive, specialty and care products."
+          "name": "Duty-cycle fit",
+          "desc": "More than catalog pricing — solutions for real use cases."
         },
         "item4": {
-          "name": "R&D and testing",
-          "desc": "An 800+ m² R&D center with 72 analytical instruments covering 21 lubricant indicators to safeguard product stability."
+          "name": "Verifiable systems",
+          "desc": "Certifications, certificates and QC you can check."
         }
-      }
+      },
+      "link": "See key advantages"
     },
     "cta": {
       "title": "Planning a bulk order?",
@@ -105,20 +107,21 @@
       }
     },
     "factory": {
-      "title": "Plant and process",
-      "subtitle": "Automated filling, strict QC and complete testing for stable batch delivery.",
-      "point1": "28,000 m² plant area, up to 15,000 m³ base-oil storage, 36 blending tanks and 20+ production lines",
-      "point2": "Annual capacity over 100,000 tons across 21 major categories including industrial, automotive and specialty lubricants",
-      "point3": "Partners include SK, ExxonMobil, PetroChina, Sinopec, S-Oil, Infineum, Afton, Chevron, Lubrizol and Mobil"
+      "title": "Manufacturing Capability",
+      "subtitle": "Own plant, automated lines and batch QC for reliable bulk supply.",
+      "point1": "In-house plant and tank systems covering blending, filling and outbound logistics.",
+      "point2": "Multi-pack automated lines for industrial, automotive and care products.",
+      "point3": "Traceable batches for distributors, fleets and industrial buyers.",
+      "link": "Explore plant & company"
     },
     "lab": {
       "badge": "Quality Control",
-      "title": "In-house laboratory",
-      "subtitle": "Complete testing from incoming materials to finished-lot release for stable batch delivery.",
-      "point1": "R&D center covers 800+ m² with 7 researchers",
-      "point2": "72 analytical instruments, including 41 lubricant testing units",
-      "point3": "21 lubricant indicators tested; only qualified lots are released",
-      "link": "Explore company strength",
+      "title": "Testing on every batch",
+      "subtitle": "From incoming materials to release, a verifiable QC path keeps quality stable.",
+      "point1": "Key checks are completed before release — failed batches are not shipped.",
+      "point2": "Traceable records help B2B buyers build long-term confidence.",
+      "point3": "QC works with production to reduce delivery variation.",
+      "link": "View company strength & certificates",
       "items": {
         "item1": {
           "name": "Incoming inspection",
@@ -139,8 +142,8 @@
       }
     },
     "partners": {
-      "title": "Partners and systems",
-      "subtitle": "Base-oil and additive partners supporting consistent quality in every batch."
+      "title": "Feedstock & technology partners",
+      "subtitle": "Working with global base-oil and additive partners to support formula and quality stability."
     },
     "lines": {
       "title": "Core product lines",
@@ -180,54 +183,54 @@
   "about": {
     "hero": {
       "title": "About Cerotd",
-      "subtitle": "Integrated R&D, production, sales, training and logistics"
+      "subtitle": "A manufacturing company focused on lubricants and greases"
     },
     "intro": {
-      "title": "Integrated Lubricants & Greases Manufacturer",
-      "p1": "Cerotd (Shandong) Lubrication Technology Co., Ltd. is an integrated manufacturer of lubricating oils and greases covering R&D, production, sales, technical training and logistics distribution, with a strong presence in the domestic market. Located in Jining, Shandong — the hometown of Confucius and Mencius — the company is based in the Jibei New Material Industrial Park and has grown into a rising force there.",
-      "p2": "With 20 years of development, the company occupies 28,000 square meters and has a total investment of RMB 89 million. It now offers 100+ products with annual production capacity of more than 100,000 tons, covering industrial oils, automotive oils, specialty oils, construction-machinery lubricants and automotive care products. Cerotd has built a network of 1,000+ distributors across 20+ provinces, municipalities and autonomous regions in China, with annual production and sales reaching up to 150,000 tons.",
-      "p3": "We uphold the brand philosophy of being professional, dedicated and focused; pursue the vision of “helping others succeed so we can succeed”; and follow the corporate spirit of “pursuing ultimate detail to deliver perfect results,” providing more efficient, environmentally friendly and energy-saving lubrication solutions for customers worldwide."
+      "title": "An integrated lubricant manufacturer",
+      "p1": "Cerotd (Shandong) Lubrication Technology Co., Ltd. integrates R&D, production, sales, technical training and logistics. Based in the New Material Industrial Park, Rencheng District, Jining, Shandong, we serve automotive, industrial and construction-machinery customers with practical lubrication solutions.",
+      "p2": "With 20 years in the industry, we offer 100+ products and a distributor network across 20+ provinces, serving 1,000+ dealers. Our plant supports scaled manufacturing and reliable delivery, with annual production and sales up to 150,000 tons.",
+      "p3": "We stay focused on professionalism and partnership, aiming for more efficient, environmentally responsible and energy-saving lubrication solutions that help customers grow with us."
     },
     "values": {
-      "title": "What We Value",
+      "title": "What we value",
       "items": {
         "item1": {
-          "name": "Certified quality systems",
-          "desc": "Certified to ISO 9001, ISO 14001 and ISO 45001, manufacturing lubricants and greases that meet stringent standards."
+          "name": "Verifiable quality",
+          "desc": "Build B2B trust with certifications, release testing and traceable records."
         },
         "item2": {
-          "name": "Materials and formulas",
-          "desc": "Base oils, additives and technical formulas are fully introduced from Fortune Global 500 enterprises, serving automotive, construction machinery, metallurgy, mining and petroleum processing."
+          "name": "Real duty-cycle focus",
+          "desc": "Match products and plans to load, temperature and maintenance cycles."
         },
         "item3": {
-          "name": "R&D and testing",
-          "desc": "An 800+ m² R&D center with 7 researchers and 72 analytical instruments covering 21 lubricant product indicators."
+          "name": "Long-term supply",
+          "desc": "Use plant capacity and delivery systems for continuous distributor and industrial buying."
         }
       }
     },
     "milestones": {
-      "title": "Company Strength",
+      "title": "Company focus",
       "items": {
         "item1": {
-          "year": "Plant capability",
-          "text": "The plant covers 28,000 square meters with base-oil storage capacity of up to 15,000 m³, including 36 blending tanks, 48 finished-oil tanks, 28 base-oil tanks and 20+ production lines."
+          "year": "Industry focus",
+          "text": "Serving automotive, industrial and construction-machinery customers."
         },
         "item2": {
-          "year": "Certification and materials",
-          "text": "Certified to ISO 9001, ISO 14001 and ISO 45001. Base oils, additives and technical formulas are fully introduced from Fortune Global 500 enterprises."
+          "year": "Manufacturing upgrade",
+          "text": "Strengthening blending, filling, storage and testing loops."
         },
         "item3": {
-          "year": "Capacity and portfolio",
-          "text": "Annual capacity exceeds 100,000 tons, with annual production and sales up to 150,000 tons. The portfolio covers diesel engine oils, gasoline engine oils, motorcycle oils, industrial oils, hydraulic oils, transmission oils, gear oils, antifreeze and greases — 21 major categories and 320+ SKUs."
+          "year": "Network growth",
+          "text": "Distributor coverage across major regional markets in China."
         },
         "item4": {
-          "year": "Team and R&D",
-          "text": "80+ employees, with more than 60% holding college or technical-school degrees or above. The R&D center is equipped with 41 lubricant testing units and commits to excellent quality in every drop."
+          "year": "Deeper partnerships",
+          "text": "Long-term supply relationships with feedstock and channel partners."
         }
       }
     },
     "stats": {
-      "title": "Plant Snapshot",
+      "title": "Plant key figures",
       "item1": {
         "value": "28,000㎡",
         "label": "Plant area"
@@ -246,8 +249,8 @@
       }
     },
     "trust": {
-      "title": "Certified capability",
-      "subtitle": "Quality systems, laboratory testing and reliable supply for B2B partners.",
+      "title": "Certifications & capability snapshot",
+      "subtitle": "A quick trust layer for buyers — certificates and plant visuals follow below.",
       "items": {
         "item1": {
           "name": "ISO 9001",
@@ -255,23 +258,23 @@
         },
         "item2": {
           "name": "ISO 14001",
-          "desc": "Environmental system"
+          "desc": "Environmental management"
         },
         "item3": {
           "name": "ISO 45001",
-          "desc": "Health & safety"
+          "desc": "Occupational health & safety"
         },
         "item4": {
-          "name": "Lab Testing",
-          "desc": "72 instruments / 21 indicators"
+          "name": "Lab testing",
+          "desc": "Key checks before release"
         },
         "item5": {
-          "name": "Stable Supply",
-          "desc": "Up to 150,000 tons annual sales"
+          "name": "Reliable supply",
+          "desc": "Built for long-term bulk buying"
         },
         "item6": {
-          "name": "Global Inputs",
-          "desc": "Fortune 500 materials"
+          "name": "Global feedstock",
+          "desc": "Base-oil and additive partnerships"
         }
       }
     },
@@ -331,96 +334,130 @@
   "services": {
     "hero": {
       "title": "Services",
-      "subtitle": "Covering R&D, production, sales, technical training, and logistics distribution"
+      "subtitle": "A clear path from inquiry and selection to production, QC and logistics."
     },
     "list": {
-      "title": "What we offer",
+      "title": "How we support procurement and rollout",
       "items": {
         "item1": {
-          "name": "Condition Review & Selection",
-          "desc": "Map equipment type, load, temperature, and maintenance cycle to product recommendations."
+          "name": "Condition review & selection",
+          "desc": "Map equipment type, load, temperature and maintenance cycle to product recommendations."
         },
         "item2": {
-          "name": "Planning & Factory Supply",
-          "desc": "Provide practical product combinations backed by factory production and QC."
+          "name": "Plan confirmation & production",
+          "desc": "Confirm grades, packaging and lead time, then supply from factory lines."
         },
         "item3": {
-          "name": "Technical Training Support",
-          "desc": "Help teams understand key usage points and reduce misuse."
+          "name": "Technical training support",
+          "desc": "Help sales and operator teams understand key usage points and reduce misuse."
         },
         "item4": {
-          "name": "Logistics & Optimization",
-          "desc": "Coordinate delivery and refine recommendations based on operating feedback."
+          "name": "Logistics & continuous optimization",
+          "desc": "Coordinate delivery and refine recommendations from operating feedback."
         }
       }
     },
     "process": {
-      "title": "How collaboration works",
-      "subtitle": "A clear path from first inquiry to reliable shipment.",
+      "title": "Cooperation process",
+      "subtitle": "Four steps from inquiry to shipment.",
       "items": {
         "item1": {
           "step": "01",
           "name": "Inquiry",
-          "desc": "Share target market, grades, packaging, and volume requirements."
+          "desc": "Share target market, grade, packaging and volume."
         },
         "item2": {
           "step": "02",
-          "name": "Specification",
-          "desc": "We match products, confirm technical details, and align commercial terms."
+          "name": "Selection confirmed",
+          "desc": "Align product plan plus technical and commercial terms."
         },
         "item3": {
           "step": "03",
           "name": "Production & QC",
-          "desc": "Blending, laboratory testing, and quality release before shipment."
+          "desc": "Blending, lab testing and release."
         },
         "item4": {
           "step": "04",
-          "name": "Delivery",
-          "desc": "Packaging, logistics coordination, and export-ready dispatch."
+          "name": "Shipment",
+          "desc": "Packaging, logistics coordination and delivery follow-up."
         }
       }
+    },
+    "audience": {
+      "title": "Who we work with",
+      "subtitle": "Find your fit first, then move into selection and delivery.",
+      "items": {
+        "item1": {
+          "name": "Distributors / channel partners",
+          "desc": "Regional partners who need reliable supply, a clear portfolio and ongoing support."
+        },
+        "item2": {
+          "name": "Fleet & industrial buyers",
+          "desc": "Teams that choose by duty cycle and need consistent batch delivery for ongoing volume."
+        },
+        "item3": {
+          "name": "OEM / custom needs",
+          "desc": "When packaging, labeling or formula matching is required, we align feasibility and MOQ first."
+        }
+      }
+    },
+    "checklist": {
+      "title": "Helpful details before inquiry",
+      "subtitle": "Clearer inputs usually mean faster selection and lead-time confirmation.",
+      "items": {
+        "item1": "Equipment type and duty conditions (load, temperature, maintenance cycle)",
+        "item2": "Target product family or reference grade / viscosity",
+        "item3": "Pack size and estimated purchase volume",
+        "item4": "Target market and preferred lead time",
+        "item5": "Whether training, private label or export support is needed"
+      }
+    },
+    "cta": {
+      "title": "Ready to start?",
+      "subtitle": "Tell us your duty conditions, grades and volume — our team will reply soon.",
+      "button": "Go to contact"
     }
   },
   "advantages": {
     "hero": {
       "title": "Advantages",
-      "subtitle": "Plant scale, certifications, automated capacity and professional R&D testing"
+      "subtitle": "Factory-direct supply, duty-cycle fit and stable delivery for long-term B2B partnerships."
     },
     "pillars": {
-      "title": "Capability pillars",
+      "title": "Capabilities behind that experience",
       "items": {
         "item1": {
-          "name": "Plant strength",
-          "desc": "28,000 m² plant area with up to 15,000 m³ base-oil storage, including 36 blending tanks, 48 finished-oil tanks and 28 base-oil tanks."
+          "name": "Manufacturing & storage",
+          "desc": "Own plant, tanks and multi-pack filling lines for scaled delivery."
         },
         "item2": {
-          "name": "Laboratory testing",
-          "desc": "Certified to ISO 9001, ISO 14001 and ISO 45001. The R&D center has 72 analytical instruments covering 21 product indicators."
+          "name": "Certification & testing",
+          "desc": "ISO systems plus lab release — key indicators are verifiable."
         },
         "item3": {
-          "name": "Automated lines",
-          "desc": "20+ production lines and annual capacity over 100,000 tons covering industrial oils, automotive oils, specialty oils, construction-machinery lubricants and automotive care products."
+          "name": "Portfolio coverage",
+          "desc": "Automotive, industrial and specialty lubricants for one-stop buying."
         },
         "item4": {
-          "name": "Materials and partners",
-          "desc": "Base-oil and additive partners include SK, ExxonMobil, PetroChina, Sinopec, S-Oil, Infineum, Afton, Chevron, Lubrizol and Mobil."
+          "name": "Feedstock system",
+          "desc": "Partnered base oils and additives to support formula quality."
         }
       }
     },
     "compare": {
-      "title": "Working with us",
+      "title": "What working with us feels like",
       "items": {
         "item1": {
-          "name": "Factory Direct",
-          "desc": "We are a factory, not a retail store or trading company, and focus on full-container or large-volume orders."
+          "name": "Factory-direct",
+          "desc": "We are a manufacturer, not a trader — focused on FCL and bulk orders."
         },
         "item2": {
-          "name": "Application Fit",
-          "desc": "Product combinations and technical advice based on real equipment needs — not just a catalog quote."
+          "name": "Duty-cycle fit",
+          "desc": "Product combinations and technical advice for real equipment needs, not only catalog quotes."
         },
         "item3": {
-          "name": "Stable Delivery",
-          "desc": "Production, testing, and quality systems built for long-term supply consistency."
+          "name": "Stable delivery",
+          "desc": "Lines, testing and QC systems support long-term consistency."
         }
       }
     }
@@ -650,24 +687,24 @@
     "siteName": "Cerotd",
     "titleTemplate": "%s | Cerotd",
     "home": {
-      "title": "Cerotd | Industrial Lubricants & Greases Manufacturer",
-      "description": "Cerotd (Shandong) Lubrication Technology manufactures industrial oils, automotive oils, greases and antifreeze for global B2B partners."
+      "title": "Cerotd | Industrial Lubricant & Grease Manufacturer",
+      "description": "Factory-direct industrial oils, automotive lubricants, greases and coolants for distributors and industrial buyers."
     },
     "about": {
       "title": "About Cerotd",
-      "description": "Learn about Cerotd's manufacturing capability, quality focus and lubrication technology background."
+      "description": "Learn about Cerotd’s background, plant figures, certifications and factory visuals."
     },
     "products": {
       "title": "Lubricant Products",
       "description": "Browse Cerotd lubricant products including engine oils, gear oils, hydraulic oils, greases and antifreeze."
     },
     "services": {
-      "title": "Lubrication Services",
-      "description": "OEM cooperation, formulation support and supply services for industrial and automotive lubrication needs."
+      "title": "Services & Process",
+      "description": "From inquiry and selection to production, QC and logistics — how working with Cerotd works."
     },
     "advantages": {
-      "title": "Why Cerotd",
-      "description": "Stable capacity, quality control and application-focused lubrication solutions for B2B buyers."
+      "title": "Why Choose Cerotd",
+      "description": "Factory-direct supply, duty-cycle fit and stable delivery for long-term B2B lubricant procurement."
     },
     "contact": {
       "title": "Contact Cerotd",

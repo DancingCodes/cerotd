@@ -7,6 +7,21 @@
       </div>
     </section>
 
+    <section v-motion-slide-visible-once-bottom class="section audience">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">{{ $t('services.audience.title') }}</h2>
+          <p class="section-subtitle">{{ $t('services.audience.subtitle') }}</p>
+        </div>
+        <div class="audience-grid">
+          <article v-for="item in audience" :key="item.name" class="audience-card">
+            <h3 class="audience-card-title">{{ item.name }}</h3>
+            <p class="audience-card-desc">{{ item.desc }}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section v-motion-slide-visible-once-bottom class="section list">
       <div class="container">
         <div class="section-header">
@@ -44,6 +59,33 @@
         </ol>
       </div>
     </section>
+
+    <section v-motion-slide-visible-once-bottom class="section checklist">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">{{ $t('services.checklist.title') }}</h2>
+          <p class="section-subtitle">{{ $t('services.checklist.subtitle') }}</p>
+        </div>
+        <ol class="checklist-list">
+          <li v-for="(item, index) in checklist" :key="index" class="checklist-item">
+            <span class="checklist-item-index">0{{ index + 1 }}</span>
+            <p class="checklist-item-text">{{ item }}</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section v-motion-slide-visible-once-bottom class="cta">
+      <div class="container">
+        <div class="cta-panel">
+          <div class="cta-copy">
+            <h2 class="cta-title">{{ $t('services.cta.title') }}</h2>
+            <p class="cta-subtitle">{{ $t('services.cta.subtitle') }}</p>
+          </div>
+          <NuxtLink to="/contact" class="btn btn-light">{{ $t('services.cta.button') }}</NuxtLink>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -71,6 +113,19 @@ const processSteps = computed(() => {
     name: t(`services.process.items.item${n}.name`),
     desc: t(`services.process.items.item${n}.desc`)
   }))
+})
+
+const audience = computed(() => {
+  locale.value
+  return [1, 2, 3].map((n) => ({
+    name: t(`services.audience.items.item${n}.name`),
+    desc: t(`services.audience.items.item${n}.desc`)
+  }))
+})
+
+const checklist = computed(() => {
+  locale.value
+  return [1, 2, 3, 4, 5].map((n) => t(`services.checklist.items.item${n}`))
 })
 </script>
 
@@ -151,6 +206,41 @@ const processSteps = computed(() => {
 
     .section-subtitle {
       color: #c8ced6;
+    }
+  }
+
+  .audience {
+    background: var(--color-surface);
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+
+      @media (min-width: 900px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .audience-card {
+      padding: 26px 24px;
+      border-radius: 22px;
+      background: #ffffff;
+      border: 1px solid var(--color-line);
+    }
+
+    .audience-card-title {
+      margin-bottom: 12px;
+      color: #0f4c56;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .audience-card-desc {
+      color: #4b5563;
+      font-size: 15px;
+      line-height: 1.7;
     }
   }
 
@@ -286,6 +376,101 @@ const processSteps = computed(() => {
         background: #5fd0dc;
         transform: translateY(-50%);
       }
+    }
+  }
+
+  .checklist {
+    background: #ffffff;
+
+    .checklist-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .checklist-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-line);
+    }
+
+    .checklist-item-index {
+      color: var(--color-accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding-top: 2px;
+    }
+
+    .checklist-item-text {
+      color: #1f2937;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+  }
+
+  .cta {
+    padding: 28px 0 96px;
+    background: #ffffff;
+
+    @media (min-width: 768px) {
+      padding: 20px 0 120px;
+    }
+
+    .cta-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      padding: 34px 28px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(#5fd0dc, 0.18), transparent 34%),
+        linear-gradient(135deg, #102033 0%, #0b1522 100%);
+      border: 1px solid rgba(#ffffff, 0.08);
+
+      @media (min-width: 800px) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 40px 44px;
+      }
+    }
+
+    .cta-title {
+      margin-bottom: 10px;
+      color: #ffffff;
+      font-size: 30px;
+      font-weight: 650;
+      letter-spacing: -0.03em;
+    }
+
+    .cta-subtitle {
+      max-width: 42ch;
+      color: rgba(#ffffff, 0.7);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .btn.btn-light {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #102033;
+      font-size: 15px;
+      font-weight: 650;
+      text-decoration: none;
+      white-space: nowrap;
     }
   }
 }

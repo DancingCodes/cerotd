@@ -47,6 +47,7 @@
           <ul class="factory-points">
             <li v-for="n in 3" :key="n" class="factory-point">{{ $t(`home.factory.point${n}`) }}</li>
           </ul>
+          <NuxtLink to="/about" class="section-link">{{ $t('home.factory.link') }}</NuxtLink>
         </div>
       </div>
     </section>
@@ -107,6 +108,9 @@
             <p class="service-row-desc">{{ item.desc }}</p>
           </article>
         </div>
+        <div class="section-actions section-actions-light">
+          <NuxtLink to="/services" class="section-link section-link-light">{{ $t('home.services.link') }}</NuxtLink>
+        </div>
       </div>
     </section>
 
@@ -134,6 +138,9 @@
               <p class="advantage-card-desc">{{ item.desc }}</p>
             </div>
           </article>
+        </div>
+        <div class="section-actions">
+          <NuxtLink to="/advantages" class="section-link">{{ $t('home.advantages.link') }}</NuxtLink>
         </div>
       </div>
     </section>
@@ -513,12 +520,25 @@ const labItems = computed(() => {
     .section-subtitle { color: rgba(#ffffff, 0.62); }
   }
 
+  .section-actions {
+    margin-top: 28px;
+  }
+
+  .section-actions.section-actions-light {
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+
   .section-link {
     color: var(--color-accent);
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
     letter-spacing: 0.02em;
+  }
+
+  .section-link.section-link-light {
+    color: rgba(#ffffff, 0.88);
   }
 
   .factory {
@@ -579,6 +599,11 @@ const labItems = computed(() => {
       color: var(--color-muted);
       font-size: 17px;
       line-height: 1.7;
+    }
+
+    .factory-copy .section-link {
+      display: inline-block;
+      margin-top: 22px;
     }
 
     .factory-points {

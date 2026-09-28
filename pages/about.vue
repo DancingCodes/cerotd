@@ -30,6 +30,34 @@
       </div>
     </section>
 
+    <section v-motion-slide-visible-once-bottom class="section values">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">{{ $t('about.values.title') }}</h2>
+        </div>
+        <div class="values-grid">
+          <article v-for="item in values" :key="item.name" class="value-card">
+            <h3 class="value-card-title">{{ item.name }}</h3>
+            <p class="value-card-desc">{{ item.desc }}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section v-motion-slide-visible-once-bottom class="section stats">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">{{ $t('about.stats.title') }}</h2>
+        </div>
+        <div class="stats-grid">
+          <div v-for="n in 4" :key="n" class="stats-item">
+            <p class="stats-item-value">{{ $t(`about.stats.item${n}.value`) }}</p>
+            <p class="stats-item-label">{{ $t(`about.stats.item${n}.label`) }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section v-motion-slide-visible-once-bottom class="section trust">
       <div class="container">
         <div class="section-header">
@@ -181,47 +209,6 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section stats">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">{{ $t('about.stats.title') }}</h2>
-        </div>
-        <div class="stats-grid">
-          <div v-for="n in 4" :key="n" class="stats-item">
-            <p class="stats-item-value">{{ $t(`about.stats.item${n}.value`) }}</p>
-            <p class="stats-item-label">{{ $t(`about.stats.item${n}.label`) }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section v-motion-slide-visible-once-bottom class="section values">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">{{ $t('about.values.title') }}</h2>
-        </div>
-        <div class="values-grid">
-          <article v-for="item in values" :key="item.name" class="value-card">
-            <h3 class="value-card-title">{{ item.name }}</h3>
-            <p class="value-card-desc">{{ item.desc }}</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section v-motion-slide-visible-once-bottom class="section milestones">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">{{ $t('about.milestones.title') }}</h2>
-        </div>
-        <ol class="milestones-list">
-          <li v-for="item in milestones" :key="item.year" class="milestone-item">
-            <p class="milestone-item-year">{{ item.year }}</p>
-            <p class="milestone-item-text">{{ item.text }}</p>
-          </li>
-        </ol>
-      </div>
-    </section>
   </div>
 </template>
 
@@ -243,13 +230,6 @@ const values = computed(() => {
   }))
 })
 
-const milestones = computed(() => {
-  locale.value
-  return [1, 2, 3, 4].map((n) => ({
-    year: t(`about.milestones.items.item${n}.year`),
-    text: t(`about.milestones.items.item${n}.text`)
-  }))
-})
 
 const trustItems = computed(() => {
   locale.value
@@ -889,40 +869,5 @@ onBeforeUnmount(() => {
     }
   }
 
-  .milestones {
-    background: #ffffff;
-
-    .milestones-list {
-      display: grid;
-      gap: 16px;
-    }
-
-    .milestone-item {
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 20px;
-      padding: 24px 0;
-      border-top: 1px solid #e2e6eb;
-
-      @media (max-width: 640px) {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-
-      .milestone-item-year {
-        color: var(--color-accent);
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-      }
-
-      .milestone-item-text {
-        color: #374151;
-        font-size: 17px;
-        line-height: 1.7;
-      }
-    }
-  }
 }
 </style>
