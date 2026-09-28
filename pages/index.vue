@@ -35,7 +35,7 @@
         <div class="factory-media">
           <AppImage
             class="factory-media-image"
-            src="/images/home/factory.jpg"
+            src="/images/home/1.jpg"
             :alt="$t('home.factory.title')"
             loading="lazy"
             decoding="async"
@@ -205,10 +205,10 @@ const partnerLogos = [
 ]
 
 const advantageImages = [
-  '/images/home/advantage-1.jpg',
-  '/images/home/advantage-2.jpg',
-  '/images/home/advantage-3.jpg',
-  '/images/home/advantage-4.jpg'
+  '/images/home/2.jpg',
+  '/images/home/3.jpg',
+  '/images/home/4.jpg',
+  '/images/home/5.jpg'
 ]
 
 const services = computed(() => {
@@ -892,4 +892,5 @@ const labItems = computed(() => {
   }
 }
 </style>
+
 
