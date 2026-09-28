@@ -270,7 +270,11 @@ async function remove(item: CategoryItem) {
     })
     await load()
   } catch (err: any) {
-    window.alert(err?.data?.statusMessage || err?.statusMessage || t('admin.common.deleteFailed'))
+    window.alert(
+      err?.statusCode === 409 || err?.data?.statusCode === 409
+        ? t('admin.productCategories.deleteBlockedHasProducts')
+        : err?.data?.statusMessage || err?.statusMessage || t('admin.common.deleteFailed')
+    )
   }
 }
 
@@ -289,7 +293,11 @@ async function removeSelected() {
     selectedSlugs.value = []
     await load()
   } catch (err: any) {
-    window.alert(err?.data?.statusMessage || err?.statusMessage || t('admin.common.deleteFailed'))
+    window.alert(
+      err?.statusCode === 409 || err?.data?.statusCode === 409
+        ? t('admin.productCategories.deleteBlockedHasProducts')
+        : err?.data?.statusMessage || err?.statusMessage || t('admin.common.deleteFailed')
+    )
     await load()
   } finally {
     batchDeleting.value = false

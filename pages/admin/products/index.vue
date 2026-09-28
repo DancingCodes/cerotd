@@ -17,7 +17,11 @@
         >
           {{ $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}
         </div>
-        <div class="admin-page-btn" @click="startCreate">{{ $t('admin.products.new') }}</div>
+        <div
+          class="admin-page-btn"
+          :class="{ 'is-disabled': !categories.length }"
+          @click="startCreate"
+        >{{ $t('admin.products.new') }}</div>
       </div>
     </div>
 
@@ -75,13 +79,6 @@
         <label class="admin-field">
           <div class="admin-field-label">{{ $t('admin.common.published') }}</div>
           <select v-model="form.isPublished" class="admin-field-input">
-            <option :value="true">{{ $t('admin.common.yes') }}</option>
-            <option :value="false">{{ $t('admin.common.no') }}</option>
-          </select>
-        </label>
-        <label class="admin-field">
-          <div class="admin-field-label">{{ $t('admin.products.showOnHome') }}</div>
-          <select v-model="form.showOnHome" class="admin-field-input">
             <option :value="true">{{ $t('admin.common.yes') }}</option>
             <option :value="false">{{ $t('admin.common.no') }}</option>
           </select>
@@ -206,7 +203,6 @@ type ProductItem = {
   specs: { en: string[]; zh: string[] }
   sortOrder: number
   isPublished: boolean
-  showOnHome: boolean
 }
 
 const { t } = useI18n()
@@ -245,7 +241,6 @@ const emptyForm = () => ({
   specsZhText: '',
   sortOrder: 0,
   isPublished: true,
-  showOnHome: false
 })
 
 const form = reactive(emptyForm())
@@ -319,8 +314,13 @@ function goPage(next: number) {
 }
 
 function startCreate() {
+  if (!categories.value.length) {
+    window.alert(t('admin.products.needCategoryFirst'))
+    return
+  }
   editingSlug.value = ''
   Object.assign(form, emptyForm())
+  form.categorySlug = categories.value[0]?.slug || ''
   formError.value = ''
   formOpen.value = true
 }
@@ -342,7 +342,6 @@ function startEdit(item: ProductItem) {
     specsZhText: item.specs.zh.join('\n'),
     sortOrder: item.sortOrder,
     isPublished: item.isPublished,
-    showOnHome: item.showOnHome
   })
   formError.value = ''
   formOpen.value = true
@@ -382,7 +381,6 @@ async function save() {
     specsZh: linesToArray(form.specsZhText),
     sortOrder: Number(form.sortOrder) || 0,
     isPublished: form.isPublished,
-    showOnHome: form.showOnHome
   }
 
   try {

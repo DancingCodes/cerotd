@@ -13,7 +13,6 @@ type CreateProductBody = {
   specsZh?: string[]
   sortOrder?: number
   isPublished?: boolean
-  showOnHome?: boolean
 }
 
 export default defineEventHandler(async (event) => {
@@ -24,8 +23,11 @@ export default defineEventHandler(async (event) => {
   const nameEn = body.nameEn?.trim() || ''
   const nameZh = body.nameZh?.trim() || ''
   const categorySlug = body.categorySlug?.trim() || ''
-  if (!nameEn || !nameZh || !categorySlug) {
-    throw createError({ statusCode: 400, statusMessage: 'nameEn, nameZh and categorySlug are required' })
+  if (!nameEn || !nameZh) {
+    throw createError({ statusCode: 400, statusMessage: 'nameEn and nameZh are required' })
+  }
+  if (!categorySlug) {
+    throw createError({ statusCode: 400, statusMessage: 'Create a product category first.' })
   }
 
   const category = await db
@@ -33,7 +35,7 @@ export default defineEventHandler(async (event) => {
     .bind(categorySlug)
     .first<{ id: number }>()
   if (!category) {
-    throw createError({ statusCode: 400, statusMessage: 'category not found' })
+    throw createError({ statusCode: 400, statusMessage: 'Create a product category first.' })
   }
 
   const allocated = await allocateUniqueSlug(db, 'products', nameEn, 'product')
@@ -45,14 +47,13 @@ export default defineEventHandler(async (event) => {
   const coverUrl = body.coverUrl ?? images[0] ?? null
   const sortOrder = Number.isFinite(body.sortOrder) ? Number(body.sortOrder) : 0
   const isPublished = body.isPublished === false ? 0 : 1
-  const showOnHome = body.showOnHome === true ? 1 : 0
 
   const inserted = await db
     .prepare(
       `INSERT INTO products (
         slug, category_id, name_en, name_zh, summary_en, summary_zh, description_en, description_zh,
-        cover_url, images_json, specs_en_json, specs_zh_json, sort_order, is_published, show_on_home
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        cover_url, images_json, specs_en_json, specs_zh_json, sort_order, is_published
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       RETURNING id`
     )
     .bind(
@@ -69,8 +70,7 @@ export default defineEventHandler(async (event) => {
       JSON.stringify(specsEn),
       JSON.stringify(specsZh),
       sortOrder,
-      isPublished,
-      showOnHome
+      isPublished
     )
     .first<{ id: number }>()
 

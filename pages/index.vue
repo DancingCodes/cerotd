@@ -30,40 +30,16 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section products">
-      <div class="container">
-        <div class="section-top">
-          <div class="section-copy">
-            <h2 class="section-title">{{ $t('home.products.title') }}</h2>
-            <p class="section-subtitle">{{ $t('home.products.subtitle') }}</p>
-          </div>
-          <NuxtLink to="/products" class="section-link">{{ $t('common.viewProducts') }}</NuxtLink>
-        </div>
-        <div class="products-grid">
-          <NuxtLink v-for="item in featuredProducts" :key="item.slug" :to="`/products/${item.slug}`" class="product-card">
-            <div class="product-card-media">
-              <AppImage
-                class="product-card-image"
-                :class="{ 'product-card-image-cover': !(item.coverUrl || item.images[0]) }"
-                :src="item.coverUrl || item.images[0]"
-                :alt="lt(item.name)"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div class="product-card-body">
-              <h3 class="product-card-title">{{ lt(item.name) }}</h3>
-              <p class="product-card-desc">{{ lt(item.summary) }}</p>
-            </div>
-          </NuxtLink>
-        </div>
-      </div>
-    </section>
-
     <section v-motion-slide-visible-once-bottom class="section factory">
       <div class="container factory-grid">
         <div class="factory-media">
-          <div class="factory-media-blank">{{ $t('common.mediaBlank') }}</div>
+          <AppImage
+            class="factory-media-image"
+            src="/images/home/factory.jpg"
+            :alt="$t('home.factory.title')"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div class="factory-copy">
           <h2 class="section-title">{{ $t('home.factory.title') }}</h2>
@@ -183,7 +159,6 @@
 
 <script setup lang="ts">
 const { t, locale } = useI18n()
-const lt = useLocalized()
 
 usePageSeo({
   title: t('seo.home.title'),
@@ -205,20 +180,6 @@ useHead({
     }
   ]
 })
-
-type Localized = { en: string; zh: string }
-type ProductItem = {
-  slug: string
-  name: Localized
-  summary: Localized
-  coverUrl: string | null
-  images: string[]
-}
-
-const { data: productsData } = await useFetch<{ items: ProductItem[] }>('/api/products?home=1', {
-  key: 'home-products'
-})
-const featuredProducts = computed(() => productsData.value?.items || [])
 
 const partnerLogos = [
   {
@@ -243,7 +204,12 @@ const partnerLogos = [
   }
 ]
 
-const advantageImages = ['', '', '', '']
+const advantageImages = [
+  '/images/home/advantage-1.jpg',
+  '/images/home/advantage-2.jpg',
+  '/images/home/advantage-3.jpg',
+  '/images/home/advantage-4.jpg'
+]
 
 const services = computed(() => {
   locale.value
@@ -537,70 +503,6 @@ const labItems = computed(() => {
     font-weight: 600;
     text-decoration: none;
     letter-spacing: 0.02em;
-  }
-
-  .products {
-    background: var(--color-surface);
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-
-      @media (min-width: 768px) { grid-template-columns: repeat(2, 1fr); }
-      @media (min-width: 1100px) { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    .product-card {
-      overflow: hidden;
-      border-radius: 18px;
-      background: #ffffff;
-      border: 1px solid #e1e4e8;
-      text-decoration: none;
-      transition: border-color 0.25s ease, transform 0.25s ease;
-
-      &:hover {
-        border-color: #c9cfd6;
-        transform: translateY(-2px);
-      }
-
-      .product-card-media {
-        aspect-ratio: 4 / 3;
-        background: #eef0f3;
-        overflow: hidden;
-
-        .product-card-image {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          display: block;
-          background: #eef0f3;
-        }
-
-        .product-card-image.product-card-image-cover {
-          object-fit: cover;
-          filter: saturate(0.8) contrast(1.05);
-        }
-      }
-
-      .product-card-body {
-        padding: 22px;
-
-        .product-card-title {
-          margin-bottom: 8px;
-          color: var(--color-text);
-          font-size: 20px;
-          font-weight: 600;
-          letter-spacing: -0.02em;
-        }
-
-        .product-card-desc {
-          color: var(--color-muted);
-          font-size: 15px;
-          line-height: 1.7;
-        }
-      }
-    }
   }
 
   .factory {

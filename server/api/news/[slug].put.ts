@@ -42,7 +42,7 @@ export default defineEventHandler(async (event) => {
   const category = categoryRaw.toLowerCase()
   const categoryRow = await findNewsCategory(db, category)
   if (!categoryRow) {
-    throw createError({ statusCode: 400, statusMessage: 'invalid category' })
+    throw createError({ statusCode: 400, statusMessage: 'Create a news category first.' })
   }
 
   if (!nextSlug || !titleEn || !titleZh) {

@@ -41,10 +41,6 @@
       "trust2": "ISO 14001",
       "trust3": "ISO 45001"
     },
-    "products": {
-      "title": "Selected products",
-      "subtitle": "A focused range for fleet and industrial duty. Full grades available on request."
-    },
     "services": {
       "title": "How we support buyers",
       "subtitle": "From grade selection to shipment coordination.",
@@ -566,7 +562,7 @@
       "specsEn": "Specs EN (one per line)",
       "specsZh": "Specs ZH (one per line)",
       "deleteConfirm": "Delete product \"{name}\"?",
-      "showOnHome": "Show on home"
+      "needCategoryFirst": "Create a product category before adding products."
     },
     "news": {
       "title": "News",
@@ -587,7 +583,8 @@
       "deleteConfirm": "Delete article \"{name}\"?",
       "requiredTitleEn": "Please enter the English title.",
       "requiredTitleZh": "Please enter the Chinese title.",
-      "searchPlaceholder": "Search title / slug"
+      "searchPlaceholder": "Search title / slug",
+      "needCategoryFirst": "Create a news category before adding news."
     },
     "inquiries": {
       "title": "Inquiries",
@@ -639,7 +636,8 @@
       "editTitle": "Edit category",
       "createTitle": "Create category",
       "empty": "No news categories yet.",
-      "deleteConfirm": "Delete category \"{name}\"?"
+      "deleteConfirm": "Delete category \"{name}\"? It must have no news.",
+      "deleteBlockedHasNews": "This category still has news. Delete or move them first."
     },
     "productCategories": {
       "title": "Product Categories",
@@ -648,7 +646,8 @@
       "editTitle": "Edit category",
       "createTitle": "New category",
       "empty": "No categories yet.",
-      "deleteConfirm": "Delete category \"{name}\"?"
+      "deleteConfirm": "Delete category \"{name}\"? It must have no products.",
+      "deleteBlockedHasProducts": "This category still has products. Delete or move them first."
     }
   },
   "seo": {

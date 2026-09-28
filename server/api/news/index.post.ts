@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
   }
   const categoryRow = category ? await findNewsCategory(db, category) : null
   if (!categoryRow) {
-    throw createError({ statusCode: 400, statusMessage: 'invalid category' })
+    throw createError({ statusCode: 400, statusMessage: 'Create a news category first.' })
   }
 
   const allocated = await allocateUniqueSlug(db, 'news', titleEn, 'news')

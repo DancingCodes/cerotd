@@ -3,7 +3,6 @@ export default defineEventHandler(async (event) => {
   const query = getQuery(event)
   const includeUnpublished = String(query.all || '') === '1'
   const categorySlug = typeof query.category === 'string' ? query.category.trim() : ''
-  const homeOnly = String(query.home || '') === '1'
   const q = typeof query.q === 'string' ? query.q.trim() : ''
   const status = String(query.status || 'all').trim().toLowerCase()
   const paging = parsePagination(query)
@@ -26,10 +25,6 @@ export default defineEventHandler(async (event) => {
   if (categorySlug) {
     where.push('c.slug = ?')
     binds.push(categorySlug)
-  }
-
-  if (homeOnly) {
-    where.push('p.show_on_home = 1')
   }
 
   if (q) {

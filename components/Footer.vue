@@ -69,7 +69,6 @@
 <script setup lang="ts">
 type Localized = { en: string; zh: string }
 type CategoryItem = { slug: string; name: Localized }
-type ProductItem = { slug: string; name: Localized; showOnHome?: boolean }
 
 const { locale } = useI18n()
 const lt = useLocalized()
@@ -78,22 +77,12 @@ const year = new Date().getFullYear()
 const { data: categoriesData } = await useFetch<{ items: CategoryItem[] }>('/api/product-categories', {
   key: 'footer-product-categories'
 })
-const { data: homeProductsData } = await useFetch<{ items: ProductItem[] }>('/api/products?home=1', {
-  key: 'footer-home-products'
-})
 
 const productLinks = computed(() => {
   const categories = categoriesData.value?.items || []
   if (categories.length) {
     return categories.slice(0, 8).map((item) => ({
       to: `/products?category=${encodeURIComponent(item.slug)}`,
-      label: lt(item.name)
-    }))
-  }
-  const products = homeProductsData.value?.items || []
-  if (products.length) {
-    return products.slice(0, 8).map((item) => ({
-      to: `/products/${item.slug}`,
       label: lt(item.name)
     }))
   }

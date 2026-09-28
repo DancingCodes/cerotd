@@ -17,7 +17,11 @@
         >
           {{ $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}
         </div>
-        <div class="admin-page-btn" @click="startCreate">{{ $t('admin.news.new') }}</div>
+        <div
+          class="admin-page-btn"
+          :class="{ 'is-disabled': !categories.length }"
+          @click="startCreate"
+        >{{ $t('admin.news.new') }}</div>
       </div>
     </div>
 
@@ -326,8 +330,13 @@ function goPage(next: number) {
 }
 
 function startCreate() {
+  if (!categories.value.length) {
+    window.alert(t('admin.news.needCategoryFirst'))
+    return
+  }
   editingSlug.value = ''
   resetForm()
+  if (categories.value[0]) form.category = categories.value[0].slug
   formError.value = ''
   formOpen.value = true
 }

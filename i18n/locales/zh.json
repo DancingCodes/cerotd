@@ -41,10 +41,6 @@
       "trust2": "ISO 14001",
       "trust3": "ISO 45001"
     },
-    "products": {
-      "title": "精选产品",
-      "subtitle": "面向车队与工业工况的核心系列，完整牌号可按需确认。"
-    },
     "services": {
       "title": "买家支持方式",
       "subtitle": "从选型到发运协同。",
@@ -566,7 +562,7 @@
       "specsEn": "英文规格（每行一条）",
       "specsZh": "中文规格（每行一条）",
       "deleteConfirm": "确认删除产品“{name}”？",
-      "showOnHome": "首页展示"
+      "needCategoryFirst": "请先创建产品分类，再添加商品。"
     },
     "news": {
       "title": "新闻管理",
@@ -587,7 +583,8 @@
       "deleteConfirm": "确认删除文章“{name}”？",
       "requiredTitleEn": "请填写英文标题。",
       "requiredTitleZh": "请填写中文标题。",
-      "searchPlaceholder": "搜索标题 / slug"
+      "searchPlaceholder": "搜索标题 / slug",
+      "needCategoryFirst": "请先创建新闻分类，再添加新闻。"
     },
     "inquiries": {
       "title": "客户留言",
@@ -639,7 +636,8 @@
       "editTitle": "编辑分类",
       "createTitle": "新建分类",
       "empty": "暂无新闻分类。",
-      "deleteConfirm": "确认删除分类“{name}”？"
+      "deleteConfirm": "确定删除分类「{name}」吗？分类下不能有新闻。",
+      "deleteBlockedHasNews": "该分类下仍有新闻，请先删除或移走新闻后再删除分类。"
     },
     "productCategories": {
       "title": "产品分类",
@@ -648,7 +646,8 @@
       "editTitle": "编辑分类",
       "createTitle": "新建分类",
       "empty": "暂无分类。",
-      "deleteConfirm": "确认删除分类“{name}”？"
+      "deleteConfirm": "确定删除分类「{name}」吗？分类下不能有商品。",
+      "deleteBlockedHasProducts": "该分类下仍有商品，请先删除或移走商品后再删除分类。"
     }
   },
   "seo": {

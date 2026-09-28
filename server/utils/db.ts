@@ -27,7 +27,6 @@ export type ProductRow = {
   specs_zh_json: string
   sort_order: number
   is_published: number
-  show_on_home: number
   created_at: string
   updated_at: string
   category_slug?: string
@@ -124,7 +123,6 @@ export function mapProduct(row: ProductRow) {
     },
     sortOrder: row.sort_order,
     isPublished: row.is_published === 1,
-    showOnHome: Number(row.show_on_home || 0) === 1,
     createdAt: row.created_at,
     updatedAt: row.updated_at
   }
