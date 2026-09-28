@@ -69,7 +69,7 @@
         },
         "item2": {
           "name": "Certified quality systems",
-          "desc": "Certified for ISO 9001, ISO 14001 and ISO 45001. Base oils, additives and formulas are introduced from Fortune Global 500 enterprises."
+          "desc": "Certified for ISO 9001, ISO 14001 and ISO 45001. Partners include SK, ExxonMobil, PetroChina, Sinopec, S-Oil, Infineum, Afton, Chevron, Lubrizol and Mobil."
         },
         "item3": {
           "name": "Automated production",
@@ -109,7 +109,7 @@
       "subtitle": "Automated filling, strict QC and complete testing for stable batch delivery.",
       "point1": "28,000 m² plant area, up to 15,000 m³ base-oil storage, 36 blending tanks and 20+ production lines",
       "point2": "Annual capacity over 100,000 tons across 21 major categories including industrial, automotive and specialty lubricants",
-      "point3": "Base-oil partners include Shell, SK, ExxonMobil, PetroChina, Sinopec and S-Oil"
+      "point3": "Partners include SK, ExxonMobil, PetroChina, Sinopec, S-Oil, Infineum, Afton, Chevron, Lubrizol and Mobil"
     },
     "lab": {
       "badge": "Quality Control",
@@ -140,7 +140,7 @@
     },
     "partners": {
       "title": "Partners and systems",
-      "subtitle": "Global base-oil and additive partners with certified management systems behind every batch."
+      "subtitle": "Base-oil and additive partners supporting consistent quality in every batch."
     }
   },
   "about": {
@@ -407,7 +407,7 @@
         },
         "item4": {
           "name": "Materials and partners",
-          "desc": "Base oils, additives and formulas from Fortune Global 500 enterprises; base-oil partners include Shell, SK, ExxonMobil, PetroChina, Sinopec and S-Oil."
+          "desc": "Base-oil and additive partners include SK, ExxonMobil, PetroChina, Sinopec, S-Oil, Infineum, Afton, Chevron, Lubrizol and Mobil."
         }
       }
     },

@@ -182,26 +182,16 @@ useHead({
 })
 
 const partnerLogos = [
-  {
-    name: 'Afton Chemical',
-    logo: '/images/partners/1.png',
-    href: 'https://www.aftonchemical.com/'
-  },
-  {
-    name: 'Infineum',
-    logo: '/images/partners/2.png',
-    href: 'https://www.infineum.com/'
-  },
-  {
-    name: 'Lubrizol',
-    logo: '/images/partners/3.png',
-    href: 'https://www.lubrizol.com/'
-  },
-  {
-    name: 'Chevron Oronite',
-    logo: '/images/partners/4.png',
-    href: 'https://www.oronite.com/'
-  }
+  { name: 'SK', logo: '/images/partners/1.png', href: 'https://eng.sk.com/' },
+  { name: 'ExxonMobil', logo: '/images/partners/2.png', href: 'https://corporate.exxonmobil.com/' },
+  { name: 'PetroChina', logo: '/images/partners/3.png', href: 'https://www.petrochina.com.cn/' },
+  { name: 'Sinopec', logo: '/images/partners/4.png', href: 'https://www.sinopec.com/' },
+  { name: 'S-Oil', logo: '/images/partners/5.png', href: 'https://www.s-oil.com/' },
+  { name: 'Infineum', logo: '/images/partners/6.jpg', href: 'https://www.infineum.com/' },
+  { name: 'Afton Chemical', logo: '/images/partners/7.png', href: 'https://www.aftonchemical.com/' },
+  { name: 'Chevron', logo: '/images/partners/8.png', href: 'https://www.chevron.com/' },
+  { name: 'Lubrizol', logo: '/images/partners/9.png', href: 'https://www.lubrizol.com/' },
+  { name: 'Mobil', logo: '/images/partners/10.png', href: 'https://www.mobil.com/' }
 ]
 
 const advantageImages = [
@@ -803,7 +793,7 @@ const labItems = computed(() => {
       grid-template-columns: repeat(2, 1fr);
       gap: 14px;
 
-      @media (min-width: 900px) { grid-template-columns: repeat(4, 1fr); }
+      @media (min-width: 900px) { grid-template-columns: repeat(5, 1fr); }
     }
 
     .partner-slot {
@@ -829,8 +819,7 @@ const labItems = computed(() => {
         max-height: 48px;
         object-fit: contain;
         display: block;
-        filter: grayscale(1) contrast(1.05);
-        opacity: 0.78;
+        opacity: 0.92;
       }
     }
   }
@@ -892,5 +881,7 @@ const labItems = computed(() => {
   }
 }
 </style>
+
+
 
 
