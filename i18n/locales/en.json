@@ -24,8 +24,8 @@
     "aboutUs": "About Us",
     "ourServices": "Services",
     "ourAdvantages": "Advantages",
-    "location": "New Materials Industrial Park, Rencheng, Jining, Shandong, China — 150m south of Cenguang Rd & Lantian Rd",
-    "phone": "+86 152 6379 2384",
+    "location": "150m south of Chenguang Rd & Lantian Rd, New Material Industrial Park, Yunhe Economic Development Zone, Rencheng District, Jining City, Shandong Province",
+    "phone": "400-661-0116",
     "copyright": "Cerotd (Shandong) Lubrication Technology Co., Ltd. All rights reserved.",
     "wechatTitle": "WeChat",
     "wechatId": "13953717716"
@@ -245,6 +245,12 @@
         }
       }
     },
+    "certificates": {
+      "title": "Certificates & qualifications",
+      "subtitle": "Official certificates that support our quality, safety, and management systems.",
+      "alt": "Company certificate {n}",
+      "close": "Close certificate preview"
+    },
     "gallery": {
       "title": "Factory & production",
       "subtitle": "A closer look at our plant, tank farm, and manufacturing environment.",
@@ -401,9 +407,9 @@
     "info": {
       "title": "Contact details",
       "addressLabel": "Address",
-      "addressValue": "New Materials Industrial Park, Rencheng District, Jining, Shandong, China. 150m south of the intersection of Cenguang Road and Lantian Road.",
+      "addressValue": "150 meters south of the intersection of Chenguang Road and Lantian Road, New Material Industrial Park, Yunhe Economic Development Zone, Rencheng District, Jining City, Shandong Province.",
       "phoneLabel": "Phone",
-      "phoneValue": "+86 152 6379 2384",
+      "phoneValue": "400-661-0116",
       "hoursLabel": "Hours",
       "hoursValue": "Mon - Fri 09:00 - 18:00",
       "whatsappLabel": "WhatsApp",

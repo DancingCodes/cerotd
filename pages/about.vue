@@ -45,6 +45,68 @@
       </div>
     </section>
 
+    <section id="certificates" v-motion-slide-visible-once-bottom class="section certificates">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">{{ $t('about.certificates.title') }}</h2>
+          <p class="section-subtitle">{{ $t('about.certificates.subtitle') }}</p>
+        </div>
+        <div class="certificates-grid">
+          <button
+            v-for="(item, index) in certificateItems"
+            :key="item.src"
+            type="button"
+            class="certificate-card"
+            @click="openCertificate(index)"
+          >
+            <AppImage
+              class="certificate-card-image"
+              :src="item.src"
+              :alt="item.alt"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div v-if="certificatePreviewOpen" class="preview" @click.self="closeCertificate">
+      <div class="preview-inner">
+        <button
+          type="button"
+          class="preview-close"
+          :aria-label="$t('about.certificates.close')"
+          @click="closeCertificate"
+        >
+          ×
+        </button>
+        <button
+          type="button"
+          class="preview-nav preview-nav-prev"
+          :aria-label="$t('common.prev')"
+          @click="prevCertificate"
+        >
+          ‹
+        </button>
+        <AppImage
+          class="preview-image"
+          :src="certificateItems[certificatePreviewIndex].src"
+          :alt="certificateItems[certificatePreviewIndex].alt"
+          loading="eager"
+          decoding="async"
+        />
+        <button
+          type="button"
+          class="preview-nav preview-nav-next"
+          :aria-label="$t('common.next')"
+          @click="nextCertificate"
+        >
+          ›
+        </button>
+      </div>
+    </div>
+
     <section v-motion-slide-visible-once-bottom class="section gallery">
       <div class="container">
         <div class="section-header section-header-light">
@@ -196,6 +258,38 @@ const trustItems = computed(() => {
     desc: t(`about.trust.items.item${n}.desc`)
   }))
 })
+
+const certificateItems = computed(() => {
+  locale.value
+  return [1, 2, 3, 4, 5, 6, 7].map((n) => ({
+    src: `/images/certificate/${n}.png`,
+    alt: t('about.certificates.alt', { n })
+  }))
+})
+
+const certificatePreviewOpen = ref(false)
+const certificatePreviewIndex = ref(0)
+
+function openCertificate(index: number) {
+  certificatePreviewIndex.value = index
+  certificatePreviewOpen.value = true
+}
+
+function closeCertificate() {
+  certificatePreviewOpen.value = false
+}
+
+function prevCertificate() {
+  const total = certificateItems.value.length
+  if (!total) return
+  certificatePreviewIndex.value = (certificatePreviewIndex.value - 1 + total) % total
+}
+
+function nextCertificate() {
+  const total = certificateItems.value.length
+  if (!total) return
+  certificatePreviewIndex.value = (certificatePreviewIndex.value + 1) % total
+}
 
 const gallerySlides = computed(() => {
   locale.value
@@ -415,6 +509,133 @@ onBeforeUnmount(() => {
         color: #4b5563;
         font-size: 14px;
         line-height: 1.6;
+      }
+    }
+  }
+
+  .certificates {
+    background: #ffffff;
+
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      @media (min-width: 1100px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .certificate-card {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border-radius: 20px;
+      background: var(--color-surface);
+      border: 1px solid #e8edf2;
+      cursor: pointer;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+
+      &:hover {
+        transform: translateY(-3px);
+        border-color: #cfd8e3;
+        box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+      }
+
+      .certificate-card-image {
+        display: block;
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        object-fit: contain;
+        background: #ffffff;
+        border-radius: 12px;
+      }
+    }
+  }
+
+  .preview {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background:
+      linear-gradient(180deg, rgba(7, 11, 18, 0.72) 0%, rgba(7, 11, 18, 0.9) 100%);
+    backdrop-filter: blur(10px);
+
+    .preview-inner {
+      position: relative;
+      width: min(960px, 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 8%;
+        right: 8%;
+        bottom: -18px;
+        height: 48px;
+        border-radius: 999px;
+        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.45) 0%, transparent 72%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .preview-image {
+        position: relative;
+        z-index: 1;
+        max-width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+        border-radius: 12px;
+        background: #ffffff;
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+      }
+
+      .preview-close {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        z-index: 2;
+        color: #ffffff;
+        font-size: 32px;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .preview-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        background: rgba(#ffffff, 0.16);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .preview-nav.preview-nav-prev {
+        left: -8px;
+      }
+
+      .preview-nav.preview-nav-next {
+        right: -8px;
       }
     }
   }

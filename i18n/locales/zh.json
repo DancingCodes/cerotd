@@ -24,8 +24,8 @@
     "aboutUs": "关于我们",
     "ourServices": "服务支持",
     "ourAdvantages": "核心优势",
-    "location": "山东省济宁市任城区新材料产业园，岑古昂路与蓝田路交叉口以南150米",
-    "phone": "+86 152 6379 2384",
+    "location": "山东省济宁市任城区运河经济开发区新材料产业园，辰光路与蓝天路交汇处南150米",
+    "phone": "400-661-0116",
     "copyright": "赛罗特（山东）润滑科技有限公司. 保留所有权利.",
     "wechatTitle": "微信",
     "wechatId": "13953717716"
@@ -245,6 +245,12 @@
         }
       }
     },
+    "certificates": {
+      "title": "资质与证书",
+      "subtitle": "展示支撑质量、安全与管理体系的相关证书。",
+      "alt": "企业证书 {n}",
+      "close": "关闭证书预览"
+    },
     "gallery": {
       "title": "工厂与产线",
       "subtitle": "了解我们的厂区、罐区与生产环境。",
@@ -401,9 +407,9 @@
     "info": {
       "title": "联系方式",
       "addressLabel": "地址",
-      "addressValue": "中国山东省济宁市任城区新材料产业园，岑古昂路与蓝田路交叉口以南150米",
+      "addressValue": "中国山东省济宁市任城区运河经济开发区新材料产业园，辰光路与蓝天路交汇处南150米",
       "phoneLabel": "电话",
-      "phoneValue": "+86 152 6379 2384",
+      "phoneValue": "400-661-0116",
       "hoursLabel": "工作时间",
       "hoursValue": "周一至周五 09:00 - 18:00",
       "whatsappLabel": "WhatsApp",
