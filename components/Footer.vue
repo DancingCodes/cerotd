@@ -16,15 +16,16 @@
         </div>
 
         <div class="footer-col">
-          <h2 class="footer-title">{{ $t('footer.productsTitle') }}</h2>
+          <h2 class="footer-title">{{ $t('footer.trustTitle') }}</h2>
           <ul class="footer-list">
-            <li v-for="item in productLinks" :key="item.to" class="footer-item">
-              <NuxtLink :to="item.to" class="footer-link">{{ item.label }}</NuxtLink>
+            <li v-for="n in 4" :key="n" class="footer-item">{{ $t(`footer.trustItems.item${n}`) }}</li>
+            <li class="footer-item">
+              <NuxtLink to="/about#certificates" class="footer-link">{{ $t('footer.trustLink') }}</NuxtLink>
             </li>
           </ul>
         </div>
 
-        <div class="footer-col">
+<div class="footer-col">
           <h2 class="footer-title">{{ $t('footer.companyTitle') }}</h2>
           <ul class="footer-list">
             <li class="footer-item">
@@ -67,27 +68,8 @@
 </template>
 
 <script setup lang="ts">
-type Localized = { en: string; zh: string }
-type CategoryItem = { slug: string; name: Localized }
-
 const { locale } = useI18n()
-const lt = useLocalized()
 const year = new Date().getFullYear()
-
-const { data: categoriesData } = await useFetch<{ items: CategoryItem[] }>('/api/product-categories', {
-  key: 'footer-product-categories'
-})
-
-const productLinks = computed(() => {
-  const categories = categoriesData.value?.items || []
-  if (categories.length) {
-    return categories.slice(0, 8).map((item) => ({
-      to: `/products?category=${encodeURIComponent(item.slug)}`,
-      label: lt(item.name)
-    }))
-  }
-  return [{ to: '/products', label: lt({ en: 'Products', zh: '产品中心' }) }]
-})
 </script>
 
 <style lang="scss" scoped>

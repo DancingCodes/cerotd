@@ -35,7 +35,7 @@
         <div class="factory-spotlight">
           <AppImage
             class="factory-spotlight-image"
-            src="/images/home/1.jpg"
+            src="/images/factory/1.webp"
             :alt="$t('home.factory.title')"
             loading="lazy"
             decoding="async"
@@ -199,10 +199,10 @@ const partnerLogos = [
 ]
 
 const advantageImages = [
-  '/images/home/2.jpg',
-  '/images/home/3.jpg',
-  '/images/home/4.jpg',
-  '/images/home/5.jpg'
+  '/images/factory/8.jpg',
+  '/images/factory/9.jpg',
+  '/images/factory/10.jpg',
+  '/images/factory/11.jpg'
 ]
 
 const productLines = computed(() => {
