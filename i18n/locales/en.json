@@ -425,6 +425,7 @@
     },
     "pillars": {
       "title": "Capabilities behind that experience",
+      "subtitle": "Verify details on About; here is how they support purchasing decisions.",
       "items": {
         "item1": {
           "name": "Manufacturing & storage",
@@ -432,11 +433,11 @@
         },
         "item2": {
           "name": "Certification & testing",
-          "desc": "ISO systems plus lab release — key indicators are verifiable."
+          "desc": "ISO systems plus lab release — key indicators are verifiable and batches are traceable."
         },
         "item3": {
           "name": "Portfolio coverage",
-          "desc": "Automotive, industrial and specialty lubricants for one-stop buying."
+          "desc": "Automotive, industrial and specialty lubricants for one-stop combination buying."
         },
         "item4": {
           "name": "Feedstock system",
@@ -446,20 +447,71 @@
     },
     "compare": {
       "title": "What working with us feels like",
+      "subtitle": "Compared with traders or catalog-only quoting, we focus on an executable supply relationship.",
       "items": {
         "item1": {
           "name": "Factory-direct",
-          "desc": "We are a manufacturer, not a trader — focused on FCL and bulk orders."
+          "desc": "We are a manufacturer, not a trader — focused on FCL and bulk orders with capacity aligned directly."
         },
         "item2": {
           "name": "Duty-cycle fit",
-          "desc": "Product combinations and technical advice for real equipment needs, not only catalog quotes."
+          "desc": "Product combinations and technical advice for real equipment needs, not only a price list."
         },
         "item3": {
           "name": "Stable delivery",
-          "desc": "Lines, testing and QC systems support long-term consistency."
+          "desc": "Lines, testing and QC systems support consistency for repeat buying."
         }
       }
+    },
+    "outcomes": {
+      "title": "What buyers get",
+      "subtitle": "Less about raw plant stats — more about predictable cooperation results.",
+      "items": {
+        "item1": {
+          "name": "More reliable supply",
+          "desc": "Own lines and release testing help reduce stockouts and batch variation."
+        },
+        "item2": {
+          "name": "Better product fit",
+          "desc": "Match grades to equipment and duty conditions to cut wrong-spec cost."
+        },
+        "item3": {
+          "name": "Faster alignment",
+          "desc": "Factory-direct communication shortens grade, pack and lead-time confirmation."
+        },
+        "item4": {
+          "name": "Longer-term partnership",
+          "desc": "Built for ongoing distributor and industrial buying, not one-off deals."
+        }
+      }
+    },
+    "assurance": {
+      "title": "Delivery & cooperation safeguards",
+      "subtitle": "Clear checkpoints for purchasing, technical and warehouse teams.",
+      "items": {
+        "item1": {
+          "name": "Requirement alignment",
+          "desc": "Confirm grade, packaging, volume and market before production planning."
+        },
+        "item2": {
+          "name": "QC release",
+          "desc": "Ship only after key tests pass — failed batches stay out of delivery."
+        },
+        "item3": {
+          "name": "Transparent lead time",
+          "desc": "Communicate production and shipping milestones per order."
+        },
+        "item4": {
+          "name": "After-sales coordination",
+          "desc": "Support usage training and feedback to refine the supply mix."
+        }
+      }
+    },
+    "cta": {
+      "title": "Want to check fit?",
+      "subtitle": "Share duty conditions, grades and volume — or browse products and plant information first.",
+      "button": "Contact us",
+      "secondary": "View products"
     }
   },
   "contact": {
