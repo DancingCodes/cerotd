@@ -76,6 +76,24 @@
       </div>
     </section>
 
+    <section v-motion-slide-visible-once-bottom class="section lines">
+      <div class="container">
+        <div class="section-copy">
+          <h2 class="section-title">{{ $t('home.lines.title') }}</h2>
+          <p class="section-subtitle">{{ $t('home.lines.subtitle') }}</p>
+        </div>
+        <div class="lines-grid">
+          <article v-for="item in productLines" :key="item.name" class="line-card">
+            <h3 class="line-card-title">{{ item.name }}</h3>
+            <p class="line-card-desc">{{ item.desc }}</p>
+          </article>
+        </div>
+        <div class="lines-actions">
+          <NuxtLink to="/products" class="section-link">{{ $t('common.viewProducts') }}</NuxtLink>
+        </div>
+      </div>
+    </section>
+
     <section v-motion-slide-visible-once-bottom class="section services">
       <div class="container">
         <div class="section-copy section-copy-light">
@@ -200,6 +218,14 @@ const advantageImages = [
   '/images/home/4.jpg',
   '/images/home/5.jpg'
 ]
+
+const productLines = computed(() => {
+  locale.value
+  return [1, 2, 3, 4, 5, 6, 7].map((n) => ({
+    name: t(`home.lines.items.item${n}.name`),
+    desc: t(`home.lines.items.item${n}.desc`)
+  }))
+})
 
 const services = computed(() => {
   locale.value
@@ -665,6 +691,55 @@ const labItems = computed(() => {
       color: var(--color-muted);
       font-size: 15px;
       line-height: 1.7;
+    }
+  }
+
+  .lines {
+    background: #ffffff;
+
+    .lines-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+
+      @media (min-width: 768px) {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @media (min-width: 1100px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .line-card {
+      padding: 22px 20px;
+      border-radius: 20px;
+      background: var(--color-surface);
+      border: 1px solid #e8edf2;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+
+      &:hover {
+        transform: translateY(-3px);
+        border-color: #cfd8e3;
+      }
+
+      .line-card-title {
+        margin-bottom: 10px;
+        color: #0f4c56;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      .line-card-desc {
+        color: #4b5563;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+    }
+
+    .lines-actions {
+      margin-top: 28px;
     }
   }
 

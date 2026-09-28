@@ -7,21 +7,6 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section lines">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">{{ $t('products.lines.title') }}</h2>
-          <p class="section-subtitle">{{ $t('products.lines.subtitle') }}</p>
-        </div>
-        <div class="lines-grid">
-          <article v-for="item in productLines" :key="item.name" class="line-card">
-            <h3 class="line-card-title">{{ item.name }}</h3>
-            <p class="line-card-desc">{{ item.desc }}</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section v-motion-slide-visible-once-bottom class="section catalog">
       <div class="container">
         <div class="section-header">
@@ -95,14 +80,6 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section note">
-      <div class="container">
-        <div class="note-panel">
-          <h2 class="note-title">{{ $t('products.note.title') }}</h2>
-          <p class="note-desc">{{ $t('products.note.desc') }}</p>
-        </div>
-      </div>
-    </section>
   </div>
 </template>
 
@@ -119,17 +96,9 @@ type ProductItem = {
 }
 
 const t = useLocalized()
-const { t: i18nT, locale } = useI18n()
+const { t: i18nT } = useI18n()
 const route = useRoute()
 const router = useRouter()
-
-const productLines = computed(() => {
-  locale.value
-  return [1, 2, 3, 4, 5, 6, 7].map((n) => ({
-    name: i18nT(`products.lines.items.item${n}.name`),
-    desc: i18nT(`products.lines.items.item${n}.desc`)
-  }))
-})
 
 usePageSeo({
   title: i18nT('seo.products.title'),
@@ -354,53 +323,9 @@ async function loadMore() {
     color: #0f4c56;
   }
 
-  .lines {
-    background: #ffffff;
-
-    .lines-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-
-      @media (min-width: 768px) {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      @media (min-width: 1100px) {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .line-card {
-      padding: 22px 20px;
-      border-radius: 20px;
-      background: var(--color-surface);
-      border: 1px solid #e8edf2;
-      transition: transform 0.25s ease, border-color 0.25s ease;
-
-      &:hover {
-        transform: translateY(-3px);
-        border-color: #cfd8e3;
-      }
-
-      .line-card-title {
-        margin-bottom: 10px;
-        color: #0f4c56;
-        font-size: 18px;
-        font-weight: 700;
-        letter-spacing: -0.01em;
-      }
-
-      .line-card-desc {
-        color: #4b5563;
-        font-size: 14px;
-        line-height: 1.7;
-      }
-    }
-  }
 
   .catalog {
-    background: var(--color-surface);
+    background: #ffffff;
 
     .product-grid {
       display: grid;
@@ -488,27 +413,5 @@ async function loadMore() {
     }
   }
 
-  .note {
-    background: #ffffff;
-
-    .note-panel {
-      padding: 28px;
-      border-radius: 20px;
-      background: var(--color-surface);
-      border: 1px solid var(--color-line);
-
-      .note-title {
-        margin-bottom: 10px;
-        color: #111827;
-        font-size: 20px;
-      }
-
-      .note-desc {
-        color: #4b5563;
-        font-size: 15px;
-        line-height: 1.7;
-      }
-    }
-  }
 }
 </style>

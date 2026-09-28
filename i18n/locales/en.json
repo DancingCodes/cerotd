@@ -141,6 +141,40 @@
     "partners": {
       "title": "Partners and systems",
       "subtitle": "Base-oil and additive partners supporting consistent quality in every batch."
+    },
+    "lines": {
+      "title": "Core product lines",
+      "subtitle": "Automotive, industrial and specialty lubricants — grades and packaging can be matched to your duty cycle.",
+      "items": {
+        "item1": {
+          "name": "Automotive engine oils",
+          "desc": "Premium base oils and advanced additive packages in full synthetic, semi-synthetic and mineral grades, with strong shear stability and low-temperature fluidity."
+        },
+        "item2": {
+          "name": "Heavy-duty diesel engine oils",
+          "desc": "Built for severe duty and extended drain intervals, with strong detergency, oxidation stability, anti-wear protection and soot control."
+        },
+        "item3": {
+          "name": "Heavy-duty gear oils",
+          "desc": "Synthetic base oils with advanced EP/anti-wear additives for high load-carrying capacity and pitting resistance."
+        },
+        "item4": {
+          "name": "Anti-wear hydraulic oils",
+          "desc": "High VI refined base oils with efficient additive systems for stable performance under high pressure, speed and temperature."
+        },
+        "item5": {
+          "name": "Antifreeze / coolant",
+          "desc": "High-purity ethylene glycol with advanced corrosion inhibitors for freeze, boil, corrosion and scale protection."
+        },
+        "item6": {
+          "name": "Greases",
+          "desc": "Premium base oils and advanced thickeners with high-temperature stability, load capacity, water resistance and lasting lubrication."
+        },
+        "item7": {
+          "name": "Industrial oils",
+          "desc": "Anti-wear/EP protection, rust prevention, demulsibility and foam control for a wide range of industrial machinery."
+        }
+      }
     }
   },
   "about": {
@@ -284,53 +318,15 @@
       "title": "Products",
       "subtitle": "Explore Cerotd lubricant and care solutions by series and grade."
     },
-    "note": {
-      "title": "Specs & Grades",
-      "desc": "The portfolio covers diesel engine oils, gasoline engine oils, motorcycle oils, industrial oils, hydraulic oils, transmission oils, gear oils, antifreeze and greases — 21 major categories and 320+ SKUs. Formal grades, viscosity, certifications and packaging can be confirmed on inquiry."
-    },
     "listTitle": "All Products",
-    "listSubtitle": "Browse published products. Specs and packaging can be confirmed by inquiry.",
+    "listSubtitle": "Browse published products by category. Details can be confirmed by inquiry.",
     "detailCta": "Ask about this product",
     "backToList": "Back to products",
     "specsTitle": "Key Information",
     "relatedTitle": "Related Products",
     "filterAll": "All",
     "loading": "Loading products...",
-    "empty": "No products in this category yet.",
-    "lines": {
-      "title": "Core product lines",
-      "subtitle": "Automotive, industrial and specialty lubricants — grades and packaging can be matched to your duty cycle.",
-      "items": {
-        "item1": {
-          "name": "Automotive engine oils",
-          "desc": "Premium base oils and advanced additive packages in full synthetic, semi-synthetic and mineral grades, with strong shear stability and low-temperature fluidity."
-        },
-        "item2": {
-          "name": "Heavy-duty diesel engine oils",
-          "desc": "Built for severe duty and extended drain intervals, with strong detergency, oxidation stability, anti-wear protection and soot control."
-        },
-        "item3": {
-          "name": "Heavy-duty gear oils",
-          "desc": "Synthetic base oils with advanced EP/anti-wear additives for high load-carrying capacity and pitting resistance."
-        },
-        "item4": {
-          "name": "Anti-wear hydraulic oils",
-          "desc": "High VI refined base oils with efficient additive systems for stable performance under high pressure, speed and temperature."
-        },
-        "item5": {
-          "name": "Antifreeze / coolant",
-          "desc": "High-purity ethylene glycol with advanced corrosion inhibitors for freeze, boil, corrosion and scale protection."
-        },
-        "item6": {
-          "name": "Greases",
-          "desc": "Premium base oils and advanced thickeners with high-temperature stability, load capacity, water resistance and lasting lubrication."
-        },
-        "item7": {
-          "name": "Industrial oils",
-          "desc": "Anti-wear/EP protection, rust prevention, demulsibility and foam control for a wide range of industrial machinery."
-        }
-      }
-    }
+    "empty": "No products in this category yet."
   },
   "services": {
     "hero": {
