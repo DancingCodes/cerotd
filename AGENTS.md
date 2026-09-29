@@ -87,5 +87,8 @@
 - 正式生产域名是否继续用 `moonc.love`，还是切回 / 指向 `cerotd.com`
 - 目标市场与主关键词优先级（如 industrial lubricant、grease manufacturer、OEM）
 - 询盘后是否需要邮件 / 第三方通知，还是仅后台查看
+- 公开询盘防刷暂不实现；后续如垃圾询盘变多，再评估 honeypot、简单限流或 Cloudflare Turnstile
+- 新闻富文本 sanitizer 暂不增强；后续如开放更多编辑来源，再评估白名单 HTML sanitizer
+- 后台 token 暂存 localStorage；后续如提高安全要求，再评估 HttpOnly Cookie / 服务端 session
 - 产品规格、认证、出货能力等对外口径，以客户确认稿为准
 
