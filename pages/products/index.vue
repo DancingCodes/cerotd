@@ -85,7 +85,7 @@
 
 
 <script setup lang="ts">
-import { PRODUCT_CATEGORIES } from '../../shared/product-categories'
+import { PRODUCT_CATEGORIES } from '#shared/product-categories'
 
 type Localized = { en: string; zh: string }
 

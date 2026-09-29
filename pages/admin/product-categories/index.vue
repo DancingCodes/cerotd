@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { PRODUCT_CATEGORIES } from '../../../shared/product-categories'
+import { PRODUCT_CATEGORIES } from '#shared/product-categories'
 
 definePageMeta({
   layout: 'admin',

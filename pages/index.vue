@@ -257,7 +257,7 @@
 
 
 <script setup lang="ts">
-import { PRODUCT_CATEGORIES } from '../shared/product-categories'
+import { PRODUCT_CATEGORIES } from '#shared/product-categories'
 
 const { t, locale } = useI18n()
 const tLocal = useLocalized()
