@@ -453,27 +453,6 @@ async function onSubmit() {
           box-shadow: 0 0 0 4px rgba(#1aa6b8, 0.12);
         }
 
-        select.form-field-input {
-          -webkit-appearance: none;
-          appearance: none;
-          cursor: pointer;
-          padding-right: 44px;
-          background-color: var(--color-surface);
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%236b7280' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-          background-repeat: no-repeat;
-          background-position: right 14px center;
-          background-size: 16px 16px;
-        }
-
-        select.form-field-input:focus {
-          background-color: #ffffff;
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%236b7280' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-          background-repeat: no-repeat;
-          background-position: right 14px center;
-          background-size: 16px 16px;
-        }
-
-
         .form-field-textarea {
           resize: vertical;
           min-height: 140px;

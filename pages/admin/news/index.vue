@@ -577,19 +577,6 @@ onMounted(load)
       padding: 0 12px;
     }
 
-    select.admin-field-input {
-      -webkit-appearance: none;
-      appearance: none;
-      cursor: pointer;
-      padding-right: 40px;
-      background-color: #ffffff;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%236b7280' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      background-size: 16px 16px;
-    }
-
-
     .admin-field-textarea {
       padding: 10px 12px;
       resize: vertical;
@@ -726,19 +713,6 @@ onMounted(load)
     outline: none;
     font: inherit;
   }
-
-  select.admin-filter-select {
-    -webkit-appearance: none;
-    appearance: none;
-    cursor: pointer;
-    padding-right: 40px;
-    background-color: #ffffff;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%236b7280' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 16px 16px;
-  }
-
 
   .admin-filter-group {
     display: flex;
