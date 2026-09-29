@@ -590,8 +590,7 @@
       "logout": "Logout",
       "news": "News",
       "inquiries": "Inquiries",
-      "newsCategories": "News Categories",
-      "productCategories": "Product Categories"
+      "newsCategories": "News Categories"
     },
     "login": {
       "title": "Admin Login",
@@ -737,17 +736,6 @@
       "empty": "No news categories yet.",
       "deleteConfirm": "Delete category \"{name}\"? It must have no news.",
       "deleteBlockedHasNews": "This category still has news. Delete or move them first."
-    },
-    "productCategories": {
-      "title": "Product Categories",
-      "subtitle": "Manage product categories for the catalog",
-      "new": "New category",
-      "editTitle": "Edit category",
-      "createTitle": "New category",
-      "empty": "No categories yet.",
-      "deleteConfirm": "Delete category \"{name}\"? It must have no products.",
-      "deleteBlockedHasProducts": "This category still has products. Delete or move them first.",
-      "fixedHint": "Product categories are fixed in code and cannot be created or deleted here."
     }
   },
   "seo": {

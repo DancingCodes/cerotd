@@ -58,7 +58,3 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
 export function getProductCategory(slug: string) {
   return PRODUCT_CATEGORIES.find((item) => item.slug === slug) || null
 }
-
-export function isProductCategorySlug(slug: string) {
-  return PRODUCT_CATEGORIES.some((item) => item.slug === slug)
-}

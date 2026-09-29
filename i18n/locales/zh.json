@@ -590,8 +590,7 @@
       "logout": "退出",
       "news": "新闻",
       "inquiries": "留言",
-      "newsCategories": "新闻分类",
-      "productCategories": "产品分类"
+      "newsCategories": "新闻分类"
     },
     "login": {
       "title": "后台登录",
@@ -737,17 +736,6 @@
       "empty": "暂无新闻分类。",
       "deleteConfirm": "确定删除分类「{name}」吗？分类下不能有新闻。",
       "deleteBlockedHasNews": "该分类下仍有新闻，请先删除或移走新闻后再删除分类。"
-    },
-    "productCategories": {
-      "title": "产品分类",
-      "subtitle": "管理产品目录使用的分类",
-      "new": "新建分类",
-      "editTitle": "编辑分类",
-      "createTitle": "新建分类",
-      "empty": "暂无分类。",
-      "deleteConfirm": "确定删除分类「{name}」吗？分类下不能有商品。",
-      "deleteBlockedHasProducts": "该分类下仍有商品，请先删除或移走商品后再删除分类。",
-      "fixedHint": "产品分类已在代码中写死，后台不可新增或删除。"
     }
   },
   "seo": {

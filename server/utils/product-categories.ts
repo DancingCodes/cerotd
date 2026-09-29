@@ -1,6 +1,4 @@
-import { PRODUCT_CATEGORIES, getProductCategory, isProductCategorySlug } from '#shared/product-categories'
-
-export { PRODUCT_CATEGORIES, getProductCategory, isProductCategorySlug }
+import { getProductCategory } from '#shared/product-categories'
 
 export async function resolveProductCategoryId(db: D1Database, slug: string) {
   const category = getProductCategory(slug)
