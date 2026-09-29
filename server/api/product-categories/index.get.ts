@@ -5,9 +5,7 @@ export default defineEventHandler(async (event) => {
     assertAdmin(event)
   }
 
-  // Product categories are fixed in code. Keep this endpoint for compatibility.
-  await ensureProductCategories(useDB(event))
-
+  // Fixed categories live in code. Avoid DB writes on auth/login probes.
   const paging = parsePagination(query)
   const items = PRODUCT_CATEGORIES.map((item) => ({
     id: item.sortOrder,

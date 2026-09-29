@@ -45,7 +45,7 @@ async function login() {
   setToken(value)
 
   try {
-    await $fetch('/api/products?all=1&page=1&pageSize=1', {
+    await $fetch('/api/product-categories?all=1', {
       headers: authHeaders()
     })
     navigateTo('/admin/products')
