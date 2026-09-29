@@ -155,14 +155,14 @@ useHead({
     const scripts = []
     if (articleJsonLd.value) {
       scripts.push({
-        type: 'application/ld+json',
-        children: JSON.stringify(articleJsonLd.value)
+        type: 'application/ld+json' as 'application/json',
+        innerHTML: JSON.stringify(articleJsonLd.value)
       })
     }
     if (newsBreadcrumbJsonLd.value) {
       scripts.push({
-        type: 'application/ld+json',
-        children: JSON.stringify(newsBreadcrumbJsonLd.value)
+        type: 'application/ld+json' as 'application/json',
+        innerHTML: JSON.stringify(newsBreadcrumbJsonLd.value)
       })
     }
     return scripts

@@ -141,7 +141,11 @@ class HttpD1PreparedStatement {
     if (!rows.length) {
       return (options?.columnNames ? [[]] : []) as T[] | [string[], ...T[]]
     }
-    const columns = Object.keys(rows[0])
+    const firstRow = rows[0]
+    if (!firstRow) {
+      return (options?.columnNames ? [[]] : []) as T[] | [string[], ...T[]]
+    }
+    const columns = Object.keys(firstRow)
     const values = rows.map((row) => columns.map((key) => row[key])) as T[]
     if (options?.columnNames) return [columns, ...values] as [string[], ...T[]]
     return values

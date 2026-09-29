@@ -216,8 +216,11 @@ async function onSubmit() {
     resetForm()
   } catch (error) {
     submitStatus.value = 'error'
-    const err = error || {}
-    submitError.value = (err.data && err.data.statusMessage) || err.statusMessage || i18nT('contact.form.error')
+    const err = error as {
+      data?: { statusMessage?: string }
+      statusMessage?: string
+    } | null
+    submitError.value = err?.data?.statusMessage || err?.statusMessage || i18nT('contact.form.error')
   } finally {
     submitting.value = false
   }

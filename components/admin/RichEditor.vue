@@ -34,7 +34,7 @@ const emit = defineEmits<{
 const { authHeaders } = useAdminAuth()
 const { t } = useI18n()
 
-const editor = shallowRef<Editor | null>(null)
+const editor = shallowRef<Editor>()
 
 onMounted(() => {
   editor.value = new Editor({
@@ -69,7 +69,7 @@ watch(
 
 onBeforeUnmount(() => {
   editor.value?.destroy()
-  editor.value = null
+  editor.value = undefined
 })
 
 async function addImage() {

@@ -196,14 +196,14 @@ useHead({
     const scripts = []
     if (productJsonLd.value) {
       scripts.push({
-        type: 'application/ld+json',
-        children: JSON.stringify(productJsonLd.value)
+        type: 'application/ld+json' as 'application/json',
+        innerHTML: JSON.stringify(productJsonLd.value)
       })
     }
     if (productBreadcrumbJsonLd.value) {
       scripts.push({
-        type: 'application/ld+json',
-        children: JSON.stringify(productBreadcrumbJsonLd.value)
+        type: 'application/ld+json' as 'application/json',
+        innerHTML: JSON.stringify(productBreadcrumbJsonLd.value)
       })
     }
     return scripts

@@ -99,7 +99,11 @@
       </div>
     </section>
 
-    <div v-if="certificatePreviewOpen" class="preview" @click.self="closeCertificate">
+    <div
+      v-if="certificatePreviewOpen && certificatePreviewItem"
+      class="preview"
+      @click.self="closeCertificate"
+    >
       <div class="preview-inner">
         <button
           type="button"
@@ -119,8 +123,8 @@
         </button>
         <AppImage
           class="preview-image"
-          :src="certificateItems[certificatePreviewIndex].src"
-          :alt="certificateItems[certificatePreviewIndex].alt"
+          :src="certificatePreviewItem.src"
+          :alt="certificatePreviewItem.alt"
           loading="eager"
           decoding="async"
         />
@@ -176,6 +180,7 @@ const certificateItems = computed(() => {
 
 const certificatePreviewOpen = ref(false)
 const certificatePreviewIndex = ref(0)
+const certificatePreviewItem = computed(() => certificateItems.value[certificatePreviewIndex.value] || null)
 
 function openCertificate(index: number) {
   certificatePreviewIndex.value = index

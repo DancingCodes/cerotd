@@ -9,8 +9,8 @@ const EXT_MAP: Record<string, string> = {
   'image/avif': 'avif'
 }
 
-export function useMediaBucket(event: H3Event) {
-  const bucket = event.context.cloudflare?.env?.MEDIA
+export function useMediaBucket(event: H3Event): R2Bucket {
+  const bucket = (event.context.cloudflare?.env as { MEDIA?: R2Bucket } | undefined)?.MEDIA
   if (!bucket) {
     throw createError({
       statusCode: 500,
