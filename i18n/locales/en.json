@@ -38,12 +38,12 @@
     "trustLink": "View certificates"
   },
   "home": {
-    "badge": "Industrial Lubricants",
+    "badge": "Industrial Lubricant Manufacturer",
     "hero": {
-      "title": "Built for real operating conditions",
-      "subtitle": "Factory-direct oils and greases for automotive, industrial, and construction fleets.",
+      "title": "Factory-Direct Industrial Oils & Greases",
+      "subtitle": "Automotive, industrial and construction lubricants for distributors and fleet buyers — bulk supply, stable batches, OEM available.",
       "ctaPrimary": "View Products",
-      "ctaSecondary": "Talk to Sales",
+      "ctaSecondary": "Request a Quote",
       "trust1": "ISO 9001",
       "trust2": "ISO 14001",
       "trust3": "ISO 45001"
@@ -114,7 +114,6 @@
       }
     },
     "lab": {
-      "badge": "Laboratory",
       "title": "In-house lab",
       "subtitle": "Our R&D center is equipped for incoming checks through finished-goods release.",
       "point1": "R&D center over 800㎡ with a 7-person research team.",
@@ -146,35 +145,34 @@
     },
     "lines": {
       "title": "Core product lines",
-      "subtitle": "Automotive, industrial and specialty lubricants — matched by duty cycle and packaging.",
+      "subtitle": "Nine fixed product lines for automotive, industrial and specialty applications.",
       "items": {
-        "item1": {
-          "name": "Automotive engine oils",
-          "desc": "Full synthetic, semi-synthetic and mineral options with shear stability and low-temp fluidity."
+        "gasoline-engine-oil": {
+          "desc": "Passenger-car engine oils with shear stability and low-temperature fluidity."
         },
-        "item2": {
-          "name": "Heavy-duty diesel engine oils",
-          "desc": "Built for severe duty and extended drains with detergency, anti-wear and soot control."
+        "diesel-engine-oil": {
+          "desc": "Heavy-duty diesel oils for severe duty, soot control and extended drains."
         },
-        "item3": {
-          "name": "Heavy-duty gear oils",
-          "desc": "High load-carrying EP protection for shock and heavy gear duty."
+        "gear-oil": {
+          "desc": "EP gear oils for shock loads, heavy gear duty and long service life."
         },
-        "item4": {
-          "name": "Anti-wear hydraulic oils",
-          "desc": "Stable under high pressure and speed for precise hydraulic response."
+        "motorcycle-oil": {
+          "desc": "Motorcycle oils balanced for clutch compatibility, wear protection and heat control."
         },
-        "item5": {
-          "name": "Antifreeze / coolant",
-          "desc": "Freeze, boil, corrosion and scale protection for cooling systems."
+        "anti-wear-hydraulic-oil": {
+          "desc": "Anti-wear hydraulic oils for high pressure, clean response and system protection."
         },
-        "item6": {
-          "name": "Greases",
-          "desc": "High-temperature stability, water resistance and load capacity for bearings and parts."
+        "new-energy-oil": {
+          "desc": "Dedicated fluids for new-energy vehicles and related drive systems."
         },
-        "item7": {
-          "name": "Industrial oils",
-          "desc": "Anti-wear, rust prevention, demulsibility and foam control for industrial equipment."
+        "antifreeze-coolant": {
+          "desc": "Coolants for freeze, boil, corrosion and scale protection."
+        },
+        "transmission-oil": {
+          "desc": "Transmission fluids for smooth shifting, wear protection and thermal stability."
+        },
+        "grease": {
+          "desc": "Greases with high-temperature stability, water resistance and load capacity."
         }
       }
     }
@@ -700,7 +698,8 @@
       "createTitle": "New category",
       "empty": "No categories yet.",
       "deleteConfirm": "Delete category \"{name}\"? It must have no products.",
-      "deleteBlockedHasProducts": "This category still has products. Delete or move them first."
+      "deleteBlockedHasProducts": "This category still has products. Delete or move them first.",
+      "fixedHint": "Product categories are fixed in code and cannot be created or deleted here."
     }
   },
   "seo": {

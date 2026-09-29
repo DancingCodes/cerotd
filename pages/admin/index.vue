@@ -30,7 +30,7 @@ const error = ref('')
 
 onMounted(() => {
   if (token.value) {
-    navigateTo('/admin/product-categories')
+    navigateTo('/admin/products')
   }
 })
 
@@ -45,10 +45,10 @@ async function login() {
   setToken(value)
 
   try {
-    await $fetch('/api/product-categories?all=1', {
+    await $fetch('/api/products?all=1&page=1&pageSize=1', {
       headers: authHeaders()
     })
-    navigateTo('/admin/product-categories')
+    navigateTo('/admin/products')
   } catch (err: any) {
     clearToken()
     error.value = err?.statusCode === 401 ? t('admin.login.invalidToken') : t('admin.login.failed')

@@ -34,7 +34,6 @@
       <div class="container">
         <div class="lab-grid">
           <div class="lab-copy">
-            <p class="lab-badge">{{ $t('home.lab.badge') }}</p>
             <h2 class="section-title">{{ $t('home.lab.title') }}</h2>
             <p class="section-subtitle">{{ $t('home.lab.subtitle') }}</p>
             <ul class="lab-points">
@@ -62,10 +61,15 @@
           <p class="section-subtitle">{{ $t('home.lines.subtitle') }}</p>
         </div>
         <div class="lines-grid">
-          <article v-for="item in productLines" :key="item.name" class="line-card">
+          <NuxtLink
+            v-for="item in productLines"
+            :key="item.slug"
+            :to="`/products?category=${item.slug}`"
+            class="line-card"
+          >
             <h3 class="line-card-title">{{ item.name }}</h3>
             <p class="line-card-desc">{{ item.desc }}</p>
-          </article>
+          </NuxtLink>
         </div>
         <div class="lines-actions">
           <NuxtLink to="/products" class="section-link">{{ $t('common.viewProducts') }}</NuxtLink>
@@ -142,7 +146,10 @@
 
 
 <script setup lang="ts">
+import { PRODUCT_CATEGORIES } from '../shared/product-categories'
+
 const { t, locale } = useI18n()
+const tLocal = useLocalized()
 
 usePageSeo({
   title: t('seo.home.title'),
@@ -166,16 +173,14 @@ useHead({
 })
 
 const partnerLogos = [
-  { name: 'SK', logo: '/images/partners/1.png', href: 'https://eng.sk.com/' },
-  { name: 'ExxonMobil', logo: '/images/partners/2.png', href: 'https://corporate.exxonmobil.com/' },
-  { name: 'PetroChina', logo: '/images/partners/3.png', href: 'https://www.petrochina.com.cn/' },
-  { name: 'Sinopec', logo: '/images/partners/4.png', href: 'https://www.sinopec.com/' },
-  { name: 'S-Oil', logo: '/images/partners/5.png', href: 'https://www.s-oil.com/' },
-  { name: 'Infineum', logo: '/images/partners/6.jpg', href: 'https://www.infineum.com/' },
-  { name: 'Afton Chemical', logo: '/images/partners/7.png', href: 'https://www.aftonchemical.com/' },
-  { name: 'Chevron', logo: '/images/partners/8.png', href: 'https://www.chevron.com/' },
-  { name: 'Lubrizol', logo: '/images/partners/9.png', href: 'https://www.lubrizol.com/' },
-  { name: 'Mobil', logo: '/images/partners/10.png', href: 'https://www.mobil.com/' }
+  { name: 'SK', logo: '/images/partners/sk.png', href: 'https://eng.sk.com/' },
+  { name: 'ExxonMobil', logo: '/images/partners/exxonmobil.png', href: 'https://corporate.exxonmobil.com/' },
+  { name: 'PetroChina', logo: '/images/partners/petrochina.png', href: 'https://www.petrochina.com.cn/' },
+  { name: 'Sinopec', logo: '/images/partners/sinopec.png', href: 'https://www.sinopec.com/' },
+  { name: 'Infineum', logo: '/images/partners/infineum.jpg', href: 'https://www.infineum.com/' },
+  { name: 'Afton Chemical', logo: '/images/partners/afton-chemical.png', href: 'https://www.aftonchemical.com/' },
+  { name: 'Chevron', logo: '/images/partners/chevron.png', href: 'https://www.chevron.com/' },
+  { name: 'Lubrizol', logo: '/images/partners/lubrizol.png', href: 'https://www.lubrizol.com/' }
 ]
 
 const advantageImages = [
@@ -187,12 +192,12 @@ const advantageImages = [
 
 const productLines = computed(() => {
   locale.value
-  return [1, 2, 3, 4, 5, 6, 7].map((n) => ({
-    name: t(`home.lines.items.item${n}.name`),
-    desc: t(`home.lines.items.item${n}.desc`)
+  return PRODUCT_CATEGORIES.map((item) => ({
+    slug: item.slug,
+    name: tLocal(item.name),
+    desc: t(`home.lines.items.${item.slug}.desc`)
   }))
 })
-
 
 const advantages = computed(() => {
   locale.value
@@ -509,15 +514,6 @@ const labItems = computed(() => {
       }
     }
 
-    .lab-badge {
-      margin-bottom: 14px;
-      color: var(--color-accent);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
     .section-title {
       margin-bottom: 14px;
       color: var(--color-text);
@@ -609,7 +605,11 @@ const labItems = computed(() => {
     }
 
     .line-card {
+      display: block;
       padding: 22px 20px;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
       border-radius: 20px;
       background: var(--color-surface);
       border: 1px solid #e8edf2;
@@ -719,15 +719,15 @@ const labItems = computed(() => {
       grid-template-columns: repeat(2, 1fr);
       gap: 14px;
 
-      @media (min-width: 900px) { grid-template-columns: repeat(5, 1fr); }
+      @media (min-width: 768px) { grid-template-columns: repeat(4, 1fr); }
     }
 
     .partner-slot {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 92px;
-      padding: 16px;
+      height: 120px;
+      padding: 20px 22px;
       border-radius: 18px;
       background: #ffffff;
       border: 1px solid #e1e4e8;
@@ -741,9 +741,11 @@ const labItems = computed(() => {
       }
 
       .partner-logo {
-        max-width: 120px;
-        max-height: 48px;
+        width: 100%;
+        max-width: 160px;
+        height: 56px;
         object-fit: contain;
+        object-position: center;
         display: block;
         opacity: 0.92;
       }

@@ -179,6 +179,8 @@
 </template>
 
 <script setup lang="ts">
+import { PRODUCT_CATEGORIES } from '../../../shared/product-categories'
+
 definePageMeta({
   layout: 'admin',
   middleware: ['admin']
@@ -221,7 +223,7 @@ const selectedSlugs = ref<string[]>([])
 const batchDeleting = ref(false)
 const allSelected = computed(() => items.value.length > 0 && items.value.every((item) => selectedSlugs.value.includes(item.slug)))
 const items = ref<ProductItem[]>([])
-const categories = ref<CategoryItem[]>([])
+const categories = computed(() => PRODUCT_CATEGORIES.map((item) => ({ slug: item.slug, name: item.name })))
 const formOpen = ref(false)
 const editingSlug = ref('')
 const formError = ref('')
@@ -275,23 +277,19 @@ function onSelectChange(slug: string, event: Event) {
 async function load() {
   pending.value = true
   try {
-    const [productData, categoryData] = await Promise.all([
-      $fetch<{ items: ProductItem[]; total?: number }>('/api/products', {
-        headers: authHeaders(),
-        query: {
-          all: 1,
-          page: page.value,
-          pageSize: pageSize.value,
-          q: search.value || undefined,
-          category: filterCategory.value || undefined,
-          status: filterStatus.value
-        }
-      }),
-      $fetch<{ items: CategoryItem[] }>('/api/product-categories?all=1', { headers: authHeaders() })
-    ])
+    const productData = await $fetch<{ items: ProductItem[]; total?: number }>('/api/products', {
+      headers: authHeaders(),
+      query: {
+        all: 1,
+        page: page.value,
+        pageSize: pageSize.value,
+        q: search.value || undefined,
+        category: filterCategory.value || undefined,
+        status: filterStatus.value
+      }
+    })
     items.value = productData.items
     total.value = Number(productData.total || productData.items.length)
-    categories.value = categoryData.items
     if (items.value.length === 0 && page.value > 1) {
       page.value -= 1
       await load()
@@ -314,10 +312,6 @@ function goPage(next: number) {
 }
 
 function startCreate() {
-  if (!categories.value.length) {
-    window.alert(t('admin.products.needCategoryFirst'))
-    return
-  }
   editingSlug.value = ''
   Object.assign(form, emptyForm())
   form.categorySlug = categories.value[0]?.slug || ''

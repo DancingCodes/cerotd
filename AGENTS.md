@@ -48,7 +48,8 @@
 
 - 前台：首页、产品、新闻、关于我们、服务、优势、联系
 - 核心转化路径：产品详情 / 联系页 → 询盘表单 → `inquiries`
-- 后台：`ADMIN_API_TOKEN` 登录；管理分类、产品、新闻、询盘、上传
+- 后台：ADMIN_API_TOKEN 登录；管理产品、新闻、询盘、上传
+- 产品分类已写死在 shared/product-categories.ts，前后端共用；后台不可新增/删除
 - 内容字段通常是双语结构（`*_en` / `*_zh`）
 - 媒体上传到 R2，并通过 `/cdn/...` 访问
 - 本地 npm start 下：D1 走 Cloudflare HTTP API 连远程库；`/cdn/*` 回源线上站点读媒体（R2 remote binding 不稳定）

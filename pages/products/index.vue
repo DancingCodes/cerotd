@@ -85,6 +85,8 @@
 
 
 <script setup lang="ts">
+import { PRODUCT_CATEGORIES } from '../../shared/product-categories'
+
 type Localized = { en: string; zh: string }
 
 type ProductItem = {
@@ -106,11 +108,6 @@ usePageSeo({
   path: '/products'
 })
 
-type CategoryItem = {
-  slug: string
-  name: Localized
-}
-
 const selectedCategory = computed(() => String(route.query.category || '').trim())
 
 function setCategory(slug: string) {
@@ -120,10 +117,7 @@ function setCategory(slug: string) {
   })
 }
 
-const { data: categoriesData } = await useFetch<{ items: CategoryItem[] }>('/api/product-categories', {
-  key: 'products-categories'
-})
-const categoryList = computed(() => categoriesData.value?.items || [])
+const categoryList = PRODUCT_CATEGORIES
 
 const pageSize = 6
 type ProductListResponse = {

@@ -1,41 +1,32 @@
 export default defineEventHandler(async (event) => {
-  const db = useDB(event)
   const query = getQuery(event)
   const includeUnpublished = String(query.all || '') === '1'
-  const paging = parsePagination(query)
-
   if (includeUnpublished) {
     assertAdmin(event)
   }
 
-  const whereSql = includeUnpublished ? '' : 'WHERE is_published = 1'
-  const orderSql = 'ORDER BY sort_order ASC, id ASC'
+  // Product categories are fixed in code. Keep this endpoint for compatibility.
+  await ensureProductCategories(useDB(event))
+
+  const paging = parsePagination(query)
+  const items = PRODUCT_CATEGORIES.map((item) => ({
+    id: item.sortOrder,
+    slug: item.slug,
+    name: item.name,
+    sortOrder: item.sortOrder,
+    isPublished: true,
+    createdAt: '',
+    updatedAt: ''
+  }))
 
   if (!paging.enabled) {
-    const sql = `SELECT * FROM products_categories ${whereSql} ${orderSql}`
-    const result = await db.prepare(sql).all<CategoryRow>()
-    return {
-      items: (result.results || []).map(mapCategory)
-    }
+    return { items }
   }
 
-  const countRow = await db
-    .prepare(`SELECT COUNT(*) AS count FROM products_categories ${whereSql}`)
-    .first<{ count: number }>()
-  const total = Number(countRow?.count || 0)
-
-  const result = await db
-    .prepare(
-      `SELECT * FROM products_categories
-       ${whereSql}
-       ${orderSql}
-       LIMIT ? OFFSET ?`
-    )
-    .bind(paging.pageSize, paging.offset)
-    .all<CategoryRow>()
-
+  const total = items.length
+  const slice = items.slice(paging.offset, paging.offset + paging.pageSize)
   return {
-    items: (result.results || []).map(mapCategory),
+    items: slice,
     total,
     page: paging.page,
     pageSize: paging.pageSize
