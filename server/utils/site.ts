@@ -5,7 +5,12 @@ export function getSiteUrl(event: H3Event) {
   if (configured) return configured
 
   const host = getRequestHeader(event, 'host')
-  if (!host) return 'https://cerotd.changyuezhang68-667.workers.dev'
+  if (!host) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Unable to determine site URL'
+    })
+  }
 
   const proto = getRequestHeader(event, 'x-forwarded-proto') || 'https'
   return `${proto}://${host}`
