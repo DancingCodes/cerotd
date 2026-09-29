@@ -54,6 +54,117 @@
       </div>
     </section>
 
+
+    <section v-motion-slide-visible-once-bottom class="section facility">
+      <div class="container">
+        <div class="section-copy">
+          <h2 class="section-title">{{ $t("home.facility.title") }}</h2>
+          <p class="section-subtitle">{{ $t("home.facility.subtitle") }}</p>
+        </div>
+        <div class="facility-tabs" role="tablist">
+          <button
+            v-for="tab in facilityTabs"
+            :key="tab"
+            type="button"
+            class="facility-tab"
+            :class="{ 'is-active': activeTab === tab }"
+            role="tab"
+            :aria-selected="activeTab === tab"
+            @click="setFacilityTab(tab)"
+          >
+            {{ $t(`home.facility.tabs.${tab}`) }}
+          </button>
+        </div>
+        <div class="facility-grid">
+          <button
+            v-for="(item, index) in facilityVisibleImages"
+            :key="item.src"
+            type="button"
+            class="facility-card"
+            :aria-label="`${item.caption} - ${$t('home.facility.open')}`"
+            @click="openFacility(index)"
+          >
+            <AppImage
+              class="facility-card-image"
+              :src="item.src"
+              :alt="item.caption"
+              loading="lazy"
+              decoding="async"
+            />
+            <p class="facility-caption">{{ item.caption }}</p>
+          </button>
+        </div>
+        <div class="section-actions">
+          <NuxtLink to="/about" class="section-link">{{ $t("home.facility.cta") }}</NuxtLink>
+        </div>
+      </div>
+    </section>
+
+    <div
+      v-if="facilityPreviewOpen && facilityPreviewImage"
+      class="preview"
+      role="dialog"
+      aria-modal="true"
+      :aria-label="facilityPreviewImage.caption"
+      @click.self="closeFacility"
+    >
+      <div class="preview-inner">
+        <button
+          type="button"
+          class="preview-close"
+          :aria-label="$t('home.facility.close')"
+          @click="closeFacility"
+        >
+          ×
+        </button>
+        <button
+          type="button"
+          class="preview-nav preview-nav-prev"
+          :aria-label="$t('common.prev')"
+          @click="prevFacility"
+        >
+          ‹
+        </button>
+        <AppImage
+          class="preview-image"
+          :src="facilityPreviewImage.src"
+          :alt="facilityPreviewImage.caption"
+          loading="eager"
+          decoding="async"
+        />
+        <p class="preview-caption">{{ facilityPreviewImage.caption }}</p>
+        <button
+          type="button"
+          class="preview-nav preview-nav-next"
+          :aria-label="$t('common.next')"
+          @click="nextFacility"
+        >
+          ›
+        </button>
+      </div>
+    </div>
+
+    <section v-motion-slide-visible-once-bottom class="section export-services">
+      <div class="container">
+        <div class="section-copy section-copy-light">
+          <h2 class="section-title">{{ $t('home.exportServices.title') }}</h2>
+          <p class="section-subtitle">{{ $t('home.exportServices.subtitle') }}</p>
+        </div>
+        <div class="export-services-grid">
+          <article v-for="(item, index) in exportServices" :key="item.name" class="export-service-card">
+            <p class="export-service-index">0{{ index + 1 }}</p>
+            <h3 class="export-service-title">{{ item.name }}</h3>
+            <p class="export-service-desc">{{ item.desc }}</p>
+          </article>
+        </div>
+        <div class="section-actions section-actions-light">
+          <NuxtLink to="/contact" class="section-link section-link-light">
+            {{ $t('home.exportServices.cta') }}
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
+
     <section v-motion-slide-visible-once-bottom class="section lines">
       <div class="container">
         <div class="section-copy">
@@ -160,8 +271,8 @@ usePageSeo({
 useHead({
   script: [
     {
-      type: 'application/ld+json',
-      children: JSON.stringify({
+      type: 'application/ld+json' as 'application/json',
+      innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'Organization',
         name: 'Cerotd',
@@ -204,6 +315,96 @@ const advantages = computed(() => {
   return [1, 2, 3, 4].map((n) => ({
     name: t(`home.advantages.items.item${n}.name`),
     desc: t(`home.advantages.items.item${n}.desc`)
+  }))
+})
+
+
+type FacilityTab = 'plant' | 'production' | 'laboratory'
+type FacilityImage = {
+  tab: FacilityTab
+  src: string
+  caption: string
+}
+
+const facilityTabs: FacilityTab[] = ['plant', 'production', 'laboratory']
+const activeTab = ref<FacilityTab>('plant')
+const facilityPreviewOpen = ref(false)
+const facilityPreviewIndex = ref(0)
+
+const facilityImages = computed<FacilityImage[]>(() => {
+  locale.value
+  return [
+    { tab: 'plant', src: '/images/factory/10.jpg', caption: t('home.facility.captions.plant1') },
+    { tab: 'plant', src: '/images/factory/7.jpg', caption: t('home.facility.captions.plant2') },
+    { tab: 'plant', src: '/images/factory/9.jpg', caption: t('home.facility.captions.plant3') },
+    { tab: 'production', src: '/images/factory/11.jpg', caption: t('home.facility.captions.production1') },
+    { tab: 'production', src: '/images/factory/8.jpg', caption: t('home.facility.captions.production2') },
+    { tab: 'laboratory', src: '/images/factory/1.webp', caption: t('home.facility.captions.lab1') },
+    { tab: 'laboratory', src: '/images/factory/2.jpg', caption: t('home.facility.captions.lab2') },
+    { tab: 'laboratory', src: '/images/factory/3.jpg', caption: t('home.facility.captions.lab3') },
+    { tab: 'laboratory', src: '/images/factory/4.jpg', caption: t('home.facility.captions.lab4') },
+    { tab: 'laboratory', src: '/images/factory/5.jpg', caption: t('home.facility.captions.lab5') },
+    { tab: 'laboratory', src: '/images/factory/6.jpg', caption: t('home.facility.captions.lab6') }
+  ]
+})
+
+const facilityVisibleImages = computed(() => facilityImages.value.filter((item) => item.tab === activeTab.value))
+const facilityPreviewImage = computed(() => facilityVisibleImages.value[facilityPreviewIndex.value] || null)
+
+function setFacilityTab(tab: FacilityTab) {
+  activeTab.value = tab
+  facilityPreviewOpen.value = false
+  facilityPreviewIndex.value = 0
+}
+
+function openFacility(index: number) {
+  facilityPreviewIndex.value = index
+  facilityPreviewOpen.value = true
+}
+
+function closeFacility() {
+  facilityPreviewOpen.value = false
+}
+
+function prevFacility() {
+  const total = facilityVisibleImages.value.length
+  if (!total) return
+  facilityPreviewIndex.value = (facilityPreviewIndex.value - 1 + total) % total
+}
+
+function nextFacility() {
+  const total = facilityVisibleImages.value.length
+  if (!total) return
+  facilityPreviewIndex.value = (facilityPreviewIndex.value + 1) % total
+}
+
+function onFacilityKeydown(event: KeyboardEvent) {
+  if (!facilityPreviewOpen.value) return
+  if (event.key === 'Escape') closeFacility()
+  if (event.key === 'ArrowLeft') prevFacility()
+  if (event.key === 'ArrowRight') nextFacility()
+}
+
+watch(facilityPreviewOpen, (open) => {
+  if (import.meta.client) {
+    document.body.style.overflow = open ? 'hidden' : ''
+  }
+})
+
+onMounted(() => {
+  window.addEventListener('keydown', onFacilityKeydown)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', onFacilityKeydown)
+  if (import.meta.client) document.body.style.overflow = ''
+})
+
+const exportServices = computed(() => {
+  locale.value
+  return [1, 2, 3, 4].map((n) => ({
+    name: t(`home.exportServices.items.item${n}.name`),
+    desc: t(`home.exportServices.items.item${n}.desc`)
   }))
 })
 
@@ -587,6 +788,266 @@ const labItems = computed(() => {
     }
   }
 
+
+  .facility {
+    background: #ffffff;
+
+    .facility-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 32px 0 24px;
+    }
+
+    .facility-tab {
+      min-height: 40px;
+      padding: 0 16px;
+      border-radius: 999px;
+      border: 1px solid #e8edf2;
+      background: var(--color-surface);
+      color: #3d4654;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+
+      &:hover {
+        border-color: #cfd8e3;
+      }
+
+      &.is-active {
+        background: #0f4c56;
+        border-color: #0f4c56;
+        color: #ffffff;
+      }
+    }
+
+    .facility-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+
+      @media (min-width: 900px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+    }
+
+    .facility-card {
+      display: block;
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+      border-radius: 18px;
+      background: var(--color-surface);
+      border: 1px solid #e8edf2;
+      cursor: pointer;
+      text-align: left;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+
+      &:hover {
+        transform: translateY(-3px);
+        border-color: #cfd8e3;
+        box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+      }
+    }
+
+    .facility-card-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      filter: saturate(0.82) contrast(1.04);
+    }
+
+    .facility-caption {
+      padding: 12px 14px 14px;
+      color: #3d4654;
+      font-size: 13px;
+      line-height: 1.5;
+      font-weight: 600;
+    }
+  }
+
+
+  .preview {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient(180deg, rgba(7, 11, 18, 0.72) 0%, rgba(7, 11, 18, 0.9) 100%);
+    backdrop-filter: blur(10px);
+
+      .preview-inner {
+        position: relative;
+        width: min(960px, 100%);
+        padding: 0 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 8%;
+        right: 8%;
+        bottom: -18px;
+        height: 48px;
+        border-radius: 999px;
+        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.45) 0%, transparent 72%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .preview-image {
+        position: relative;
+        z-index: 1;
+        max-width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+        border-radius: 12px;
+        background: #0d1524;
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+      }
+
+      .preview-caption {
+        position: absolute;
+        left: 48px;
+        right: 48px;
+        bottom: -34px;
+        color: rgba(#ffffff, 0.78);
+        font-size: 13px;
+        line-height: 1.5;
+        text-align: center;
+      }
+
+      .preview-close {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        z-index: 2;
+        color: #ffffff;
+        font-size: 32px;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .preview-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.16);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .preview-nav.preview-nav-prev {
+        left: -8px;
+      }
+
+      .preview-nav.preview-nav-next {
+        right: -8px;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .preview {
+      padding: 16px;
+
+      .preview-inner {
+        padding: 0 8px;
+
+        .preview-caption {
+          left: 8px;
+          right: 8px;
+          bottom: -30px;
+        }
+
+        .preview-close {
+          top: 8px;
+          right: 14px;
+        }
+
+        .preview-nav.preview-nav-prev {
+          left: 14px;
+        }
+
+        .preview-nav.preview-nav-next {
+          right: 14px;
+        }
+      }
+    }
+  }
+
+  .export-services {
+    background: var(--color-ink);
+
+    .export-services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+
+      @media (min-width: 680px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (min-width: 1080px) {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+    }
+
+    .export-service-card {
+      min-height: 100%;
+      padding: 24px 22px;
+      border: 1px solid rgba(#ffffff, 0.1);
+      border-radius: 18px;
+      background: rgba(#ffffff, 0.04);
+      transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+
+      &:hover {
+        transform: translateY(-3px);
+        border-color: rgba(#5fd0dc, 0.42);
+        background: rgba(#ffffff, 0.07);
+      }
+    }
+
+    .export-service-index {
+      margin-bottom: 28px;
+      color: #5fd0dc;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .export-service-title {
+      margin-bottom: 10px;
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+
+    .export-service-desc {
+      color: #aab3bf;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+  }
+
   .lines {
     background: #ffffff;
 
@@ -804,7 +1265,8 @@ const labItems = computed(() => {
     }
 
     .section-copy .section-title,
-    .lab .section-title { font-size: 32px; }
+    .lab .section-title,
+    .facility .section-title { font-size: 32px; }
   }
 }
 </style>

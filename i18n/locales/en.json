@@ -139,6 +139,54 @@
         }
       }
     },
+    "facility": {
+      "title": "See the plant behind the products",
+      "subtitle": "Facility, production and lab visuals for buyers evaluating supply capability.",
+      "cta": "View company profile",
+      "close": "Close",
+      "open": "Open image",
+      "tabs": {
+        "plant": "Plant",
+        "production": "Production",
+        "laboratory": "Laboratory"
+      },
+      "captions": {
+        "plant1": "Plant exterior",
+        "plant2": "Outdoor tank farm",
+        "plant3": "Drum and packaging warehouse",
+        "production1": "Production vessels",
+        "production2": "Indoor storage and process tanks",
+        "lab1": "Moisture analysis",
+        "lab2": "Titration workstation",
+        "lab3": "Analytical balance",
+        "lab4": "Low-temperature testing",
+        "lab5": "Flash point testing",
+        "lab6": "QC instruments in operation"
+      }
+    },
+    "exportServices": {
+      "title": "Export services for overseas buyers",
+      "subtitle": "From private-label packaging to container loading, our team helps move bulk lubricant orders from factory to destination.",
+      "items": {
+        "item1": {
+          "name": "Custom packaging",
+          "desc": "Coordinate pack sizes, labels, cartons and private-label requirements for your target market."
+        },
+        "item2": {
+          "name": "Full-container export",
+          "desc": "Plan palletized or containerized shipments for stable bulk supply and repeat orders."
+        },
+        "item3": {
+          "name": "Customs documents",
+          "desc": "Prepare commercial invoices, packing lists and other export documents needed for shipment."
+        },
+        "item4": {
+          "name": "Logistics coordination",
+          "desc": "Work with freight and delivery partners to coordinate loading, booking and transport updates."
+        }
+      },
+      "cta": "Discuss your export requirements"
+    },
     "partners": {
       "title": "Feedstock & technology partners",
       "subtitle": "Working with global base-oil and additive partners to support formula quality."
