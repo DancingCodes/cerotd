@@ -1,16 +1,5 @@
 import type { H3Event } from 'h3'
 
-export type CategoryRow = {
-  id: number
-  slug: string
-  name_en: string
-  name_zh: string
-  sort_order: number
-  is_published: number
-  created_at: string
-  updated_at: string
-}
-
 export type ProductRow = {
   id: number
   slug: string
@@ -70,21 +59,6 @@ export function parseJsonArray(input: string | null | undefined) {
     return Array.isArray(value) ? value.map((item) => String(item)) : []
   } catch {
     return [] as string[]
-  }
-}
-
-export function mapCategory(row: CategoryRow) {
-  return {
-    id: row.id,
-    slug: row.slug,
-    name: {
-      en: row.name_en,
-      zh: row.name_zh
-    },
-    sortOrder: row.sort_order,
-    isPublished: row.is_published === 1,
-    createdAt: row.created_at,
-    updatedAt: row.updated_at
   }
 }
 

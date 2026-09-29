@@ -9,7 +9,6 @@ export default defineEventHandler(async (event) => {
     slug: category.slug,
     name: category.name,
     sortOrder: category.sortOrder,
-    isPublished: true,
     createdAt: '',
     updatedAt: ''
   }
