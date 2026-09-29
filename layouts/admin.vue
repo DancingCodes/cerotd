@@ -116,25 +116,23 @@ function toggleLocale() {
   @media (max-width: 720px) {
     .admin-top {
       .admin-top-inner {
-        align-items: stretch;
-        flex-direction: column;
-        gap: 10px;
+        align-items: center;
+        gap: 8px;
         padding: 12px 16px;
       }
 
       .admin-brand {
-        align-self: flex-start;
+        flex-shrink: 0;
       }
 
       .admin-nav {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 6px;
+        min-width: 0;
+        justify-content: flex-end;
+        gap: 4px;
 
         .admin-nav-link {
           min-width: 0;
-          padding: 8px 6px;
+          padding: 7px 8px;
           text-align: center;
           white-space: normal;
         }
