@@ -5,7 +5,7 @@
         <img class="hero-media-image" src="/images/hero-bg.webp" alt="" fetchpriority="high" decoding="async" />
       </div>
       <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="container hero-content hero-rise">
+      <div v-motion-slide-visible-once-bottom class="container hero-content">
         <p class="hero-badge">{{ $t('home.badge') }}</p>
         <h1 class="hero-title">{{ $t('home.hero.title') }}</h1>
         <p class="hero-subtitle">{{ $t('home.hero.subtitle') }}</p>
@@ -507,30 +507,6 @@ const labItems = computed(() => {
         font-weight: 500;
         letter-spacing: 0.04em;
       }
-    }
-  }
-
-  .hero-rise {
-    .hero-badge,
-    .hero-title,
-    .hero-subtitle,
-    .hero-actions,
-    .hero-trust {
-      opacity: 0;
-      transform: translateY(16px);
-      animation: hero-rise 0.7s ease forwards;
-    }
-
-    .hero-title { animation-delay: 0.06s; }
-    .hero-subtitle { animation-delay: 0.12s; }
-    .hero-actions { animation-delay: 0.18s; }
-    .hero-trust { animation-delay: 0.24s; }
-  }
-
-  @keyframes hero-rise {
-    to {
-      opacity: 1;
-      transform: none;
     }
   }
 

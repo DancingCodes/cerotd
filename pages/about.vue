@@ -1,7 +1,7 @@
 <template>
   <div class="about-page">
-    <section class="page-hero page-hero-rise">
-      <div class="container">
+    <section class="page-hero">
+      <div v-motion-slide-visible-once-bottom class="container">
         <h1 class="page-hero-title">{{ $t('about.hero.title') }}</h1>
         <p class="page-hero-subtitle">{{ $t('about.hero.subtitle') }}</p>
       </div>
@@ -207,26 +207,6 @@ function nextCertificate() {
 
 <style lang="scss" scoped>
 .about-page {
-  .page-hero-rise {
-    .page-hero-title,
-    .page-hero-subtitle {
-      opacity: 0;
-      transform: translateY(18px);
-      animation: page-hero-rise 0.7s ease forwards;
-    }
-
-    .page-hero-subtitle {
-      animation-delay: 0.1s;
-    }
-  }
-
-  @keyframes page-hero-rise {
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-
   .page-hero {
     padding: 88px 0 72px;
     background:

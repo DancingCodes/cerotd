@@ -1,7 +1,7 @@
 <template>
   <div v-if="product" class="product-detail-page">
-    <section class="page-hero page-hero-rise">
-      <div class="container">
+    <section class="page-hero">
+      <div v-motion-slide-visible-once-bottom class="container">
         <NuxtLink to="/products" class="page-hero-back">{{ $t('products.backToList') }}</NuxtLink>
         <h1 class="page-hero-title">{{ t(product.name) }}</h1>
         <p class="page-hero-subtitle">{{ t(product.summary) }}</p>
@@ -262,31 +262,6 @@ function nextImage() {
 <style lang="scss" scoped>
 
 .product-detail-page {
-  .page-hero-rise {
-    .page-hero-back,
-    .page-hero-title,
-    .page-hero-subtitle {
-      opacity: 0;
-      transform: translateY(18px);
-      animation: page-hero-rise 0.7s ease forwards;
-    }
-
-    .page-hero-title {
-      animation-delay: 0.08s;
-    }
-
-    .page-hero-subtitle {
-      animation-delay: 0.16s;
-    }
-  }
-
-  @keyframes page-hero-rise {
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-
   .page-hero {
     padding: 88px 0 72px;
     background:

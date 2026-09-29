@@ -1,7 +1,7 @@
 <template>
   <div v-if="article" class="news-detail-page">
-    <section class="page-hero page-hero-rise">
-      <div class="container">
+    <section class="page-hero">
+      <div v-motion-slide-visible-once-bottom class="container">
         <NuxtLink to="/news" class="page-hero-back">{{ $t('news.backToList') }}</NuxtLink>
         <div class="page-hero-meta">
           <span>{{ categoryLabel(article.category) }}</span>
@@ -182,32 +182,6 @@ function formatDate(value: string) {
 
 <style lang="scss" scoped>
 .news-detail-page {
-  .page-hero-rise {
-    .page-hero-title,
-    .page-hero-subtitle,
-    .page-hero-meta,
-    .page-hero-back {
-      opacity: 0;
-      transform: translateY(18px);
-      animation: page-hero-rise 0.7s ease forwards;
-    }
-
-    .page-hero-meta {
-      animation-delay: 0.05s;
-    }
-
-    .page-hero-subtitle {
-      animation-delay: 0.1s;
-    }
-  }
-
-  @keyframes page-hero-rise {
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-
   .page-hero {
     padding: 72px 0 64px;
     background:
