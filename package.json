@@ -7,7 +7,6 @@
     "start": "nuxt dev",
     "build": "nuxt build --preset cloudflare_module",
     "deploy": "wrangler deploy",
-    "preview": "wrangler dev",
     "typecheck": "nuxt typecheck",
     "db:migrate": "wrangler d1 migrations apply cerotd --remote"
   },
@@ -29,6 +28,6 @@
     "sass": "^1.105.0",
     "typescript": "^5.9.3",
     "vue-tsc": "^3.3.11",
-    "wrangler": "^4.136.3"
+    "wrangler": "^4.143.0"
   }
 }

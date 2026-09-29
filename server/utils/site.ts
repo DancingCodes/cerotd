@@ -11,6 +11,20 @@ export function getSiteUrl(event: H3Event) {
   return `${proto}://${host}`
 }
 
+/** Stable production origin for media. Never fall back to local request host. */
+export function getMediaOrigin(event: H3Event) {
+  const config = useRuntimeConfig(event)
+  const fromPublic = String(config.public.siteUrl || '').replace(/\/$/, '')
+  if (fromPublic && !/^https?:\/\/(localhost|127\.0\.0\.1|192\.168\.|10\.|172\.(1[6-9]|2\d|3[0-1])\.)/i.test(fromPublic)) {
+    return fromPublic
+  }
+
+  const fromEnv = String(process.env.NUXT_PUBLIC_SITE_URL || '').replace(/\/$/, '')
+  if (fromEnv) return fromEnv
+
+  return 'https://moonc.love'
+}
+
 export function escapeXml(value: string) {
   return value
     .replaceAll('&', '&amp;')

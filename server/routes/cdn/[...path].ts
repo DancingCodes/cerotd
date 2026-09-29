@@ -9,6 +9,19 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'Invalid path' })
   }
 
+  const encodedKey = key.split('/').map(encodeURIComponent).join('/')
+
+  // Miniflare R2 remote binding is unreliable in Nuxt local dev.
+  // Proxy published media from the production origin instead.
+  if (import.meta.dev) {
+    const target = `${getMediaOrigin(event)}/cdn/${encodedKey}`
+    return proxyRequest(event, target, {
+      fetchOptions: {
+        redirect: 'follow'
+      }
+    })
+  }
+
   const bucket = useMediaBucket(event)
   const object = await bucket.get(key)
   if (!object) {

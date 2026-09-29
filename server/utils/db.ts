@@ -1,4 +1,5 @@
 import type { H3Event } from 'h3'
+import { tryCreateHttpD1 } from './d1-http'
 
 export type CategoryRow = {
   id: number
@@ -53,6 +54,13 @@ export type NewsRow = {
 }
 
 export function useDB(event: H3Event) {
+  // Miniflare remote D1 proxy is currently unreliable in Nuxt/nitro-cloudflare-dev.
+  // In local development, prefer Cloudflare D1 HTTP API against the same remote DB.
+  if (import.meta.dev) {
+    const httpDb = tryCreateHttpD1(event)
+    if (httpDb) return httpDb
+  }
+
   const db = event.context.cloudflare?.env?.DB
   if (!db) {
     throw createError({
