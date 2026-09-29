@@ -473,7 +473,7 @@ const labItems = computed(() => {
       font-size: 64px;
       font-weight: 600;
       line-height: 1.06;
-      letter-spacing: -0.045em;
+      letter-spacing: 0;
     }
 
     .hero-subtitle {
@@ -598,7 +598,7 @@ const labItems = computed(() => {
         color: var(--color-text);
         font-size: 28px;
         font-weight: 600;
-        letter-spacing: -0.03em;
+        letter-spacing: 0;
       }
 
       .proof-label {
@@ -638,7 +638,7 @@ const labItems = computed(() => {
       font-size: 40px;
       font-weight: 600;
       line-height: 1.12;
-      letter-spacing: -0.035em;
+      letter-spacing: 0;
     }
 
     .section-subtitle {
@@ -697,7 +697,7 @@ const labItems = computed(() => {
       font-size: 40px;
       font-weight: 600;
       line-height: 1.12;
-      letter-spacing: -0.035em;
+      letter-spacing: 0;
     }
 
     .section-subtitle {
@@ -737,7 +737,7 @@ const labItems = computed(() => {
       gap: 14px;
       min-height: 100%;
       padding: 22px 20px;
-      border-radius: 18px;
+      border-radius: 12px;
       background: #ffffff;
       border: 1px solid var(--color-line);
     }
@@ -754,7 +754,7 @@ const labItems = computed(() => {
       color: var(--color-text);
       font-size: 18px;
       font-weight: 600;
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
     }
 
     .lab-card-desc {
@@ -814,7 +814,7 @@ const labItems = computed(() => {
       width: 100%;
       padding: 0;
       overflow: hidden;
-      border-radius: 18px;
+      border-radius: 12px;
       background: var(--color-surface);
       border: 1px solid #e8edf2;
       cursor: pointer;
@@ -990,7 +990,7 @@ const labItems = computed(() => {
       min-height: 100%;
       padding: 24px 22px;
       border: 1px solid rgba(#ffffff, 0.1);
-      border-radius: 18px;
+      border-radius: 12px;
       background: rgba(#ffffff, 0.04);
       transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 
@@ -1014,7 +1014,7 @@ const labItems = computed(() => {
       color: #ffffff;
       font-size: 20px;
       font-weight: 650;
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
     }
 
     .export-service-desc {
@@ -1047,7 +1047,7 @@ const labItems = computed(() => {
       text-decoration: none;
       color: inherit;
       cursor: pointer;
-      border-radius: 20px;
+      border-radius: 12px;
       background: var(--color-surface);
       border: 1px solid #e8edf2;
       transition: transform 0.25s ease, border-color 0.25s ease;
@@ -1062,7 +1062,7 @@ const labItems = computed(() => {
         color: #0f4c56;
         font-size: 18px;
         font-weight: 700;
-        letter-spacing: -0.01em;
+        letter-spacing: 0;
       }
 
       .line-card-desc {
@@ -1092,7 +1092,7 @@ const labItems = computed(() => {
 
     .advantage-card {
       overflow: hidden;
-      border-radius: 18px;
+      border-radius: 12px;
       background: var(--color-surface);
       border: 1px solid var(--color-line);
 
@@ -1136,7 +1136,7 @@ const labItems = computed(() => {
         color: var(--color-text);
         font-size: 22px;
         font-weight: 600;
-        letter-spacing: -0.02em;
+        letter-spacing: 0;
       }
 
       .advantage-card-desc {
@@ -1165,7 +1165,7 @@ const labItems = computed(() => {
       justify-content: center;
       height: 120px;
       padding: 20px 22px;
-      border-radius: 18px;
+      border-radius: 12px;
       background: #ffffff;
       border: 1px solid #e1e4e8;
       text-decoration: none;
@@ -1198,7 +1198,7 @@ const labItems = computed(() => {
       flex-direction: column;
       gap: 24px;
       padding: 40px 28px;
-      border-radius: 18px;
+      border-radius: 12px;
       background: var(--color-ink);
       color: #ffffff;
       border: 1px solid rgba(#ffffff, 0.06);
@@ -1214,7 +1214,7 @@ const labItems = computed(() => {
         margin-bottom: 10px;
         font-size: 32px;
         font-weight: 600;
-        letter-spacing: -0.03em;
+        letter-spacing: 0;
       }
 
       .cta-subtitle {

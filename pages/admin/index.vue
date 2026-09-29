@@ -72,7 +72,7 @@ async function login() {
     width: 100%;
     max-width: 420px;
     padding: 28px;
-    border-radius: 18px;
+    border-radius: 12px;
     background: #ffffff;
     border: 1px solid #e5eaf0;
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
@@ -81,7 +81,7 @@ async function login() {
       margin-bottom: 8px;
       font-size: 24px;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
     }
 
     .admin-login-desc {

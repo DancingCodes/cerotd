@@ -450,7 +450,7 @@ onMounted(load)
       margin-bottom: 6px;
       font-size: 28px;
       font-weight: 700;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
     }
 
     .admin-page-subtitle {
@@ -511,7 +511,7 @@ onMounted(load)
   .admin-table-card {
     margin-bottom: 18px;
     padding: 20px;
-    border-radius: 18px;
+    border-radius: 12px;
     background: #ffffff;
     border: 1px solid #e5eaf0;
   }
@@ -591,9 +591,13 @@ onMounted(load)
   }
 
   .admin-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
     .admin-table-row {
       display: grid;
       grid-template-columns: 36px 1.5fr 1fr 0.5fr 0.7fr 1.1fr;
+      min-width: 780px;
       gap: 12px;
       padding: 14px 0;
       border-bottom: 1px solid #eef1f4;

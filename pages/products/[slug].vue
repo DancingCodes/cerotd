@@ -72,6 +72,8 @@
       </div>
     </section>
 
+    <NuxtLink to="/contact" class="mobile-quote-cta">{{ $t('products.detailCta') }}</NuxtLink>
+
     <div v-if="previewOpen" class="preview" @click.self="closePreview">
       <div class="preview-inner">
         <button type="button" class="preview-close" aria-label="Close preview" @click="closePreview">×</button>
@@ -262,6 +264,10 @@ function nextImage() {
 <style lang="scss" scoped>
 
 .product-detail-page {
+  .mobile-quote-cta {
+    display: none;
+  }
+
   .page-hero {
     padding: 88px 0 72px;
     background:
@@ -282,7 +288,7 @@ function nextImage() {
       margin-bottom: 18px;
       font-size: 48px;
       line-height: 1.1;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
     }
 
     .page-hero-subtitle {
@@ -322,7 +328,7 @@ function nextImage() {
         .gallery-main {
           width: 100%;
           overflow: hidden;
-          border-radius: 20px;
+          border-radius: 12px;
           background: #f3f5f7;
           min-height: 320px;
           display: flex;
@@ -377,14 +383,14 @@ function nextImage() {
     .detail-side {
       .specs-panel {
         padding: 28px;
-        border-radius: 20px;
+        border-radius: 12px;
         background: var(--color-ink);
         color: #ffffff;
 
         .specs-panel-title {
           margin-bottom: 20px;
           font-size: 22px;
-          letter-spacing: -0.02em;
+          letter-spacing: 0;
         }
 
         .specs-list {
@@ -394,7 +400,7 @@ function nextImage() {
 
           .specs-item {
             padding: 14px 16px;
-            border-radius: 16px;
+            border-radius: 10px;
             background: rgba(#ffffff, 0.05);
             color: #c8ced6;
             font-size: 14px;
@@ -526,7 +532,7 @@ function nextImage() {
     .related-title {
       margin-bottom: 24px;
       font-size: 28px;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
       color: #111827;
     }
 
@@ -542,7 +548,7 @@ function nextImage() {
 
     .related-card {
       padding: 22px;
-      border-radius: 18px;
+      border-radius: 12px;
       background: #ffffff;
       border: 1px solid #e8edf2;
       text-decoration: none;
@@ -559,6 +565,30 @@ function nextImage() {
         font-size: 14px;
         line-height: 1.6;
       }
+    }
+  }
+
+  @media (max-width: 767px) {
+    padding-bottom: calc(70px + env(safe-area-inset-bottom));
+
+    .mobile-quote-cta {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 58px;
+      padding: 10px 20px calc(10px + env(safe-area-inset-bottom));
+      border-top: 1px solid rgba(15, 23, 42, 0.12);
+      background: rgba(255, 255, 255, 0.96);
+      color: #0f4c56;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      backdrop-filter: blur(12px);
     }
   }
 

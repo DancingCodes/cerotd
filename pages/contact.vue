@@ -237,7 +237,7 @@ async function onSubmit() {
       margin-bottom: 18px;
       font-size: 56px;
       line-height: 1.08;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
     }
 
     .page-hero-subtitle {
@@ -272,7 +272,7 @@ async function onSubmit() {
 
     .info-panel {
       padding: 32px 28px;
-      border-radius: 28px;
+      border-radius: 14px;
       background: var(--color-ink);
       color: #ffffff;
       transition: transform 0.25s ease;
@@ -280,7 +280,7 @@ async function onSubmit() {
       .info-title {
         margin-bottom: 28px;
         font-size: 28px;
-        letter-spacing: -0.02em;
+        letter-spacing: 0;
       }
 
       .info-list {
@@ -334,7 +334,7 @@ async function onSubmit() {
 
     .form-panel {
       padding: 32px 28px;
-      border-radius: 28px;
+      border-radius: 14px;
       background: #ffffff;
       border: 1px solid var(--color-line);
       box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
@@ -343,14 +343,14 @@ async function onSubmit() {
       .form-title {
         margin-bottom: 16px;
         font-size: 28px;
-        letter-spacing: -0.02em;
+        letter-spacing: 0;
         color: #111827;
       }
 
       .form-notice {
         margin-bottom: 24px;
         padding: 14px 16px;
-        border-radius: 16px;
+        border-radius: 10px;
         background: rgba(#1aa6b8, 0.08);
         border: 1px solid rgba(#1aa6b8, 0.18);
         color: #0f4c56;

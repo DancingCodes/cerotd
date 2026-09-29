@@ -219,7 +219,7 @@ function nextCertificate() {
       margin-bottom: 18px;
       font-size: 56px;
       line-height: 1.08;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
     }
 
     .page-hero-subtitle {
@@ -244,7 +244,7 @@ function nextCertificate() {
     .section-title {
       margin-bottom: 14px;
       font-size: 36px;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
       color: #111827;
     }
 
@@ -284,7 +284,7 @@ function nextCertificate() {
       .intro-title {
         margin-bottom: 20px;
         font-size: 36px;
-        letter-spacing: -0.03em;
+        letter-spacing: 0;
         color: #111827;
       }
 
@@ -302,7 +302,7 @@ function nextCertificate() {
     .intro-panel {
       min-width: 0;
       overflow: hidden;
-      border-radius: 28px;
+      border-radius: 14px;
       background: #0d1524;
 
       .intro-panel-video {
@@ -330,7 +330,7 @@ function nextCertificate() {
 
     .trust-card {
       padding: 22px 20px;
-      border-radius: 20px;
+      border-radius: 12px;
       background: #ffffff;
       border: 1px solid #e8edf2;
       transition: transform 0.25s ease, border-color 0.25s ease;
@@ -345,7 +345,7 @@ function nextCertificate() {
         color: #0f4c56;
         font-size: 16px;
         font-weight: 700;
-        letter-spacing: -0.01em;
+        letter-spacing: 0;
       }
 
       .trust-card-desc {
@@ -378,7 +378,7 @@ function nextCertificate() {
       display: block;
       width: 100%;
       padding: 14px;
-      border-radius: 20px;
+      border-radius: 12px;
       background: var(--color-surface);
       border: 1px solid #e8edf2;
       cursor: pointer;
@@ -501,14 +501,14 @@ function nextCertificate() {
     .stats-item {
       min-width: 0;
       padding: 20px 14px;
-      border-radius: 18px;
+      border-radius: 12px;
       background: var(--color-surface);
       border: 1px solid #e8edf2;
       transition: transform 0.25s ease, background 0.25s ease;
 
       @media (min-width: 900px) {
         padding: 28px 24px;
-        border-radius: 24px;
+        border-radius: 12px;
       }
 
       &:hover {
@@ -521,7 +521,7 @@ function nextCertificate() {
         color: #0f4c56;
         font-size: 26px;
         font-weight: 700;
-        letter-spacing: -0.03em;
+        letter-spacing: 0;
         line-height: 1.15;
         overflow-wrap: anywhere;
 
@@ -558,7 +558,7 @@ function nextCertificate() {
 
     .value-card {
       padding: 28px;
-      border-radius: 28px;
+      border-radius: 14px;
       background: #ffffff;
       border: 1px solid var(--color-line);
       box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);

@@ -195,7 +195,7 @@ async function loadMore() {
       margin-bottom: 18px;
       font-size: 56px;
       line-height: 1.08;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
     }
 
     .page-hero-subtitle {
@@ -221,7 +221,7 @@ async function loadMore() {
     .section-title {
       margin-bottom: 14px;
       font-size: 36px;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
       color: #111827;
     }
 
@@ -317,7 +317,7 @@ async function loadMore() {
 
     .product-card {
       overflow: hidden;
-      border-radius: 20px;
+      border-radius: 12px;
       background: #ffffff;
       border: 1px solid #e8edf2;
       text-decoration: none;

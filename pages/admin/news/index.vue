@@ -466,7 +466,7 @@ onMounted(load)
       margin-bottom: 6px;
       font-size: 28px;
       font-weight: 700;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
     }
 
     .admin-page-subtitle {
@@ -527,7 +527,7 @@ onMounted(load)
   .admin-table-card {
     margin-bottom: 18px;
     padding: 20px;
-    border-radius: 18px;
+    border-radius: 12px;
     background: #ffffff;
     border: 1px solid #e5eaf0;
   }

@@ -141,7 +141,7 @@ const assurance = computed(() => {
       margin-bottom: 18px;
       font-size: 56px;
       line-height: 1.08;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
     }
 
     .page-hero-subtitle {
@@ -166,7 +166,7 @@ const assurance = computed(() => {
     .section-title {
       margin-bottom: 14px;
       font-size: 36px;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
       color: #111827;
     }
 
@@ -203,7 +203,7 @@ const assurance = computed(() => {
 
     .outcome-card {
       padding: 26px 24px;
-      border-radius: 22px;
+      border-radius: 12px;
       background: var(--color-surface);
       border: 1px solid var(--color-line);
     }
@@ -213,7 +213,7 @@ const assurance = computed(() => {
       color: #0f4c56;
       font-size: 20px;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
     }
 
     .outcome-card-desc {
@@ -251,7 +251,7 @@ const assurance = computed(() => {
       .compare-item-title {
         font-size: 22px;
         color: #111827;
-        letter-spacing: -0.02em;
+        letter-spacing: 0;
       }
 
       .compare-item-desc {
@@ -277,7 +277,7 @@ const assurance = computed(() => {
 
     .pillar-card {
       padding: 28px;
-      border-radius: 24px;
+      border-radius: 12px;
       background: var(--color-surface);
       border: 1px solid var(--color-line);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -324,7 +324,7 @@ const assurance = computed(() => {
 
     .assurance-card {
       padding: 26px 22px;
-      border-radius: 22px;
+      border-radius: 12px;
       background: rgba(#ffffff, 0.04);
       border: 1px solid rgba(#ffffff, 0.1);
     }
@@ -341,7 +341,7 @@ const assurance = computed(() => {
       margin-bottom: 10px;
       color: #ffffff;
       font-size: 22px;
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
     }
 
     .assurance-card-desc {
@@ -364,7 +364,7 @@ const assurance = computed(() => {
       flex-direction: column;
       gap: 22px;
       padding: 34px 28px;
-      border-radius: 28px;
+      border-radius: 14px;
       background:
         radial-gradient(circle at 100% 0%, rgba(#5fd0dc, 0.18), transparent 34%),
         linear-gradient(135deg, #102033 0%, #0b1522 100%);
@@ -383,7 +383,7 @@ const assurance = computed(() => {
       color: #ffffff;
       font-size: 30px;
       font-weight: 650;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
     }
 
     .cta-subtitle {

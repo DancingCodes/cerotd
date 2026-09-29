@@ -214,7 +214,7 @@ function formatDate(value: string) {
       max-width: 18ch;
       font-size: 48px;
       line-height: 1.1;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
     }
 
     .page-hero-subtitle {
@@ -240,7 +240,7 @@ function formatDate(value: string) {
       width: 100%;
       max-height: 460px;
       object-fit: cover;
-      border-radius: 20px;
+      border-radius: 12px;
       margin-bottom: 28px;
       display: block;
     }
@@ -258,7 +258,7 @@ function formatDate(value: string) {
       :deep(h3) {
         margin: 28px 0 12px;
         color: #111827;
-        letter-spacing: -0.02em;
+        letter-spacing: 0;
       }
 
       :deep(ul),
@@ -276,7 +276,7 @@ function formatDate(value: string) {
         width: 100%;
         height: auto;
         margin: 24px 0;
-        border-radius: 16px;
+        border-radius: 10px;
       }
 
       :deep(a) {

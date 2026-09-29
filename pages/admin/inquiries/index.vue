@@ -321,7 +321,7 @@ onMounted(load)
   .admin-table-card {
     margin-bottom: 18px;
     padding: 20px;
-    border-radius: 18px;
+    border-radius: 12px;
     background: #ffffff;
     border: 1px solid #e5eaf0;
   }
