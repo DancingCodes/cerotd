@@ -4,13 +4,11 @@ CREATE TABLE products_categories (
   name_en TEXT NOT NULL,
   name_zh TEXT NOT NULL,
   sort_order INTEGER NOT NULL DEFAULT 0,
-  is_published INTEGER NOT NULL DEFAULT 1,
   created_at TEXT NOT NULL DEFAULT (datetime('now')),
   updated_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
 CREATE INDEX idx_products_categories_sort ON products_categories (sort_order, id);
-CREATE INDEX idx_products_categories_published ON products_categories (is_published);
 
 CREATE TABLE products (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -90,3 +88,16 @@ CREATE TABLE news (
 CREATE INDEX idx_news_published_at ON news (is_published, published_at DESC);
 CREATE INDEX idx_news_category ON news (category);
 CREATE INDEX idx_news_slug ON news (slug);
+
+-- Fixed product categories used by both frontend and backend.
+INSERT INTO products_categories (slug, name_en, name_zh, sort_order)
+VALUES
+  ('gasoline-engine-oil', 'Gasoline Engine Oil', '汽油机油', 1),
+  ('diesel-engine-oil', 'Diesel Engine Oil', '柴油机油', 2),
+  ('gear-oil', 'Gear Oil', '齿轮油', 3),
+  ('motorcycle-oil', 'Motorcycle Oil', '摩托车油', 4),
+  ('anti-wear-hydraulic-oil', 'Anti-wear Hydraulic Oil', '抗磨液压油', 5),
+  ('new-energy-oil', 'New Energy Oil', '新能源专用油', 6),
+  ('antifreeze-coolant', 'Antifreeze / Coolant', '防冻液/冷却液', 7),
+  ('transmission-oil', 'Transmission Oil', '变速箱油', 8),
+  ('grease', 'Grease', '润滑脂', 9);
