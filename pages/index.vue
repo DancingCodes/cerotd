@@ -277,28 +277,28 @@ useHead({
         '@type': 'Organization',
         name: 'Cerotd',
         url: useSiteUrl(),
-        logo: `${useSiteUrl()}/images/logo.png`
+        logo: `${useSiteUrl()}/images/logo.webp`
       })
     }
   ]
 })
 
 const partnerLogos = [
-  { name: 'SK', logo: '/images/partners/sk.png', href: 'https://eng.sk.com/' },
-  { name: 'ExxonMobil', logo: '/images/partners/exxonmobil.png', href: 'https://corporate.exxonmobil.com/' },
-  { name: 'PetroChina', logo: '/images/partners/petrochina.png', href: 'https://www.petrochina.com.cn/' },
-  { name: 'Sinopec', logo: '/images/partners/sinopec.png', href: 'https://www.sinopec.com/' },
-  { name: 'Infineum', logo: '/images/partners/infineum.jpg', href: 'https://www.infineum.com/' },
-  { name: 'Afton Chemical', logo: '/images/partners/afton-chemical.png', href: 'https://www.aftonchemical.com/' },
-  { name: 'Chevron', logo: '/images/partners/chevron.png', href: 'https://www.chevron.com/' },
-  { name: 'Lubrizol', logo: '/images/partners/lubrizol.png', href: 'https://www.lubrizol.com/' }
+  { name: 'SK', logo: '/images/partners/sk.webp', href: 'https://eng.sk.com/' },
+  { name: 'ExxonMobil', logo: '/images/partners/exxonmobil.webp', href: 'https://corporate.exxonmobil.com/' },
+  { name: 'PetroChina', logo: '/images/partners/petrochina.webp', href: 'https://www.petrochina.com.cn/' },
+  { name: 'Sinopec', logo: '/images/partners/sinopec.webp', href: 'https://www.sinopec.com/' },
+  { name: 'Infineum', logo: '/images/partners/infineum.webp', href: 'https://www.infineum.com/' },
+  { name: 'Afton Chemical', logo: '/images/partners/afton-chemical.webp', href: 'https://www.aftonchemical.com/' },
+  { name: 'Chevron', logo: '/images/partners/chevron.webp', href: 'https://www.chevron.com/' },
+  { name: 'Lubrizol', logo: '/images/partners/lubrizol.webp', href: 'https://www.lubrizol.com/' }
 ]
 
 const advantageImages = [
-  '/images/factory/8.jpg',
-  '/images/factory/9.jpg',
-  '/images/factory/10.jpg',
-  '/images/factory/11.jpg'
+  '/images/factory/8.webp',
+  '/images/factory/9.webp',
+  '/images/factory/10.webp',
+  '/images/factory/11.webp'
 ]
 
 const productLines = computed(() => {
@@ -334,17 +334,17 @@ const facilityPreviewIndex = ref(0)
 const facilityImages = computed<FacilityImage[]>(() => {
   locale.value
   return [
-    { tab: 'plant', src: '/images/factory/10.jpg', caption: t('home.facility.captions.plant1') },
-    { tab: 'plant', src: '/images/factory/7.jpg', caption: t('home.facility.captions.plant2') },
-    { tab: 'plant', src: '/images/factory/9.jpg', caption: t('home.facility.captions.plant3') },
-    { tab: 'production', src: '/images/factory/11.jpg', caption: t('home.facility.captions.production1') },
-    { tab: 'production', src: '/images/factory/8.jpg', caption: t('home.facility.captions.production2') },
+    { tab: 'plant', src: '/images/factory/10.webp', caption: t('home.facility.captions.plant1') },
+    { tab: 'plant', src: '/images/factory/7.webp', caption: t('home.facility.captions.plant2') },
+    { tab: 'plant', src: '/images/factory/9.webp', caption: t('home.facility.captions.plant3') },
+    { tab: 'production', src: '/images/factory/11.webp', caption: t('home.facility.captions.production1') },
+    { tab: 'production', src: '/images/factory/8.webp', caption: t('home.facility.captions.production2') },
     { tab: 'laboratory', src: '/images/factory/1.webp', caption: t('home.facility.captions.lab1') },
-    { tab: 'laboratory', src: '/images/factory/2.jpg', caption: t('home.facility.captions.lab2') },
-    { tab: 'laboratory', src: '/images/factory/3.jpg', caption: t('home.facility.captions.lab3') },
-    { tab: 'laboratory', src: '/images/factory/4.jpg', caption: t('home.facility.captions.lab4') },
-    { tab: 'laboratory', src: '/images/factory/5.jpg', caption: t('home.facility.captions.lab5') },
-    { tab: 'laboratory', src: '/images/factory/6.jpg', caption: t('home.facility.captions.lab6') }
+    { tab: 'laboratory', src: '/images/factory/2.webp', caption: t('home.facility.captions.lab2') },
+    { tab: 'laboratory', src: '/images/factory/3.webp', caption: t('home.facility.captions.lab3') },
+    { tab: 'laboratory', src: '/images/factory/4.webp', caption: t('home.facility.captions.lab4') },
+    { tab: 'laboratory', src: '/images/factory/5.webp', caption: t('home.facility.captions.lab5') },
+    { tab: 'laboratory', src: '/images/factory/6.webp', caption: t('home.facility.captions.lab6') }
   ]
 })
 

@@ -116,7 +116,7 @@ const articleJsonLd = computed(() => {
       name: 'Cerotd',
       logo: {
         '@type': 'ImageObject',
-        url: `${siteUrl}/images/logo.png`
+        url: `${siteUrl}/images/logo.webp`
       }
     }
   }

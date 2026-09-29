@@ -173,7 +173,7 @@ const trustItems = computed(() => {
 const certificateItems = computed(() => {
   locale.value
   return [1, 2, 3, 4, 5, 6, 7].map((n) => ({
-    src: `/images/certificate/${n}.png`,
+    src: `/images/certificate/${n}.webp`,
     alt: t('about.certificates.alt', { n })
   }))
 })
