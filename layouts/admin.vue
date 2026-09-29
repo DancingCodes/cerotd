@@ -112,5 +112,42 @@ function toggleLocale() {
       padding: 0 24px;
     }
   }
+
+  @media (max-width: 720px) {
+    .admin-top {
+      .admin-top-inner {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 16px;
+      }
+
+      .admin-brand {
+        align-self: flex-start;
+      }
+
+      .admin-nav {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+
+        .admin-nav-link {
+          min-width: 0;
+          padding: 8px 6px;
+          text-align: center;
+          white-space: normal;
+        }
+      }
+    }
+
+    .admin-main {
+      padding-top: 20px;
+
+      .admin-container {
+        padding: 0 16px;
+      }
+    }
+  }
 }
 </style>
