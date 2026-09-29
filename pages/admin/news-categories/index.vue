@@ -462,9 +462,13 @@ onMounted(load)
   }
 
   .admin-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
     .admin-table-row {
       display: grid;
       grid-template-columns: 36px 1.4fr 1fr 0.5fr 0.7fr 0.9fr;
+      min-width: 700px;
       gap: 12px;
       padding: 14px 0;
       border-bottom: 1px solid #eef1f4;

@@ -356,6 +356,10 @@ onMounted(load)
     margin-bottom: 12px;
   }
 
+  .inquiry-card-top > div:first-child {
+    min-width: 0;
+  }
+
   .inquiry-dot {
     display: inline-block;
     width: 8px;
@@ -389,6 +393,10 @@ onMounted(load)
     font-size: 13px;
     color: #374151;
 
+    > div {
+      overflow-wrap: anywhere;
+    }
+
     @media (min-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -411,6 +419,7 @@ onMounted(load)
     margin-bottom: 8px;
     font-size: 13px;
     color: #374151;
+    overflow-wrap: anywhere;
 
     span {
       display: inline-block;
@@ -441,6 +450,7 @@ onMounted(load)
       font-size: 14px;
       line-height: 1.7;
       white-space: pre-wrap;
+      overflow-wrap: anywhere;
     }
   }
 
