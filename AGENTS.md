@@ -52,7 +52,7 @@
 - 产品分类已写死在 shared/product-categories.ts，前后端共用；后台不可新增/删除
 - 内容字段通常是双语结构（`*_en` / `*_zh`）
 - 媒体上传到 R2，并通过 `/cdn/...` 访问
-- 本地 npm start 下：D1 走 Cloudflare HTTP API 连远程库；`/cdn/*` 回源线上站点读媒体（R2 remote binding 不稳定）
+- D1 通过 Cloudflare `DB` binding 访问；媒体通过 R2 `MEDIA` binding，经 `/cdn/*` 提供
 - SEO 基建：`usePageSeo`、`/sitemap.xml`、`/robots.txt`（后台已 disallow）
 
 ## SEO / 独立站规则
