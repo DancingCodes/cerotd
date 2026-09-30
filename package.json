@@ -26,6 +26,7 @@
     "@cloudflare/workers-types": "^5.20260923.1",
     "nitro-cloudflare-dev": "^0.2.2",
     "sass": "^1.105.0",
+    "sass-embedded": "^1.105.1",
     "typescript": "^5.9.3",
     "vue-tsc": "^3.3.11",
     "wrangler": "^4.143.0"
