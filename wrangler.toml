@@ -15,10 +15,6 @@ NUXT_PUBLIC_SITE_URL = "https://moonc.love"
 pattern = "moonc.love"
 custom_domain = true
 
-[[routes]]
-pattern = "www.moonc.love"
-custom_domain = true
-
 [[d1_databases]]
 binding = "DB"
 database_name = "cerotd"
