@@ -1,4 +1,4 @@
-export default defineEventHandler(async (event) => {
+export default defineApiHandler(async (event) => {
   const db = useDB(event)
   const query = getQuery(event)
   const includeUnpublished = String(query.all || '') === '1'
@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
   if (category) {
     const found = await findNewsCategory(db, category, { publishedOnly: !includeUnpublished })
     if (!found) {
-      throw createError({ statusCode: 400, statusMessage: 'invalid category' })
+      throw createError({ statusCode: 500, statusMessage: 'invalid category' })
     }
     where.push('category = ?')
     binds.push(category)

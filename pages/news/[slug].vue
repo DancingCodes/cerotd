@@ -50,7 +50,7 @@ const route = useRoute()
 const t = useLocalized()
 const { locale, t: i18nT } = useI18n()
 type CategoryItem = { slug: string; name: { en: string; zh: string } }
-const { data: categoriesData } = await useFetch<{ items: CategoryItem[] }>('/api/news-categories', {
+const { data: categoriesData } = await useApiFetch<{ items: CategoryItem[] }>('/api/news-categories', {
   key: 'news-categories'
 })
 function categoryLabel(slug: string) {
@@ -59,12 +59,12 @@ function categoryLabel(slug: string) {
 }
 const slug = computed(() => String(route.params.slug || ''))
 
-const { data: article, error } = await useFetch<NewsItem>(() => `/api/news/${slug.value}`, {
+const { data: article, error } = await useApiFetch<NewsItem>(() => `/api/news/${slug.value}`, {
   key: () => `news-${slug.value}`
 })
 
 if (error.value || !article.value) {
-  throw createError({ statusCode: 404, statusMessage: 'News not found' })
+  throw createError({ statusCode: 500, statusMessage: 'News not found' })
 }
 
 usePageSeo({

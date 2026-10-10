@@ -1,9 +1,9 @@
-export default defineEventHandler(async (event) => {
+export default defineApiHandler(async (event) => {
   assertAdmin(event)
   const db = useDB(event)
   const slug = getRouterParam(event, 'slug')
   if (!slug) {
-    throw createError({ statusCode: 400, statusMessage: 'slug is required' })
+    throw createError({ statusCode: 500, statusMessage: 'slug is required' })
   }
 
   const current = await db
@@ -11,15 +11,12 @@ export default defineEventHandler(async (event) => {
     .bind(slug)
     .first<{ id: number }>()
   if (!current) {
-    throw createError({ statusCode: 404, statusMessage: 'News category not found' })
+    throw createError({ statusCode: 500, statusMessage: 'News category not found' })
   }
 
   const linked = await db.prepare('SELECT id FROM news WHERE category = ? LIMIT 1').bind(slug).first()
   if (linked) {
-    throw createError({
-      statusCode: 409,
-      statusMessage: 'News category has articles. Delete or move them first.'
-    })
+    throwApiError('NEWS_CATEGORY_HAS_ARTICLES', 'News category has articles. Delete or move them first.')
   }
 
   await db.prepare('DELETE FROM news_categories WHERE slug = ?').bind(slug).run()

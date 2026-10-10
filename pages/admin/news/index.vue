@@ -166,6 +166,11 @@
         </button>
       </div>
     </div>
+    <AdminDialog
+      :state="dialog"
+      @confirm="close(true)"
+      @cancel="close(false)"
+    />
   </div>
 </template>
 
@@ -192,6 +197,7 @@ type NewsItem = {
 const { t } = useI18n()
 const lt = useLocalized()
 const { authHeaders } = useAdminAuth()
+const { dialog, confirm, alert, close } = useAdminDialog()
 
 type CategoryItem = {
   slug: string
@@ -289,7 +295,7 @@ async function load() {
   pending.value = true
   try {
     const [newsData, categoryData] = await Promise.all([
-      $fetch<{ items: NewsItem[]; total?: number }>('/api/news', {
+      apiFetch<{ items: NewsItem[]; total?: number }>('/api/news', {
         headers: authHeaders(),
         query: {
           all: 1,
@@ -300,7 +306,7 @@ async function load() {
           status: filterStatus.value
         }
       }),
-      $fetch<{ items: CategoryItem[] }>('/api/news-categories?all=1', { headers: authHeaders() })
+      apiFetch<{ items: CategoryItem[] }>('/api/news-categories?all=1', { headers: authHeaders() })
     ])
     items.value = newsData.items
     total.value = Number(newsData.total || newsData.items.length)
@@ -329,9 +335,9 @@ function goPage(next: number) {
   load()
 }
 
-function startCreate() {
+async function startCreate() {
   if (!categories.value.length) {
-    window.alert(t('admin.news.needCategoryFirst'))
+    await alert(t('admin.news.needCategoryFirst'))
     return
   }
   editingSlug.value = ''
@@ -395,13 +401,13 @@ async function save() {
 
   try {
     if (editingSlug.value) {
-      await $fetch(`/api/news/${editingSlug.value}`, {
+      await apiFetch(`/api/news/${editingSlug.value}`, {
         method: 'PUT',
         headers: authHeaders(),
         body: payload
       })
     } else {
-      await $fetch('/api/news', {
+      await apiFetch('/api/news', {
         method: 'POST',
         headers: authHeaders(),
         body: payload
@@ -410,31 +416,31 @@ async function save() {
     closeForm()
     await load()
   } catch (err: any) {
-    formError.value = err?.data?.statusMessage || err?.statusMessage || t('admin.common.saveFailed')
+    formError.value = err?.msg || t('admin.common.saveFailed')
   }
 }
 
 async function remove(item: NewsItem) {
-  if (!window.confirm(t('admin.news.deleteConfirm', { name: lt(item.title) }))) return
+  if (!(await confirm(t('admin.news.deleteConfirm', { name: lt(item.title) })))) return
   try {
-    await $fetch(`/api/news/${item.slug}`, {
+    await apiFetch(`/api/news/${item.slug}`, {
       method: 'DELETE',
       headers: authHeaders()
     })
     await load()
   } catch (err: any) {
-    window.alert(err?.data?.statusMessage || err?.statusMessage || t('admin.common.deleteFailed'))
+    await alert(err?.msg || t('admin.common.deleteFailed'))
   }
 }
 
 async function removeSelected() {
   if (!selectedSlugs.value.length || batchDeleting.value) return
-  if (!window.confirm(t('admin.common.batchDeleteConfirm', { count: selectedSlugs.value.length }))) return
+  if (!(await confirm(t('admin.common.batchDeleteConfirm', { count: selectedSlugs.value.length })))) return
   batchDeleting.value = true
   try {
     const slugs = [...selectedSlugs.value]
     for (const slug of slugs) {
-      await $fetch(`/api/news/${slug}`, {
+      await apiFetch(`/api/news/${slug}`, {
         method: 'DELETE',
         headers: authHeaders()
       })
@@ -442,7 +448,7 @@ async function removeSelected() {
     selectedSlugs.value = []
     await load()
   } catch (err: any) {
-    window.alert(err?.data?.statusMessage || err?.statusMessage || t('admin.common.deleteFailed'))
+    await alert(err?.msg || t('admin.common.deleteFailed'))
     await load()
   } finally {
     batchDeleting.value = false

@@ -98,6 +98,11 @@
         </button>
       </div>
     </div>
+    <AdminDialog
+      :state="dialog"
+      @confirm="close(true)"
+      @cancel="close(false)"
+    />
   </div>
 </template>
 
@@ -128,6 +133,7 @@ type RangeFilter = 'all' | 'today' | '7d' | '30d'
 
 const { t } = useI18n()
 const { authHeaders } = useAdminAuth()
+const { dialog, confirm, alert, close } = useAdminDialog()
 
 const items = ref<InquiryItem[]>([])
 const unreadCount = ref(0)
@@ -185,7 +191,7 @@ async function toggle(item: InquiryItem) {
 async function load() {
   pending.value = true
   try {
-    const data = await $fetch<{ items: InquiryItem[]; unreadCount: number; total?: number }>('/api/inquiries', {
+    const data = await apiFetch<{ items: InquiryItem[]; unreadCount: number; total?: number }>('/api/inquiries', {
       headers: authHeaders(),
       query: {
         status: status.value,
@@ -214,7 +220,7 @@ function goPage(next: number) {
 
 async function setRead(item: InquiryItem, isRead: boolean, reload = true) {
   try {
-    await $fetch('/api/inquiries/' + item.id, {
+    await apiFetch('/api/inquiries/' + item.id, {
       method: 'PATCH',
       headers: authHeaders(),
       body: { isRead }
@@ -226,21 +232,21 @@ async function setRead(item: InquiryItem, isRead: boolean, reload = true) {
       await load()
     }
   } catch (err: any) {
-    window.alert(err?.data?.statusMessage || err?.statusMessage || t('admin.common.saveFailed'))
+    await alert(err?.msg || t('admin.common.saveFailed'))
   }
 }
 
 async function remove(item: InquiryItem) {
-  if (!window.confirm(t('admin.inquiries.deleteConfirm', { name: item.name }))) return
+  if (!(await confirm(t('admin.inquiries.deleteConfirm', { name: item.name })))) return
   try {
-    await $fetch('/api/inquiries/' + item.id, {
+    await apiFetch('/api/inquiries/' + item.id, {
       method: 'DELETE',
       headers: authHeaders()
     })
     if (openId.value === item.id) openId.value = null
     await load()
   } catch (err: any) {
-    window.alert(err?.data?.statusMessage || err?.statusMessage || t('admin.common.deleteFailed'))
+    await alert(err?.msg || t('admin.common.deleteFailed'))
   }
 }
 

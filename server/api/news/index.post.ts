@@ -12,7 +12,7 @@ type CreateNewsBody = {
   publishedAt?: string
 }
 
-export default defineEventHandler(async (event) => {
+export default defineApiHandler(async (event) => {
   assertAdmin(event)
   const db = useDB(event)
   const body = await readBody<CreateNewsBody>(event)
@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
   const titleEn = body.titleEn?.trim() || ''
   const titleZh = body.titleZh?.trim() || ''
   if (!titleEn || !titleZh) {
-    throw createError({ statusCode: 400, statusMessage: 'titleEn and titleZh are required' })
+    throw createError({ statusCode: 500, statusMessage: 'titleEn and titleZh are required' })
   }
 
   let category = (body.category?.trim() || '').toLowerCase()
@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
   }
   const categoryRow = category ? await findNewsCategory(db, category) : null
   if (!categoryRow) {
-    throw createError({ statusCode: 400, statusMessage: 'Create a news category first.' })
+    throw createError({ statusCode: 500, statusMessage: 'Create a news category first.' })
   }
 
   const allocated = await allocateUniqueSlug(db, 'news', titleEn, 'news')

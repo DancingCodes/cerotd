@@ -1,18 +1,18 @@
 export default defineEventHandler(async (event) => {
   const pathParam = getRouterParam(event, 'path')
   if (!pathParam) {
-    throw createError({ statusCode: 404, statusMessage: 'Not found' })
+    throw createError({ statusCode: 500, statusMessage: 'Not found' })
   }
 
   const key = Array.isArray(pathParam) ? pathParam.join('/') : String(pathParam)
   if (!key || key.includes('..')) {
-    throw createError({ statusCode: 400, statusMessage: 'Invalid path' })
+    throw createError({ statusCode: 500, statusMessage: 'Invalid path' })
   }
 
   const bucket = useMediaBucket(event)
   const object = await bucket.get(key)
   if (!object) {
-    throw createError({ statusCode: 404, statusMessage: 'Not found' })
+    throw createError({ statusCode: 500, statusMessage: 'Not found' })
   }
 
   const contentType = object.httpMetadata?.contentType || 'application/octet-stream'

@@ -175,6 +175,11 @@
         </button>
       </div>
     </div>
+    <AdminDialog
+      :state="dialog"
+      @confirm="close(true)"
+      @cancel="close(false)"
+    />
   </div>
 </template>
 
@@ -210,6 +215,7 @@ type ProductItem = {
 const { t } = useI18n()
 const lt = useLocalized()
 const { authHeaders } = useAdminAuth()
+const { dialog, confirm, alert, close } = useAdminDialog()
 const pending = ref(true)
 const searchInput = ref('')
 const search = ref('')
@@ -277,7 +283,7 @@ function onSelectChange(slug: string, event: Event) {
 async function load() {
   pending.value = true
   try {
-    const productData = await $fetch<{ items: ProductItem[]; total?: number }>('/api/products', {
+    const productData = await apiFetch<{ items: ProductItem[]; total?: number }>('/api/products', {
       headers: authHeaders(),
       query: {
         all: 1,
@@ -379,13 +385,13 @@ async function save() {
 
   try {
     if (editingSlug.value) {
-      await $fetch(`/api/products/${editingSlug.value}`, {
+      await apiFetch(`/api/products/${editingSlug.value}`, {
         method: 'PUT',
         headers: authHeaders(),
         body: payload
       })
     } else {
-      await $fetch('/api/products', {
+      await apiFetch('/api/products', {
         method: 'POST',
         headers: authHeaders(),
         body: payload
@@ -394,31 +400,31 @@ async function save() {
     closeForm()
     await load()
   } catch (err: any) {
-    formError.value = err?.data?.statusMessage || err?.statusMessage || t('admin.common.saveFailed')
+    formError.value = err?.msg || t('admin.common.saveFailed')
   }
 }
 
 async function remove(item: ProductItem) {
-  if (!window.confirm(t('admin.products.deleteConfirm', { name: lt(item.name) }))) return
+  if (!(await confirm(t('admin.products.deleteConfirm', { name: lt(item.name) })))) return
   try {
-    await $fetch(`/api/products/${item.slug}`, {
+    await apiFetch(`/api/products/${item.slug}`, {
       method: 'DELETE',
       headers: authHeaders()
     })
     await load()
   } catch (err: any) {
-    window.alert(err?.data?.statusMessage || err?.statusMessage || t('admin.common.deleteFailed'))
+    await alert(err?.msg || t('admin.common.deleteFailed'))
   }
 }
 
 async function removeSelected() {
   if (!selectedSlugs.value.length || batchDeleting.value) return
-  if (!window.confirm(t('admin.common.batchDeleteConfirm', { count: selectedSlugs.value.length }))) return
+  if (!(await confirm(t('admin.common.batchDeleteConfirm', { count: selectedSlugs.value.length })))) return
   batchDeleting.value = true
   try {
     const slugs = [...selectedSlugs.value]
     for (const slug of slugs) {
-      await $fetch(`/api/products/${slug}`, {
+      await apiFetch(`/api/products/${slug}`, {
         method: 'DELETE',
         headers: authHeaders()
       })
@@ -426,7 +432,7 @@ async function removeSelected() {
     selectedSlugs.value = []
     await load()
   } catch (err: any) {
-    window.alert(err?.data?.statusMessage || err?.statusMessage || t('admin.common.deleteFailed'))
+    await alert(err?.msg || t('admin.common.deleteFailed'))
     await load()
   } finally {
     batchDeleting.value = false

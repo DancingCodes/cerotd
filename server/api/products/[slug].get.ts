@@ -1,8 +1,8 @@
-export default defineEventHandler(async (event) => {
+export default defineApiHandler(async (event) => {
   const db = useDB(event)
   const slug = getRouterParam(event, 'slug')
   if (!slug) {
-    throw createError({ statusCode: 400, statusMessage: 'slug is required' })
+    throw createError({ statusCode: 500, statusMessage: 'slug is required' })
   }
 
   const query = getQuery(event)
@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
         .first<ProductRow>()
 
   if (!row) {
-    throw createError({ statusCode: 404, statusMessage: 'Product not found' })
+    throw createError({ statusCode: 500, statusMessage: 'Product not found' })
   }
 
   return mapProduct(row)

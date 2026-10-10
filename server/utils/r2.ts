@@ -22,7 +22,7 @@ export function useMediaBucket(event: H3Event): R2Bucket {
 
 export function assertImageType(type: string) {
   if (!ALLOWED_TYPES.has(type)) {
-    throw createError({ statusCode: 400, statusMessage: 'Only jpeg/png/webp/gif/avif images are allowed' })
+    throw createError({ statusCode: 500, statusMessage: 'Only jpeg/png/webp/gif/avif images are allowed' })
   }
 }
 

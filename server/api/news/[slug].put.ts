@@ -12,17 +12,17 @@ type UpdateNewsBody = {
   publishedAt?: string
 }
 
-export default defineEventHandler(async (event) => {
+export default defineApiHandler(async (event) => {
   assertAdmin(event)
   const db = useDB(event)
   const currentSlug = getRouterParam(event, 'slug')
   if (!currentSlug) {
-    throw createError({ statusCode: 400, statusMessage: 'slug is required' })
+    throw createError({ statusCode: 500, statusMessage: 'slug is required' })
   }
 
   const current = await db.prepare('SELECT * FROM news WHERE slug = ?').bind(currentSlug).first<NewsRow>()
   if (!current) {
-    throw createError({ statusCode: 404, statusMessage: 'News not found' })
+    throw createError({ statusCode: 500, statusMessage: 'News not found' })
   }
 
   const body = await readBody<UpdateNewsBody>(event)
@@ -42,11 +42,11 @@ export default defineEventHandler(async (event) => {
   const category = categoryRaw.toLowerCase()
   const categoryRow = await findNewsCategory(db, category)
   if (!categoryRow) {
-    throw createError({ statusCode: 400, statusMessage: 'Create a news category first.' })
+    throw createError({ statusCode: 500, statusMessage: 'Create a news category first.' })
   }
 
   if (!nextSlug || !titleEn || !titleZh) {
-    throw createError({ statusCode: 400, statusMessage: 'slug, titleEn and titleZh are required' })
+    throw createError({ statusCode: 500, statusMessage: 'slug, titleEn and titleZh are required' })
   }
 
   await db

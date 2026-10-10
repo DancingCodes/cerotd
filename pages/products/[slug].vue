@@ -120,12 +120,12 @@ const t = useLocalized()
 const { locale, t: i18nT } = useI18n()
 const slug = computed(() => String(route.params.slug || ''))
 
-const { data: product, error } = await useFetch<ProductItem>(() => `/api/products/${slug.value}`, {
+const { data: product, error } = await useApiFetch<ProductItem>(() => `/api/products/${slug.value}`, {
   key: () => `product-${slug.value}`
 })
 
 if (error.value || !product.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Product not found' })
+  throw createError({ statusCode: 500, statusMessage: 'Product not found' })
 }
 
 usePageSeo({
@@ -212,7 +212,7 @@ useHead({
   })
 })
 
-const { data: listData } = await useFetch<{ items: ProductItem[] }>('/api/products', {
+const { data: listData } = await useApiFetch<{ items: ProductItem[] }>('/api/products', {
   key: 'products-list-related'
 })
 

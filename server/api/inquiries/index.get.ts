@@ -1,4 +1,4 @@
-export default defineEventHandler(async (event) => {
+export default defineApiHandler(async (event) => {
   assertAdmin(event)
   const db = useDB(event)
   const query = getQuery(event)

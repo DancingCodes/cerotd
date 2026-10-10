@@ -621,6 +621,13 @@
       "deleteFailed": "删除失败",
       "batchDelete": "批量删除",
       "batchDeleteConfirm": "确认删除选中的 {count} 项？",
+      "dialog": {
+        "confirmTitle": "确认操作",
+        "alertTitle": "提示",
+        "confirm": "确认",
+        "cancel": "取消",
+        "close": "关闭"
+      },
       "selectedCount": "已选 {count} 项",
       "nameEn": "英文名称",
       "nameZh": "中文名称",

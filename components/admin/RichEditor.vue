@@ -12,6 +12,11 @@
     </div>
     <EditorContent :editor="editor" class="rich-editor-content" />
     <p class="rich-editor-hint">{{ hint }}</p>
+    <AdminDialog
+      :state="dialog"
+      @confirm="close(true)"
+      @cancel="close(false)"
+    />
   </div>
 </template>
 
@@ -33,6 +38,7 @@ const emit = defineEmits<{
 
 const { authHeaders } = useAdminAuth()
 const { t } = useI18n()
+const { dialog, alert, close } = useAdminDialog()
 
 const editor = shallowRef<Editor>()
 
@@ -84,14 +90,14 @@ async function addImage() {
       const body = new FormData()
       body.append('file', file)
       body.append('folder', props.folder || 'news')
-      const result = await $fetch<{ url: string }>('/api/upload', {
+      const result = await apiFetch<{ url: string }>('/api/upload', {
         method: 'POST',
         headers: authHeaders(),
         body
       })
       editor.value?.chain().focus().setImage({ src: result.url }).run()
     } catch (err: any) {
-      window.alert(err?.data?.statusMessage || err?.statusMessage || t('admin.upload.failed'))
+      await alert(err?.msg || t('admin.upload.failed'))
     }
   }
   input.click()

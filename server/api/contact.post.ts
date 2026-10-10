@@ -15,7 +15,7 @@ function clean(value?: string) {
   return String(value || '').trim()
 }
 
-export default defineEventHandler(async (event) => {
+export default defineApiHandler(async (event) => {
   const body = await readBody<ContactBody>(event)
   const name = clean(body.name)
   const company = clean(body.company)
@@ -29,16 +29,16 @@ export default defineEventHandler(async (event) => {
   const locale = clean(body.locale) === 'zh' ? 'zh' : 'en'
 
   if (!name) {
-    throw createError({ statusCode: 400, statusMessage: 'name is required' })
+    throw createError({ statusCode: 500, statusMessage: 'name is required' })
   }
   if (!email && !phone) {
-    throw createError({ statusCode: 400, statusMessage: 'email or phone is required' })
+    throw createError({ statusCode: 500, statusMessage: 'email or phone is required' })
   }
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    throw createError({ statusCode: 400, statusMessage: 'email is invalid' })
+    throw createError({ statusCode: 500, statusMessage: 'email is invalid' })
   }
   if (bulk && bulk !== 'yes' && bulk !== 'no') {
-    throw createError({ statusCode: 400, statusMessage: 'bulk is invalid' })
+    throw createError({ statusCode: 500, statusMessage: 'bulk is invalid' })
   }
   if (
     name.length > 120 ||
@@ -50,7 +50,7 @@ export default defineEventHandler(async (event) => {
     product.length > 120 ||
     message.length > 4000
   ) {
-    throw createError({ statusCode: 400, statusMessage: 'field too long' })
+    throw createError({ statusCode: 500, statusMessage: 'field too long' })
   }
 
   const db = useDB(event)

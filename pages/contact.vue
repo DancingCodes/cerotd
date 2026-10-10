@@ -193,7 +193,7 @@ async function onSubmit() {
 
   submitting.value = true
   try {
-    await $fetch('/api/contact', {
+    await apiFetch('/api/contact', {
       method: 'POST',
       body: {
         name: form.name,
@@ -212,11 +212,8 @@ async function onSubmit() {
     resetForm()
   } catch (error) {
     submitStatus.value = 'error'
-    const err = error as {
-      data?: { statusMessage?: string }
-      statusMessage?: string
-    } | null
-    submitError.value = err?.data?.statusMessage || err?.statusMessage || i18nT('contact.form.error')
+    const err = error as { msg?: string } | null
+    submitError.value = err?.msg || i18nT('contact.form.error')
   } finally {
     submitting.value = false
   }

@@ -6,7 +6,7 @@ type CreateNewsCategoryBody = {
   isPublished?: boolean
 }
 
-export default defineEventHandler(async (event) => {
+export default defineApiHandler(async (event) => {
   assertAdmin(event)
   const db = useDB(event)
   const body = await readBody<CreateNewsCategoryBody>(event)
@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
   const nameEn = body.nameEn?.trim() || ''
   const nameZh = body.nameZh?.trim() || ''
   if (!nameEn || !nameZh) {
-    throw createError({ statusCode: 400, statusMessage: 'nameEn and nameZh are required' })
+    throw createError({ statusCode: 500, statusMessage: 'nameEn and nameZh are required' })
   }
 
   const allocated = await allocateUniqueSlug(db, 'news_categories', nameEn, 'news-category')
@@ -42,6 +42,5 @@ export default defineEventHandler(async (event) => {
     row = (await db.prepare('SELECT * FROM news_categories WHERE id = ?').bind(inserted.id).first<NewsCategoryRow>()) || inserted
   }
 
-  setResponseStatus(event, 201)
   return mapNewsCategory(row)
 })

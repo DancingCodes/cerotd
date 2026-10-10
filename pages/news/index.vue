@@ -113,7 +113,7 @@ usePageSeo({
   path: '/news'
 })
 
-const { data: categoriesData } = await useFetch<{ items: CategoryItem[] }>('/api/news-categories', {
+const { data: categoriesData } = await useApiFetch<{ items: CategoryItem[] }>('/api/news-categories', {
   key: 'news-categories'
 })
 const categories = computed(() => categoriesData.value?.items || [])
@@ -164,7 +164,7 @@ const listUrl = computed(() => {
   return `/api/news?${params.toString()}`
 })
 
-const { data, pending } = await useFetch<NewsListResponse>(listUrl, {
+const { data, pending } = await useApiFetch<NewsListResponse>(listUrl, {
   key: () => `news-list-${selectedCategory.value || 'all'}`,
   watch: [selectedCategory]
 })
@@ -189,7 +189,7 @@ async function loadMore() {
       pageSize: String(pageSize)
     })
     if (selectedCategory.value) params.set('category', selectedCategory.value)
-    const res = await $fetch<NewsListResponse>(`/api/news?${params.toString()}`)
+    const res = await apiFetch<NewsListResponse>(`/api/news?${params.toString()}`)
     const existing = new Set(newsList.value.map((item) => item.slug))
     newsList.value = [
       ...newsList.value,

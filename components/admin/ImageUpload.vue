@@ -79,7 +79,7 @@ async function onFile(event: Event) {
     const body = new FormData()
     body.append('file', file)
     body.append('folder', props.folder)
-    const result = await $fetch<{ url: string }>('/api/upload', {
+    const result = await apiFetch<{ url: string }>('/api/upload', {
       method: 'POST',
       headers: authHeaders(),
       body
@@ -87,7 +87,7 @@ async function onFile(event: Event) {
     inner.value = result.url
     emitUrl()
   } catch (err: any) {
-    error.value = err?.data?.statusMessage || err?.statusMessage || t('admin.upload.failed')
+    error.value = err?.msg || t('admin.upload.failed')
   } finally {
     uploading.value = false
   }

@@ -142,7 +142,7 @@ const listUrl = computed(() => {
   return `/api/products?${params.toString()}`
 })
 
-const { data, pending } = await useFetch<ProductListResponse>(listUrl, {
+const { data, pending } = await useApiFetch<ProductListResponse>(listUrl, {
   key: () => `products-list-${selectedCategory.value || 'all'}`,
   watch: [selectedCategory]
 })
@@ -167,7 +167,7 @@ async function loadMore() {
       pageSize: String(pageSize)
     })
     if (selectedCategory.value) params.set('category', selectedCategory.value)
-    const res = await $fetch<ProductListResponse>(`/api/products?${params.toString()}`)
+    const res = await apiFetch<ProductListResponse>(`/api/products?${params.toString()}`)
     const existing = new Set(productList.value.map((item) => item.slug))
     productList.value = [
       ...productList.value,

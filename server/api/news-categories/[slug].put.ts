@@ -6,12 +6,12 @@ type UpdateNewsCategoryBody = {
   isPublished?: boolean
 }
 
-export default defineEventHandler(async (event) => {
+export default defineApiHandler(async (event) => {
   assertAdmin(event)
   const db = useDB(event)
   const currentSlug = getRouterParam(event, 'slug')
   if (!currentSlug) {
-    throw createError({ statusCode: 400, statusMessage: 'slug is required' })
+    throw createError({ statusCode: 500, statusMessage: 'slug is required' })
   }
 
   const current = await db
@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
     .first<NewsCategoryRow>()
 
   if (!current) {
-    throw createError({ statusCode: 404, statusMessage: 'News category not found' })
+    throw createError({ statusCode: 500, statusMessage: 'News category not found' })
   }
 
   const body = await readBody<UpdateNewsCategoryBody>(event)
@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
     body.isPublished === undefined ? current.is_published : body.isPublished ? 1 : 0
 
   if (!nextSlug || !nameEn || !nameZh) {
-    throw createError({ statusCode: 400, statusMessage: 'slug, nameEn and nameZh are required' })
+    throw createError({ statusCode: 500, statusMessage: 'slug, nameEn and nameZh are required' })
   }
 
   const updated = await db

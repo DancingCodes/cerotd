@@ -621,6 +621,13 @@
       "deleteFailed": "Delete failed",
       "batchDelete": "Delete selected",
       "batchDeleteConfirm": "Delete {count} selected items?",
+      "dialog": {
+        "confirmTitle": "Confirm action",
+        "alertTitle": "Notice",
+        "confirm": "Confirm",
+        "cancel": "Cancel",
+        "close": "Close"
+      },
       "selectedCount": "{count} selected",
       "nameEn": "Name EN",
       "nameZh": "Name ZH",
