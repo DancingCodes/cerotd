@@ -3,14 +3,14 @@
     <section class="bg-[radial-gradient(circle_at_70%_20%,rgba(139,154,171,.14),transparent_28%),linear-gradient(180deg,var(--ui-color-neutral-950)_0%,var(--ui-color-neutral-900)_100%)] py-18 text-white md:py-22">
       <UContainer>
         <h1 class="mb-4.5 text-14 leading-[1.08]">{{ $t('advantages.hero.title') }}</h1>
-        <p class="max-w-[34ch] text-lg leading-[1.7] text-[#c8ced6] md:text-xl">{{ $t('advantages.hero.subtitle') }}</p>
+        <p class="max-w-[34ch] text-5 leading-[1.7] text-[#c8ced6]">{{ $t('advantages.hero.subtitle') }}</p>
       </UContainer>
     </section>
 
     <section class="bg-white py-24 md:py-30">
       <UContainer>
         <div class="mb-12">
-          <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('advantages.outcomes.title') }}</h2>
+          <h2 class="mb-3.5 text-9 text-gray-900">{{ $t('advantages.outcomes.title') }}</h2>
           <p class="max-w-[48ch] text-4.25 leading-[1.7] text-gray-600">{{ $t('advantages.outcomes.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-1 gap-4 min-[900px]:grid-cols-2">
@@ -25,7 +25,7 @@
     <section class="bg-muted py-24 md:py-30">
       <UContainer>
         <div class="mb-12 max-w-155">
-          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-highlighted max-md:text-8">{{ $t('advantages.compare.title') }}</h2>
+          <h2 class="mb-3.5 text-9 leading-[1.12] font-semibold text-highlighted">{{ $t('advantages.compare.title') }}</h2>
           <p class="text-4.25 leading-[1.7] text-muted">{{ $t('advantages.compare.subtitle') }}</p>
         </div>
         <div class="grid">
@@ -40,7 +40,7 @@
     <section class="bg-white py-24 md:py-30">
       <UContainer>
         <div class="mb-12 max-w-155">
-          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-highlighted max-md:text-8">{{ $t('advantages.pillars.title') }}</h2>
+          <h2 class="mb-3.5 text-9 leading-[1.12] font-semibold text-highlighted">{{ $t('advantages.pillars.title') }}</h2>
           <p class="text-4.25 leading-[1.7] text-muted">{{ $t('advantages.pillars.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-1 gap-4.5 min-[900px]:grid-cols-2">
@@ -56,7 +56,7 @@
     <section class="bg-neutral-950 py-24 md:py-30">
       <UContainer>
         <div class="mb-12 max-w-155">
-          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-white max-md:text-8">{{ $t('advantages.assurance.title') }}</h2>
+          <h2 class="mb-3.5 text-9 text-white">{{ $t('advantages.assurance.title') }}</h2>
           <p class="text-4.25 leading-[1.7] text-white/60">{{ $t('advantages.assurance.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-1 gap-3.5 min-[900px]:grid-cols-2">
@@ -73,7 +73,7 @@
       <UContainer>
         <div class="flex flex-col gap-5.5 rounded-3.5 border border-white/8 bg-[radial-gradient(circle_at_100%_0%,rgba(95,208,220,.18),transparent_34%),linear-gradient(135deg,#102033_0%,#0b1522_100%)] px-7 py-8.5 min-[800px]:flex-row min-[800px]:items-center min-[800px]:justify-between min-[800px]:px-11 min-[800px]:py-10">
           <div>
-            <h2 class="mb-2.5 text-3xl font-semibold text-white">{{ $t('advantages.cta.title') }}</h2>
+            <h2 class="mb-2.5 text-7.5 font-semibold text-white">{{ $t('advantages.cta.title') }}</h2>
             <p class="max-w-[46ch] text-base leading-[1.7] text-white/70">{{ $t('advantages.cta.subtitle') }}</p>
           </div>
           <div class="flex flex-wrap gap-3">

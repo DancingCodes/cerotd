@@ -3,14 +3,14 @@
     <section class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,var(--ui-color-neutral-950)_0%,var(--ui-color-neutral-900)_100%)] py-18 text-white md:py-22">
       <UContainer>
         <h1 class="mb-4.5 text-14 leading-[1.08]">{{ $t('products.hero.title') }}</h1>
-        <p class="max-w-[34ch] text-lg leading-[1.7] text-[#c8ced6] md:text-xl">{{ $t('products.hero.subtitle') }}</p>
+        <p class="max-w-[34ch] text-5 leading-[1.7] text-[#c8ced6]">{{ $t('products.hero.subtitle') }}</p>
       </UContainer>
     </section>
 
     <section class="bg-white py-24 md:py-30">
       <UContainer>
         <div class="mb-9 max-w-180">
-          <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('products.listTitle') }}</h2>
+          <h2 class="mb-3.5 text-9 text-gray-900">{{ $t('products.listTitle') }}</h2>
           <p class="text-4.25 leading-[1.7] text-gray-600">{{ $t('products.listSubtitle') }}</p>
         </div>
 

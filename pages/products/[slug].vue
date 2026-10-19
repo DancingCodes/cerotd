@@ -3,8 +3,8 @@
     <section class="bg-[radial-gradient(circle_at_20%_20%,rgba(95,208,220,.16),transparent_28%),linear-gradient(180deg,var(--ui-color-neutral-950)_0%,var(--ui-color-neutral-900)_100%)] py-18 text-white md:py-22">
       <UContainer>
         <NuxtLink to="/products" class="mb-6 inline-flex text-sm font-semibold text-[#5fd0dc] no-underline">{{ $t('products.backToList') }}</NuxtLink>
-        <h1 class="mb-4.5 text-4xl leading-[1.1] md:text-5xl">{{ t(product.name) }}</h1>
-        <p class="max-w-[40ch] text-lg leading-[1.7] text-[#c8ced6]">{{ t(product.summary) }}</p>
+        <h1 class="mb-4.5 text-12 leading-[1.1]">{{ t(product.name) }}</h1>
+        <p class="max-w-[40ch] text-4.5 leading-[1.7] text-[#c8ced6]">{{ t(product.summary) }}</p>
       </UContainer>
     </section>
 

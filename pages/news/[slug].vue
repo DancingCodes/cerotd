@@ -7,8 +7,8 @@
           <span>{{ categoryLabel(article.category) }}</span>
           <time :datetime="article.publishedAt">{{ formatDate(article.publishedAt) }}</time>
         </div>
-        <h1 class="mb-4 max-w-[18ch] text-4xl leading-[1.1] md:text-5xl">{{ t(article.title) }}</h1>
-        <p class="max-w-[48ch] text-lg leading-[1.7] text-[#c8ced6]">{{ t(article.summary) }}</p>
+        <h1 class="mb-4 max-w-[18ch] text-12 leading-[1.1]">{{ t(article.title) }}</h1>
+        <p class="max-w-[48ch] text-4.5 leading-[1.7] text-[#c8ced6]">{{ t(article.summary) }}</p>
       </UContainer>
     </section>
 
