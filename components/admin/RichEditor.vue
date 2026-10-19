@@ -12,11 +12,6 @@
     </div>
     <EditorContent :editor="editor" class="min-h-[220px] p-4 [&_.ProseMirror]:min-h-[190px] [&_.ProseMirror]:text-sm [&_.ProseMirror]:leading-[1.7] [&_.ProseMirror]:text-gray-900 [&_.ProseMirror]:outline-none [&_.ProseMirror_a]:text-[#0e7f8f] [&_.ProseMirror_h2]:my-4 [&_.ProseMirror_h2]:mb-2.5 [&_.ProseMirror_h2]:font-bold [&_.ProseMirror_h3]:my-4 [&_.ProseMirror_h3]:mb-2.5 [&_.ProseMirror_h3]:font-bold [&_.ProseMirror_img]:my-3.5 [&_.ProseMirror_img]:block [&_.ProseMirror_img]:h-auto [&_.ProseMirror_img]:max-w-full [&_.ProseMirror_img]:rounded-xl [&_.ProseMirror_ol]:mb-3 [&_.ProseMirror_ol]:list-decimal [&_.ProseMirror_ol]:pl-5 [&_.ProseMirror_p]:mb-3 [&_.ProseMirror_ul]:mb-3 [&_.ProseMirror_ul]:list-disc [&_.ProseMirror_ul]:pl-5" />
     <p class="px-4 pb-3 text-xs text-gray-500">{{ hint }}</p>
-    <AdminDialog
-      :state="dialog"
-      @confirm="close(true)"
-      @cancel="close(false)"
-    />
   </div>
 </template>
 
@@ -38,7 +33,7 @@ const emit = defineEmits<{
 
 const { authHeaders } = useAdminAuth()
 const { t } = useI18n()
-const { dialog, alert, close } = useAdminDialog()
+const toast = useToast()
 
 const editor = shallowRef<Editor>()
 
@@ -97,7 +92,11 @@ async function addImage() {
       })
       editor.value?.chain().focus().setImage({ src: result.url }).run()
     } catch (err: any) {
-      await alert(err?.msg || t('admin.upload.failed'))
+      toast.add({
+        title: t('admin.upload.failed'),
+        description: err?.msg || t('admin.upload.failed'),
+        color: 'error'
+      })
     }
   }
   input.click()

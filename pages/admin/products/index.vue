@@ -40,7 +40,7 @@
             {{ lt(category.name) }}
           </option>
         </select>
-        <select v-model="filterStatus" class="admin-filter-select" @change="applyFilters">
+        <select v-model="filterStatus" class="h-10 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" @change="applyFilters">
           <option value="all">{{ $t('admin.common.allStatuses') }}</option>
           <option value="published">{{ $t('admin.common.filterPublished') }}</option>
           <option value="draft">{{ $t('admin.common.filterDraft') }}</option>
@@ -59,73 +59,73 @@
           <div class="mb-1.5 text-[13px] font-semibold text-gray-600 after:text-[#b42318] after:content-["_*"]">{{ $t('admin.common.nameEn') }}</div>
           <input v-model="form.nameEn" class="h-[42px] w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" />
         </label>
-        <label class="admin-field">
-          <div class="admin-field-label is-required">{{ $t('admin.common.nameZh') }}</div>
-          <input v-model="form.nameZh" class="admin-field-input" />
+        <label class="block">
+          <div class="mb-1.5 text-[13px] font-semibold text-gray-600 after:text-[#b42318] after:content-['_*']">{{ $t('admin.common.nameZh') }}</div>
+          <input v-model="form.nameZh" class="h-[42px] w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" />
         </label>
-        <label class="admin-field">
-          <div class="admin-field-label is-required">{{ $t('admin.products.category') }}</div>
-          <select v-model="form.categorySlug" class="admin-field-input">
+        <label class="block">
+          <div class="mb-1.5 text-[13px] font-semibold text-gray-600 after:text-[#b42318] after:content-['_*']">{{ $t('admin.products.category') }}</div>
+          <select v-model="form.categorySlug" class="h-[42px] w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none">
             <option value="">{{ $t('admin.products.selectCategory') }}</option>
             <option v-for="category in categories" :key="category.slug" :value="category.slug">
               {{ lt(category.name) }}
             </option>
           </select>
         </label>
-        <label class="admin-field">
+        <label class="block">
           <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.common.sort') }}</div>
-          <input v-model.number="form.sortOrder" class="admin-field-input" type="number" />
+          <input v-model.number="form.sortOrder" class="h-[42px] w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" type="number" />
         </label>
-        <label class="admin-field">
-          <div class="admin-field-label">{{ $t('admin.common.published') }}</div>
-          <select v-model="form.isPublished" class="admin-field-input">
+        <label class="block">
+          <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.common.published') }}</div>
+          <select v-model="form.isPublished" class="h-[42px] w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none">
             <option :value="true">{{ $t('admin.common.yes') }}</option>
             <option :value="false">{{ $t('admin.common.no') }}</option>
           </select>
         </label>
         <label class="col-span-full block">
-          <div class="admin-field-label">{{ $t('admin.products.summaryEn') }}</div>
+          <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.products.summaryEn') }}</div>
           <textarea v-model="form.summaryEn" class="w-full resize-y rounded-xl border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="2" />
         </label>
-        <label class="admin-field admin-field-full">
-          <div class="admin-field-label">{{ $t('admin.products.summaryZh') }}</div>
-          <textarea v-model="form.summaryZh" class="admin-field-textarea" rows="2" />
+        <label class="col-span-full block">
+          <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.products.summaryZh') }}</div>
+          <textarea v-model="form.summaryZh" class="w-full resize-y rounded-xl border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="2" />
         </label>
-        <label class="admin-field admin-field-full">
-          <div class="admin-field-label">{{ $t('admin.products.descriptionEn') }}</div>
-          <textarea v-model="form.descriptionEn" class="admin-field-textarea" rows="4" />
+        <label class="col-span-full block">
+          <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.products.descriptionEn') }}</div>
+          <textarea v-model="form.descriptionEn" class="w-full resize-y rounded-xl border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="4" />
         </label>
-        <label class="admin-field admin-field-full">
-          <div class="admin-field-label">{{ $t('admin.products.descriptionZh') }}</div>
-          <textarea v-model="form.descriptionZh" class="admin-field-textarea" rows="4" />
+        <label class="col-span-full block">
+          <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.products.descriptionZh') }}</div>
+          <textarea v-model="form.descriptionZh" class="w-full resize-y rounded-xl border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="4" />
         </label>
-        <div class="admin-field admin-field-full">
-          <div class="admin-field-label">{{ $t('admin.common.coverUrl') }}</div>
+        <div class="col-span-full block">
+          <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.common.coverUrl') }}</div>
           <AdminImageUpload v-model="form.coverUrl" folder="products" />
         </div>
-        <div class="admin-field admin-field-full">
-          <div class="admin-field-label">{{ $t('admin.products.images') }}</div>
+        <div class="col-span-full block">
+          <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.products.images') }}</div>
           <AdminImageListUpload v-model="form.images" folder="products" />
         </div>
-        <label class="admin-field admin-field-full">
-          <div class="admin-field-label">{{ $t('admin.products.specsEn') }}</div>
-          <textarea v-model="form.specsEnText" class="admin-field-textarea" rows="3" />
+        <label class="col-span-full block">
+          <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.products.specsEn') }}</div>
+          <textarea v-model="form.specsEnText" class="w-full resize-y rounded-xl border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="3" />
         </label>
-        <label class="admin-field admin-field-full">
-          <div class="admin-field-label">{{ $t('admin.products.specsZh') }}</div>
-          <textarea v-model="form.specsZhText" class="admin-field-textarea" rows="3" />
+        <label class="col-span-full block">
+          <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.products.specsZh') }}</div>
+          <textarea v-model="form.specsZhText" class="w-full resize-y rounded-xl border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="3" />
         </label>
       </div>
       <div v-if="formError" class="mt-3 text-[13px] text-[#b42318]">{{ formError }}</div>
       <div class="mt-4 flex gap-2.5">
-        <div class="admin-page-btn" @click="save">{{ $t('admin.common.save') }}</div>
-        <div class="admin-page-btn admin-page-btn-muted" @click="closeForm">{{ $t('admin.common.cancel') }}</div>
+        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white" @click="save">{{ $t('admin.common.save') }}</div>
+        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="closeForm">{{ $t('admin.common.cancel') }}</div>
       </div>
     </div>
 
     <div class="mb-[18px] rounded-xl border border-[#e5eaf0] bg-white p-5">
       <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
-      <div v-else-if="!items.length" class="admin-empty">{{ $t('admin.products.empty') }}</div>
+      <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.products.empty') }}</div>
       <div v-else class="overflow-x-auto">
         <div class="grid min-w-[780px] grid-cols-[36px_1.5fr_1fr_.5fr_.7fr_1.1fr] items-center gap-3 border-b border-[#eef1f4] py-3.5 text-xs font-bold tracking-[.04em] text-gray-500 uppercase">
           <div class="flex items-center justify-center [&_input]:size-4 [&_input]:cursor-pointer">
@@ -143,7 +143,7 @@
           <div>{{ $t('admin.common.actions') }}</div>
         </div>
         <div v-for="item in items" :key="item.id" class="grid min-w-[780px] grid-cols-[36px_1.5fr_1fr_.5fr_.7fr_1.1fr] items-center gap-3 border-b border-[#eef1f4] py-3.5 text-sm">
-          <div class="admin-table-check">
+          <div class="flex items-center justify-center [&_input]:size-4 [&_input]:cursor-pointer">
             <input
               type="checkbox"
               :checked="selectedSlugs.includes(item.slug)"
@@ -159,7 +159,7 @@
           <div>{{ item.isPublished ? $t('admin.common.published') : $t('admin.common.draft') }}</div>
           <div class="flex flex-wrap gap-3">
             <NuxtLink :to="`/products/${item.slug}`" class="cursor-pointer font-semibold text-[#0e7f8f] no-underline" target="_blank">{{ $t('admin.common.view') }}</NuxtLink>
-            <div class="admin-link" @click="startEdit(item)">{{ $t('admin.common.edit') }}</div>
+            <div class="cursor-pointer font-semibold text-[#0e7f8f] no-underline" @click="startEdit(item)">{{ $t('admin.common.edit') }}</div>
             <div class="cursor-pointer font-semibold text-[#b42318] no-underline" @click="remove(item)">{{ $t('admin.common.delete') }}</div>
           </div>
         </div>
@@ -170,16 +170,11 @@
           {{ $t('admin.common.prevPage') }}
         </button>
         <span class="text-[13px] text-gray-500">{{ $t('admin.common.pageStatus', { page, totalPages }) }}</span>
-        <button type="button" class="admin-pagination-btn" :disabled="page >= totalPages" @click="goPage(page + 1)">
+        <button type="button" class="h-[34px] cursor-pointer rounded-[10px] border border-[#d7dee7] bg-white px-3 text-[13px] font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page >= totalPages" @click="goPage(page + 1)">
           {{ $t('admin.common.nextPage') }}
         </button>
       </div>
     </div>
-    <AdminDialog
-      :state="dialog"
-      @confirm="close(true)"
-      @cancel="close(false)"
-    />
   </div>
 </template>
 
@@ -215,7 +210,7 @@ type ProductItem = {
 const { t } = useI18n()
 const lt = useLocalized()
 const { authHeaders } = useAdminAuth()
-const { dialog, confirm, alert, close } = useAdminDialog()
+const toast = useToast()
 const pending = ref(true)
 const searchInput = ref('')
 const search = ref('')
@@ -405,7 +400,7 @@ async function save() {
 }
 
 async function remove(item: ProductItem) {
-  if (!(await confirm(t('admin.products.deleteConfirm', { name: lt(item.name) })))) return
+  if (!window.confirm(t('admin.products.deleteConfirm', { name: lt(item.name) }))) return
   try {
     await apiFetch(`/api/products/${item.slug}`, {
       method: 'DELETE',
@@ -413,13 +408,13 @@ async function remove(item: ProductItem) {
     })
     await load()
   } catch (err: any) {
-    await alert(err?.msg || t('admin.common.deleteFailed'))
+    toast.add({ title: t('admin.common.deleteFailed'), description: err?.msg || t('admin.common.deleteFailed'), color: 'error' })
   }
 }
 
 async function removeSelected() {
   if (!selectedSlugs.value.length || batchDeleting.value) return
-  if (!(await confirm(t('admin.common.batchDeleteConfirm', { count: selectedSlugs.value.length })))) return
+  if (!window.confirm(t('admin.common.batchDeleteConfirm', { count: selectedSlugs.value.length }))) return
   batchDeleting.value = true
   try {
     const slugs = [...selectedSlugs.value]
@@ -432,7 +427,7 @@ async function removeSelected() {
     selectedSlugs.value = []
     await load()
   } catch (err: any) {
-    await alert(err?.msg || t('admin.common.deleteFailed'))
+    toast.add({ title: t('admin.common.deleteFailed'), description: err?.msg || t('admin.common.deleteFailed'), color: 'error' })
     await load()
   } finally {
     batchDeleting.value = false

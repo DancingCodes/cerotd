@@ -25,12 +25,12 @@
           {{ item.label }}
         </button>
       </div>
-      <div class="admin-filter-group" role="tablist" :aria-label="$t('admin.inquiries.filterRange')">
+      <div class="flex flex-wrap gap-2" role="tablist" :aria-label="$t('admin.inquiries.filterRange')">
         <button
           v-for="item in rangeFilters"
           :key="item.value"
           type="button"
-          class="admin-filter-chip"
+          class="h-[34px] cursor-pointer rounded-full border border-[#e5eaf0] bg-white px-3 text-[13px] font-semibold text-gray-600"
           :class="{ 'border-[#0e7f8f] bg-[#e8f7f9] text-[#0e7f8f]': range === item.value }"
           @click="setRange(item.value)"
         >
@@ -41,7 +41,7 @@
 
     <div class="mb-[18px] rounded-xl border border-[#e5eaf0] bg-white p-5">
       <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
-      <div v-else-if="!items.length" class="admin-empty">{{ $t('admin.inquiries.empty') }}</div>
+      <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.inquiries.empty') }}</div>
       <div v-else class="grid gap-3.5">
         <article
           v-for="item in items"
@@ -62,7 +62,7 @@
               <div class="cursor-pointer font-semibold text-[#0e7f8f]" @click="toggle(item)">
                 {{ openId === item.id ? $t('admin.inquiries.hide') : $t('admin.inquiries.view') }}
               </div>
-              <div class="admin-link" @click="setRead(item, !item.isRead)">
+              <div class="cursor-pointer font-semibold text-[#0e7f8f]" @click="setRead(item, !item.isRead)">
                 {{ item.isRead ? $t('admin.inquiries.markUnread') : $t('admin.inquiries.markRead') }}
               </div>
               <div class="cursor-pointer font-semibold text-[#b42318]" @click="remove(item)">{{ $t('admin.common.delete') }}</div>
@@ -78,8 +78,8 @@
 
           <div v-if="openId === item.id" class="mt-3.5 border-t border-[#eef1f4] pt-3.5">
             <div class="mb-2 break-words text-[13px] text-gray-700 [&_span]:mr-2 [&_span]:inline-block [&_span]:min-w-[72px] [&_span]:font-semibold [&_span]:text-gray-500"><span>{{ $t('admin.inquiries.im') }}</span>{{ item.im || '-' }}</div>
-            <div class="inquiry-detail-row"><span>{{ $t('admin.inquiries.bulk') }}</span>{{ formatBulk(item.bulkIntent) }}</div>
-            <div class="inquiry-detail-row"><span>{{ $t('admin.inquiries.locale') }}</span>{{ item.locale }}</div>
+            <div class="mb-2 break-words text-[13px] text-gray-700 [&_span]:mr-2 [&_span]:inline-block [&_span]:min-w-[72px] [&_span]:font-semibold [&_span]:text-gray-500"><span>{{ $t('admin.inquiries.bulk') }}</span>{{ formatBulk(item.bulkIntent) }}</div>
+            <div class="mb-2 break-words text-[13px] text-gray-700 [&_span]:mr-2 [&_span]:inline-block [&_span]:min-w-[72px] [&_span]:font-semibold [&_span]:text-gray-500"><span>{{ $t('admin.inquiries.locale') }}</span>{{ item.locale }}</div>
             <div class="mt-3 rounded-xl border border-[#e5eaf0] bg-white p-3">
               <div class="mb-1.5 text-xs font-bold tracking-[.04em] text-gray-500 uppercase">{{ $t('admin.inquiries.message') }}</div>
               <p class="break-words text-sm leading-[1.7] whitespace-pre-wrap text-gray-900">{{ item.message || $t('admin.inquiries.noMessage') }}</p>
@@ -93,16 +93,11 @@
           {{ $t('admin.common.prevPage') }}
         </button>
         <span class="text-[13px] text-gray-500">{{ $t('admin.common.pageStatus', { page, totalPages }) }}</span>
-        <button type="button" class="admin-pagination-btn" :disabled="page >= totalPages" @click="goPage(page + 1)">
+        <button type="button" class="h-[34px] cursor-pointer rounded-[10px] border border-[#d7dee7] bg-white px-3 text-[13px] font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page >= totalPages" @click="goPage(page + 1)">
           {{ $t('admin.common.nextPage') }}
         </button>
       </div>
     </div>
-    <AdminDialog
-      :state="dialog"
-      @confirm="close(true)"
-      @cancel="close(false)"
-    />
   </div>
 </template>
 
@@ -133,7 +128,7 @@ type RangeFilter = 'all' | 'today' | '7d' | '30d'
 
 const { t } = useI18n()
 const { authHeaders } = useAdminAuth()
-const { dialog, confirm, alert, close } = useAdminDialog()
+const toast = useToast()
 
 const items = ref<InquiryItem[]>([])
 const unreadCount = ref(0)
@@ -232,12 +227,12 @@ async function setRead(item: InquiryItem, isRead: boolean, reload = true) {
       await load()
     }
   } catch (err: any) {
-    await alert(err?.msg || t('admin.common.saveFailed'))
+    toast.add({ title: t('admin.common.saveFailed'), description: err?.msg || t('admin.common.saveFailed'), color: 'error' })
   }
 }
 
 async function remove(item: InquiryItem) {
-  if (!(await confirm(t('admin.inquiries.deleteConfirm', { name: item.name })))) return
+  if (!window.confirm(t('admin.inquiries.deleteConfirm', { name: item.name }))) return
   try {
     await apiFetch('/api/inquiries/' + item.id, {
       method: 'DELETE',
@@ -246,7 +241,7 @@ async function remove(item: InquiryItem) {
     if (openId.value === item.id) openId.value = null
     await load()
   } catch (err: any) {
-    await alert(err?.msg || t('admin.common.deleteFailed'))
+    toast.add({ title: t('admin.common.deleteFailed'), description: err?.msg || t('admin.common.deleteFailed'), color: 'error' })
   }
 }
 

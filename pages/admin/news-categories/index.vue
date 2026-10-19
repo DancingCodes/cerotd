@@ -30,17 +30,17 @@
           <div class="mb-1.5 text-[13px] font-semibold text-gray-600 after:text-[#b42318] after:content-["_*"]">{{ $t('admin.common.nameEn') }}</div>
           <input v-model="form.nameEn" class="h-[42px] w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" />
         </label>
-        <label class="admin-field">
-          <div class="admin-field-label is-required">{{ $t('admin.common.nameZh') }}</div>
-          <input v-model="form.nameZh" class="admin-field-input" />
+        <label class="block">
+          <div class="mb-1.5 text-[13px] font-semibold text-gray-600 after:text-[#b42318] after:content-['_*']">{{ $t('admin.common.nameZh') }}</div>
+          <input v-model="form.nameZh" class="h-[42px] w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" />
         </label>
-        <label class="admin-field">
+        <label class="block">
           <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.common.sort') }}</div>
-          <input v-model.number="form.sortOrder" class="admin-field-input" type="number" />
+          <input v-model.number="form.sortOrder" class="h-[42px] w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" type="number" />
         </label>
-        <label class="admin-field">
-          <div class="admin-field-label">{{ $t('admin.common.published') }}</div>
-          <select v-model="form.isPublished" class="admin-field-input">
+        <label class="block">
+          <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.common.published') }}</div>
+          <select v-model="form.isPublished" class="h-[42px] w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none">
             <option :value="true">{{ $t('admin.common.yes') }}</option>
             <option :value="false">{{ $t('admin.common.no') }}</option>
           </select>
@@ -48,14 +48,14 @@
       </div>
       <div v-if="formError" class="mt-3 text-[13px] text-[#b42318]">{{ formError }}</div>
       <div class="mt-4 flex gap-2.5">
-        <div class="admin-page-btn" @click="save">{{ $t('admin.common.save') }}</div>
+        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white" @click="save">{{ $t('admin.common.save') }}</div>
         <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="closeForm">{{ $t('admin.common.cancel') }}</div>
       </div>
     </div>
 
     <div class="mb-[18px] rounded-xl border border-[#e5eaf0] bg-white p-5">
       <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
-      <div v-else-if="!items.length" class="admin-empty">{{ $t('admin.newsCategories.empty') }}</div>
+      <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.newsCategories.empty') }}</div>
       <div v-else class="overflow-x-auto">
         <div class="grid min-w-[700px] grid-cols-[36px_1.4fr_1fr_.5fr_.7fr_.9fr] items-center gap-3 border-b border-[#eef1f4] py-3.5 text-xs font-bold tracking-[.04em] text-gray-500 uppercase">
           <div class="flex items-center justify-center [&_input]:size-4 [&_input]:cursor-pointer">
@@ -73,7 +73,7 @@
           <div>{{ $t('admin.common.actions') }}</div>
         </div>
         <div v-for="item in items" :key="item.id" class="grid min-w-[700px] grid-cols-[36px_1.4fr_1fr_.5fr_.7fr_.9fr] items-center gap-3 border-b border-[#eef1f4] py-3.5 text-sm">
-          <div class="admin-table-check">
+          <div class="flex items-center justify-center [&_input]:size-4 [&_input]:cursor-pointer">
             <input
               type="checkbox"
               :checked="selectedSlugs.includes(item.slug)"
@@ -99,16 +99,11 @@
           {{ $t('admin.common.prevPage') }}
         </button>
         <span class="text-[13px] text-gray-500">{{ $t('admin.common.pageStatus', { page, totalPages }) }}</span>
-        <button type="button" class="admin-pagination-btn" :disabled="page >= totalPages" @click="goPage(page + 1)">
+        <button type="button" class="h-[34px] cursor-pointer rounded-[10px] border border-[#d7dee7] bg-white px-3 text-[13px] font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page >= totalPages" @click="goPage(page + 1)">
           {{ $t('admin.common.nextPage') }}
         </button>
       </div>
     </div>
-    <AdminDialog
-      :state="dialog"
-      @confirm="close(true)"
-      @cancel="close(false)"
-    />
   </div>
 </template>
 
@@ -131,7 +126,7 @@ type CategoryItem = {
 const { t, locale } = useI18n()
 const lt = useLocalized()
 const { authHeaders } = useAdminAuth()
-const { dialog, confirm, alert, close } = useAdminDialog()
+const toast = useToast()
 const pending = ref(true)
 const page = ref(1)
 const pageSize = ref(20)
@@ -268,7 +263,7 @@ async function save() {
 }
 
 async function remove(item: CategoryItem) {
-  if (!(await confirm(t('admin.newsCategories.deleteConfirm', { name: lt(item.name) })))) return
+  if (!window.confirm(t('admin.newsCategories.deleteConfirm', { name: lt(item.name) }))) return
   try {
     await apiFetch(`/api/news-categories/${item.slug}`, {
       method: 'DELETE',
@@ -276,17 +271,17 @@ async function remove(item: CategoryItem) {
     })
     await load()
   } catch (err: any) {
-    await alert(
-      isCategoryHasArticlesError(err)
-        ? t('admin.newsCategories.deleteBlockedHasNews')
-        : err?.msg || t('admin.common.deleteFailed')
-    )
+    toast.add({
+      title: isCategoryHasArticlesError(err) ? t('admin.newsCategories.deleteBlockedHasNews') : t('admin.common.deleteFailed'),
+      description: err?.msg,
+      color: 'error'
+    })
   }
 }
 
 async function removeSelected() {
   if (!selectedSlugs.value.length || batchDeleting.value) return
-  if (!(await confirm(t('admin.common.batchDeleteConfirm', { count: selectedSlugs.value.length })))) return
+  if (!window.confirm(t('admin.common.batchDeleteConfirm', { count: selectedSlugs.value.length }))) return
   batchDeleting.value = true
   try {
     const slugs = [...selectedSlugs.value]
@@ -299,11 +294,11 @@ async function removeSelected() {
     selectedSlugs.value = []
     await load()
   } catch (err: any) {
-    await alert(
-      isCategoryHasArticlesError(err)
-        ? t('admin.newsCategories.deleteBlockedHasNews')
-        : err?.msg || t('admin.common.deleteFailed')
-    )
+    toast.add({
+      title: isCategoryHasArticlesError(err) ? t('admin.newsCategories.deleteBlockedHasNews') : t('admin.common.deleteFailed'),
+      description: err?.msg,
+      color: 'error'
+    })
     await load()
   } finally {
     batchDeleting.value = false
