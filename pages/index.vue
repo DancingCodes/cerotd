@@ -243,7 +243,7 @@
 
     <section class="bg-[#f3f4f6] pb-24 md:pb-28">
       <UContainer class="max-w-295 px-6">
-        <div class="flex flex-col gap-6 rounded-xl border border-white/6 bg-[#070b12] px-7 py-10 text-white min-[800px]:flex-row min-[800px]:items-center min-[800px]:justify-between min-[800px]:px-10 min-[800px]:py-12">
+        <div class="flex flex-col gap-6 rounded-[12px] border border-white/6 bg-[#070b12] px-7 py-10 text-white min-[800px]:flex-row min-[800px]:items-center min-[800px]:justify-between min-[800px]:px-10 min-[800px]:py-12">
           <div>
             <h2 class="mb-2.5 text-8 font-semibold">{{ $t('home.cta.title') }}</h2>
             <p class="max-w-140 text-base leading-[1.7] text-white/[.62]">{{ $t('home.cta.subtitle') }}</p>

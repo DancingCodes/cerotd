@@ -71,7 +71,7 @@
 
     <section class="bg-white pt-7 pb-24 md:pt-5 md:pb-30">
       <UContainer class="max-w-295 px-6">
-        <div class="flex flex-col gap-5.5 rounded-3.5 border border-white/8 bg-[radial-gradient(circle_at_100%_0%,rgba(95,208,220,.18),transparent_34%),linear-gradient(135deg,#102033_0%,#0b1522_100%)] px-7 py-8.5 min-[800px]:flex-row min-[800px]:items-center min-[800px]:justify-between min-[800px]:px-11 min-[800px]:py-10">
+        <div class="flex flex-col gap-5.5 rounded-[14px] border border-white/8 bg-[radial-gradient(circle_at_100%_0%,rgba(95,208,220,.18),transparent_34%),linear-gradient(135deg,#102033_0%,#0b1522_100%)] px-7 py-8.5 min-[800px]:flex-row min-[800px]:items-center min-[800px]:justify-between min-[800px]:px-11 min-[800px]:py-10">
           <div>
             <h2 class="mb-2.5 text-[30px] leading-[1.5] font-semibold tracking-normal text-white">{{ $t('advantages.cta.title') }}</h2>
             <p class="max-w-[46ch] text-[16px] leading-[1.7] text-white/[.7]">{{ $t('advantages.cta.subtitle') }}</p>
