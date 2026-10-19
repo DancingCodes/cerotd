@@ -84,7 +84,13 @@
         </label>
         <div class="col-span-full block">
           <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.common.coverUrl') }}</div>
-          <AdminImageUpload v-model="form.coverUrl" folder="news" />
+          <UFileUpload
+            :model-value="coverUploadItem"
+            :accept="imageAccept"
+            :label="uploadingCover ? $t('admin.upload.uploading') : (form.coverUrl ? $t('admin.upload.replace') : $t('admin.upload.button'))"
+            :disabled="uploadingCover"
+            @update:model-value="onCoverUpload"
+          />
         </div>
         <label class="col-span-full block">
           <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.news.summaryEn') }}</div>
@@ -97,13 +103,29 @@
         <div class="col-span-full block">
           <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.news.contentEn') }}</div>
           <ClientOnly>
-            <AdminRichEditor v-model="form.contentEn" folder="news" :hint="$t('admin.news.imageHint')" />
+            <UEditor v-model="form.contentEn" content-type="html" :image="{ inline: false, allowBase64: false }">
+              <template #default="{ editor }">
+                <div class="flex flex-wrap items-center gap-1 border-b border-[#e5eaf0] p-2">
+                  <UEditorToolbar :editor="editor" :items="editorToolbarItems" />
+                  <UButton icon="i-lucide-image-plus" color="neutral" variant="ghost" size="sm" @click="uploadEditorImage(editor)" />
+                </div>
+              </template>
+            </UEditor>
+            <p class="mt-2 text-xs text-gray-500">{{ $t('admin.news.imageHint') }}</p>
           </ClientOnly>
         </div>
         <div class="col-span-full block">
           <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.news.contentZh') }}</div>
           <ClientOnly>
-            <AdminRichEditor v-model="form.contentZh" :hint="$t('admin.news.imageHint')" />
+            <UEditor v-model="form.contentZh" content-type="html" :image="{ inline: false, allowBase64: false }">
+              <template #default="{ editor }">
+                <div class="flex flex-wrap items-center gap-1 border-b border-[#e5eaf0] p-2">
+                  <UEditorToolbar :editor="editor" :items="editorToolbarItems" />
+                  <UButton icon="i-lucide-image-plus" color="neutral" variant="ghost" size="sm" @click="uploadEditorImage(editor)" />
+                </div>
+              </template>
+            </UEditor>
+            <p class="mt-2 text-xs text-gray-500">{{ $t('admin.news.imageHint') }}</p>
           </ClientOnly>
         </div>
       </div>
@@ -230,6 +252,89 @@ const form = reactive({
   publishedAt: '',
   isPublished: false
 })
+
+const imageAccept = 'image/jpeg,image/png,image/webp,image/gif,image/avif'
+const uploadingCover = ref(false)
+const editorToolbarItems = [[
+  { icon: 'i-lucide-bold', kind: 'mark', mark: 'bold' },
+  { icon: 'i-lucide-italic', kind: 'mark', mark: 'italic' },
+  { icon: 'i-lucide-heading-2', kind: 'heading', level: 2 },
+  { icon: 'i-lucide-heading-3', kind: 'heading', level: 3 },
+  { icon: 'i-lucide-list', kind: 'bulletList' },
+  { icon: 'i-lucide-list-ordered', kind: 'orderedList' },
+  { icon: 'i-lucide-remove-formatting', kind: 'clearFormatting' }
+]]
+
+type UploadedImage = {
+  name: string
+  avatar: { src: string }
+}
+
+function uploadedImage(url: string): UploadedImage {
+  return {
+    name: url.split('/').pop() || 'image',
+    avatar: { src: url }
+  }
+}
+
+const coverUploadItem = computed(() => form.coverUrl ? uploadedImage(form.coverUrl) : null)
+
+async function uploadImage(file: File) {
+  const body = new FormData()
+  body.append('file', file)
+  body.append('folder', 'news')
+  const result = await apiFetch<{ url: string }>('/api/upload', {
+    method: 'POST',
+    headers: authHeaders(),
+    body
+  })
+  return result.url
+}
+
+async function onCoverUpload(value: File | UploadedImage | null | undefined) {
+  if (!value) {
+    form.coverUrl = ''
+    return
+  }
+  if (!(value instanceof File)) {
+    form.coverUrl = value.avatar.src
+    return
+  }
+
+  uploadingCover.value = true
+  try {
+    form.coverUrl = await uploadImage(value)
+  } catch (err: any) {
+    toast.add({
+      title: t('admin.upload.failed'),
+      description: err?.msg || t('admin.upload.failed'),
+      color: 'error'
+    })
+  } finally {
+    uploadingCover.value = false
+  }
+}
+
+function uploadEditorImage(editor: any) {
+  const input = document.createElement('input')
+  input.type = 'file'
+  input.accept = imageAccept
+  input.onchange = async () => {
+    const file = input.files?.[0]
+    if (!file) return
+    try {
+      const url = await uploadImage(file)
+      editor.chain().focus().setImage({ src: url }).run()
+    } catch (err: any) {
+      toast.add({
+        title: t('admin.upload.failed'),
+        description: err?.msg || t('admin.upload.failed'),
+        color: 'error'
+      })
+    }
+  }
+  input.click()
+}
 
 function categoryLabel(slug: string) {
   const found = categories.value.find((item) => item.slug === slug)

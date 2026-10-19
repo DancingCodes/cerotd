@@ -101,11 +101,24 @@
         </label>
         <div class="col-span-full block">
           <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.common.coverUrl') }}</div>
-          <AdminImageUpload v-model="form.coverUrl" folder="products" />
+          <UFileUpload
+            :model-value="coverUploadItem"
+            :accept="imageAccept"
+            :label="uploadingCover ? $t('admin.upload.uploading') : (form.coverUrl ? $t('admin.upload.replace') : $t('admin.upload.button'))"
+            :disabled="uploadingCover"
+            @update:model-value="onCoverUpload"
+          />
         </div>
         <div class="col-span-full block">
           <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.products.images') }}</div>
-          <AdminImageListUpload v-model="form.images" folder="products" />
+          <UFileUpload
+            :model-value="imageUploadItems"
+            :accept="imageAccept"
+            :label="uploadingImages ? $t('admin.upload.uploading') : $t('admin.upload.addImage')"
+            multiple
+            :disabled="uploadingImages"
+            @update:model-value="onImageUpload"
+          />
         </div>
         <label class="col-span-full block">
           <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.products.specsEn') }}</div>
@@ -247,6 +260,88 @@ const emptyForm = () => ({
 })
 
 const form = reactive(emptyForm())
+const imageAccept = 'image/jpeg,image/png,image/webp,image/gif,image/avif'
+const uploadingCover = ref(false)
+const uploadingImages = ref(false)
+
+type UploadedImage = {
+  name: string
+  avatar: { src: string }
+}
+
+function uploadedImage(url: string): UploadedImage {
+  return {
+    name: url.split('/').pop() || 'image',
+    avatar: { src: url }
+  }
+}
+
+const coverUploadItem = computed(() => form.coverUrl ? uploadedImage(form.coverUrl) : null)
+const imageUploadItems = computed(() => form.images.map(uploadedImage))
+
+async function uploadImage(file: File) {
+  const body = new FormData()
+  body.append('file', file)
+  body.append('folder', 'products')
+  const result = await apiFetch<{ url: string }>('/api/upload', {
+    method: 'POST',
+    headers: authHeaders(),
+    body
+  })
+  return result.url
+}
+
+async function onCoverUpload(value: File | UploadedImage | null | undefined) {
+  if (!value) {
+    form.coverUrl = ''
+    return
+  }
+  if (!(value instanceof File)) {
+    form.coverUrl = value.avatar.src
+    return
+  }
+
+  uploadingCover.value = true
+  try {
+    form.coverUrl = await uploadImage(value)
+  } catch (err: any) {
+    toast.add({
+      title: t('admin.upload.failed'),
+      description: err?.msg || t('admin.upload.failed'),
+      color: 'error'
+    })
+  } finally {
+    uploadingCover.value = false
+  }
+}
+
+async function onImageUpload(value: Array<File | UploadedImage> | null | undefined) {
+  const entries = value || []
+  const retained = entries
+    .filter((item): item is UploadedImage => !(item instanceof File))
+    .map((item) => item.avatar.src)
+  const newFiles = entries.filter((item): item is File => item instanceof File)
+
+  if (!newFiles.length) {
+    form.images = retained
+    return
+  }
+
+  uploadingImages.value = true
+  try {
+    const uploaded = await Promise.all(newFiles.map(uploadImage))
+    form.images = [...retained, ...uploaded]
+  } catch (err: any) {
+    form.images = retained
+    toast.add({
+      title: t('admin.upload.failed'),
+      description: err?.msg || t('admin.upload.failed'),
+      color: 'error'
+    })
+  } finally {
+    uploadingImages.value = false
+  }
+}
 
 function linesToArray(text: string) {
   return text
