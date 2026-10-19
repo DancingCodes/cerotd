@@ -7,22 +7,22 @@
         </NuxtLink>
 
         <div class="hidden items-center gap-6.5 lg:flex">
-          <NuxtLink v-for="item in navItems" :key="item.to" :to="item.to" class="relative text-3.75 font-medium tracking-[0.01em] text-[#5b6572] no-underline transition-colors hover:text-highlighted [&.router-link-active]:font-semibold [&.router-link-active]:text-[#0f4c56] [&.router-link-active]:after:absolute [&.router-link-active]:after:-bottom-2 [&.router-link-active]:after:left-0 [&.router-link-active]:after:right-0 [&.router-link-active]:after:h-0.5 [&.router-link-active]:after:rounded-full [&.router-link-active]:after:bg-[#0f4c56]">
+          <NuxtLink v-for="item in navItems" :key="item.to" :to="item.to" class="relative text-[15px] leading-[1.5] font-medium tracking-[.01em] text-[#5b6572] no-underline transition-colors hover:text-[#10141a] [&.router-link-active]:font-[650] [&.router-link-active]:text-[#0f4c56] [&.router-link-active]:after:absolute [&.router-link-active]:after:-bottom-2 [&.router-link-active]:after:left-0 [&.router-link-active]:after:right-0 [&.router-link-active]:after:h-0.5 [&.router-link-active]:after:rounded-full [&.router-link-active]:after:bg-[#0f4c56]">
             {{ $t(item.label) }}
           </NuxtLink>
 
-          <NuxtLink to="/contact" class="inline-flex min-h-10 items-center justify-center rounded-full bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] px-4.5 text-sm font-semibold text-white no-underline transition-opacity hover:opacity-90 [&.router-link-active]:ring-2 [&.router-link-active]:ring-[#0f4c56]/20">
+          <NuxtLink to="/contact" class="inline-flex min-h-10 items-center justify-center rounded-full bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] px-[18px] text-[14px] leading-[1.5] font-[650] text-white no-underline transition-opacity hover:opacity-90 [&.router-link-active]:ring-2 [&.router-link-active]:ring-[#0f4c56]/20">
             {{ $t('common.contact') }}
           </NuxtLink>
 
-          <button type="button" class="ml-1 cursor-pointer rounded-full bg-muted px-3.5 py-2 text-3.25 font-semibold text-[#3d4654] transition-colors hover:bg-[#e2e6eb]" @click="toggleLocale">
+          <button type="button" class="ml-1 cursor-pointer rounded-full bg-[#f3f4f6] px-3.5 py-2 text-[13px] leading-[1.5] font-[650] text-[#3d4654] transition-colors hover:bg-[#e2e6eb]" @click="toggleLocale">
             {{ locale === 'en' ? '中文' : 'EN' }}
           </button>
         </div>
 
         <button
           type="button"
-          class="inline-flex h-10.5 w-10.5 cursor-pointer flex-col items-center justify-center gap-1.25 rounded-xl bg-muted lg:hidden"
+          class="inline-flex h-10.5 w-10.5 cursor-pointer flex-col items-center justify-center gap-1.25 rounded-xl bg-[#f3f4f6] lg:hidden"
           :aria-expanded="mobileMenuOpen"
           aria-label="Toggle menu"
           @click="mobileMenuOpen = !mobileMenuOpen"
@@ -38,16 +38,16 @@
           v-for="item in navItems"
           :key="`mobile-${item.to}`"
           :to="item.to"
-          class="border-b border-default py-3 text-base font-medium text-[#7a8490] no-underline"
+          class="border-b border-[#e6e8ec] py-3 text-[16px] leading-[1.5] font-medium text-[#7a8490] no-underline"
           :class="{ 'font-bold text-[#0f4c56]': isNavActive(item.to) }"
           @click="mobileMenuOpen = false"
         >
           {{ $t(item.label) }}
         </NuxtLink>
-        <NuxtLink to="/contact" class="mt-3 inline-flex min-h-11 items-center justify-center rounded-xl bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] text-center font-semibold text-white no-underline" @click="mobileMenuOpen = false">
+        <NuxtLink to="/contact" class="mt-3 inline-flex min-h-11 items-center justify-center rounded-xl bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] text-center text-[16px] leading-[1.5] font-[650] text-white no-underline" @click="mobileMenuOpen = false">
           {{ $t('common.contact') }}
         </NuxtLink>
-        <button type="button" class="mt-2.5 cursor-pointer rounded-xl bg-muted px-4 py-3 text-left font-semibold text-[#3d4654]" @click="toggleLocale">
+        <button type="button" class="mt-2.5 cursor-pointer rounded-xl bg-[#f3f4f6] px-4 py-3 text-left text-[16px] leading-[1.5] font-[650] text-[#3d4654]" @click="toggleLocale">
           {{ locale === 'en' ? '中文' : 'EN' }}
         </button>
       </div>

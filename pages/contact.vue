@@ -1,24 +1,24 @@
 <template>
   <div>
-    <section class="bg-[radial-gradient(circle_at_30%_10%,rgba(95,208,220,.14),transparent_28%),linear-gradient(180deg,var(--ui-color-neutral-950)_0%,var(--ui-color-neutral-900)_100%)] py-18 text-white md:py-22">
-      <UContainer>
+    <section class="bg-[radial-gradient(circle_at_30%_10%,rgba(95,208,220,.14),transparent_28%),linear-gradient(180deg,#070b12_0%,#121821_100%)] py-18 text-white md:py-22">
+      <UContainer class="max-w-295 px-6">
         <h1 class="mb-4.5 text-14 leading-[1.08]">{{ $t('contact.hero.title') }}</h1>
         <p class="max-w-[30ch] text-5 leading-[1.7] text-[#c8ced6]">{{ $t('contact.hero.subtitle') }}</p>
       </UContainer>
     </section>
 
-    <section class="bg-muted py-24 md:py-30">
-      <UContainer class="grid grid-cols-1 gap-6 min-[980px]:grid-cols-[.85fr_1.15fr] min-[980px]:gap-7">
-        <aside class="rounded-3.5 bg-neutral-950 px-7 py-8 text-white">
-          <h2 class="mb-7 text-7">{{ $t('contact.info.title') }}</h2>
+    <section class="bg-[#f3f4f6] py-24 md:py-30">
+      <UContainer class="max-w-295 grid grid-cols-1 gap-6 px-6 min-[980px]:grid-cols-[.85fr_1.15fr] min-[980px]:gap-7">
+        <aside class="rounded-[14px] bg-[#070b12] px-7 py-8 text-white">
+          <h2 class="mb-7 text-[28px] leading-[1.5] tracking-normal">{{ $t('contact.info.title') }}</h2>
           <ul class="grid gap-5.5">
             <li>
-              <p class="mb-1.5 text-3.25 font-semibold tracking-[.04em] text-[#9aa3af] uppercase">{{ $t('contact.info.addressLabel') }}</p>
-              <p class="text-base leading-[1.6] text-white">{{ $t('contact.info.addressValue') }}</p>
+              <p class="mb-1.5 text-[13px] leading-[1.5] font-semibold tracking-[.04em] text-[#9aa3af] uppercase">{{ $t('contact.info.addressLabel') }}</p>
+              <p class="text-[16px] leading-[1.6] text-white">{{ $t('contact.info.addressValue') }}</p>
             </li>
             <li>
-              <p class="mb-1.5 text-3.25 font-semibold tracking-[.04em] text-[#9aa3af] uppercase">{{ $t('contact.info.phoneLabel') }}</p>
-              <p class="text-base leading-[1.6] text-white">{{ $t('contact.info.phoneValue') }}</p>
+              <p class="mb-1.5 text-[13px] leading-[1.5] font-semibold tracking-[.04em] text-[#9aa3af] uppercase">{{ $t('contact.info.phoneLabel') }}</p>
+              <p class="text-[16px] leading-[1.6] text-white">{{ $t('contact.info.phoneValue') }}</p>
             </li>
             <li>
               <p class="mb-1.5 text-3.25 font-semibold tracking-[.04em] text-[#9aa3af] uppercase">{{ $t('contact.info.whatsappLabel') }}</p>
@@ -56,13 +56,13 @@
           </div>
         </aside>
 
-        <div class="rounded-3.5 border border-default bg-white px-7 py-8 shadow-[0_10px_30px_rgba(15,23,42,.08)]">
-          <h2 class="mb-4 text-7 text-gray-900">{{ $t('contact.form.title') }}</h2>
-          <p class="mb-6 rounded-2.5 border border-[#1aa6b8]/20 bg-[#1aa6b8]/8 px-4 py-3.5 text-sm leading-[1.7] text-[#0f4c56]">{{ $t('contact.form.notice') }}</p>
+        <div class="rounded-[14px] border border-[#e6e8ec] bg-white px-7 py-8 shadow-[0_10px_30px_rgba(15,23,42,.08)]">
+          <h2 class="mb-4 text-[28px] leading-[1.5] tracking-normal text-[#111827]">{{ $t('contact.form.title') }}</h2>
+          <p class="mb-6 rounded-[10px] border border-[#1aa6b8]/[.18] bg-[#1aa6b8]/[.08] px-4 py-3.5 text-[14px] leading-[1.7] text-[#0f4c56]">{{ $t('contact.form.notice') }}</p>
           <form class="grid grid-cols-1 gap-4 min-[720px]:grid-cols-2" @submit.prevent="onSubmit">
             <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
-              <span class="text-3.25 font-semibold text-gray-700 after:text-[#b42318] after:content-['_*']">{{ $t('contact.form.name') }}</span>
-              <input v-model="form.name" class="w-full rounded-3.5 border border-[#e2e6eb] bg-muted px-4 py-3.5 text-gray-900 outline-none transition focus:border-[#1aa6b8]/55 focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" type="text" name="name" autocomplete="name" required :placeholder="$t('contact.form.name')" />
+              <span class="text-[13px] leading-[1.5] font-semibold text-[#374151] after:text-[#b42318] after:content-['_*']">{{ $t('contact.form.name') }}</span>
+              <input v-model="form.name" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" type="text" name="name" autocomplete="name" required :placeholder="$t('contact.form.name')" />
             </label>
             <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
               <span class="text-3.25 font-semibold text-gray-700">{{ $t('contact.form.company') }}</span>
