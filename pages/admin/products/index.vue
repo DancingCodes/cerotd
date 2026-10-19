@@ -99,7 +99,7 @@
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.products.descriptionZh') }}</div>
           <textarea v-model="form.descriptionZh" class="w-full resize-y rounded-xl border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="4" />
         </label>
-        <div class="col-span-full block">
+        <div class="col-span-full">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.coverUrl') }}</div>
           <UFileUpload
             :model-value="coverUploadItem"
@@ -109,7 +109,7 @@
             @update:model-value="onCoverUpload"
           />
         </div>
-        <div class="col-span-full block">
+        <div class="col-span-full">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.products.images') }}</div>
           <UFileUpload
             :model-value="imageUploadItems"
@@ -172,8 +172,8 @@
           <div>{{ item.isPublished ? $t('admin.common.published') : $t('admin.common.draft') }}</div>
           <div class="flex flex-wrap gap-3">
             <NuxtLink :to="`/products/${item.slug}`" class="cursor-pointer font-semibold text-[#0e7f8f] no-underline" target="_blank">{{ $t('admin.common.view') }}</NuxtLink>
-            <div class="cursor-pointer font-semibold text-[#0e7f8f] no-underline" @click="startEdit(item)">{{ $t('admin.common.edit') }}</div>
-            <div class="cursor-pointer font-semibold text-[#b42318] no-underline" @click="remove(item)">{{ $t('admin.common.delete') }}</div>
+            <div class="cursor-pointer font-semibold text-[#0e7f8f]" @click="startEdit(item)">{{ $t('admin.common.edit') }}</div>
+            <div class="cursor-pointer font-semibold text-[#b42318]" @click="remove(item)">{{ $t('admin.common.delete') }}</div>
           </div>
         </div>
       </div>
