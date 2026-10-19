@@ -9,7 +9,7 @@
 - 类型：谷歌独立站（海外 B2B 获客）+ 轻量后台 CMS
 - 公司：Cerotd（山东润滑技术）
 - 目标：面向海外分销商 / 工业采购方，靠 Google 自然搜索拿询盘
-- 技术栈：Nuxt 4、Vue 3、TypeScript、Sass、Cloudflare Workers / D1 / R2
+- 技术栈：Nuxt 4、Vue 3、TypeScript、Tailwind CSS 4、Nuxt UI、Cloudflare Workers / D1 / R2
 - 语言：`en`（默认，SEO 主语言）、`zh`（辅助）
 - 当前部署域名：`moonc.love`
 - 原网站地址：https://www.cerotd.com/
@@ -25,7 +25,8 @@
 ## 目录说明
 
 - `pages/` — 前台页面与 `/admin/**` 后台页
-- `components/` — 通用组件；后台编辑器在 `components/admin/`
+- `components/` — 通用组件（`Header`、`Footer`、`BackToTop`）；后台直接使用 Nuxt UI 组件
+- `assets/css/main.css` — Tailwind CSS 与 Nuxt UI 的全局样式入口
 - `composables/` — `useAdminAuth`、`useLocalized`、`usePageSeo`
 - `server/api/` — Nitro API 路由
 - `server/utils/` — DB / R2 / admin / site 工具
@@ -41,6 +42,8 @@
 - 新增用户可见文案时，同时更新 `i18n/locales/en.json` 和 `i18n/locales/zh.json`。
 - 英文文案优先服务 Google 搜索与询盘转化，中文保持同步即可。
 - 优先沿用附近文件已有写法，不要随意引入新抽象。
+- 样式使用 Tailwind utility 与 Nuxt UI；不要新增 Sass / SCSS 或重建已删除的手写后台基础组件。
+- 对照旧版视觉时，明确还原其字号、颜色、边框、圆角、尺寸和断点；优先使用 Tailwind 的规范等价类。
 - 未经明确要求，不要提交代码、创建分支或部署。
 - 未经明确要求，不要修改 `.dev.vars`、密钥或 Cloudflare binding ID。
 
@@ -49,10 +52,11 @@
 - 前台：首页、产品、新闻、关于我们、服务、优势、联系
 - 核心转化路径：产品详情 / 联系页 → 询盘表单 → `inquiries`
 - 后台：ADMIN_API_TOKEN 登录；管理产品、新闻、询盘、上传
-- 产品分类已写死在 shared/product-categories.ts，前后端共用；后台不可新增/删除
+- 产品分类已写死在 `shared/product-categories.ts`，前后端共用；产品后台不可新增/删除产品分类。新闻分类由后台管理。
 - 内容字段通常是双语结构（`*_en` / `*_zh`）
 - 媒体上传到 R2，并通过 `/cdn/...` 访问
 - D1 通过 Cloudflare `DB` binding 访问；媒体通过 R2 `MEDIA` binding，经 `/cdn/*` 提供
+- 本地开发的 D1 / R2 binding 使用本地资源（`wrangler.toml` 的 `remote = false`）；本地数据与线上环境独立。
 - SEO 基建：`usePageSeo`、`/sitemap.xml`、`/robots.txt`（后台已 disallow）
 
 ## SEO / 独立站规则
