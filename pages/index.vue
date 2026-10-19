@@ -5,7 +5,7 @@
         <img class="size-full scale-[1.04] object-cover object-[center_40%] saturate-[.78] contrast-[1.05]" src="/images/hero-bg.webp" alt="" fetchpriority="high" decoding="async" />
       </div>
       <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,11,18,.88)_0%,rgba(7,11,18,.72)_42%,rgba(7,11,18,.34)_100%),linear-gradient(180deg,rgba(7,11,18,.28)_0%,rgba(7,11,18,.78)_100%)]" aria-hidden="true"></div>
-      <div v-motion-slide-visible-once-bottom class="container relative z-10 max-w-[820px]">
+      <div class="container relative z-10 max-w-[820px]">
         <p class="mb-5 text-xs font-semibold tracking-[.16em] text-[var(--color-metal)] uppercase">{{ $t('home.badge') }}</p>
         <h1 class="mb-[18px] max-w-[18ch] text-[64px] leading-[1.06] font-semibold max-md:max-w-none max-md:text-[42px]">{{ $t('home.hero.title') }}</h1>
         <p class="mb-7 max-w-[44ch] text-lg leading-[1.7] text-white/80 max-md:text-base">{{ $t('home.hero.subtitle') }}</p>
@@ -30,7 +30,7 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="bg-[var(--color-surface)] py-24 md:py-28">
+    <section class="bg-[var(--color-surface)] py-24 md:py-28">
       <div class="container">
         <div class="grid grid-cols-1 items-start gap-7 min-[960px]:grid-cols-[.95fr_1.05fr] min-[960px]:gap-12">
           <div>
@@ -55,7 +55,7 @@
     </section>
 
 
-    <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-28">
+    <section class="bg-white py-24 md:py-28">
       <div class="container">
         <div class="max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t("home.facility.title") }}</h2>
@@ -144,7 +144,7 @@
       </div>
     </div>
 
-    <section v-motion-slide-visible-once-bottom class="bg-[var(--color-ink)] py-24 md:py-28">
+    <section class="bg-[var(--color-ink)] py-24 md:py-28">
       <div class="container">
         <div class="mb-10 max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-white max-md:text-[32px]">{{ $t('home.exportServices.title') }}</h2>
@@ -165,7 +165,7 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-28">
+    <section class="bg-white py-24 md:py-28">
       <div class="container">
         <div class="mb-10 max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('home.lines.title') }}</h2>
@@ -188,7 +188,7 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-28">
+    <section class="bg-white py-24 md:py-28">
       <div class="container">
         <div class="mb-10 max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('home.advantages.title') }}</h2>
@@ -219,7 +219,7 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="bg-[var(--color-surface)] py-24 md:py-28">
+    <section class="bg-[var(--color-surface)] py-24 md:py-28">
       <div class="container">
         <div class="mb-10 max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('home.partners.title') }}</h2>
@@ -241,7 +241,7 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="bg-[var(--color-surface)] pb-24 md:pb-28">
+    <section class="bg-[var(--color-surface)] pb-24 md:pb-28">
       <div class="container">
         <div class="flex flex-col gap-6 rounded-xl border border-white/[.06] bg-[var(--color-ink)] px-7 py-10 text-white min-[800px]:flex-row min-[800px]:items-center min-[800px]:justify-between min-[800px]:px-10 min-[800px]:py-12">
           <div>

@@ -1,7 +1,7 @@
 <template>
   <div v-if="article">
     <section class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-16 text-white md:py-[72px]">
-      <div v-motion-slide-visible-once-bottom class="container">
+      <div class="container">
         <NuxtLink to="/news" class="mb-[18px] inline-block text-sm font-semibold text-[#c8ced6] no-underline">{{ $t('news.backToList') }}</NuxtLink>
         <div class="mb-3.5 flex gap-3.5 text-[13px] font-semibold tracking-[.04em] text-[#b7c0cb] uppercase">
           <span>{{ categoryLabel(article.category) }}</span>
@@ -12,7 +12,7 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="bg-white py-[72px] pb-24">
+    <section class="bg-white py-[72px] pb-24">
       <div class="container max-w-[820px]">
         <img
           v-if="article.coverUrl"

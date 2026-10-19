@@ -1,13 +1,13 @@
 <template>
   <div>
     <section class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-[72px] text-white md:py-[88px]">
-      <div v-motion-slide-visible-once-bottom class="container">
+      <div class="container">
         <h1 class="mb-[18px] text-4xl leading-[1.08] md:text-[56px]">{{ $t('news.hero.title') }}</h1>
         <p class="max-w-[36ch] text-lg leading-[1.7] text-[#c8ced6] md:text-xl">{{ $t('news.hero.subtitle') }}</p>
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="bg-[var(--color-surface)] py-24 md:py-[120px]">
+    <section class="bg-[var(--color-surface)] py-24 md:py-[120px]">
       <div class="container">
         <div class="mb-9 max-w-[720px]">
           <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('news.listTitle') }}</h2>

@@ -1,13 +1,13 @@
 <template>
   <div>
     <section class="bg-[radial-gradient(circle_at_70%_20%,rgba(139,154,171,.14),transparent_28%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-[72px] text-white md:py-[88px]">
-      <div v-motion-slide-visible-once-bottom class="container">
+      <div class="container">
         <h1 class="mb-[18px] text-4xl leading-[1.08] md:text-[56px]">{{ $t('advantages.hero.title') }}</h1>
         <p class="max-w-[34ch] text-lg leading-[1.7] text-[#c8ced6] md:text-xl">{{ $t('advantages.hero.subtitle') }}</p>
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-[120px]">
+    <section class="bg-white py-24 md:py-[120px]">
       <div class="container">
         <div class="mb-12">
           <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('advantages.outcomes.title') }}</h2>
@@ -22,7 +22,7 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="bg-[var(--color-surface)] py-24 md:py-[120px]">
+    <section class="bg-[var(--color-surface)] py-24 md:py-[120px]">
       <div class="container">
         <div class="mb-12 max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('advantages.compare.title') }}</h2>
@@ -37,7 +37,7 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-[120px]">
+    <section class="bg-white py-24 md:py-[120px]">
       <div class="container">
         <div class="mb-12 max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('advantages.pillars.title') }}</h2>
@@ -53,7 +53,7 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="bg-[var(--color-ink)] py-24 md:py-[120px]">
+    <section class="bg-[var(--color-ink)] py-24 md:py-[120px]">
       <div class="container">
         <div class="mb-12 max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-white max-md:text-[32px]">{{ $t('advantages.assurance.title') }}</h2>
@@ -69,7 +69,7 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="bg-white pt-7 pb-24 md:pt-5 md:pb-[120px]">
+    <section class="bg-white pt-7 pb-24 md:pt-5 md:pb-[120px]">
       <div class="container">
         <div class="flex flex-col gap-[22px] rounded-[14px] border border-white/[.08] bg-[radial-gradient(circle_at_100%_0%,rgba(95,208,220,.18),transparent_34%),linear-gradient(135deg,#102033_0%,#0b1522_100%)] px-7 py-[34px] min-[800px]:flex-row min-[800px]:items-center min-[800px]:justify-between min-[800px]:px-11 min-[800px]:py-10">
           <div>

@@ -1,14 +1,14 @@
 <template>
   <div v-if="product" class="pb-[calc(70px+env(safe-area-inset-bottom))] md:pb-0">
     <section class="bg-[radial-gradient(circle_at_20%_20%,rgba(95,208,220,.16),transparent_28%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-[72px] text-white md:py-[88px]">
-      <div v-motion-slide-visible-once-bottom class="container">
+      <div class="container">
         <NuxtLink to="/products" class="mb-6 inline-flex text-sm font-semibold text-[#5fd0dc] no-underline">{{ $t('products.backToList') }}</NuxtLink>
         <h1 class="mb-[18px] text-4xl leading-[1.1] md:text-5xl">{{ t(product.name) }}</h1>
         <p class="max-w-[40ch] text-lg leading-[1.7] text-[#c8ced6]">{{ t(product.summary) }}</p>
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-[120px]">
+    <section class="bg-white py-24 md:py-[120px]">
       <div class="container grid grid-cols-1 gap-6 min-[960px]:grid-cols-[1.2fr_.8fr] min-[960px]:gap-8">
         <div class="min-w-0">
           <div class="mb-6">
@@ -55,7 +55,7 @@
       </div>
     </section>
 
-    <section v-if="relatedProducts.length" v-motion-slide-visible-once-bottom class="bg-[var(--color-surface)] py-24 md:py-[120px]">
+    <section v-if="relatedProducts.length" class="bg-[var(--color-surface)] py-24 md:py-[120px]">
       <div class="container">
         <h2 class="mb-6 text-[28px] text-gray-900">{{ $t('products.relatedTitle') }}</h2>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-3">

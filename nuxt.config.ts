@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
   compatibilityDate: '2026-09-23',
-  modules: ['@nuxt/ui', '@nuxtjs/i18n', '@vueuse/motion/nuxt', 'nitro-cloudflare-dev'],
+  modules: ['@nuxt/ui', '@nuxtjs/i18n', 'nitro-cloudflare-dev'],
   runtimeConfig: {
     adminApiToken: '',
     public: {

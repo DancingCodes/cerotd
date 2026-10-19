@@ -1,13 +1,13 @@
 <template>
   <div>
     <section class="bg-[radial-gradient(circle_at_15%_20%,rgba(95,208,220,.16),transparent_30%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-[72px] text-white md:py-[88px]">
-      <div v-motion-slide-visible-once-bottom class="container">
+      <div class="container">
         <h1 class="mb-[18px] max-w-[12ch] text-4xl leading-[1.08] md:text-[56px]">{{ $t('about.hero.title') }}</h1>
         <p class="max-w-[28ch] text-lg leading-[1.7] text-[#c8ced6] md:text-xl">{{ $t('about.hero.subtitle') }}</p>
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-[120px]">
+    <section class="bg-white py-24 md:py-[120px]">
       <div class="container grid grid-cols-1 gap-8 md:gap-10">
         <div class="min-w-0 overflow-hidden rounded-[14px] bg-[#0d1524]">
           <video
@@ -30,7 +30,7 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="bg-[var(--color-surface)] py-24 md:py-[120px]">
+    <section class="bg-[var(--color-surface)] py-24 md:py-[120px]">
       <div class="container">
         <div class="mb-12">
           <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('about.values.title') }}</h2>
@@ -44,7 +44,7 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-[120px]">
+    <section class="bg-white py-24 md:py-[120px]">
       <div class="container">
         <div class="mb-12 max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('about.stats.title') }}</h2>
@@ -58,7 +58,7 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="bg-[var(--color-surface)] py-24 md:py-[120px]">
+    <section class="bg-[var(--color-surface)] py-24 md:py-[120px]">
       <div class="container">
         <div class="mb-12 max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('about.trust.title') }}</h2>
@@ -73,7 +73,7 @@
       </div>
     </section>
 
-    <section id="certificates" v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-[120px]">
+    <section id="certificates" class="bg-white py-24 md:py-[120px]">
       <div class="container">
         <div class="mb-12 max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('about.certificates.title') }}</h2>
