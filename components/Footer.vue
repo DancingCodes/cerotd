@@ -1,22 +1,22 @@
 <template>
-  <footer class="bg-[var(--color-ink)] py-[72px] pb-9 text-white">
-    <div class="mx-auto w-full max-w-[1180px] px-6">
+  <footer class="bg-neutral-950 py-18 pb-9 text-white">
+    <div class="mx-auto w-full max-w-295 px-6">
       <div class="mb-10 grid grid-cols-1 gap-9 md:grid-cols-2 lg:grid-cols-[1.35fr_repeat(3,minmax(0,1fr))]">
         <div>
           <div class="mb-4">
-            <img src="/images/logo.webp" alt="Cerotd" class="h-[34px] w-auto" loading="lazy" decoding="async" />
+            <img src="/images/logo.webp" alt="Cerotd" class="h-8.5 w-auto" loading="lazy" decoding="async" />
           </div>
-          <p class="max-w-[280px] text-sm leading-[1.7] text-white/60">{{ $t('footer.tagline') }}</p>
-          <div class="mt-[18px] flex flex-wrap gap-2.5">
-            <a class="inline-flex items-center rounded-full bg-white/[.06] px-3 py-2 text-[13px] text-white/70 transition-colors hover:bg-white/[.12] hover:text-white" href="https://www.facebook.com/profile.php?id=61575320303094&sk=reels_tab" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a class="inline-flex items-center rounded-full bg-white/[.06] px-3 py-2 text-[13px] text-white/70 transition-colors hover:bg-white/[.12] hover:text-white" href="https://www.instagram.com/hanxiansheng889/reels/" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a class="inline-flex items-center rounded-full bg-white/[.06] px-3 py-2 text-[13px] text-white/70 transition-colors hover:bg-white/[.12] hover:text-white" href="https://wa.me/8615263792384" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            <a class="inline-flex items-center rounded-full bg-white/[.06] px-3 py-2 text-[13px] text-white/70 transition-colors hover:bg-white/[.12] hover:text-white" href="https://t.me/cerotdshand" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <p class="max-w-70 text-sm leading-[1.7] text-white/60">{{ $t('footer.tagline') }}</p>
+          <div class="mt-4.5 flex flex-wrap gap-2.5">
+            <a class="inline-flex items-center rounded-full bg-white/6 px-3 py-2 text-[13px] text-white/70 transition-colors hover:bg-white/12 hover:text-white" href="https://www.facebook.com/profile.php?id=61575320303094&sk=reels_tab" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a class="inline-flex items-center rounded-full bg-white/6 px-3 py-2 text-[13px] text-white/70 transition-colors hover:bg-white/12 hover:text-white" href="https://www.instagram.com/hanxiansheng889/reels/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="inline-flex items-center rounded-full bg-white/6 px-3 py-2 text-[13px] text-white/70 transition-colors hover:bg-white/12 hover:text-white" href="https://wa.me/8615263792384" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a class="inline-flex items-center rounded-full bg-white/6 px-3 py-2 text-[13px] text-white/70 transition-colors hover:bg-white/12 hover:text-white" href="https://t.me/cerotdshand" target="_blank" rel="noopener noreferrer">Telegram</a>
           </div>
         </div>
 
         <div>
-          <h2 class="mb-[18px] text-[13px] font-semibold tracking-[.06em] text-white uppercase">{{ $t('footer.trustTitle') }}</h2>
+          <h2 class="mb-4.5 text-[13px] font-semibold tracking-[.06em] text-white uppercase">{{ $t('footer.trustTitle') }}</h2>
           <ul class="flex flex-col gap-2.5">
             <li v-for="n in 4" :key="n" class="text-sm text-white/60">{{ $t(`footer.trustItems.item${n}`) }}</li>
             <li class="text-sm text-white/60">
@@ -26,7 +26,7 @@
         </div>
 
 <div>
-          <h2 class="mb-[18px] text-[13px] font-semibold tracking-[.06em] text-white uppercase">{{ $t('footer.companyTitle') }}</h2>
+          <h2 class="mb-4.5 text-[13px] font-semibold tracking-[.06em] text-white uppercase">{{ $t('footer.companyTitle') }}</h2>
           <ul class="flex flex-col gap-2.5">
             <li class="text-sm text-white/60">
               <NuxtLink to="/about" class="text-white/60 transition-colors hover:text-white">{{ $t('footer.aboutUs') }}</NuxtLink>
@@ -47,7 +47,7 @@
         </div>
 
         <div>
-          <h2 class="mb-[18px] text-[13px] font-semibold tracking-[.06em] text-white uppercase">{{ $t('footer.contactTitle') }}</h2>
+          <h2 class="mb-4.5 text-[13px] font-semibold tracking-[.06em] text-white uppercase">{{ $t('footer.contactTitle') }}</h2>
           <ul class="flex flex-col gap-2.5">
             <li class="text-sm text-white/60">{{ $t('footer.location') }}</li>
             <li class="text-sm text-white/60">{{ $t('footer.phone') }}</li>
@@ -59,7 +59,7 @@
         </div>
       </div>
 
-      <div class="border-t border-white/[.08] pt-6">
+      <div class="border-t border-white/8 pt-6">
         <p class="text-center text-[13px] text-gray-500">&copy; {{ year }} {{ $t('footer.copyright') }}</p>
         <a v-if="locale === 'zh'" class="mt-2 block text-center text-[13px] text-gray-500 transition-colors hover:text-white/40" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">鲁ICP备2026051999号-1</a>
       </div>

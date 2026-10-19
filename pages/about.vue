@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="bg-[radial-gradient(circle_at_15%_20%,rgba(95,208,220,.16),transparent_30%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-[72px] text-white md:py-[88px]">
+    <section class="bg-[radial-gradient(circle_at_15%_20%,rgba(95,208,220,.16),transparent_30%),linear-gradient(180deg,var(--ui-color-neutral-950)_0%,var(--ui-color-neutral-900)_100%)] py-[72px] text-white md:py-[88px]">
       <UContainer>
         <h1 class="mb-[18px] max-w-[12ch] text-4xl leading-[1.08] md:text-[56px]">{{ $t('about.hero.title') }}</h1>
         <p class="max-w-[28ch] text-lg leading-[1.7] text-[#c8ced6] md:text-xl">{{ $t('about.hero.subtitle') }}</p>
@@ -30,13 +30,13 @@
       </UContainer>
     </section>
 
-    <section class="bg-[var(--color-surface)] py-24 md:py-[120px]">
+    <section class="bg-[var(--ui-bg-muted)] py-24 md:py-[120px]">
       <UContainer>
         <div class="mb-12">
           <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('about.values.title') }}</h2>
         </div>
         <div class="grid grid-cols-1 gap-[18px] min-[900px]:grid-cols-3">
-          <article v-for="item in values" :key="item.name" class="rounded-[14px] border border-[var(--color-line)] bg-white p-7 shadow-[0_10px_30px_rgba(15,23,42,.08)] transition hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(15,23,42,.12)]">
+          <article v-for="item in values" :key="item.name" class="rounded-[14px] border border-[var(--ui-border)] bg-white p-7 shadow-[0_10px_30px_rgba(15,23,42,.08)] transition hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(15,23,42,.12)]">
             <h3 class="mb-3 text-[22px] text-gray-900">{{ item.name }}</h3>
             <p class="text-[15px] leading-[1.7] text-gray-600">{{ item.desc }}</p>
           </article>
@@ -47,10 +47,10 @@
     <section class="bg-white py-24 md:py-[120px]">
       <UContainer>
         <div class="mb-12 max-w-[620px]">
-          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('about.stats.title') }}</h2>
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--ui-text-highlighted)] max-md:text-[32px]">{{ $t('about.stats.title') }}</h2>
         </div>
         <div class="grid grid-cols-2 gap-3 min-[900px]:grid-cols-4 min-[900px]:gap-[18px]">
-          <div v-for="n in 4" :key="n" class="min-w-0 rounded-xl border border-[#e8edf2] bg-[var(--color-surface)] px-3.5 py-5 transition hover:-translate-y-[3px] hover:bg-[#eef2f6] min-[900px]:px-6 min-[900px]:py-7">
+          <div v-for="n in 4" :key="n" class="min-w-0 rounded-xl border border-[#e8edf2] bg-[var(--ui-bg-muted)] px-3.5 py-5 transition hover:-translate-y-[3px] hover:bg-[#eef2f6] min-[900px]:px-6 min-[900px]:py-7">
             <p class="mb-2.5 break-words text-[26px] leading-[1.15] font-bold text-[#0f4c56] min-[900px]:text-4xl min-[900px]:leading-none">{{ $t(`about.stats.item${n}.value`) }}</p>
             <p class="text-[13px] leading-[1.5] text-gray-600 min-[900px]:text-[15px]">{{ $t(`about.stats.item${n}.label`) }}</p>
           </div>
@@ -58,10 +58,10 @@
       </UContainer>
     </section>
 
-    <section class="bg-[var(--color-surface)] py-24 md:py-[120px]">
+    <section class="bg-[var(--ui-bg-muted)] py-24 md:py-[120px]">
       <UContainer>
         <div class="mb-12 max-w-[620px]">
-          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('about.trust.title') }}</h2>
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--ui-text-highlighted)] max-md:text-[32px]">{{ $t('about.trust.title') }}</h2>
           <p class="max-w-[52ch] text-[17px] leading-[1.7] text-gray-600">{{ $t('about.trust.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-2 gap-3.5 min-[900px]:grid-cols-3 min-[900px]:gap-4">
@@ -76,15 +76,15 @@
     <section id="certificates" class="bg-white py-24 md:py-[120px]">
       <UContainer>
         <div class="mb-12 max-w-[620px]">
-          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('about.certificates.title') }}</h2>
-          <p class="text-[17px] leading-[1.7] text-[var(--color-muted)]">{{ $t('about.certificates.subtitle') }}</p>
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--ui-text-highlighted)] max-md:text-[32px]">{{ $t('about.certificates.title') }}</h2>
+          <p class="text-[17px] leading-[1.7] text-[var(--ui-text-muted)]">{{ $t('about.certificates.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-2 gap-3.5 md:grid-cols-3 md:gap-4 min-[1100px]:grid-cols-4">
           <button
             v-for="(item, index) in certificateItems"
             :key="item.src"
             type="button"
-            class="block w-full cursor-pointer rounded-xl border border-[#e8edf2] bg-[var(--color-surface)] p-3.5 transition hover:-translate-y-[3px] hover:border-[#cfd8e3] hover:shadow-[0_12px_28px_rgba(15,23,42,.08)]"
+            class="block w-full cursor-pointer rounded-xl border border-[#e8edf2] bg-[var(--ui-bg-muted)] p-3.5 transition hover:-translate-y-[3px] hover:border-[#cfd8e3] hover:shadow-[0_12px_28px_rgba(15,23,42,.08)]"
             @click="openCertificate(index)"
           >
             <img

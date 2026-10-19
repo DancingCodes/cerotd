@@ -1,6 +1,6 @@
 <template>
   <div v-if="product" class="pb-[calc(70px+env(safe-area-inset-bottom))] md:pb-0">
-    <section class="bg-[radial-gradient(circle_at_20%_20%,rgba(95,208,220,.16),transparent_28%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-[72px] text-white md:py-[88px]">
+    <section class="bg-[radial-gradient(circle_at_20%_20%,rgba(95,208,220,.16),transparent_28%),linear-gradient(180deg,var(--ui-color-neutral-950)_0%,var(--ui-color-neutral-900)_100%)] py-[72px] text-white md:py-[88px]">
       <UContainer>
         <NuxtLink to="/products" class="mb-6 inline-flex text-sm font-semibold text-[#5fd0dc] no-underline">{{ $t('products.backToList') }}</NuxtLink>
         <h1 class="mb-[18px] text-4xl leading-[1.1] md:text-5xl">{{ t(product.name) }}</h1>
@@ -30,7 +30,7 @@
                 :key="img"
                 type="button"
                 class="aspect-square cursor-pointer overflow-hidden rounded-xl border border-[#e8edf2] bg-[#f3f5f7]"
-                :class="{ 'border-[var(--color-accent)]': index === activeIndex }"
+                :class="{ 'border-[var(--ui-primary)]': index === activeIndex }"
                 @click="activeIndex = index"
               >
                 <img class="block size-full object-contain" :src="img" :alt="t(product.name)" loading="lazy" decoding="async" />
@@ -41,10 +41,10 @@
         </div>
 
         <aside class="min-w-0">
-          <div class="rounded-xl bg-[var(--color-ink)] p-7 text-white">
+          <div class="rounded-xl bg-[var(--ui-color-neutral-950)] p-7 text-white">
             <h2 class="mb-5 text-[22px]">{{ $t('products.specsTitle') }}</h2>
             <ul class="mb-6 grid gap-3">
-              <li v-if="product.category" class="rounded-[10px] bg-white/[.05] px-4 py-3.5 text-sm leading-[1.6] text-[#c8ced6]">{{ t(product.category.name) }}</li>
+              <li v-if="product.category" class="rounded-[10px] bg-white/5 px-4 py-3.5 text-sm leading-[1.6] text-[#c8ced6]">{{ t(product.category.name) }}</li>
               <li v-for="(spec, index) in localizedSpecs" :key="`${spec}-${index}`" class="specs-item">
                 {{ spec }}
               </li>
@@ -55,7 +55,7 @@
       </UContainer>
     </section>
 
-    <section v-if="relatedProducts.length" class="bg-[var(--color-surface)] py-24 md:py-[120px]">
+    <section v-if="relatedProducts.length" class="bg-[var(--ui-bg-muted)] py-24 md:py-[120px]">
       <UContainer>
         <h2 class="mb-6 text-[28px] text-gray-900">{{ $t('products.relatedTitle') }}</h2>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-3">

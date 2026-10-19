@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-[72px] text-white md:py-[88px]">
+    <section class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,var(--ui-color-neutral-950)_0%,var(--ui-color-neutral-900)_100%)] py-[72px] text-white md:py-[88px]">
       <UContainer>
         <h1 class="mb-[18px] text-4xl leading-[1.08] md:text-[56px]">{{ $t('products.hero.title') }}</h1>
         <p class="max-w-[34ch] text-lg leading-[1.7] text-[#c8ced6] md:text-xl">{{ $t('products.hero.subtitle') }}</p>
@@ -62,7 +62,7 @@
               <div class="p-6">
                 <h3 class="mb-2.5 text-xl text-gray-900">{{ t(item.name) }}</h3>
                 <p class="mb-4 text-sm leading-[1.7] text-gray-600">{{ t(item.summary) }}</p>
-                <span class="text-sm font-semibold text-[var(--color-accent)]">{{ $t('common.learnMore') }}</span>
+                <span class="text-sm font-semibold text-[var(--ui-primary)]">{{ $t('common.learnMore') }}</span>
               </div>
             </NuxtLink>
           </div>

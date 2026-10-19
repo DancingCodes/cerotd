@@ -1,6 +1,6 @@
 <template>
   <div v-if="article">
-    <section class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-16 text-white md:py-[72px]">
+    <section class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,var(--ui-color-neutral-950)_0%,var(--ui-color-neutral-900)_100%)] py-16 text-white md:py-[72px]">
       <UContainer>
         <NuxtLink to="/news" class="mb-[18px] inline-block text-sm font-semibold text-[#c8ced6] no-underline">{{ $t('news.backToList') }}</NuxtLink>
         <div class="mb-3.5 flex gap-3.5 text-[13px] font-semibold tracking-[.04em] text-[#b7c0cb] uppercase">
@@ -23,9 +23,9 @@
           decoding="async"
           loading="eager"
         />
-        <article ref="articleBody" class="text-[17px] leading-[1.8] text-gray-800 [&_a]:text-[var(--color-accent)] [&_h2]:my-7 [&_h2]:mb-3 [&_h2]:text-gray-900 [&_h3]:my-7 [&_h3]:mb-3 [&_h3]:text-gray-900 [&_img]:my-6 [&_img]:block [&_img]:h-auto [&_img]:w-full [&_img]:rounded-[10px] [&_li]:mb-2 [&_ol]:mb-[18px] [&_ol]:list-decimal [&_ol]:pl-[22px] [&_p]:mb-[18px] [&_ul]:mb-[18px] [&_ul]:list-disc [&_ul]:pl-[22px]" v-html="t(article.content)"></article>
+        <article ref="articleBody" class="text-[17px] leading-[1.8] text-gray-800 [&_a]:text-[var(--ui-primary)] [&_h2]:my-7 [&_h2]:mb-3 [&_h2]:text-gray-900 [&_h3]:my-7 [&_h3]:mb-3 [&_h3]:text-gray-900 [&_img]:my-6 [&_img]:block [&_img]:h-auto [&_img]:w-full [&_img]:rounded-[10px] [&_li]:mb-2 [&_ol]:mb-[18px] [&_ol]:list-decimal [&_ol]:pl-[22px] [&_p]:mb-[18px] [&_ul]:mb-[18px] [&_ul]:list-disc [&_ul]:pl-[22px]" v-html="t(article.content)"></article>
         <div class="mt-9">
-          <NuxtLink to="/contact" class="inline-flex min-h-[46px] items-center justify-center rounded-full bg-[var(--color-ink)] px-5 text-sm font-semibold text-white no-underline">{{ $t('news.detailCta') }}</NuxtLink>
+          <NuxtLink to="/contact" class="inline-flex min-h-[46px] items-center justify-center rounded-full bg-[var(--ui-color-neutral-950)] px-5 text-sm font-semibold text-white no-underline">{{ $t('news.detailCta') }}</NuxtLink>
         </div>
       </UContainer>
     </section>
