@@ -29,7 +29,7 @@
         </div>
         <div class="grid grid-cols-1 gap-4.5 min-[900px]:grid-cols-2">
           <article v-for="(item, index) in list" :key="item.name" class="rounded-xl border border-default bg-muted p-7 transition hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(15,23,42,.1)]">
-            <p class="mb-6 text-3.25 font-bold tracking-[.08em] text-[var(--ui-primary)]">0{{ index + 1 }}</p>
+            <p class="mb-6 text-3.25 font-bold tracking-[.08em] text-primary">0{{ index + 1 }}</p>
             <h3 class="mb-3 text-2xl text-gray-900">{{ item.name }}</h3>
             <p class="text-3.75 leading-[1.7] text-gray-600">{{ item.desc }}</p>
           </article>
@@ -37,7 +37,7 @@
       </UContainer>
     </section>
 
-    <section class="bg-[var(--ui-color-neutral-950)] py-24 md:py-30">
+    <section class="bg-neutral-950 py-24 md:py-30">
       <UContainer>
         <div class="mb-12">
           <h2 class="mb-3.5 text-3xl text-white md:text-4xl">{{ $t('services.process.title') }}</h2>
@@ -52,7 +52,7 @@
             </div>
             <span
               v-if="index < processSteps.length - 1"
-              class="absolute top-9.5 -right-3.5 hidden h-0.5 w-7 bg-gradient-to-r from-[#5fd0dc]/15 to-[#5fd0dc]/75 after:absolute after:-right-px after:top-1/2 after:size-1.5 after:-translate-y-1/2 after:rounded-full after:bg-[#5fd0dc] min-[960px]:block"
+              class="absolute top-9.5 -right-3.5 hidden h-0.5 w-7 bg-linear-to-r from-[#5fd0dc]/15 to-[#5fd0dc]/75 after:absolute after:-right-px after:top-1/2 after:size-1.5 after:-translate-y-1/2 after:rounded-full after:bg-[#5fd0dc] min-[960px]:block"
               aria-hidden="true"
             ></span>
           </li>
@@ -68,7 +68,7 @@
         </div>
         <ol class="flex flex-col gap-3">
           <li v-for="(item, index) in checklist" :key="index" class="grid grid-cols-[42px_1fr] items-start gap-3.5 rounded-xl border border-default bg-muted px-5 py-4.5">
-            <span class="pt-0.5 text-3.25 font-bold tracking-[.08em] text-[var(--ui-primary)]">0{{ index + 1 }}</span>
+            <span class="pt-0.5 text-3.25 font-bold tracking-[.08em] text-primary">0{{ index + 1 }}</span>
             <p class="text-3.75 leading-[1.7] text-gray-800">{{ item }}</p>
           </li>
         </ol>

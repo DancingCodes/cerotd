@@ -1,16 +1,16 @@
 <template>
   <div>
-    <section class="relative flex min-h-[78vh] items-center overflow-hidden bg-[var(--ui-color-neutral-950)] py-24 pt-30 text-white max-md:min-h-[86vh] max-md:py-22 max-md:pt-27.5">
+    <section class="relative flex min-h-[78vh] items-center overflow-hidden bg-neutral-950 py-24 pt-30 text-white max-md:min-h-[86vh] max-md:py-22 max-md:pt-27.5">
       <div class="absolute inset-0" aria-hidden="true">
         <img class="size-full scale-[1.04] object-cover object-[center_40%] saturate-[.78] contrast-[1.05]" src="/images/hero-bg.webp" alt="" fetchpriority="high" decoding="async" />
       </div>
       <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,11,18,.88)_0%,rgba(7,11,18,.72)_42%,rgba(7,11,18,.34)_100%),linear-gradient(180deg,rgba(7,11,18,.28)_0%,rgba(7,11,18,.78)_100%)]" aria-hidden="true"></div>
       <UContainer class="relative z-10 max-w-205">
-        <p class="mb-5 text-xs font-semibold tracking-[.16em] text-[var(--ui-text-dimmed)] uppercase">{{ $t('home.badge') }}</p>
+        <p class="mb-5 text-xs font-semibold tracking-[.16em] text-dimmed uppercase">{{ $t('home.badge') }}</p>
         <h1 class="mb-4.5 max-w-[18ch] text-16 leading-[1.06] font-semibold max-md:max-w-none max-md:text-10.5">{{ $t('home.hero.title') }}</h1>
         <p class="mb-7 max-w-[44ch] text-lg leading-[1.7] text-white/80 max-md:text-base">{{ $t('home.hero.subtitle') }}</p>
         <div class="mb-7 flex flex-wrap gap-3">
-          <NuxtLink to="/products" class="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-5.5 text-sm font-semibold tracking-[.01em] text-[var(--ui-color-neutral-950)] no-underline transition hover:bg-[#e8eef3]">{{ $t('home.hero.ctaPrimary') }}</NuxtLink>
+          <NuxtLink to="/products" class="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-5.5 text-sm font-semibold tracking-[.01em] text-neutral-950 no-underline transition hover:bg-[#e8eef3]">{{ $t('home.hero.ctaPrimary') }}</NuxtLink>
           <NuxtLink to="/contact" class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/30 bg-transparent px-5.5 text-sm font-semibold tracking-[.01em] text-white no-underline transition hover:border-white/60 hover:bg-white/4">{{ $t('home.hero.ctaSecondary') }}</NuxtLink>
         </div>
         <ul class="flex flex-wrap gap-2.5">
@@ -24,8 +24,8 @@
     <section class="border-b border-default bg-white" aria-label="Company stats">
       <UContainer class="grid grid-cols-2 min-[900px]:grid-cols-4 [&>div]:py-7 [&>div:nth-child(odd)]:border-r [&>div:nth-child(odd)]:border-default [&>div:nth-child(odd)]:pr-6 [&>div:nth-child(even)]:pl-6 [&>div:nth-child(-n+2)]:border-b [&>div:nth-child(-n+2)]:border-default min-[900px]:[&>div]:border-b-0 min-[900px]:[&>div]:border-r min-[900px]:[&>div]:border-default min-[900px]:[&>div]:py-8.5 min-[900px]:[&>div]:pr-6 min-[900px]:[&>div:not(:first-child)]:pl-6 min-[900px]:[&>div:last-child]:border-r-0">
         <div v-for="n in 4" :key="n">
-          <p class="mb-1.5 text-7 font-semibold text-[var(--ui-text-highlighted)]">{{ $t(`home.stats.item${n}.value`) }}</p>
-          <p class="text-3.25 font-medium tracking-[.02em] text-[var(--ui-text-muted)]">{{ $t(`home.stats.item${n}.label`) }}</p>
+          <p class="mb-1.5 text-7 font-semibold text-highlighted">{{ $t(`home.stats.item${n}.value`) }}</p>
+          <p class="text-3.25 font-medium tracking-[.02em] text-muted">{{ $t(`home.stats.item${n}.label`) }}</p>
         </div>
       </UContainer>
     </section>
@@ -34,19 +34,19 @@
       <UContainer>
         <div class="grid grid-cols-1 items-start gap-7 min-[960px]:grid-cols-[.95fr_1.05fr] min-[960px]:gap-12">
           <div>
-            <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[var(--ui-text-highlighted)] max-md:text-8">{{ $t('home.lab.title') }}</h2>
-            <p class="text-4.25 leading-[1.7] text-[var(--ui-text-muted)]">{{ $t('home.lab.subtitle') }}</p>
+            <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-highlighted max-md:text-8">{{ $t('home.lab.title') }}</h2>
+            <p class="text-4.25 leading-[1.7] text-muted">{{ $t('home.lab.subtitle') }}</p>
             <ul class="my-7 flex flex-col gap-3.5">
               <li v-for="n in 3" :key="n" class="border-t border-default pt-3.5 text-base leading-[1.7] text-[#3d4654]">{{ $t(`home.lab.point${n}`) }}</li>
             </ul>
-            <NuxtLink to="/about" class="text-sm font-semibold tracking-[.02em] text-[var(--ui-primary)] no-underline">{{ $t('home.lab.link') }}</NuxtLink>
+            <NuxtLink to="/about" class="text-sm font-semibold tracking-[.02em] text-primary no-underline">{{ $t('home.lab.link') }}</NuxtLink>
           </div>
           <div class="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
             <article v-for="(item, index) in labItems" :key="item.name" class="grid min-h-full grid-cols-[42px_1fr] gap-3.5 rounded-xl border border-default bg-white px-5 py-5.5">
-              <p class="text-3.25 font-semibold tracking-[.08em] text-[var(--ui-text-dimmed)]">0{{ index + 1 }}</p>
+              <p class="text-3.25 font-semibold tracking-[.08em] text-dimmed">0{{ index + 1 }}</p>
               <div>
-                <h3 class="mb-2 text-lg font-semibold text-[var(--ui-text-highlighted)]">{{ item.name }}</h3>
-                <p class="text-3.75 leading-[1.7] text-[var(--ui-text-muted)]">{{ item.desc }}</p>
+                <h3 class="mb-2 text-lg font-semibold text-highlighted">{{ item.name }}</h3>
+                <p class="text-3.75 leading-[1.7] text-muted">{{ item.desc }}</p>
               </div>
             </article>
           </div>
@@ -58,8 +58,8 @@
     <section class="bg-white py-24 md:py-28">
       <UContainer>
         <div class="max-w-155">
-          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[var(--ui-text-highlighted)] max-md:text-8">{{ $t("home.facility.title") }}</h2>
-          <p class="text-4.25 leading-[1.7] text-[var(--ui-text-muted)]">{{ $t("home.facility.subtitle") }}</p>
+          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-highlighted max-md:text-8">{{ $t("home.facility.title") }}</h2>
+          <p class="text-4.25 leading-[1.7] text-muted">{{ $t("home.facility.subtitle") }}</p>
         </div>
         <div class="my-6 mt-8 flex flex-wrap gap-2.5" role="tablist">
           <button
@@ -85,24 +85,24 @@
             @click="openFacility(index)"
           >
             <img
-              class="block aspect-[4/3] w-full object-cover saturate-[.82] contrast-[1.04]"
+              class="block aspect-4/3 w-full object-cover saturate-[.82] contrast-[1.04]"
               :src="item.src"
               :alt="item.caption"
               loading="lazy"
               decoding="async"
             />
-            <p class="px-3.5 py-3 pb-3.5 text-3.25 font-semibold leading-[1.5] text-[#3d4654]">{{ item.caption }}</p>
+            <p class="px-3.5 py-3 pb-3.5 text-3.25 font-semibold leading-normal text-[#3d4654]">{{ item.caption }}</p>
           </button>
         </div>
         <div class="mt-7">
-          <NuxtLink to="/about" class="text-sm font-semibold tracking-[.02em] text-[var(--ui-primary)] no-underline">{{ $t("home.facility.cta") }}</NuxtLink>
+          <NuxtLink to="/about" class="text-sm font-semibold tracking-[.02em] text-primary no-underline">{{ $t("home.facility.cta") }}</NuxtLink>
         </div>
       </UContainer>
     </section>
 
     <div
       v-if="facilityPreviewOpen && facilityPreviewImage"
-      class="fixed inset-0 z-[80] flex items-center justify-center bg-gradient-to-b from-[#070b12]/70 to-[#070b12]/90 p-6 backdrop-blur-2.5 max-md:p-4"
+      class="fixed inset-0 z-80 flex items-center justify-center bg-linear-to-b from-[#070b12]/70 to-[#070b12]/90 p-6 backdrop-blur-2.5 max-md:p-4"
       role="dialog"
       aria-modal="true"
       :aria-label="facilityPreviewImage.caption"
@@ -119,7 +119,7 @@
         </button>
         <button
           type="button"
-          class="absolute left-[-8px] top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white max-md:left-3.5"
+          class="absolute -left-2 top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white max-md:left-3.5"
           :aria-label="$t('common.prev')"
           @click="prevFacility"
         >
@@ -132,10 +132,10 @@
           loading="eager"
           decoding="async"
         />
-        <p class="absolute -bottom-8.5 left-12 right-12 text-center text-3.25 leading-[1.5] text-white/80 max-md:-bottom-7.5 max-md:left-2 max-md:right-2">{{ facilityPreviewImage.caption }}</p>
+        <p class="absolute -bottom-8.5 left-12 right-12 text-center text-3.25 leading-normal text-white/80 max-md:-bottom-7.5 max-md:left-2 max-md:right-2">{{ facilityPreviewImage.caption }}</p>
         <button
           type="button"
-          class="absolute right-[-8px] top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white max-md:right-3.5"
+          class="absolute -right-2 top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white max-md:right-3.5"
           :aria-label="$t('common.next')"
           @click="nextFacility"
         >
@@ -144,7 +144,7 @@
       </div>
     </div>
 
-    <section class="bg-[var(--ui-color-neutral-950)] py-24 md:py-28">
+    <section class="bg-neutral-950 py-24 md:py-28">
       <UContainer>
         <div class="mb-10 max-w-155">
           <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-white max-md:text-8">{{ $t('home.exportServices.title') }}</h2>
@@ -168,8 +168,8 @@
     <section class="bg-white py-24 md:py-28">
       <UContainer>
         <div class="mb-10 max-w-155">
-          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[var(--ui-text-highlighted)] max-md:text-8">{{ $t('home.lines.title') }}</h2>
-          <p class="text-4.25 leading-[1.7] text-[var(--ui-text-muted)]">{{ $t('home.lines.subtitle') }}</p>
+          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-highlighted max-md:text-8">{{ $t('home.lines.title') }}</h2>
+          <p class="text-4.25 leading-[1.7] text-muted">{{ $t('home.lines.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-1 gap-3.5 md:grid-cols-2 min-[1100px]:grid-cols-3">
           <NuxtLink
@@ -183,7 +183,7 @@
           </NuxtLink>
         </div>
         <div class="mt-7">
-          <NuxtLink to="/products" class="text-sm font-semibold tracking-[.02em] text-[var(--ui-primary)] no-underline">{{ $t('common.viewProducts') }}</NuxtLink>
+          <NuxtLink to="/products" class="text-sm font-semibold tracking-[.02em] text-primary no-underline">{{ $t('common.viewProducts') }}</NuxtLink>
         </div>
       </UContainer>
     </section>
@@ -191,8 +191,8 @@
     <section class="bg-white py-24 md:py-28">
       <UContainer>
         <div class="mb-10 max-w-155">
-          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[var(--ui-text-highlighted)] max-md:text-8">{{ $t('home.advantages.title') }}</h2>
-          <p class="text-4.25 leading-[1.7] text-[var(--ui-text-muted)]">{{ $t('home.advantages.subtitle') }}</p>
+          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-highlighted max-md:text-8">{{ $t('home.advantages.title') }}</h2>
+          <p class="text-4.25 leading-[1.7] text-muted">{{ $t('home.advantages.subtitle') }}</p>
         </div>
         <div class="mt-10 grid grid-cols-1 gap-4.5 md:grid-cols-2">
           <article v-for="(item, index) in advantages" :key="item.name" class="overflow-hidden rounded-xl border border-default bg-muted">
@@ -208,13 +208,13 @@
               <div v-else class="flex min-h-40 size-full items-center justify-center bg-[linear-gradient(135deg,rgba(139,154,171,.12),transparent_42%),#121a28] text-xs font-semibold tracking-[.08em] text-[#8b95a5] uppercase">{{ $t('common.mediaBlank') }}</div>
             </div>
             <div class="p-5.5">
-              <h3 class="mb-2 text-5.5 font-semibold text-[var(--ui-text-highlighted)]">{{ item.name }}</h3>
-              <p class="text-3.75 leading-[1.7] text-[var(--ui-text-muted)]">{{ item.desc }}</p>
+              <h3 class="mb-2 text-5.5 font-semibold text-highlighted">{{ item.name }}</h3>
+              <p class="text-3.75 leading-[1.7] text-muted">{{ item.desc }}</p>
             </div>
           </article>
         </div>
         <div class="mt-7">
-          <NuxtLink to="/advantages" class="text-sm font-semibold tracking-[.02em] text-[var(--ui-primary)] no-underline">{{ $t('home.advantages.link') }}</NuxtLink>
+          <NuxtLink to="/advantages" class="text-sm font-semibold tracking-[.02em] text-primary no-underline">{{ $t('home.advantages.link') }}</NuxtLink>
         </div>
       </UContainer>
     </section>
@@ -222,8 +222,8 @@
     <section class="bg-muted py-24 md:py-28">
       <UContainer>
         <div class="mb-10 max-w-155">
-          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[var(--ui-text-highlighted)] max-md:text-8">{{ $t('home.partners.title') }}</h2>
-          <p class="text-4.25 leading-[1.7] text-[var(--ui-text-muted)]">{{ $t('home.partners.subtitle') }}</p>
+          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-highlighted max-md:text-8">{{ $t('home.partners.title') }}</h2>
+          <p class="text-4.25 leading-[1.7] text-muted">{{ $t('home.partners.subtitle') }}</p>
         </div>
         <div class="mt-10 grid grid-cols-2 gap-3.5 md:grid-cols-4">
           <a
@@ -243,12 +243,12 @@
 
     <section class="bg-muted pb-24 md:pb-28">
       <UContainer>
-        <div class="flex flex-col gap-6 rounded-xl border border-white/6 bg-[var(--ui-color-neutral-950)] px-7 py-10 text-white min-[800px]:flex-row min-[800px]:items-center min-[800px]:justify-between min-[800px]:px-10 min-[800px]:py-12">
+        <div class="flex flex-col gap-6 rounded-xl border border-white/6 bg-neutral-950 px-7 py-10 text-white min-[800px]:flex-row min-[800px]:items-center min-[800px]:justify-between min-[800px]:px-10 min-[800px]:py-12">
           <div>
             <h2 class="mb-2.5 text-8 font-semibold">{{ $t('home.cta.title') }}</h2>
             <p class="max-w-140 text-base leading-[1.7] text-white/60">{{ $t('home.cta.subtitle') }}</p>
           </div>
-          <NuxtLink to="/contact" class="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-5.5 text-sm font-semibold tracking-[.01em] text-[var(--ui-color-neutral-950)] no-underline transition hover:bg-[#e8eef3]">{{ $t('home.cta.button') }}</NuxtLink>
+          <NuxtLink to="/contact" class="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-5.5 text-sm font-semibold tracking-[.01em] text-neutral-950 no-underline transition hover:bg-[#e8eef3]">{{ $t('home.cta.button') }}</NuxtLink>
         </div>
       </UContainer>
     </section>

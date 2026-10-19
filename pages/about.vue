@@ -47,12 +47,12 @@
     <section class="bg-white py-24 md:py-30">
       <UContainer>
         <div class="mb-12 max-w-155">
-          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[var(--ui-text-highlighted)] max-md:text-8">{{ $t('about.stats.title') }}</h2>
+          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-highlighted max-md:text-8">{{ $t('about.stats.title') }}</h2>
         </div>
         <div class="grid grid-cols-2 gap-3 min-[900px]:grid-cols-4 min-[900px]:gap-4.5">
           <div v-for="n in 4" :key="n" class="min-w-0 rounded-xl border border-[#e8edf2] bg-muted px-3.5 py-5 transition hover:-translate-y-0.75 hover:bg-[#eef2f6] min-[900px]:px-6 min-[900px]:py-7">
-            <p class="mb-2.5 break-words text-6.5 leading-[1.15] font-bold text-[#0f4c56] min-[900px]:text-4xl min-[900px]:leading-none">{{ $t(`about.stats.item${n}.value`) }}</p>
-            <p class="text-3.25 leading-[1.5] text-gray-600 min-[900px]:text-3.75">{{ $t(`about.stats.item${n}.label`) }}</p>
+            <p class="mb-2.5 wrap-break-word text-6.5 leading-[1.15] font-bold text-[#0f4c56] min-[900px]:text-4xl min-[900px]:leading-none">{{ $t(`about.stats.item${n}.value`) }}</p>
+            <p class="text-3.25 leading-normal text-gray-600 min-[900px]:text-3.75">{{ $t(`about.stats.item${n}.label`) }}</p>
           </div>
         </div>
       </UContainer>
@@ -61,7 +61,7 @@
     <section class="bg-muted py-24 md:py-30">
       <UContainer>
         <div class="mb-12 max-w-155">
-          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[var(--ui-text-highlighted)] max-md:text-8">{{ $t('about.trust.title') }}</h2>
+          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-highlighted max-md:text-8">{{ $t('about.trust.title') }}</h2>
           <p class="max-w-[52ch] text-4.25 leading-[1.7] text-gray-600">{{ $t('about.trust.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-2 gap-3.5 min-[900px]:grid-cols-3 min-[900px]:gap-4">
@@ -76,8 +76,8 @@
     <section id="certificates" class="bg-white py-24 md:py-30">
       <UContainer>
         <div class="mb-12 max-w-155">
-          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[var(--ui-text-highlighted)] max-md:text-8">{{ $t('about.certificates.title') }}</h2>
-          <p class="text-4.25 leading-[1.7] text-[var(--ui-text-muted)]">{{ $t('about.certificates.subtitle') }}</p>
+          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-highlighted max-md:text-8">{{ $t('about.certificates.title') }}</h2>
+          <p class="text-4.25 leading-[1.7] text-muted">{{ $t('about.certificates.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-2 gap-3.5 md:grid-cols-3 md:gap-4 min-[1100px]:grid-cols-4">
           <button
@@ -88,7 +88,7 @@
             @click="openCertificate(index)"
           >
             <img
-              class="block aspect-[3/4] w-full rounded-xl bg-white object-contain"
+              class="block aspect-3/4 w-full rounded-xl bg-white object-contain"
               :src="item.src"
               :alt="item.alt"
               loading="lazy"
@@ -101,7 +101,7 @@
 
     <div
       v-if="certificatePreviewOpen && certificatePreviewItem"
-      class="fixed inset-0 z-[80] flex items-center justify-center bg-gradient-to-b from-[#070b12]/70 to-[#070b12]/90 p-6 backdrop-blur-2.5"
+      class="fixed inset-0 z-80 flex items-center justify-center bg-linear-to-b from-[#070b12]/70 to-[#070b12]/90 p-6 backdrop-blur-2.5"
       @click.self="closeCertificate"
     >
       <div class="relative flex w-full max-w-240 items-center justify-center">
@@ -115,7 +115,7 @@
         </button>
         <button
           type="button"
-          class="absolute left-[-8px] top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white"
+          class="absolute -left-2 top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white"
           :aria-label="$t('common.prev')"
           @click="prevCertificate"
         >
@@ -130,7 +130,7 @@
         />
         <button
           type="button"
-          class="absolute right-[-8px] top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white"
+          class="absolute -right-2 top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white"
           :aria-label="$t('common.next')"
           @click="nextCertificate"
         >

@@ -30,7 +30,7 @@
                 :key="img"
                 type="button"
                 class="aspect-square cursor-pointer overflow-hidden rounded-xl border border-[#e8edf2] bg-[#f3f5f7]"
-                :class="{ 'border-[var(--ui-primary)]': index === activeIndex }"
+                :class="{ 'border-primary': index === activeIndex }"
                 @click="activeIndex = index"
               >
                 <img class="block size-full object-contain" :src="img" :alt="t(product.name)" loading="lazy" decoding="async" />
@@ -41,7 +41,7 @@
         </div>
 
         <aside class="min-w-0">
-          <div class="rounded-xl bg-[var(--ui-color-neutral-950)] p-7 text-white">
+          <div class="rounded-xl bg-neutral-950 p-7 text-white">
             <h2 class="mb-5 text-5.5">{{ $t('products.specsTitle') }}</h2>
             <ul class="mb-6 grid gap-3">
               <li v-if="product.category" class="rounded-2.5 bg-white/5 px-4 py-3.5 text-sm leading-[1.6] text-[#c8ced6]">{{ t(product.category.name) }}</li>
@@ -49,7 +49,7 @@
                 {{ spec }}
               </li>
             </ul>
-            <NuxtLink to="/contact" class="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-br from-[#0f9aa8] to-[#3dd6e0] px-6 text-sm font-semibold text-white no-underline">{{ $t('products.detailCta') }}</NuxtLink>
+            <NuxtLink to="/contact" class="inline-flex min-h-12 items-center justify-center rounded-full bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] px-6 text-sm font-semibold text-white no-underline">{{ $t('products.detailCta') }}</NuxtLink>
           </div>
         </aside>
       </UContainer>
@@ -74,13 +74,13 @@
 
     <NuxtLink to="/contact" class="fixed inset-x-0 bottom-0 z-40 flex min-h-14.5 items-center justify-center border-t border-slate-900/10 bg-white/95 px-5 pt-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] text-3.75 font-bold text-[#0f4c56] no-underline backdrop-blur md:hidden">{{ $t('products.detailCta') }}</NuxtLink>
 
-    <div v-if="previewOpen" class="fixed inset-0 z-[80] flex items-center justify-center bg-gradient-to-b from-[#070b12]/70 to-[#070b12]/90 p-6 backdrop-blur-2.5" @click.self="closePreview">
+    <div v-if="previewOpen" class="fixed inset-0 z-80 flex items-center justify-center bg-linear-to-b from-[#070b12]/70 to-[#070b12]/90 p-6 backdrop-blur-2.5" @click.self="closePreview">
       <div class="relative flex w-full max-w-240 items-center justify-center">
         <button type="button" class="absolute -top-10 right-0 z-20 cursor-pointer text-8 leading-none text-white" aria-label="Close preview" @click="closePreview">×</button>
         <button
           v-if="product.images.length > 1"
           type="button"
-          class="absolute left-[-8px] top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white"
+          class="absolute -left-2 top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white"
           aria-label="Previous image"
           @click="prevImage"
         >
@@ -90,7 +90,7 @@
         <button
           v-if="product.images.length > 1"
           type="button"
-          class="absolute right-[-8px] top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white"
+          class="absolute -right-2 top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white"
           aria-label="Next image"
           @click="nextImage"
         >

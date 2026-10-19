@@ -69,7 +69,7 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-1 gap-2 text-3.25 text-gray-700 md:grid-cols-2 [&>div]:break-words [&_span]:mr-2 [&_span]:inline-block [&_span]:min-w-18 [&_span]:font-semibold [&_span]:text-gray-500">
+          <div class="grid grid-cols-1 gap-2 text-3.25 text-gray-700 md:grid-cols-2 [&>div]:wrap-break-word [&_span]:mr-2 [&_span]:inline-block [&_span]:min-w-18 [&_span]:font-semibold [&_span]:text-gray-500">
             <div><span>{{ $t('admin.inquiries.email') }}</span>{{ item.email || '-' }}</div>
             <div><span>{{ $t('admin.inquiries.phone') }}</span>{{ item.phone || '-' }}</div>
             <div><span>{{ $t('admin.inquiries.country') }}</span>{{ item.country || '-' }}</div>
@@ -77,12 +77,12 @@
           </div>
 
           <div v-if="openId === item.id" class="mt-3.5 border-t border-[#eef1f4] pt-3.5">
-            <div class="mb-2 break-words text-3.25 text-gray-700 [&_span]:mr-2 [&_span]:inline-block [&_span]:min-w-18 [&_span]:font-semibold [&_span]:text-gray-500"><span>{{ $t('admin.inquiries.im') }}</span>{{ item.im || '-' }}</div>
-            <div class="mb-2 break-words text-3.25 text-gray-700 [&_span]:mr-2 [&_span]:inline-block [&_span]:min-w-18 [&_span]:font-semibold [&_span]:text-gray-500"><span>{{ $t('admin.inquiries.bulk') }}</span>{{ formatBulk(item.bulkIntent) }}</div>
-            <div class="mb-2 break-words text-3.25 text-gray-700 [&_span]:mr-2 [&_span]:inline-block [&_span]:min-w-18 [&_span]:font-semibold [&_span]:text-gray-500"><span>{{ $t('admin.inquiries.locale') }}</span>{{ item.locale }}</div>
+            <div class="mb-2 wrap-break-word text-3.25 text-gray-700 [&_span]:mr-2 [&_span]:inline-block [&_span]:min-w-18 [&_span]:font-semibold [&_span]:text-gray-500"><span>{{ $t('admin.inquiries.im') }}</span>{{ item.im || '-' }}</div>
+            <div class="mb-2 wrap-break-word text-3.25 text-gray-700 [&_span]:mr-2 [&_span]:inline-block [&_span]:min-w-18 [&_span]:font-semibold [&_span]:text-gray-500"><span>{{ $t('admin.inquiries.bulk') }}</span>{{ formatBulk(item.bulkIntent) }}</div>
+            <div class="mb-2 wrap-break-word text-3.25 text-gray-700 [&_span]:mr-2 [&_span]:inline-block [&_span]:min-w-18 [&_span]:font-semibold [&_span]:text-gray-500"><span>{{ $t('admin.inquiries.locale') }}</span>{{ item.locale }}</div>
             <div class="mt-3 rounded-xl border border-[#e5eaf0] bg-white p-3">
               <div class="mb-1.5 text-xs font-bold tracking-[.04em] text-gray-500 uppercase">{{ $t('admin.inquiries.message') }}</div>
-              <p class="break-words text-sm leading-[1.7] whitespace-pre-wrap text-gray-900">{{ item.message || $t('admin.inquiries.noMessage') }}</p>
+              <p class="wrap-break-word text-sm leading-[1.7] whitespace-pre-wrap text-gray-900">{{ item.message || $t('admin.inquiries.noMessage') }}</p>
             </div>
           </div>
         </article>

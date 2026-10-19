@@ -23,9 +23,9 @@
           decoding="async"
           loading="eager"
         />
-        <article ref="articleBody" class="text-4.25 leading-[1.8] text-gray-800 [&_a]:text-[var(--ui-primary)] [&_h2]:my-7 [&_h2]:mb-3 [&_h2]:text-gray-900 [&_h3]:my-7 [&_h3]:mb-3 [&_h3]:text-gray-900 [&_img]:my-6 [&_img]:block [&_img]:h-auto [&_img]:w-full [&_img]:rounded-2.5 [&_li]:mb-2 [&_ol]:mb-4.5 [&_ol]:list-decimal [&_ol]:pl-5.5 [&_p]:mb-4.5 [&_ul]:mb-4.5 [&_ul]:list-disc [&_ul]:pl-5.5" v-html="t(article.content)"></article>
+        <article ref="articleBody" class="text-4.25 leading-[1.8] text-gray-800 [&_a]:text-primary [&_h2]:my-7 [&_h2]:mb-3 [&_h2]:text-gray-900 [&_h3]:my-7 [&_h3]:mb-3 [&_h3]:text-gray-900 [&_img]:my-6 [&_img]:block [&_img]:h-auto [&_img]:w-full [&_img]:rounded-2.5 [&_li]:mb-2 [&_ol]:mb-4.5 [&_ol]:list-decimal [&_ol]:pl-5.5 [&_p]:mb-4.5 [&_ul]:mb-4.5 [&_ul]:list-disc [&_ul]:pl-5.5" v-html="t(article.content)"></article>
         <div class="mt-9">
-          <NuxtLink to="/contact" class="inline-flex min-h-11.5 items-center justify-center rounded-full bg-[var(--ui-color-neutral-950)] px-5 text-sm font-semibold text-white no-underline">{{ $t('news.detailCta') }}</NuxtLink>
+          <NuxtLink to="/contact" class="inline-flex min-h-11.5 items-center justify-center rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white no-underline">{{ $t('news.detailCta') }}</NuxtLink>
         </div>
       </UContainer>
     </section>

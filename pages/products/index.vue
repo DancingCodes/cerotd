@@ -49,7 +49,7 @@
               :to="`/products/${item.slug}`"
               class="overflow-hidden rounded-xl border border-[#e8edf2] bg-white no-underline transition-colors hover:border-[#cfd8e3]"
             >
-              <div class="aspect-[4/3] overflow-hidden bg-[#f3f5f7]">
+              <div class="aspect-4/3 overflow-hidden bg-[#f3f5f7]">
                 <img
                   class="block size-full bg-[#f3f5f7] object-contain"
                   :class="{ 'object-cover saturate-[.8] contrast-[1.05]': !(item.coverUrl || item.images[0]) }"
@@ -62,14 +62,14 @@
               <div class="p-6">
                 <h3 class="mb-2.5 text-xl text-gray-900">{{ t(item.name) }}</h3>
                 <p class="mb-4 text-sm leading-[1.7] text-gray-600">{{ t(item.summary) }}</p>
-                <span class="text-sm font-semibold text-[var(--ui-primary)]">{{ $t('common.learnMore') }}</span>
+                <span class="text-sm font-semibold text-primary">{{ $t('common.learnMore') }}</span>
               </div>
             </NuxtLink>
           </div>
           <div v-if="hasMore" class="mt-8 flex justify-center">
             <button
               type="button"
-              class="min-h-11 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-5.5 text-sm font-semibold text-[#0f4c56] transition hover:border-[#3f7f88]/45 hover:bg-[#3f7f88]/[.08] disabled:cursor-wait disabled:opacity-65"
+              class="min-h-11 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-5.5 text-sm font-semibold text-[#0f4c56] transition hover:border-[#3f7f88]/45 hover:bg-[#3f7f88]/8 disabled:cursor-wait disabled:opacity-65"
               :disabled="loadingMore"
               @click="loadMore"
             >
