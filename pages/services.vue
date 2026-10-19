@@ -2,12 +2,12 @@
   <div>
     <section class="bg-[radial-gradient(circle_at_20%_0%,rgba(95,208,220,.14),transparent_28%),linear-gradient(180deg,#070b12_0%,#121821_100%)] py-18 text-white md:py-22">
       <UContainer class="max-w-295 px-6">
-        <h1 class="mb-4.5 text-14 leading-[1.08]">{{ $t('services.hero.title') }}</h1>
-        <p class="max-w-[30ch] text-5 leading-[1.7] text-[#c8ced6]">{{ $t('services.hero.subtitle') }}</p>
+        <h1 class="mb-[18px] text-[56px] leading-[1.08] tracking-normal">{{ $t('services.hero.title') }}</h1>
+        <p class="max-w-[30ch] text-[20px] leading-[1.7] text-[#c8ced6]">{{ $t('services.hero.subtitle') }}</p>
       </UContainer>
     </section>
 
-    <section class="bg-muted py-24 md:py-30">
+    <section class="bg-[#f3f4f6] py-24 md:py-30">
       <UContainer class="max-w-295 px-6">
         <div class="mb-12">
           <h2 class="mb-3.5 text-[36px] leading-[1.5] tracking-normal text-[#111827]">{{ $t('services.audience.title') }}</h2>
@@ -46,7 +46,7 @@
         <ol class="grid grid-cols-1 gap-3.5 min-[960px]:grid-cols-4 min-[960px]:gap-4.5">
           <li v-for="(item, index) in processSteps" :key="item.step" class="relative flex flex-col">
             <div class="h-full rounded-xl border border-white/10 bg-white/4 px-5.5 py-6.5 transition hover:-translate-y-0.75 hover:bg-white/7">
-              <p class="mb-7 text-3.25 font-bold tracking-[.08em] text-[#5fd0dc]">{{ item.step }}</p>
+              <p class="mb-7 text-[13px] leading-[1.5] font-bold tracking-[.08em] text-[#5fd0dc]">{{ item.step }}</p>
               <h3 class="mb-2.5 text-[22px] leading-[1.5] tracking-normal text-white">{{ item.name }}</h3>
               <p class="text-[14px] leading-[1.7] text-[#9aa3af]">{{ item.desc }}</p>
             </div>

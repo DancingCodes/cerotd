@@ -2,8 +2,8 @@
   <div>
     <section class="bg-[radial-gradient(circle_at_70%_20%,rgba(139,154,171,.14),transparent_28%),linear-gradient(180deg,#070b12_0%,#121821_100%)] py-18 text-white md:py-22">
       <UContainer class="max-w-295 px-6">
-        <h1 class="mb-4.5 text-14 leading-[1.08]">{{ $t('advantages.hero.title') }}</h1>
-        <p class="max-w-[34ch] text-5 leading-[1.7] text-[#c8ced6]">{{ $t('advantages.hero.subtitle') }}</p>
+        <h1 class="mb-[18px] text-[56px] leading-[1.08] tracking-normal">{{ $t('advantages.hero.title') }}</h1>
+        <p class="max-w-[34ch] text-[20px] leading-[1.7] text-[#c8ced6]">{{ $t('advantages.hero.subtitle') }}</p>
       </UContainer>
     </section>
 
@@ -61,7 +61,7 @@
         </div>
         <div class="grid grid-cols-1 gap-3.5 min-[900px]:grid-cols-2">
           <article v-for="(item, index) in assurance" :key="item.name" class="rounded-xl border border-white/10 bg-white/4 px-5.5 py-6.5">
-            <p class="mb-5.5 text-3.25 font-bold tracking-[.08em] text-[#5fd0dc]">0{{ index + 1 }}</p>
+            <p class="mb-5.5 text-[13px] leading-[1.5] font-bold tracking-[.08em] text-[#5fd0dc]">0{{ index + 1 }}</p>
             <h3 class="mb-2.5 text-[22px] leading-[1.5] tracking-normal text-white">{{ item.name }}</h3>
             <p class="text-[14px] leading-[1.7] text-[#9aa3af]">{{ item.desc }}</p>
           </article>

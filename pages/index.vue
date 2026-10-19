@@ -34,7 +34,7 @@
       <UContainer class="max-w-295 px-6">
         <div class="grid grid-cols-1 items-start gap-7 min-[960px]:grid-cols-[.95fr_1.05fr] min-[960px]:gap-12">
           <div>
-            <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[#10141a] max-md:text-8">{{ $t('home.lab.title') }}</h2>
+            <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold tracking-normal text-[#10141a] max-md:text-[32px]">{{ $t('home.lab.title') }}</h2>
             <p class="text-4.25 leading-[1.7] text-[#66707c]">{{ $t('home.lab.subtitle') }}</p>
             <ul class="my-7 flex flex-col gap-3.5">
               <li v-for="n in 3" :key="n" class="border-t border-[#e6e8ec] pt-3.5 text-base leading-[1.7] text-[#3d4654]">{{ $t(`home.lab.point${n}`) }}</li>
@@ -58,7 +58,7 @@
     <section class="bg-white py-24 md:py-28">
       <UContainer class="max-w-295 px-6">
         <div class="max-w-155">
-          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[#10141a] max-md:text-8">{{ $t("home.facility.title") }}</h2>
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold tracking-normal text-[#10141a] max-md:text-[32px]">{{ $t("home.facility.title") }}</h2>
           <p class="text-4.25 leading-[1.7] text-[#66707c]">{{ $t("home.facility.subtitle") }}</p>
         </div>
         <div class="my-6 mt-8 flex flex-wrap gap-2.5" role="tablist">
@@ -66,8 +66,8 @@
             v-for="tab in facilityTabs"
             :key="tab"
             type="button"
-            class="min-h-10 cursor-pointer rounded-full border border-[#e8edf2] bg-[#f3f4f6] px-4 text-sm font-semibold text-[#3d4654] transition hover:border-[#cfd8e3]"
-            :class="{ 'border-[#0f4c56] bg-[#0f4c56] text-white': activeTab === tab }"
+            class="min-h-10 cursor-pointer rounded-full border px-4 text-[14px] leading-[1.5] font-semibold transition hover:border-[#cfd8e3]"
+            :class="activeTab === tab ? 'border-[#0f4c56] bg-[#0f4c56] text-white' : 'border-[#e8edf2] bg-[#f3f4f6] text-[#3d4654]'"
             role="tab"
             :aria-selected="activeTab === tab"
             @click="setFacilityTab(tab)"
@@ -147,7 +147,7 @@
     <section class="bg-[#070b12] py-24 md:py-28">
       <UContainer class="max-w-295 px-6">
         <div class="mb-10 max-w-155">
-          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-white max-md:text-8">{{ $t('home.exportServices.title') }}</h2>
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold tracking-normal text-white max-md:text-[32px]">{{ $t('home.exportServices.title') }}</h2>
           <p class="text-4.25 leading-[1.7] text-white/[.62]">{{ $t('home.exportServices.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-1 gap-3.5 min-[680px]:grid-cols-2 min-[1080px]:grid-cols-4 min-[1080px]:gap-4">
@@ -168,7 +168,7 @@
     <section class="bg-white py-24 md:py-28">
       <UContainer class="max-w-295 px-6">
         <div class="mb-10 max-w-155">
-          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[#10141a] max-md:text-8">{{ $t('home.lines.title') }}</h2>
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold tracking-normal text-[#10141a] max-md:text-[32px]">{{ $t('home.lines.title') }}</h2>
           <p class="text-4.25 leading-[1.7] text-[#66707c]">{{ $t('home.lines.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-1 gap-3.5 md:grid-cols-2 min-[1100px]:grid-cols-3">
@@ -183,7 +183,7 @@
           </NuxtLink>
         </div>
         <div class="mt-7">
-          <NuxtLink to="/products" class="text-sm font-semibold tracking-[.02em] text-primary no-underline">{{ $t('common.viewProducts') }}</NuxtLink>
+          <NuxtLink to="/products" class="text-[14px] leading-[1.5] font-semibold tracking-[.02em] text-[#3f7f88] no-underline">{{ $t('common.viewProducts') }}</NuxtLink>
         </div>
       </UContainer>
     </section>
@@ -191,7 +191,7 @@
     <section class="bg-white py-24 md:py-28">
       <UContainer class="max-w-295 px-6">
         <div class="mb-10 max-w-155">
-          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[#10141a] max-md:text-8">{{ $t('home.advantages.title') }}</h2>
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold tracking-normal text-[#10141a] max-md:text-[32px]">{{ $t('home.advantages.title') }}</h2>
           <p class="text-4.25 leading-[1.7] text-[#66707c]">{{ $t('home.advantages.subtitle') }}</p>
         </div>
         <div class="mt-10 grid grid-cols-1 gap-4.5 md:grid-cols-2">
@@ -222,7 +222,7 @@
     <section class="bg-[#f3f4f6] py-24 md:py-28">
       <UContainer class="max-w-295 px-6">
         <div class="mb-10 max-w-155">
-          <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[#10141a] max-md:text-8">{{ $t('home.partners.title') }}</h2>
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold tracking-normal text-[#10141a] max-md:text-[32px]">{{ $t('home.partners.title') }}</h2>
           <p class="text-4.25 leading-[1.7] text-[#66707c]">{{ $t('home.partners.subtitle') }}</p>
         </div>
         <div class="mt-10 grid grid-cols-2 gap-3.5 md:grid-cols-4">

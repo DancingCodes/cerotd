@@ -60,8 +60,8 @@
       </div>
 
       <div class="border-t border-white/8 pt-6">
-        <p class="text-center text-3.25 text-gray-500">&copy; {{ year }} {{ $t('footer.copyright') }}</p>
-        <a v-if="locale === 'zh'" class="mt-2 block text-center text-3.25 text-gray-500 transition-colors hover:text-white/40" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">鲁ICP备2026051999号-1</a>
+        <p class="text-center text-[13px] leading-[1.5] text-[#6b7280]">&copy; {{ year }} {{ $t('footer.copyright') }}</p>
+        <a v-if="locale === 'zh'" class="mt-2 block text-center text-[13px] leading-[1.5] text-[#6b7280] transition-colors hover:text-white/[.38]" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">鲁ICP备2026051999号-1</a>
       </div>
     </div>
   </footer>
