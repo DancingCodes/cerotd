@@ -2,7 +2,7 @@
   <div>
     <div class="mb-5 flex items-start justify-between gap-4">
       <div>
-        <div class="mb-1.5 text-[28px] font-bold">{{ $t('admin.newsCategories.title') }}</div>
+        <div class="mb-1.5 text-7 font-bold">{{ $t('admin.newsCategories.title') }}</div>
         <div class="text-sm text-gray-500">
           {{ $t('admin.newsCategories.subtitle') }}
           <span v-if="!pending"> · {{ $t('admin.common.totalCount', { count: total }) }}</span>
@@ -21,43 +21,43 @@
       </div>
     </div>
 
-    <div v-if="formOpen" class="mb-[18px] rounded-xl border border-[#e5eaf0] bg-white p-5">
+    <div v-if="formOpen" class="mb-4.5 rounded-xl border border-[#e5eaf0] bg-white p-5">
       <div class="mb-4 text-lg font-bold">
         {{ editingSlug ? $t('admin.newsCategories.editTitle') : $t('admin.newsCategories.createTitle') }}
       </div>
       <div class="grid grid-cols-1 gap-3.5 md:grid-cols-2">
         <label class="block">
-          <div class="mb-1.5 text-[13px] font-semibold text-gray-600 after:text-[#b42318] after:content-["_*"]">{{ $t('admin.common.nameEn') }}</div>
-          <input v-model="form.nameEn" class="h-[42px] w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" />
+          <div class="mb-1.5 text-3.25 font-semibold text-gray-600 after:text-[#b42318] after:content-["_*"]">{{ $t('admin.common.nameEn') }}</div>
+          <input v-model="form.nameEn" class="h-10.5 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" />
         </label>
         <label class="block">
-          <div class="mb-1.5 text-[13px] font-semibold text-gray-600 after:text-[#b42318] after:content-['_*']">{{ $t('admin.common.nameZh') }}</div>
-          <input v-model="form.nameZh" class="h-[42px] w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" />
+          <div class="mb-1.5 text-3.25 font-semibold text-gray-600 after:text-[#b42318] after:content-['_*']">{{ $t('admin.common.nameZh') }}</div>
+          <input v-model="form.nameZh" class="h-10.5 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" />
         </label>
         <label class="block">
-          <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.common.sort') }}</div>
-          <input v-model.number="form.sortOrder" class="h-[42px] w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" type="number" />
+          <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.sort') }}</div>
+          <input v-model.number="form.sortOrder" class="h-10.5 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" type="number" />
         </label>
         <label class="block">
-          <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.common.published') }}</div>
-          <select v-model="form.isPublished" class="h-[42px] w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none">
+          <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.published') }}</div>
+          <select v-model="form.isPublished" class="h-10.5 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none">
             <option :value="true">{{ $t('admin.common.yes') }}</option>
             <option :value="false">{{ $t('admin.common.no') }}</option>
           </select>
         </label>
       </div>
-      <div v-if="formError" class="mt-3 text-[13px] text-[#b42318]">{{ formError }}</div>
+      <div v-if="formError" class="mt-3 text-3.25 text-[#b42318]">{{ formError }}</div>
       <div class="mt-4 flex gap-2.5">
         <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white" @click="save">{{ $t('admin.common.save') }}</div>
         <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="closeForm">{{ $t('admin.common.cancel') }}</div>
       </div>
     </div>
 
-    <div class="mb-[18px] rounded-xl border border-[#e5eaf0] bg-white p-5">
+    <div class="mb-4.5 rounded-xl border border-[#e5eaf0] bg-white p-5">
       <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
       <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.newsCategories.empty') }}</div>
       <div v-else class="overflow-x-auto">
-        <div class="grid min-w-[700px] grid-cols-[36px_1.4fr_1fr_.5fr_.7fr_.9fr] items-center gap-3 border-b border-[#eef1f4] py-3.5 text-xs font-bold tracking-[.04em] text-gray-500 uppercase">
+        <div class="grid min-w-175 grid-cols-[36px_1.4fr_1fr_.5fr_.7fr_.9fr] items-center gap-3 border-b border-[#eef1f4] py-3.5 text-xs font-bold tracking-[.04em] text-gray-500 uppercase">
           <div class="flex items-center justify-center [&_input]:size-4 [&_input]:cursor-pointer">
             <input
               type="checkbox"
@@ -72,7 +72,7 @@
           <div>{{ $t('admin.common.status') }}</div>
           <div>{{ $t('admin.common.actions') }}</div>
         </div>
-        <div v-for="item in items" :key="item.id" class="grid min-w-[700px] grid-cols-[36px_1.4fr_1fr_.5fr_.7fr_.9fr] items-center gap-3 border-b border-[#eef1f4] py-3.5 text-sm">
+        <div v-for="item in items" :key="item.id" class="grid min-w-175 grid-cols-[36px_1.4fr_1fr_.5fr_.7fr_.9fr] items-center gap-3 border-b border-[#eef1f4] py-3.5 text-sm">
           <div class="flex items-center justify-center [&_input]:size-4 [&_input]:cursor-pointer">
             <input
               type="checkbox"
@@ -95,11 +95,11 @@
       </div>
 
       <div v-if="totalPages > 1" class="mt-4 flex items-center justify-end gap-2.5">
-        <button type="button" class="h-[34px] cursor-pointer rounded-[10px] border border-[#d7dee7] bg-white px-3 text-[13px] font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page <= 1" @click="goPage(page - 1)">
+        <button type="button" class="h-8.5 cursor-pointer rounded-2.5 border border-[#d7dee7] bg-white px-3 text-3.25 font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page <= 1" @click="goPage(page - 1)">
           {{ $t('admin.common.prevPage') }}
         </button>
-        <span class="text-[13px] text-gray-500">{{ $t('admin.common.pageStatus', { page, totalPages }) }}</span>
-        <button type="button" class="h-[34px] cursor-pointer rounded-[10px] border border-[#d7dee7] bg-white px-3 text-[13px] font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page >= totalPages" @click="goPage(page + 1)">
+        <span class="text-3.25 text-gray-500">{{ $t('admin.common.pageStatus', { page, totalPages }) }}</span>
+        <button type="button" class="h-8.5 cursor-pointer rounded-2.5 border border-[#d7dee7] bg-white px-3 text-3.25 font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page >= totalPages" @click="goPage(page + 1)">
           {{ $t('admin.common.nextPage') }}
         </button>
       </div>

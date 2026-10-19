@@ -1,17 +1,17 @@
 <template>
   <div>
-    <section class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,var(--ui-color-neutral-950)_0%,var(--ui-color-neutral-900)_100%)] py-[72px] text-white md:py-[88px]">
+    <section class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,var(--ui-color-neutral-950)_0%,var(--ui-color-neutral-900)_100%)] py-18 text-white md:py-22">
       <UContainer>
-        <h1 class="mb-[18px] text-4xl leading-[1.08] md:text-[56px]">{{ $t('products.hero.title') }}</h1>
+        <h1 class="mb-4.5 text-4xl leading-[1.08] md:text-14">{{ $t('products.hero.title') }}</h1>
         <p class="max-w-[34ch] text-lg leading-[1.7] text-[#c8ced6] md:text-xl">{{ $t('products.hero.subtitle') }}</p>
       </UContainer>
     </section>
 
-    <section class="bg-white py-24 md:py-[120px]">
+    <section class="bg-white py-24 md:py-30">
       <UContainer>
-        <div class="mb-9 max-w-[720px]">
+        <div class="mb-9 max-w-180">
           <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('products.listTitle') }}</h2>
-          <p class="text-[17px] leading-[1.7] text-gray-600">{{ $t('products.listSubtitle') }}</p>
+          <p class="text-4.25 leading-[1.7] text-gray-600">{{ $t('products.listSubtitle') }}</p>
         </div>
 
         <div class="mb-7 flex flex-wrap gap-2.5" role="tablist" :aria-label="$t('products.listTitle')">
@@ -39,8 +39,8 @@
           </button>
         </div>
 
-        <p v-if="pending" class="text-[15px] text-gray-500">{{ $t('products.loading') }}</p>
-        <p v-else-if="!productList.length" class="text-[15px] text-gray-500">{{ $t('products.empty') }}</p>
+        <p v-if="pending" class="text-3.75 text-gray-500">{{ $t('products.loading') }}</p>
+        <p v-else-if="!productList.length" class="text-3.75 text-gray-500">{{ $t('products.empty') }}</p>
         <template v-else>
           <div class="grid grid-cols-1 gap-5 md:grid-cols-2 min-[1100px]:grid-cols-3">
             <NuxtLink
@@ -69,7 +69,7 @@
           <div v-if="hasMore" class="mt-8 flex justify-center">
             <button
               type="button"
-              class="min-h-11 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-[22px] text-sm font-semibold text-[#0f4c56] transition hover:border-[#3f7f88]/45 hover:bg-[#3f7f88]/[.08] disabled:cursor-wait disabled:opacity-65"
+              class="min-h-11 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-5.5 text-sm font-semibold text-[#0f4c56] transition hover:border-[#3f7f88]/45 hover:bg-[#3f7f88]/[.08] disabled:cursor-wait disabled:opacity-65"
               :disabled="loadingMore"
               @click="loadMore"
             >

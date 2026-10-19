@@ -1,21 +1,21 @@
 <template>
   <div v-if="product" class="pb-[calc(70px+env(safe-area-inset-bottom))] md:pb-0">
-    <section class="bg-[radial-gradient(circle_at_20%_20%,rgba(95,208,220,.16),transparent_28%),linear-gradient(180deg,var(--ui-color-neutral-950)_0%,var(--ui-color-neutral-900)_100%)] py-[72px] text-white md:py-[88px]">
+    <section class="bg-[radial-gradient(circle_at_20%_20%,rgba(95,208,220,.16),transparent_28%),linear-gradient(180deg,var(--ui-color-neutral-950)_0%,var(--ui-color-neutral-900)_100%)] py-18 text-white md:py-22">
       <UContainer>
         <NuxtLink to="/products" class="mb-6 inline-flex text-sm font-semibold text-[#5fd0dc] no-underline">{{ $t('products.backToList') }}</NuxtLink>
-        <h1 class="mb-[18px] text-4xl leading-[1.1] md:text-5xl">{{ t(product.name) }}</h1>
+        <h1 class="mb-4.5 text-4xl leading-[1.1] md:text-5xl">{{ t(product.name) }}</h1>
         <p class="max-w-[40ch] text-lg leading-[1.7] text-[#c8ced6]">{{ t(product.summary) }}</p>
       </UContainer>
     </section>
 
-    <section class="bg-white py-24 md:py-[120px]">
+    <section class="bg-white py-24 md:py-30">
       <UContainer class="grid grid-cols-1 gap-6 min-[960px]:grid-cols-[1.2fr_.8fr] min-[960px]:gap-8">
         <div class="min-w-0">
           <div class="mb-6">
             <button type="button" class="flex min-h-80 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-xl bg-[#f3f5f7]" @click="openPreview(activeIndex)">
               <img
                 v-if="product.images[activeIndex]"
-                class="block max-h-[420px] w-full object-contain"
+                class="block max-h-105 w-full object-contain"
                 :src="product.images[activeIndex]"
                 :alt="t(product.name)"
                 fetchpriority="high"
@@ -37,14 +37,14 @@
               </button>
             </div>
           </div>
-          <p class="text-[17px] leading-[1.8] text-gray-600">{{ t(product.description) }}</p>
+          <p class="text-4.25 leading-[1.8] text-gray-600">{{ t(product.description) }}</p>
         </div>
 
         <aside class="min-w-0">
           <div class="rounded-xl bg-[var(--ui-color-neutral-950)] p-7 text-white">
-            <h2 class="mb-5 text-[22px]">{{ $t('products.specsTitle') }}</h2>
+            <h2 class="mb-5 text-5.5">{{ $t('products.specsTitle') }}</h2>
             <ul class="mb-6 grid gap-3">
-              <li v-if="product.category" class="rounded-[10px] bg-white/5 px-4 py-3.5 text-sm leading-[1.6] text-[#c8ced6]">{{ t(product.category.name) }}</li>
+              <li v-if="product.category" class="rounded-2.5 bg-white/5 px-4 py-3.5 text-sm leading-[1.6] text-[#c8ced6]">{{ t(product.category.name) }}</li>
               <li v-for="(spec, index) in localizedSpecs" :key="`${spec}-${index}`" class="specs-item">
                 {{ spec }}
               </li>
@@ -55,15 +55,15 @@
       </UContainer>
     </section>
 
-    <section v-if="relatedProducts.length" class="bg-[var(--ui-bg-muted)] py-24 md:py-[120px]">
+    <section v-if="relatedProducts.length" class="bg-[var(--ui-bg-muted)] py-24 md:py-30">
       <UContainer>
-        <h2 class="mb-6 text-[28px] text-gray-900">{{ $t('products.relatedTitle') }}</h2>
+        <h2 class="mb-6 text-7 text-gray-900">{{ $t('products.relatedTitle') }}</h2>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
           <NuxtLink
             v-for="item in relatedProducts"
             :key="item.slug"
             :to="`/products/${item.slug}`"
-            class="rounded-xl border border-[#e8edf2] bg-white p-[22px] no-underline"
+            class="rounded-xl border border-[#e8edf2] bg-white p-5.5 no-underline"
           >
             <h3 class="mb-2 text-lg font-semibold text-gray-900">{{ t(item.name) }}</h3>
             <p class="text-sm leading-[1.6] text-gray-600">{{ t(item.summary) }}</p>
@@ -72,15 +72,15 @@
       </UContainer>
     </section>
 
-    <NuxtLink to="/contact" class="fixed inset-x-0 bottom-0 z-40 flex min-h-[58px] items-center justify-center border-t border-slate-900/10 bg-white/95 px-5 pt-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] text-[15px] font-bold text-[#0f4c56] no-underline backdrop-blur md:hidden">{{ $t('products.detailCta') }}</NuxtLink>
+    <NuxtLink to="/contact" class="fixed inset-x-0 bottom-0 z-40 flex min-h-14.5 items-center justify-center border-t border-slate-900/10 bg-white/95 px-5 pt-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] text-3.75 font-bold text-[#0f4c56] no-underline backdrop-blur md:hidden">{{ $t('products.detailCta') }}</NuxtLink>
 
-    <div v-if="previewOpen" class="fixed inset-0 z-[80] flex items-center justify-center bg-gradient-to-b from-[#070b12]/70 to-[#070b12]/90 p-6 backdrop-blur-[10px]" @click.self="closePreview">
-      <div class="relative flex w-full max-w-[960px] items-center justify-center">
-        <button type="button" class="absolute -top-10 right-0 z-20 cursor-pointer text-[32px] leading-none text-white" aria-label="Close preview" @click="closePreview">×</button>
+    <div v-if="previewOpen" class="fixed inset-0 z-[80] flex items-center justify-center bg-gradient-to-b from-[#070b12]/70 to-[#070b12]/90 p-6 backdrop-blur-2.5" @click.self="closePreview">
+      <div class="relative flex w-full max-w-240 items-center justify-center">
+        <button type="button" class="absolute -top-10 right-0 z-20 cursor-pointer text-8 leading-none text-white" aria-label="Close preview" @click="closePreview">×</button>
         <button
           v-if="product.images.length > 1"
           type="button"
-          class="absolute left-[-8px] top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-[28px] text-white"
+          class="absolute left-[-8px] top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white"
           aria-label="Previous image"
           @click="prevImage"
         >
@@ -90,7 +90,7 @@
         <button
           v-if="product.images.length > 1"
           type="button"
-          class="absolute right-[-8px] top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-[28px] text-white"
+          class="absolute right-[-8px] top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white"
           aria-label="Next image"
           @click="nextImage"
         >
