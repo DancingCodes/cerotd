@@ -1,10 +1,10 @@
 <template>
-  <div class="image-upload">
-    <div class="image-upload-row">
-      <label class="image-upload-btn">
+  <div>
+    <div class="flex items-center gap-2.5">
+      <label class="relative inline-flex h-[42px] cursor-pointer items-center justify-center rounded-xl bg-[#e8f7f9] px-3.5 text-[13px] font-bold whitespace-nowrap text-[#0e7f8f]">
         {{ uploading ? $t('admin.upload.uploading') : inner ? $t('admin.upload.replace') : $t('admin.upload.button') }}
         <input
-          class="image-upload-file"
+          class="absolute inset-0 cursor-pointer opacity-0"
           type="file"
           accept="image/jpeg,image/png,image/webp,image/gif,image/avif"
           :disabled="uploading"
@@ -14,16 +14,16 @@
       <button
         v-if="inner"
         type="button"
-        class="image-upload-clear"
+        class="h-[42px] cursor-pointer rounded-xl border border-[#f0d0cc] bg-[#fff5f4] px-3.5 text-[13px] font-bold text-[#b42318] disabled:cursor-not-allowed disabled:opacity-60"
         :disabled="uploading"
         @click="clearImage"
       >
         {{ $t('admin.common.delete') }}
       </button>
     </div>
-    <p v-if="error" class="image-upload-error">{{ error }}</p>
-    <img v-if="inner" class="image-upload-preview" :src="inner" alt="" />
-    <p v-else class="image-upload-empty">{{ $t('admin.upload.empty') }}</p>
+    <p v-if="error" class="mt-2 text-xs text-[#b42318]">{{ error }}</p>
+    <img v-if="inner" class="mt-2.5 block max-h-[140px] max-w-[220px] rounded-xl border border-[#e5eaf0] object-cover" :src="inner" alt="" />
+    <p v-else class="mt-2.5 text-[13px] text-gray-500">{{ $t('admin.upload.empty') }}</p>
   </div>
 </template>
 
@@ -93,62 +93,3 @@ async function onFile(event: Event) {
   }
 }
 </script>
-
-<style scoped>
-.image-upload .image-upload-row {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-.image-upload .image-upload-btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 42px;
-  padding: 0 14px;
-  border-radius: 12px;
-  background: #e8f7f9;
-  color: #0e7f8f;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  white-space: nowrap;
-}
-.image-upload .image-upload-clear {
-  height: 42px;
-  padding: 0 14px;
-  border-radius: 12px;
-  border: 1px solid #f0d0cc;
-  background: #fff5f4;
-  color: #b42318;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-}
-.image-upload .image-upload-file {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  cursor: pointer;
-}
-.image-upload .image-upload-error {
-  margin-top: 8px;
-  color: #b42318;
-  font-size: 12px;
-}
-.image-upload .image-upload-empty {
-  margin-top: 10px;
-  color: #6b7280;
-  font-size: 13px;
-}
-.image-upload .image-upload-preview {
-  display: block;
-  margin-top: 10px;
-  max-width: 220px;
-  max-height: 140px;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 1px solid #e5eaf0;
-}
-</style>

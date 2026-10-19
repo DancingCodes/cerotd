@@ -1,96 +1,96 @@
 <template>
-  <div v-if="product" class="product-detail-page">
-    <section class="page-hero">
+  <div v-if="product" class="pb-[calc(70px+env(safe-area-inset-bottom))] md:pb-0">
+    <section class="bg-[radial-gradient(circle_at_20%_20%,rgba(95,208,220,.16),transparent_28%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-[72px] text-white md:py-[88px]">
       <div v-motion-slide-visible-once-bottom class="container">
-        <NuxtLink to="/products" class="page-hero-back">{{ $t('products.backToList') }}</NuxtLink>
-        <h1 class="page-hero-title">{{ t(product.name) }}</h1>
-        <p class="page-hero-subtitle">{{ t(product.summary) }}</p>
+        <NuxtLink to="/products" class="mb-6 inline-flex text-sm font-semibold text-[#5fd0dc] no-underline">{{ $t('products.backToList') }}</NuxtLink>
+        <h1 class="mb-[18px] text-4xl leading-[1.1] md:text-5xl">{{ t(product.name) }}</h1>
+        <p class="max-w-[40ch] text-lg leading-[1.7] text-[#c8ced6]">{{ t(product.summary) }}</p>
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section content">
-      <div class="container content-grid">
-        <div class="detail-main">
-          <div class="gallery">
-            <button type="button" class="gallery-main" @click="openPreview(activeIndex)">
+    <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-[120px]">
+      <div class="container grid grid-cols-1 gap-6 min-[960px]:grid-cols-[1.2fr_.8fr] min-[960px]:gap-8">
+        <div class="min-w-0">
+          <div class="mb-6">
+            <button type="button" class="flex min-h-80 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-xl bg-[#f3f5f7]" @click="openPreview(activeIndex)">
               <AppImage
                 v-if="product.images[activeIndex]"
-                class="gallery-main-image"
+                class="block max-h-[420px] w-full object-contain"
                 :src="product.images[activeIndex]"
                 :alt="t(product.name)"
                 fetchpriority="high"
                 decoding="async"
                 loading="eager"
               />
-              <span v-else class="gallery-blank">{{ $t('common.mediaBlank') }}</span>
+              <span v-else class="flex min-h-80 size-full items-center justify-center bg-[#e8edf2] text-xs tracking-[.06em] text-[#98a2b3] uppercase">{{ $t('common.mediaBlank') }}</span>
             </button>
-            <div v-if="product.images.length > 1" class="gallery-thumbs">
+            <div v-if="product.images.length > 1" class="mt-3 grid grid-cols-4 gap-2.5">
               <button
                 v-for="(img, index) in product.images"
                 :key="img"
                 type="button"
-                class="gallery-thumb"
-                :class="{ 'gallery-thumb-active': index === activeIndex }"
+                class="aspect-square cursor-pointer overflow-hidden rounded-xl border border-[#e8edf2] bg-[#f3f5f7]"
+                :class="{ 'border-[var(--color-accent)]': index === activeIndex }"
                 @click="activeIndex = index"
               >
-                <AppImage class="gallery-thumb-image" :src="img" :alt="t(product.name)" loading="lazy" decoding="async" />
+                <AppImage class="block size-full object-contain" :src="img" :alt="t(product.name)" loading="lazy" decoding="async" />
               </button>
             </div>
           </div>
-          <p class="detail-desc">{{ t(product.description) }}</p>
+          <p class="text-[17px] leading-[1.8] text-gray-600">{{ t(product.description) }}</p>
         </div>
 
-        <aside class="detail-side">
-          <div class="specs-panel">
-            <h2 class="specs-panel-title">{{ $t('products.specsTitle') }}</h2>
-            <ul class="specs-list">
-              <li v-if="product.category" class="specs-item">{{ t(product.category.name) }}</li>
+        <aside class="min-w-0">
+          <div class="rounded-xl bg-[var(--color-ink)] p-7 text-white">
+            <h2 class="mb-5 text-[22px]">{{ $t('products.specsTitle') }}</h2>
+            <ul class="mb-6 grid gap-3">
+              <li v-if="product.category" class="rounded-[10px] bg-white/[.05] px-4 py-3.5 text-sm leading-[1.6] text-[#c8ced6]">{{ t(product.category.name) }}</li>
               <li v-for="(spec, index) in localizedSpecs" :key="`${spec}-${index}`" class="specs-item">
                 {{ spec }}
               </li>
             </ul>
-            <NuxtLink to="/contact" class="specs-cta">{{ $t('products.detailCta') }}</NuxtLink>
+            <NuxtLink to="/contact" class="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-br from-[#0f9aa8] to-[#3dd6e0] px-6 text-sm font-semibold text-white no-underline">{{ $t('products.detailCta') }}</NuxtLink>
           </div>
         </aside>
       </div>
     </section>
 
-    <section v-if="relatedProducts.length" v-motion-slide-visible-once-bottom class="section related">
+    <section v-if="relatedProducts.length" v-motion-slide-visible-once-bottom class="bg-[var(--color-surface)] py-24 md:py-[120px]">
       <div class="container">
-        <h2 class="related-title">{{ $t('products.relatedTitle') }}</h2>
-        <div class="related-grid">
+        <h2 class="mb-6 text-[28px] text-gray-900">{{ $t('products.relatedTitle') }}</h2>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
           <NuxtLink
             v-for="item in relatedProducts"
             :key="item.slug"
             :to="`/products/${item.slug}`"
-            class="related-card"
+            class="rounded-xl border border-[#e8edf2] bg-white p-[22px] no-underline"
           >
-            <h3 class="related-card-title">{{ t(item.name) }}</h3>
-            <p class="related-card-desc">{{ t(item.summary) }}</p>
+            <h3 class="mb-2 text-lg font-semibold text-gray-900">{{ t(item.name) }}</h3>
+            <p class="text-sm leading-[1.6] text-gray-600">{{ t(item.summary) }}</p>
           </NuxtLink>
         </div>
       </div>
     </section>
 
-    <NuxtLink to="/contact" class="mobile-quote-cta">{{ $t('products.detailCta') }}</NuxtLink>
+    <NuxtLink to="/contact" class="fixed inset-x-0 bottom-0 z-40 flex min-h-[58px] items-center justify-center border-t border-slate-900/10 bg-white/95 px-5 pt-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] text-[15px] font-bold text-[#0f4c56] no-underline backdrop-blur md:hidden">{{ $t('products.detailCta') }}</NuxtLink>
 
-    <div v-if="previewOpen" class="preview" @click.self="closePreview">
-      <div class="preview-inner">
-        <button type="button" class="preview-close" aria-label="Close preview" @click="closePreview">×</button>
+    <div v-if="previewOpen" class="fixed inset-0 z-[80] flex items-center justify-center bg-gradient-to-b from-[#070b12]/70 to-[#070b12]/90 p-6 backdrop-blur-[10px]" @click.self="closePreview">
+      <div class="relative flex w-full max-w-[960px] items-center justify-center">
+        <button type="button" class="absolute -top-10 right-0 z-20 cursor-pointer text-[32px] leading-none text-white" aria-label="Close preview" @click="closePreview">×</button>
         <button
           v-if="product.images.length > 1"
           type="button"
-          class="preview-nav preview-nav-prev"
+          class="absolute left-[-8px] top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-[28px] text-white"
           aria-label="Previous image"
           @click="prevImage"
         >
           ‹
         </button>
-        <AppImage class="preview-image" :src="product.images[previewIndex]" :alt="t(product.name)" loading="eager" decoding="async" />
+        <AppImage class="relative z-10 max-h-[80vh] max-w-full rounded-xl bg-white object-contain shadow-[0_24px_64px_rgba(0,0,0,.45)]" :src="product.images[previewIndex]" :alt="t(product.name)" loading="eager" decoding="async" />
         <button
           v-if="product.images.length > 1"
           type="button"
-          class="preview-nav preview-nav-next"
+          class="absolute right-[-8px] top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-[28px] text-white"
           aria-label="Next image"
           @click="nextImage"
         >
@@ -260,295 +260,3 @@ function nextImage() {
   previewIndex.value = (previewIndex.value + 1) % product.value.images.length
 }
 </script>
-
-<style scoped>
-.product-detail-page .mobile-quote-cta {
-  display: none;
-}
-.product-detail-page .page-hero {
-  padding: 88px 0 72px;
-  background: radial-gradient(circle at 20% 20%, rgba(95, 208, 220, 0.16), transparent 28%), linear-gradient(180deg, var(--color-ink) 0%, var(--color-ink-soft) 100%);
-  color: #ffffff;
-}
-.product-detail-page .page-hero .page-hero-back {
-  display: inline-flex;
-  margin-bottom: 24px;
-  color: #5fd0dc;
-  font-size: 14px;
-  font-weight: 650;
-  text-decoration: none;
-}
-.product-detail-page .page-hero .page-hero-title {
-  margin-bottom: 18px;
-  font-size: 48px;
-  line-height: 1.1;
-  letter-spacing: 0;
-}
-.product-detail-page .page-hero .page-hero-subtitle {
-  max-width: 40ch;
-  color: #c8ced6;
-  font-size: 18px;
-  line-height: 1.7;
-}
-.product-detail-page .section {
-  padding: 96px 0;
-}
-@media (min-width: 768px) {
-  .product-detail-page .section {
-    padding: 120px 0;
-  }
-}
-.product-detail-page .content {
-  background: #ffffff;
-}
-.product-detail-page .content .content-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-}
-@media (min-width: 960px) {
-  .product-detail-page .content .content-grid {
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 32px;
-  }
-}
-.product-detail-page .content .detail-main .gallery {
-  margin-bottom: 24px;
-}
-.product-detail-page .content .detail-main .gallery .gallery-main {
-  width: 100%;
-  overflow: hidden;
-  border-radius: 12px;
-  background: #f3f5f7;
-  min-height: 320px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: zoom-in;
-}
-.product-detail-page .content .detail-main .gallery .gallery-main .gallery-main-image {
-  width: 100%;
-  max-height: 420px;
-  object-fit: contain;
-  display: block;
-}
-.product-detail-page .content .detail-main .gallery .gallery-thumbs {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-top: 12px;
-}
-.product-detail-page .content .detail-main .gallery .gallery-thumbs .gallery-thumb {
-  padding: 0;
-  overflow: hidden;
-  border-radius: 12px;
-  border: 1px solid #e8edf2;
-  background: #f3f5f7;
-  aspect-ratio: 1/1;
-  cursor: pointer;
-}
-.product-detail-page .content .detail-main .gallery .gallery-thumbs .gallery-thumb .gallery-thumb-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-.product-detail-page .content .detail-main .gallery .gallery-thumbs .gallery-thumb.gallery-thumb-active {
-  border-color: var(--color-accent);
-}
-.product-detail-page .content .detail-main .detail-desc {
-  color: #4b5563;
-  font-size: 17px;
-  line-height: 1.8;
-}
-.product-detail-page .content .detail-side .specs-panel {
-  padding: 28px;
-  border-radius: 12px;
-  background: var(--color-ink);
-  color: #ffffff;
-}
-.product-detail-page .content .detail-side .specs-panel .specs-panel-title {
-  margin-bottom: 20px;
-  font-size: 22px;
-  letter-spacing: 0;
-}
-.product-detail-page .content .detail-side .specs-panel .specs-list {
-  display: grid;
-  gap: 12px;
-  margin-bottom: 24px;
-}
-.product-detail-page .content .detail-side .specs-panel .specs-list .specs-item {
-  padding: 14px 16px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  color: #c8ced6;
-  font-size: 14px;
-  line-height: 1.6;
-}
-.product-detail-page .content .detail-side .specs-panel .specs-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 48px;
-  padding: 0 24px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #0f9aa8 0%, #3dd6e0 100%);
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 650;
-  text-decoration: none;
-}
-.product-detail-page .preview {
-  position: fixed;
-  inset: 0;
-  z-index: 80;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  background: linear-gradient(180deg, rgba(7, 11, 18, 0.72) 0%, rgba(7, 11, 18, 0.9) 100%);
-  backdrop-filter: blur(10px);
-}
-.product-detail-page .preview .preview-inner {
-  position: relative;
-  width: min(960px, 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.product-detail-page .preview .preview-inner::after {
-  content: "";
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  bottom: -18px;
-  height: 48px;
-  border-radius: 999px;
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.45) 0%, transparent 72%);
-  pointer-events: none;
-  z-index: 0;
-}
-.product-detail-page .preview .preview-inner .preview-image {
-  position: relative;
-  z-index: 1;
-  max-width: 100%;
-  max-height: 80vh;
-  object-fit: contain;
-  border-radius: 12px;
-  background: #ffffff;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
-}
-.product-detail-page .preview .preview-inner .preview-close {
-  position: absolute;
-  top: -40px;
-  right: 0;
-  z-index: 2;
-  color: #ffffff;
-  font-size: 32px;
-  line-height: 1;
-  cursor: pointer;
-}
-.product-detail-page .preview .preview-inner .preview-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.16);
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  cursor: pointer;
-  user-select: none;
-}
-.product-detail-page .preview .preview-inner .preview-nav.preview-nav-prev {
-  left: -8px;
-}
-.product-detail-page .preview .preview-inner .preview-nav.preview-nav-next {
-  right: -8px;
-}
-.product-detail-page .gallery-blank {
-  width: 100%;
-  height: 100%;
-  min-height: 320px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #e8edf2;
-  color: #98a2b3;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-.product-detail-page .related {
-  background: var(--color-surface);
-  padding: 96px 0;
-}
-@media (min-width: 768px) {
-  .product-detail-page .related {
-    padding: 120px 0;
-  }
-}
-.product-detail-page .related .related-title {
-  margin-bottom: 24px;
-  font-size: 28px;
-  letter-spacing: 0;
-  color: #111827;
-}
-.product-detail-page .related .related-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
-@media (min-width: 768px) {
-  .product-detail-page .related .related-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-.product-detail-page .related .related-card {
-  padding: 22px;
-  border-radius: 12px;
-  background: #ffffff;
-  border: 1px solid #e8edf2;
-  text-decoration: none;
-}
-.product-detail-page .related .related-card .related-card-title {
-  margin-bottom: 8px;
-  color: #111827;
-  font-size: 18px;
-  font-weight: 650;
-}
-.product-detail-page .related .related-card .related-card-desc {
-  color: #4b5563;
-  font-size: 14px;
-  line-height: 1.6;
-}
-@media (max-width: 767px) {
-  .product-detail-page {
-    padding-bottom: calc(70px + env(safe-area-inset-bottom));
-  }
-  .product-detail-page .mobile-quote-cta {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 40;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 58px;
-    padding: 10px 20px calc(10px + env(safe-area-inset-bottom));
-    border-top: 1px solid rgba(15, 23, 42, 0.12);
-    background: rgba(255, 255, 255, 0.96);
-    color: #0f4c56;
-    font-size: 15px;
-    font-weight: 700;
-    text-decoration: none;
-    backdrop-filter: blur(12px);
-  }
-}
-</style>

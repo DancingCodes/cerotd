@@ -1,84 +1,84 @@
 <template>
-  <div class="advantages-page">
-    <section class="page-hero">
+  <div>
+    <section class="bg-[radial-gradient(circle_at_70%_20%,rgba(139,154,171,.14),transparent_28%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-[72px] text-white md:py-[88px]">
       <div v-motion-slide-visible-once-bottom class="container">
-        <h1 class="page-hero-title">{{ $t('advantages.hero.title') }}</h1>
-        <p class="page-hero-subtitle">{{ $t('advantages.hero.subtitle') }}</p>
+        <h1 class="mb-[18px] text-4xl leading-[1.08] md:text-[56px]">{{ $t('advantages.hero.title') }}</h1>
+        <p class="max-w-[34ch] text-lg leading-[1.7] text-[#c8ced6] md:text-xl">{{ $t('advantages.hero.subtitle') }}</p>
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section outcomes">
+    <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-[120px]">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">{{ $t('advantages.outcomes.title') }}</h2>
-          <p class="section-subtitle">{{ $t('advantages.outcomes.subtitle') }}</p>
+        <div class="mb-12">
+          <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('advantages.outcomes.title') }}</h2>
+          <p class="max-w-[48ch] text-[17px] leading-[1.7] text-gray-600">{{ $t('advantages.outcomes.subtitle') }}</p>
         </div>
-        <div class="outcomes-grid">
-          <article v-for="item in outcomes" :key="item.name" class="outcome-card">
-            <h3 class="outcome-card-title">{{ item.name }}</h3>
-            <p class="outcome-card-desc">{{ item.desc }}</p>
+        <div class="grid grid-cols-1 gap-4 min-[900px]:grid-cols-2">
+          <article v-for="item in outcomes" :key="item.name" class="rounded-xl border border-[var(--color-line)] bg-[var(--color-surface)] px-6 py-[26px]">
+            <h3 class="mb-3 text-xl font-bold text-[#0f4c56]">{{ item.name }}</h3>
+            <p class="text-[15px] leading-[1.7] text-gray-600">{{ item.desc }}</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section compare">
+    <section v-motion-slide-visible-once-bottom class="bg-[var(--color-surface)] py-24 md:py-[120px]">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">{{ $t('advantages.compare.title') }}</h2>
           <p class="section-subtitle">{{ $t('advantages.compare.subtitle') }}</p>
         </div>
-        <div class="compare-list">
-          <article v-for="item in compare" :key="item.name" class="compare-item">
-            <h3 class="compare-item-title">{{ item.name }}</h3>
-            <p class="compare-item-desc">{{ item.desc }}</p>
+        <div class="grid">
+          <article v-for="item in compare" :key="item.name" class="grid grid-cols-1 gap-2.5 border-t border-[#e2e6eb] py-7 last:border-b min-[800px]:grid-cols-[.9fr_1.1fr] min-[800px]:gap-8">
+            <h3 class="text-[22px] text-gray-900">{{ item.name }}</h3>
+            <p class="text-base leading-[1.7] text-gray-600">{{ item.desc }}</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section pillars">
+    <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-[120px]">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">{{ $t('advantages.pillars.title') }}</h2>
           <p class="section-subtitle">{{ $t('advantages.pillars.subtitle') }}</p>
         </div>
-        <div class="pillars-grid">
-          <article v-for="(item, index) in pillars" :key="item.name" class="pillar-card">
-            <p class="pillar-card-index">0{{ index + 1 }}</p>
-            <h3 class="pillar-card-title">{{ item.name }}</h3>
-            <p class="pillar-card-desc">{{ item.desc }}</p>
+        <div class="grid grid-cols-1 gap-[18px] min-[900px]:grid-cols-2">
+          <article v-for="(item, index) in pillars" :key="item.name" class="rounded-xl border border-[var(--color-line)] bg-[var(--color-surface)] p-7 transition hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(15,23,42,.1)]">
+            <p class="mb-6 text-[13px] font-bold tracking-[.08em] text-[var(--color-accent)]">0{{ index + 1 }}</p>
+            <h3 class="mb-3 text-2xl text-gray-900">{{ item.name }}</h3>
+            <p class="text-[15px] leading-[1.7] text-gray-600">{{ item.desc }}</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section assurance">
+    <section v-motion-slide-visible-once-bottom class="bg-[var(--color-ink)] py-24 md:py-[120px]">
       <div class="container">
-        <div class="section-header section-header-light">
+        <div class="mb-12">
           <h2 class="section-title">{{ $t('advantages.assurance.title') }}</h2>
           <p class="section-subtitle">{{ $t('advantages.assurance.subtitle') }}</p>
         </div>
-        <div class="assurance-grid">
-          <article v-for="(item, index) in assurance" :key="item.name" class="assurance-card">
-            <p class="assurance-card-index">0{{ index + 1 }}</p>
-            <h3 class="assurance-card-title">{{ item.name }}</h3>
-            <p class="assurance-card-desc">{{ item.desc }}</p>
+        <div class="grid grid-cols-1 gap-3.5 min-[900px]:grid-cols-2">
+          <article v-for="(item, index) in assurance" :key="item.name" class="rounded-xl border border-white/10 bg-white/[.04] px-[22px] py-[26px]">
+            <p class="mb-[22px] text-[13px] font-bold tracking-[.08em] text-[#5fd0dc]">0{{ index + 1 }}</p>
+            <h3 class="mb-2.5 text-[22px] text-white">{{ item.name }}</h3>
+            <p class="text-sm leading-[1.7] text-[#9aa3af]">{{ item.desc }}</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="cta">
+    <section v-motion-slide-visible-once-bottom class="bg-white pt-7 pb-24 md:pt-5 md:pb-[120px]">
       <div class="container">
-        <div class="cta-panel">
-          <div class="cta-copy">
-            <h2 class="cta-title">{{ $t('advantages.cta.title') }}</h2>
-            <p class="cta-subtitle">{{ $t('advantages.cta.subtitle') }}</p>
+        <div class="flex flex-col gap-[22px] rounded-[14px] border border-white/[.08] bg-[radial-gradient(circle_at_100%_0%,rgba(95,208,220,.18),transparent_34%),linear-gradient(135deg,#102033_0%,#0b1522_100%)] px-7 py-[34px] min-[800px]:flex-row min-[800px]:items-center min-[800px]:justify-between min-[800px]:px-11 min-[800px]:py-10">
+          <div>
+            <h2 class="mb-2.5 text-3xl font-semibold text-white">{{ $t('advantages.cta.title') }}</h2>
+            <p class="max-w-[46ch] text-base leading-[1.7] text-white/70">{{ $t('advantages.cta.subtitle') }}</p>
           </div>
-          <div class="cta-actions">
-            <NuxtLink to="/contact" class="btn btn-light">{{ $t('advantages.cta.button') }}</NuxtLink>
-            <NuxtLink to="/products" class="btn btn-ghost">{{ $t('advantages.cta.secondary') }}</NuxtLink>
+          <div class="flex flex-wrap gap-3">
+            <NuxtLink to="/contact" class="inline-flex items-center justify-center rounded-full bg-white px-[22px] py-3.5 text-[15px] font-semibold whitespace-nowrap text-[#102033] no-underline">{{ $t('advantages.cta.button') }}</NuxtLink>
+            <NuxtLink to="/products" class="inline-flex items-center justify-center rounded-full border border-white/30 bg-transparent px-[22px] py-3.5 text-[15px] font-semibold whitespace-nowrap text-white no-underline">{{ $t('advantages.cta.secondary') }}</NuxtLink>
           </div>
         </div>
       </div>
@@ -127,259 +127,3 @@ const assurance = computed(() => {
   }))
 })
 </script>
-
-<style scoped>
-.advantages-page .page-hero {
-  padding: 88px 0 72px;
-  background: radial-gradient(circle at 70% 20%, rgba(139, 154, 171, 0.14), transparent 28%), linear-gradient(180deg, var(--color-ink) 0%, var(--color-ink-soft) 100%);
-  color: #ffffff;
-}
-.advantages-page .page-hero .page-hero-title {
-  margin-bottom: 18px;
-  font-size: 56px;
-  line-height: 1.08;
-  letter-spacing: 0;
-}
-.advantages-page .page-hero .page-hero-subtitle {
-  max-width: 34ch;
-  color: #c8ced6;
-  font-size: 20px;
-  line-height: 1.7;
-}
-.advantages-page .section {
-  padding: 96px 0;
-}
-@media (min-width: 768px) {
-  .advantages-page .section {
-    padding: 120px 0;
-  }
-}
-.advantages-page .section-header {
-  margin-bottom: 48px;
-}
-.advantages-page .section-header .section-title {
-  margin-bottom: 14px;
-  font-size: 36px;
-  letter-spacing: 0;
-  color: #111827;
-}
-.advantages-page .section-header .section-subtitle {
-  max-width: 48ch;
-  color: #4b5563;
-  font-size: 17px;
-  line-height: 1.7;
-}
-.advantages-page .section-header.section-header-light .section-title {
-  color: #ffffff;
-}
-.advantages-page .section-header.section-header-light .section-subtitle {
-  color: #c8ced6;
-}
-.advantages-page .outcomes {
-  background: #ffffff;
-}
-.advantages-page .outcomes .outcomes-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
-@media (min-width: 900px) {
-  .advantages-page .outcomes .outcomes-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-.advantages-page .outcomes .outcome-card {
-  padding: 26px 24px;
-  border-radius: 12px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-line);
-}
-.advantages-page .outcomes .outcome-card-title {
-  margin-bottom: 12px;
-  color: #0f4c56;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0;
-}
-.advantages-page .outcomes .outcome-card-desc {
-  color: #4b5563;
-  font-size: 15px;
-  line-height: 1.7;
-}
-.advantages-page .compare {
-  background: var(--color-surface);
-}
-.advantages-page .compare .compare-list {
-  display: grid;
-  gap: 0;
-}
-.advantages-page .compare .compare-item {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  padding: 28px 0;
-  border-top: 1px solid #e2e6eb;
-}
-.advantages-page .compare .compare-item:last-child {
-  border-bottom: 1px solid #e2e6eb;
-}
-@media (min-width: 800px) {
-  .advantages-page .compare .compare-item {
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 32px;
-    align-items: start;
-  }
-}
-.advantages-page .compare .compare-item .compare-item-title {
-  font-size: 22px;
-  color: #111827;
-  letter-spacing: 0;
-}
-.advantages-page .compare .compare-item .compare-item-desc {
-  color: #4b5563;
-  font-size: 16px;
-  line-height: 1.7;
-}
-.advantages-page .pillars {
-  background: #ffffff;
-}
-.advantages-page .pillars .pillars-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
-}
-@media (min-width: 900px) {
-  .advantages-page .pillars .pillars-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-.advantages-page .pillars .pillar-card {
-  padding: 28px;
-  border-radius: 12px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-line);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.advantages-page .pillars .pillar-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
-}
-.advantages-page .pillars .pillar-card .pillar-card-index {
-  margin-bottom: 24px;
-  color: var(--color-accent);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-.advantages-page .pillars .pillar-card .pillar-card-title {
-  margin-bottom: 12px;
-  font-size: 24px;
-  color: #111827;
-}
-.advantages-page .pillars .pillar-card .pillar-card-desc {
-  color: #4b5563;
-  font-size: 15px;
-  line-height: 1.7;
-}
-.advantages-page .assurance {
-  background: var(--color-ink);
-}
-.advantages-page .assurance .assurance-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-@media (min-width: 900px) {
-  .advantages-page .assurance .assurance-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-.advantages-page .assurance .assurance-card {
-  padding: 26px 22px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-.advantages-page .assurance .assurance-card-index {
-  margin-bottom: 22px;
-  color: #5fd0dc;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-.advantages-page .assurance .assurance-card-title {
-  margin-bottom: 10px;
-  color: #ffffff;
-  font-size: 22px;
-  letter-spacing: 0;
-}
-.advantages-page .assurance .assurance-card-desc {
-  color: #9aa3af;
-  font-size: 14px;
-  line-height: 1.7;
-}
-.advantages-page .cta {
-  padding: 28px 0 96px;
-  background: #ffffff;
-}
-@media (min-width: 768px) {
-  .advantages-page .cta {
-    padding: 20px 0 120px;
-  }
-}
-.advantages-page .cta .cta-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  padding: 34px 28px;
-  border-radius: 14px;
-  background: radial-gradient(circle at 100% 0%, rgba(95, 208, 220, 0.18), transparent 34%), linear-gradient(135deg, #102033 0%, #0b1522 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-@media (min-width: 800px) {
-  .advantages-page .cta .cta-panel {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 40px 44px;
-  }
-}
-.advantages-page .cta .cta-title {
-  margin-bottom: 10px;
-  color: #ffffff;
-  font-size: 30px;
-  font-weight: 650;
-  letter-spacing: 0;
-}
-.advantages-page .cta .cta-subtitle {
-  max-width: 46ch;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 16px;
-  line-height: 1.7;
-}
-.advantages-page .cta .cta-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.advantages-page .cta .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 22px;
-  border-radius: 999px;
-  font-size: 15px;
-  font-weight: 650;
-  text-decoration: none;
-  white-space: nowrap;
-}
-.advantages-page .cta .btn.btn-light {
-  background: #ffffff;
-  color: #102033;
-}
-.advantages-page .cta .btn.btn-ghost {
-  background: transparent;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-}
-</style>

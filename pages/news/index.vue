@@ -1,24 +1,24 @@
 <template>
-  <div class="news-page">
-    <section class="page-hero">
+  <div>
+    <section class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-[72px] text-white md:py-[88px]">
       <div v-motion-slide-visible-once-bottom class="container">
-        <h1 class="page-hero-title">{{ $t('news.hero.title') }}</h1>
-        <p class="page-hero-subtitle">{{ $t('news.hero.subtitle') }}</p>
+        <h1 class="mb-[18px] text-4xl leading-[1.08] md:text-[56px]">{{ $t('news.hero.title') }}</h1>
+        <p class="max-w-[36ch] text-lg leading-[1.7] text-[#c8ced6] md:text-xl">{{ $t('news.hero.subtitle') }}</p>
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section catalog">
+    <section v-motion-slide-visible-once-bottom class="bg-[var(--color-surface)] py-24 md:py-[120px]">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">{{ $t('news.listTitle') }}</h2>
-          <p class="section-subtitle">{{ $t('news.listSubtitle') }}</p>
+        <div class="mb-9 max-w-[720px]">
+          <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('news.listTitle') }}</h2>
+          <p class="text-[17px] leading-[1.7] text-gray-600">{{ $t('news.listSubtitle') }}</p>
         </div>
 
-        <div class="filter-bar" role="tablist" :aria-label="$t('news.listTitle')">
+        <div class="mb-7 flex flex-wrap gap-2.5" role="tablist" :aria-label="$t('news.listTitle')">
           <button
             type="button"
-            class="filter-chip"
-            :class="{ 'filter-chip-active': !selectedCategory }"
+            class="min-h-10 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-4 text-sm font-medium text-gray-600 transition hover:border-[#b8c2cf] hover:text-gray-900"
+            :class="{ 'border-[#3f7f88]/45 bg-[#3f7f88]/10 text-[#0f4c56]': !selectedCategory }"
             role="tab"
             :aria-selected="!selectedCategory"
             @click="setCategory('')"
@@ -29,8 +29,8 @@
             v-for="category in categories"
             :key="category.slug"
             type="button"
-            class="filter-chip"
-            :class="{ 'filter-chip-active': selectedCategory === category.slug }"
+            class="min-h-10 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-4 text-sm font-medium text-gray-600 transition hover:border-[#b8c2cf] hover:text-gray-900"
+            :class="{ 'border-[#3f7f88]/45 bg-[#3f7f88]/10 text-[#0f4c56]': selectedCategory === category.slug }"
             role="tab"
             :aria-selected="selectedCategory === category.slug"
             @click="setCategory(category.slug)"
@@ -39,40 +39,40 @@
           </button>
         </div>
 
-        <p v-if="pending" class="state-text">{{ $t('news.loading') }}</p>
-        <p v-else-if="!newsList.length" class="state-text">{{ $t('news.empty') }}</p>
+        <p v-if="pending" class="text-[15px] text-gray-500">{{ $t('news.loading') }}</p>
+        <p v-else-if="!newsList.length" class="text-[15px] text-gray-500">{{ $t('news.empty') }}</p>
         <template v-else>
-          <div class="news-grid">
+          <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
             <NuxtLink
               v-for="item in newsList"
               :key="item.slug"
               :to="`/news/${item.slug}`"
-              class="news-card"
+              class="overflow-hidden rounded-xl border border-[#e8edf2] bg-white no-underline transition-colors hover:border-[#cfd8e3]"
             >
-              <div class="news-card-media">
+              <div class="aspect-video overflow-hidden bg-[#f3f5f7]">
                 <AppImage
-                  class="news-card-image"
+                  class="block size-full object-cover saturate-[.86] contrast-[1.04]"
                   :src="item.coverUrl"
                   :alt="t(item.title)"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
-              <div class="news-card-body">
-                <div class="news-card-meta">
-                  <span class="news-card-category">{{ categoryLabel(item.category) }}</span>
-                  <time class="news-card-date" :datetime="item.publishedAt">{{ formatDate(item.publishedAt) }}</time>
+              <div class="p-6">
+                <div class="mb-3 flex items-center justify-between gap-3">
+                  <span class="text-xs font-bold tracking-[.04em] text-[#0f4c56] uppercase">{{ categoryLabel(item.category) }}</span>
+                  <time class="text-[13px] text-gray-500" :datetime="item.publishedAt">{{ formatDate(item.publishedAt) }}</time>
                 </div>
-                <h3 class="news-card-title">{{ t(item.title) }}</h3>
-                <p class="news-card-desc">{{ t(item.summary) }}</p>
-                <span class="news-card-link">{{ $t('common.learnMore') }}</span>
+                <h3 class="mb-2.5 text-[22px] text-gray-900">{{ t(item.title) }}</h3>
+                <p class="mb-4 text-sm leading-[1.7] text-gray-600">{{ t(item.summary) }}</p>
+                <span class="text-sm font-semibold text-[var(--color-accent)]">{{ $t('common.learnMore') }}</span>
               </div>
             </NuxtLink>
           </div>
-          <div v-if="hasMore" class="load-more">
+          <div v-if="hasMore" class="mt-8 flex justify-center">
             <button
               type="button"
-              class="load-more-btn"
+              class="min-h-11 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-[22px] text-sm font-semibold text-[#0f4c56] transition hover:border-[#3f7f88]/45 hover:bg-[#3f7f88]/[.08] disabled:cursor-wait disabled:opacity-65"
               :disabled="loadingMore"
               @click="loadMore"
             >
@@ -202,176 +202,3 @@ async function loadMore() {
   }
 }
 </script>
-
-<style scoped>
-.news-page .page-hero {
-  padding: 88px 0 72px;
-  background: radial-gradient(circle at 80% 10%, rgba(139, 154, 171, 0.14), transparent 26%), linear-gradient(180deg, var(--color-ink) 0%, var(--color-ink-soft) 100%);
-  color: #ffffff;
-}
-.news-page .page-hero .page-hero-title {
-  margin-bottom: 18px;
-  font-size: 56px;
-  line-height: 1.08;
-  letter-spacing: 0;
-}
-.news-page .page-hero .page-hero-subtitle {
-  max-width: 36ch;
-  color: #c8ced6;
-  font-size: 20px;
-  line-height: 1.7;
-}
-.news-page .section {
-  padding: 96px 0;
-}
-@media (min-width: 768px) {
-  .news-page .section {
-    padding: 120px 0;
-  }
-}
-.news-page .section-header {
-  max-width: 720px;
-  margin-bottom: 36px;
-}
-.news-page .section-header .section-title {
-  margin-bottom: 14px;
-  font-size: 36px;
-  letter-spacing: 0;
-  color: #111827;
-}
-.news-page .section-header .section-subtitle {
-  color: #4b5563;
-  font-size: 17px;
-  line-height: 1.7;
-}
-.news-page .state-text {
-  color: #6b7280;
-  font-size: 15px;
-}
-.news-page .load-more {
-  display: flex;
-  justify-content: center;
-  margin-top: 32px;
-}
-.news-page .load-more-btn {
-  min-height: 44px;
-  padding: 0 22px;
-  border-radius: 999px;
-  border: 1px solid #d7dde5;
-  background: #ffffff;
-  color: #0f4c56;
-  font-size: 14px;
-  font-weight: 650;
-  cursor: pointer;
-  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-}
-.news-page .load-more-btn:hover:not(:disabled) {
-  border-color: rgba(63, 127, 136, 0.45);
-  background: rgba(63, 127, 136, 0.08);
-}
-.news-page .load-more-btn:disabled {
-  opacity: 0.65;
-  cursor: wait;
-}
-.news-page .filter-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 28px;
-}
-.news-page .filter-chip {
-  min-height: 40px;
-  padding: 0 16px;
-  border-radius: 999px;
-  border: 1px solid #d7dde5;
-  background: #ffffff;
-  color: #4b5563;
-  font-size: 14px;
-  font-weight: 550;
-  cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
-}
-.news-page .filter-chip:hover {
-  border-color: #b8c2cf;
-  color: #111827;
-}
-.news-page .filter-chip.filter-chip-active {
-  border-color: rgba(63, 127, 136, 0.45);
-  background: rgba(63, 127, 136, 0.1);
-  color: #0f4c56;
-}
-.news-page .catalog {
-  background: var(--color-surface);
-}
-.news-page .catalog .news-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
-@media (min-width: 768px) {
-  .news-page .catalog .news-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-.news-page .catalog .news-card {
-  overflow: hidden;
-  border-radius: 12px;
-  background: #ffffff;
-  border: 1px solid #e8edf2;
-  text-decoration: none;
-  transition: border-color 0.25s ease;
-}
-.news-page .catalog .news-card:hover {
-  border-color: #cfd8e3;
-}
-.news-page .catalog .news-card .news-card-media {
-  aspect-ratio: 16/9;
-  background: #f3f5f7;
-  overflow: hidden;
-}
-.news-page .catalog .news-card .news-card-media .news-card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(0.86) contrast(1.04);
-}
-.news-page .catalog .news-card .news-card-body {
-  padding: 24px;
-}
-.news-page .catalog .news-card .news-card-body .news-card-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-.news-page .catalog .news-card .news-card-body .news-card-category {
-  color: #0f4c56;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-.news-page .catalog .news-card .news-card-body .news-card-date {
-  color: #6b7280;
-  font-size: 13px;
-}
-.news-page .catalog .news-card .news-card-body .news-card-title {
-  margin-bottom: 10px;
-  color: #111827;
-  font-size: 22px;
-  letter-spacing: 0;
-}
-.news-page .catalog .news-card .news-card-body .news-card-desc {
-  margin-bottom: 16px;
-  color: #4b5563;
-  font-size: 14px;
-  line-height: 1.7;
-}
-.news-page .catalog .news-card .news-card-body .news-card-link {
-  color: var(--color-accent);
-  font-size: 14px;
-  font-weight: 650;
-}
-</style>

@@ -1,17 +1,17 @@
 <template>
-  <div class="rich-editor">
-    <div v-if="editor" class="rich-editor-toolbar">
-      <button type="button" class="rich-editor-btn" :class="{ 'rich-editor-btn-active': editor.isActive('bold') }" @click="editor.chain().focus().toggleBold().run()">B</button>
-      <button type="button" class="rich-editor-btn" :class="{ 'rich-editor-btn-active': editor.isActive('italic') }" @click="editor.chain().focus().toggleItalic().run()">I</button>
-      <button type="button" class="rich-editor-btn" :class="{ 'rich-editor-btn-active': editor.isActive('heading', { level: 2 }) }" @click="editor.chain().focus().toggleHeading({ level: 2 }).run()">H2</button>
-      <button type="button" class="rich-editor-btn" :class="{ 'rich-editor-btn-active': editor.isActive('heading', { level: 3 }) }" @click="editor.chain().focus().toggleHeading({ level: 3 }).run()">H3</button>
-      <button type="button" class="rich-editor-btn" :class="{ 'rich-editor-btn-active': editor.isActive('bulletList') }" @click="editor.chain().focus().toggleBulletList().run()">List</button>
-      <button type="button" class="rich-editor-btn" :class="{ 'rich-editor-btn-active': editor.isActive('orderedList') }" @click="editor.chain().focus().toggleOrderedList().run()">1.</button>
-      <button type="button" class="rich-editor-btn" @click="addImage">Image</button>
-      <button type="button" class="rich-editor-btn" @click="editor.chain().focus().unsetAllMarks().clearNodes().run()">Clear</button>
+  <div class="overflow-hidden rounded-xl border border-[#d7dee7] bg-white">
+    <div v-if="editor" class="flex flex-wrap gap-2 border-b border-[#eef1f4] bg-slate-50 p-2.5">
+      <button type="button" class="h-8 min-w-9 cursor-pointer rounded-lg border border-[#d7dee7] bg-white px-2.5 text-xs font-bold text-gray-700" :class="{ 'border-[#9fd3da] bg-[#e8f7f9] text-[#0e7f8f]': editor.isActive('bold') }" @click="editor.chain().focus().toggleBold().run()">B</button>
+      <button type="button" class="h-8 min-w-9 cursor-pointer rounded-lg border border-[#d7dee7] bg-white px-2.5 text-xs font-bold text-gray-700" :class="{ 'border-[#9fd3da] bg-[#e8f7f9] text-[#0e7f8f]': editor.isActive('italic') }" @click="editor.chain().focus().toggleItalic().run()">I</button>
+      <button type="button" class="h-8 min-w-9 cursor-pointer rounded-lg border border-[#d7dee7] bg-white px-2.5 text-xs font-bold text-gray-700" :class="{ 'border-[#9fd3da] bg-[#e8f7f9] text-[#0e7f8f]': editor.isActive('heading', { level: 2 }) }" @click="editor.chain().focus().toggleHeading({ level: 2 }).run()">H2</button>
+      <button type="button" class="h-8 min-w-9 cursor-pointer rounded-lg border border-[#d7dee7] bg-white px-2.5 text-xs font-bold text-gray-700" :class="{ 'border-[#9fd3da] bg-[#e8f7f9] text-[#0e7f8f]': editor.isActive('heading', { level: 3 }) }" @click="editor.chain().focus().toggleHeading({ level: 3 }).run()">H3</button>
+      <button type="button" class="h-8 min-w-9 cursor-pointer rounded-lg border border-[#d7dee7] bg-white px-2.5 text-xs font-bold text-gray-700" :class="{ 'border-[#9fd3da] bg-[#e8f7f9] text-[#0e7f8f]': editor.isActive('bulletList') }" @click="editor.chain().focus().toggleBulletList().run()">List</button>
+      <button type="button" class="h-8 min-w-9 cursor-pointer rounded-lg border border-[#d7dee7] bg-white px-2.5 text-xs font-bold text-gray-700" :class="{ 'border-[#9fd3da] bg-[#e8f7f9] text-[#0e7f8f]': editor.isActive('orderedList') }" @click="editor.chain().focus().toggleOrderedList().run()">1.</button>
+      <button type="button" class="h-8 min-w-9 cursor-pointer rounded-lg border border-[#d7dee7] bg-white px-2.5 text-xs font-bold text-gray-700" @click="addImage">Image</button>
+      <button type="button" class="h-8 min-w-9 cursor-pointer rounded-lg border border-[#d7dee7] bg-white px-2.5 text-xs font-bold text-gray-700" @click="editor.chain().focus().unsetAllMarks().clearNodes().run()">Clear</button>
     </div>
-    <EditorContent :editor="editor" class="rich-editor-content" />
-    <p class="rich-editor-hint">{{ hint }}</p>
+    <EditorContent :editor="editor" class="min-h-[220px] p-4 [&_.ProseMirror]:min-h-[190px] [&_.ProseMirror]:text-sm [&_.ProseMirror]:leading-[1.7] [&_.ProseMirror]:text-gray-900 [&_.ProseMirror]:outline-none [&_.ProseMirror_a]:text-[#0e7f8f] [&_.ProseMirror_h2]:my-4 [&_.ProseMirror_h2]:mb-2.5 [&_.ProseMirror_h2]:font-bold [&_.ProseMirror_h3]:my-4 [&_.ProseMirror_h3]:mb-2.5 [&_.ProseMirror_h3]:font-bold [&_.ProseMirror_img]:my-3.5 [&_.ProseMirror_img]:block [&_.ProseMirror_img]:h-auto [&_.ProseMirror_img]:max-w-full [&_.ProseMirror_img]:rounded-xl [&_.ProseMirror_ol]:mb-3 [&_.ProseMirror_ol]:list-decimal [&_.ProseMirror_ol]:pl-5 [&_.ProseMirror_p]:mb-3 [&_.ProseMirror_ul]:mb-3 [&_.ProseMirror_ul]:list-disc [&_.ProseMirror_ul]:pl-5" />
+    <p class="px-4 pb-3 text-xs text-gray-500">{{ hint }}</p>
     <AdminDialog
       :state="dialog"
       @confirm="close(true)"
@@ -103,77 +103,3 @@ async function addImage() {
   input.click()
 }
 </script>
-
-<style scoped>
-.rich-editor {
-  border: 1px solid #d7dee7;
-  border-radius: 12px;
-  background: #ffffff;
-  overflow: hidden;
-}
-.rich-editor .rich-editor-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 10px;
-  border-bottom: 1px solid #eef1f4;
-  background: #f8fafc;
-}
-.rich-editor .rich-editor-btn {
-  min-width: 36px;
-  height: 32px;
-  padding: 0 10px;
-  border-radius: 8px;
-  background: #ffffff;
-  border: 1px solid #d7dee7;
-  color: #374151;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-}
-.rich-editor .rich-editor-btn.rich-editor-btn-active {
-  background: #e8f7f9;
-  border-color: #9fd3da;
-  color: #0e7f8f;
-}
-.rich-editor .rich-editor-content {
-  min-height: 220px;
-  padding: 14px 16px;
-}
-.rich-editor .rich-editor-hint {
-  padding: 0 16px 12px;
-  color: #6b7280;
-  font-size: 12px;
-}
-
-:deep(.ProseMirror) {
-  min-height: 190px;
-  outline: none;
-  color: #111827;
-  font-size: 14px;
-  line-height: 1.7;
-}
-:deep(.ProseMirror) p {
-  margin: 0 0 12px;
-}
-:deep(.ProseMirror) h2,
-:deep(.ProseMirror) h3 {
-  margin: 16px 0 10px;
-  font-weight: 700;
-}
-:deep(.ProseMirror) ul,
-:deep(.ProseMirror) ol {
-  margin: 0 0 12px;
-  padding-left: 20px;
-}
-:deep(.ProseMirror) img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 14px 0;
-  border-radius: 12px;
-}
-:deep(.ProseMirror) a {
-  color: #0e7f8f;
-}
-</style>

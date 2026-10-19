@@ -1,10 +1,10 @@
 <template>
-  <div class="image-list-upload">
-    <div class="image-list-upload-actions">
-      <label class="image-list-upload-btn">
+  <div>
+    <div class="flex items-center gap-2.5">
+      <label class="relative inline-flex h-[42px] cursor-pointer items-center justify-center rounded-xl bg-[#e8f7f9] px-3.5 text-[13px] font-bold text-[#0e7f8f]">
         {{ uploading ? $t('admin.upload.uploading') : $t('admin.upload.addImage') }}
         <input
-          class="image-list-upload-file"
+          class="absolute inset-0 cursor-pointer opacity-0"
           type="file"
           accept="image/jpeg,image/png,image/webp,image/gif,image/avif"
           :disabled="uploading"
@@ -13,16 +13,16 @@
         />
       </label>
     </div>
-    <p v-if="error" class="image-list-upload-error">{{ error }}</p>
-    <div v-if="images.length" class="image-list-upload-grid">
-      <div v-for="(url, index) in images" :key="url + '-' + index" class="image-list-upload-item">
-        <img :src="url" alt="" class="image-list-upload-preview" />
-        <button type="button" class="image-list-upload-remove" @click="removeAt(index)">
+    <p v-if="error" class="mt-2 text-xs text-[#b42318]">{{ error }}</p>
+    <div v-if="images.length" class="mt-3 grid grid-cols-2 gap-3 md:grid-cols-3">
+      <div v-for="(url, index) in images" :key="url + '-' + index" class="overflow-hidden rounded-xl border border-[#e5eaf0] bg-white">
+        <img :src="url" alt="" class="block h-[120px] w-full object-cover" />
+        <button type="button" class="h-[34px] w-full cursor-pointer bg-slate-50 text-xs font-bold text-[#b42318]" @click="removeAt(index)">
           {{ $t('admin.common.delete') }}
         </button>
       </div>
     </div>
-    <p v-else class="image-list-upload-empty">{{ $t('admin.upload.empty') }}</p>
+    <p v-else class="mt-2.5 text-[13px] text-gray-500">{{ $t('admin.upload.empty') }}</p>
   </div>
 </template>
 
@@ -94,74 +94,3 @@ async function onFiles(event: Event) {
   }
 }
 </script>
-
-<style scoped>
-.image-list-upload .image-list-upload-actions {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-.image-list-upload .image-list-upload-btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 42px;
-  padding: 0 14px;
-  border-radius: 12px;
-  background: #e8f7f9;
-  color: #0e7f8f;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-}
-.image-list-upload .image-list-upload-file {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  cursor: pointer;
-}
-.image-list-upload .image-list-upload-error {
-  margin-top: 8px;
-  color: #b42318;
-  font-size: 12px;
-}
-.image-list-upload .image-list-upload-empty {
-  margin-top: 10px;
-  color: #6b7280;
-  font-size: 13px;
-}
-.image-list-upload .image-list-upload-grid {
-  margin-top: 12px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-@media (min-width: 768px) {
-  .image-list-upload .image-list-upload-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-.image-list-upload .image-list-upload-item {
-  border: 1px solid #e5eaf0;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #fff;
-}
-.image-list-upload .image-list-upload-preview {
-  display: block;
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-}
-.image-list-upload .image-list-upload-remove {
-  width: 100%;
-  height: 34px;
-  border: none;
-  background: #f8fafc;
-  color: #b42318;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-}
-</style>

@@ -2,11 +2,11 @@
   <button
     v-show="visible"
     type="button"
-    class="back-to-top"
+    class="fixed right-4 bottom-[calc(88px+env(safe-area-inset-bottom,0px))] z-[60] inline-flex size-11 cursor-pointer items-center justify-center rounded-full border border-[#d7dde5] bg-white/95 text-[#0f4c56] shadow-[0_8px_24px_rgba(15,23,42,.12)] transition hover:-translate-y-0.5 hover:border-[#3f7f88]/45 hover:bg-white md:right-7 md:bottom-8"
     :aria-label="label"
     @click="scrollTop"
   >
-    <span class="back-to-top-icon" aria-hidden="true">↑</span>
+    <span class="text-lg font-bold leading-none" aria-hidden="true">↑</span>
   </button>
 </template>
 
@@ -34,40 +34,3 @@ onBeforeUnmount(() => {
 })
 
 </script>
-
-<style scoped>
-.back-to-top {
-  position: fixed;
-  right: 16px;
-  bottom: calc(88px + env(safe-area-inset-bottom, 0px));
-  z-index: 60;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  border: 1px solid #d7dde5;
-  background: rgba(255, 255, 255, 0.96);
-  color: #0f4c56;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-}
-.back-to-top:hover {
-  background: #ffffff;
-  border-color: rgba(63, 127, 136, 0.45);
-  transform: translateY(-2px);
-}
-.back-to-top .back-to-top-icon {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1;
-}
-@media (min-width: 768px) {
-  .back-to-top {
-    right: 28px;
-    bottom: 32px;
-  }
-}
-</style>

@@ -1,31 +1,31 @@
 <template>
-  <div v-if="article" class="news-detail-page">
-    <section class="page-hero">
+  <div v-if="article">
+    <section class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-16 text-white md:py-[72px]">
       <div v-motion-slide-visible-once-bottom class="container">
-        <NuxtLink to="/news" class="page-hero-back">{{ $t('news.backToList') }}</NuxtLink>
-        <div class="page-hero-meta">
+        <NuxtLink to="/news" class="mb-[18px] inline-block text-sm font-semibold text-[#c8ced6] no-underline">{{ $t('news.backToList') }}</NuxtLink>
+        <div class="mb-3.5 flex gap-3.5 text-[13px] font-semibold tracking-[.04em] text-[#b7c0cb] uppercase">
           <span>{{ categoryLabel(article.category) }}</span>
           <time :datetime="article.publishedAt">{{ formatDate(article.publishedAt) }}</time>
         </div>
-        <h1 class="page-hero-title">{{ t(article.title) }}</h1>
-        <p class="page-hero-subtitle">{{ t(article.summary) }}</p>
+        <h1 class="mb-4 max-w-[18ch] text-4xl leading-[1.1] md:text-5xl">{{ t(article.title) }}</h1>
+        <p class="max-w-[48ch] text-lg leading-[1.7] text-[#c8ced6]">{{ t(article.summary) }}</p>
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section content">
-      <div class="container content-wrap">
+    <section v-motion-slide-visible-once-bottom class="bg-white py-[72px] pb-24">
+      <div class="container max-w-[820px]">
         <AppImage
           v-if="article.coverUrl"
-          class="cover-image"
+          class="mb-7 block max-h-[460px] w-full rounded-xl object-cover"
           :src="article.coverUrl"
           :alt="t(article.title)"
           fetchpriority="high"
           decoding="async"
           loading="eager"
         />
-        <article ref="articleBody" class="article-body" v-html="t(article.content)"></article>
-        <div class="article-cta">
-          <NuxtLink to="/contact" class="article-cta-link">{{ $t('news.detailCta') }}</NuxtLink>
+        <article ref="articleBody" class="text-[17px] leading-[1.8] text-gray-800 [&_a]:text-[var(--color-accent)] [&_h2]:my-7 [&_h2]:mb-3 [&_h2]:text-gray-900 [&_h3]:my-7 [&_h3]:mb-3 [&_h3]:text-gray-900 [&_img]:my-6 [&_img]:block [&_img]:h-auto [&_img]:w-full [&_img]:rounded-[10px] [&_li]:mb-2 [&_ol]:mb-[18px] [&_ol]:list-decimal [&_ol]:pl-[22px] [&_p]:mb-[18px] [&_ul]:mb-[18px] [&_ul]:list-disc [&_ul]:pl-[22px]" v-html="t(article.content)"></article>
+        <div class="mt-9">
+          <NuxtLink to="/contact" class="inline-flex min-h-[46px] items-center justify-center rounded-full bg-[var(--color-ink)] px-5 text-sm font-semibold text-white no-underline">{{ $t('news.detailCta') }}</NuxtLink>
         </div>
       </div>
     </section>
@@ -179,107 +179,3 @@ function formatDate(value: string) {
   }).format(date)
 }
 </script>
-
-<style scoped>
-.news-detail-page .page-hero {
-  padding: 72px 0 64px;
-  background: radial-gradient(circle at 80% 10%, rgba(139, 154, 171, 0.14), transparent 26%), linear-gradient(180deg, var(--color-ink) 0%, var(--color-ink-soft) 100%);
-  color: #ffffff;
-}
-.news-detail-page .page-hero .page-hero-back {
-  display: inline-block;
-  margin-bottom: 18px;
-  color: #c8ced6;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-}
-.news-detail-page .page-hero .page-hero-meta {
-  display: flex;
-  gap: 14px;
-  margin-bottom: 14px;
-  color: #b7c0cb;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-.news-detail-page .page-hero .page-hero-title {
-  margin-bottom: 16px;
-  max-width: 18ch;
-  font-size: 48px;
-  line-height: 1.1;
-  letter-spacing: 0;
-}
-.news-detail-page .page-hero .page-hero-subtitle {
-  max-width: 48ch;
-  color: #c8ced6;
-  font-size: 18px;
-  line-height: 1.7;
-}
-.news-detail-page .section {
-  padding: 72px 0 96px;
-}
-.news-detail-page .content {
-  background: #ffffff;
-}
-.news-detail-page .content .content-wrap {
-  max-width: 820px;
-}
-.news-detail-page .content .cover-image {
-  width: 100%;
-  max-height: 460px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 28px;
-  display: block;
-}
-.news-detail-page .content .article-body {
-  color: #1f2937;
-  font-size: 17px;
-  line-height: 1.8;
-}
-.news-detail-page .content .article-body :deep(p) {
-  margin: 0 0 18px;
-}
-.news-detail-page .content .article-body :deep(h2),
-.news-detail-page .content .article-body :deep(h3) {
-  margin: 28px 0 12px;
-  color: #111827;
-  letter-spacing: 0;
-}
-.news-detail-page .content .article-body :deep(ul),
-.news-detail-page .content .article-body :deep(ol) {
-  margin: 0 0 18px;
-  padding-left: 22px;
-}
-.news-detail-page .content .article-body :deep(li) {
-  margin-bottom: 8px;
-}
-.news-detail-page .content .article-body :deep(img) {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 24px 0;
-  border-radius: 10px;
-}
-.news-detail-page .content .article-body :deep(a) {
-  color: var(--color-accent);
-}
-.news-detail-page .content .article-cta {
-  margin-top: 36px;
-}
-.news-detail-page .content .article-cta .article-cta-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 0 20px;
-  border-radius: 999px;
-  background: var(--color-ink);
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 650;
-}
-</style>

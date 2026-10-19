@@ -1,58 +1,58 @@
 <template>
-  <div class="services-page">
-    <section class="page-hero">
+  <div>
+    <section class="bg-[radial-gradient(circle_at_20%_0%,rgba(95,208,220,.14),transparent_28%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-[72px] text-white md:py-[88px]">
       <div v-motion-slide-visible-once-bottom class="container">
-        <h1 class="page-hero-title">{{ $t('services.hero.title') }}</h1>
-        <p class="page-hero-subtitle">{{ $t('services.hero.subtitle') }}</p>
+        <h1 class="mb-[18px] text-4xl leading-[1.08] md:text-[56px]">{{ $t('services.hero.title') }}</h1>
+        <p class="max-w-[30ch] text-lg leading-[1.7] text-[#c8ced6] md:text-xl">{{ $t('services.hero.subtitle') }}</p>
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section audience">
+    <section v-motion-slide-visible-once-bottom class="bg-[var(--color-surface)] py-24 md:py-[120px]">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">{{ $t('services.audience.title') }}</h2>
-          <p class="section-subtitle">{{ $t('services.audience.subtitle') }}</p>
+        <div class="mb-12">
+          <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('services.audience.title') }}</h2>
+          <p class="max-w-[48ch] text-[17px] leading-[1.7] text-gray-600">{{ $t('services.audience.subtitle') }}</p>
         </div>
-        <div class="audience-grid">
-          <article v-for="item in audience" :key="item.name" class="audience-card">
-            <h3 class="audience-card-title">{{ item.name }}</h3>
-            <p class="audience-card-desc">{{ item.desc }}</p>
+        <div class="grid grid-cols-1 gap-4 min-[900px]:grid-cols-3">
+          <article v-for="item in audience" :key="item.name" class="rounded-xl border border-[var(--color-line)] bg-white px-6 py-[26px]">
+            <h3 class="mb-3 text-xl font-bold text-[#0f4c56]">{{ item.name }}</h3>
+            <p class="text-[15px] leading-[1.7] text-gray-600">{{ item.desc }}</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section list">
+    <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-[120px]">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">{{ $t('services.list.title') }}</h2>
+        <div class="mb-12">
+          <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('services.list.title') }}</h2>
         </div>
-        <div class="services-grid">
-          <article v-for="(item, index) in list" :key="item.name" class="service-card">
-            <p class="service-card-index">0{{ index + 1 }}</p>
-            <h3 class="service-card-title">{{ item.name }}</h3>
-            <p class="service-card-desc">{{ item.desc }}</p>
+        <div class="grid grid-cols-1 gap-[18px] min-[900px]:grid-cols-2">
+          <article v-for="(item, index) in list" :key="item.name" class="rounded-xl border border-[var(--color-line)] bg-[var(--color-surface)] p-7 transition hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(15,23,42,.1)]">
+            <p class="mb-6 text-[13px] font-bold tracking-[.08em] text-[var(--color-accent)]">0{{ index + 1 }}</p>
+            <h3 class="mb-3 text-2xl text-gray-900">{{ item.name }}</h3>
+            <p class="text-[15px] leading-[1.7] text-gray-600">{{ item.desc }}</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section process">
+    <section v-motion-slide-visible-once-bottom class="bg-[var(--color-ink)] py-24 md:py-[120px]">
       <div class="container">
-        <div class="section-header section-header-light">
-          <h2 class="section-title">{{ $t('services.process.title') }}</h2>
-          <p class="section-subtitle">{{ $t('services.process.subtitle') }}</p>
+        <div class="mb-12">
+          <h2 class="mb-3.5 text-3xl text-white md:text-4xl">{{ $t('services.process.title') }}</h2>
+          <p class="max-w-[48ch] text-[17px] leading-[1.7] text-[#c8ced6]">{{ $t('services.process.subtitle') }}</p>
         </div>
-        <ol class="process-flow">
-          <li v-for="(item, index) in processSteps" :key="item.step" class="process-step">
-            <div class="process-step-card">
-              <p class="process-step-index">{{ item.step }}</p>
-              <h3 class="process-step-title">{{ item.name }}</h3>
-              <p class="process-step-desc">{{ item.desc }}</p>
+        <ol class="grid grid-cols-1 gap-3.5 min-[960px]:grid-cols-4 min-[960px]:gap-[18px]">
+          <li v-for="(item, index) in processSteps" :key="item.step" class="relative flex flex-col">
+            <div class="h-full rounded-xl border border-white/10 bg-white/[.04] px-[22px] py-[26px] transition hover:-translate-y-[3px] hover:bg-white/[.07]">
+              <p class="mb-7 text-[13px] font-bold tracking-[.08em] text-[#5fd0dc]">{{ item.step }}</p>
+              <h3 class="mb-2.5 text-[22px] text-white">{{ item.name }}</h3>
+              <p class="text-sm leading-[1.7] text-[#9aa3af]">{{ item.desc }}</p>
             </div>
             <span
               v-if="index < processSteps.length - 1"
-              class="process-step-connector"
+              class="absolute top-[38px] -right-3.5 hidden h-0.5 w-7 bg-gradient-to-r from-[#5fd0dc]/15 to-[#5fd0dc]/75 after:absolute after:-right-px after:top-1/2 after:size-1.5 after:-translate-y-1/2 after:rounded-full after:bg-[#5fd0dc] min-[960px]:block"
               aria-hidden="true"
             ></span>
           </li>
@@ -60,29 +60,29 @@
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section checklist">
+    <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-[120px]">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">{{ $t('services.checklist.title') }}</h2>
-          <p class="section-subtitle">{{ $t('services.checklist.subtitle') }}</p>
+        <div class="mb-12">
+          <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('services.checklist.title') }}</h2>
+          <p class="max-w-[48ch] text-[17px] leading-[1.7] text-gray-600">{{ $t('services.checklist.subtitle') }}</p>
         </div>
-        <ol class="checklist-list">
-          <li v-for="(item, index) in checklist" :key="index" class="checklist-item">
-            <span class="checklist-item-index">0{{ index + 1 }}</span>
-            <p class="checklist-item-text">{{ item }}</p>
+        <ol class="flex flex-col gap-3">
+          <li v-for="(item, index) in checklist" :key="index" class="grid grid-cols-[42px_1fr] items-start gap-3.5 rounded-xl border border-[var(--color-line)] bg-[var(--color-surface)] px-5 py-[18px]">
+            <span class="pt-0.5 text-[13px] font-bold tracking-[.08em] text-[var(--color-accent)]">0{{ index + 1 }}</span>
+            <p class="text-[15px] leading-[1.7] text-gray-800">{{ item }}</p>
           </li>
         </ol>
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="cta">
+    <section v-motion-slide-visible-once-bottom class="bg-white pt-7 pb-24 md:pt-5 md:pb-[120px]">
       <div class="container">
-        <div class="cta-panel">
-          <div class="cta-copy">
-            <h2 class="cta-title">{{ $t('services.cta.title') }}</h2>
-            <p class="cta-subtitle">{{ $t('services.cta.subtitle') }}</p>
+        <div class="flex flex-col gap-[22px] rounded-[14px] border border-white/[.08] bg-[radial-gradient(circle_at_100%_0%,rgba(95,208,220,.18),transparent_34%),linear-gradient(135deg,#102033_0%,#0b1522_100%)] px-7 py-[34px] min-[800px]:flex-row min-[800px]:items-center min-[800px]:justify-between min-[800px]:px-11 min-[800px]:py-10">
+          <div>
+            <h2 class="mb-2.5 text-3xl font-semibold text-white">{{ $t('services.cta.title') }}</h2>
+            <p class="max-w-[42ch] text-base leading-[1.7] text-white/70">{{ $t('services.cta.subtitle') }}</p>
           </div>
-          <NuxtLink to="/contact" class="btn btn-light">{{ $t('services.cta.button') }}</NuxtLink>
+          <NuxtLink to="/contact" class="inline-flex items-center justify-center rounded-full bg-white px-[22px] py-3.5 text-[15px] font-semibold whitespace-nowrap text-[#102033] no-underline">{{ $t('services.cta.button') }}</NuxtLink>
         </div>
       </div>
     </section>
@@ -128,287 +128,3 @@ const checklist = computed(() => {
   return [1, 2, 3, 4, 5].map((n) => t(`services.checklist.items.item${n}`))
 })
 </script>
-
-<style scoped>
-.services-page .page-hero {
-  padding: 88px 0 72px;
-  background: radial-gradient(circle at 20% 0%, rgba(95, 208, 220, 0.14), transparent 28%), linear-gradient(180deg, var(--color-ink) 0%, var(--color-ink-soft) 100%);
-  color: #ffffff;
-}
-.services-page .page-hero .page-hero-title {
-  margin-bottom: 18px;
-  font-size: 56px;
-  line-height: 1.08;
-  letter-spacing: 0;
-}
-.services-page .page-hero .page-hero-subtitle {
-  max-width: 30ch;
-  color: #c8ced6;
-  font-size: 20px;
-  line-height: 1.7;
-}
-.services-page .section {
-  padding: 96px 0;
-}
-@media (min-width: 768px) {
-  .services-page .section {
-    padding: 120px 0;
-  }
-}
-.services-page .section-header {
-  margin-bottom: 48px;
-}
-.services-page .section-header .section-title {
-  margin-bottom: 14px;
-  font-size: 36px;
-  letter-spacing: 0;
-  color: #111827;
-}
-.services-page .section-header .section-subtitle {
-  max-width: 48ch;
-  color: #4b5563;
-  font-size: 17px;
-  line-height: 1.7;
-}
-.services-page .section-header.section-header-light .section-title {
-  color: #ffffff;
-}
-.services-page .section-header.section-header-light .section-subtitle {
-  color: #c8ced6;
-}
-.services-page .audience {
-  background: var(--color-surface);
-}
-.services-page .audience .audience-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
-@media (min-width: 900px) {
-  .services-page .audience .audience-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-.services-page .audience .audience-card {
-  padding: 26px 24px;
-  border-radius: 12px;
-  background: #ffffff;
-  border: 1px solid var(--color-line);
-}
-.services-page .audience .audience-card-title {
-  margin-bottom: 12px;
-  color: #0f4c56;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0;
-}
-.services-page .audience .audience-card-desc {
-  color: #4b5563;
-  font-size: 15px;
-  line-height: 1.7;
-}
-.services-page .list {
-  background: #ffffff;
-}
-.services-page .list .services-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
-}
-@media (min-width: 900px) {
-  .services-page .list .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-.services-page .list .service-card {
-  padding: 28px;
-  border-radius: 12px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-line);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.services-page .list .service-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
-}
-.services-page .list .service-card .service-card-index {
-  margin-bottom: 24px;
-  color: var(--color-accent);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-.services-page .list .service-card .service-card-title {
-  margin-bottom: 12px;
-  font-size: 24px;
-  color: #111827;
-  letter-spacing: 0;
-}
-.services-page .list .service-card .service-card-desc {
-  color: #4b5563;
-  font-size: 15px;
-  line-height: 1.7;
-}
-.services-page .process {
-  background: var(--color-ink);
-}
-.services-page .process .process-flow {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-@media (min-width: 960px) {
-  .services-page .process .process-flow {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 18px;
-  }
-}
-.services-page .process .process-step {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-.services-page .process .process-step-card {
-  height: 100%;
-  padding: 26px 22px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.25s ease, background 0.25s ease;
-}
-.services-page .process .process-step-card:hover {
-  transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.07);
-}
-.services-page .process .process-step-index {
-  margin-bottom: 28px;
-  color: #5fd0dc;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-.services-page .process .process-step-title {
-  margin-bottom: 10px;
-  color: #ffffff;
-  font-size: 22px;
-  letter-spacing: 0;
-}
-.services-page .process .process-step-desc {
-  color: #9aa3af;
-  font-size: 14px;
-  line-height: 1.7;
-}
-.services-page .process .process-step-connector {
-  display: none;
-}
-@media (min-width: 960px) {
-  .services-page .process .process-step-connector {
-    display: block;
-    position: absolute;
-    top: 38px;
-    right: -14px;
-    width: 28px;
-    height: 2px;
-    background: linear-gradient(90deg, rgba(95, 208, 220, 0.15), rgba(95, 208, 220, 0.75));
-  }
-  .services-page .process .process-step-connector::after {
-    content: "";
-    position: absolute;
-    right: -1px;
-    top: 50%;
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
-    background: #5fd0dc;
-    transform: translateY(-50%);
-  }
-}
-.services-page .checklist {
-  background: #ffffff;
-}
-.services-page .checklist .checklist-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.services-page .checklist .checklist-item {
-  display: grid;
-  grid-template-columns: 42px 1fr;
-  gap: 14px;
-  align-items: start;
-  padding: 18px 20px;
-  border-radius: 12px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-line);
-}
-.services-page .checklist .checklist-item-index {
-  color: var(--color-accent);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  padding-top: 2px;
-}
-.services-page .checklist .checklist-item-text {
-  color: #1f2937;
-  font-size: 15px;
-  line-height: 1.7;
-}
-.services-page .cta {
-  padding: 28px 0 96px;
-  background: #ffffff;
-}
-@media (min-width: 768px) {
-  .services-page .cta {
-    padding: 20px 0 120px;
-  }
-}
-.services-page .cta .cta-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  padding: 34px 28px;
-  border-radius: 14px;
-  background: radial-gradient(circle at 100% 0%, rgba(95, 208, 220, 0.18), transparent 34%), linear-gradient(135deg, #102033 0%, #0b1522 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-@media (min-width: 800px) {
-  .services-page .cta .cta-panel {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 40px 44px;
-  }
-}
-.services-page .cta .cta-title {
-  margin-bottom: 10px;
-  color: #ffffff;
-  font-size: 30px;
-  font-weight: 650;
-  letter-spacing: 0;
-}
-.services-page .cta .cta-subtitle {
-  max-width: 42ch;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 16px;
-  line-height: 1.7;
-}
-.services-page .cta .btn.btn-light {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 22px;
-  border-radius: 999px;
-  background: #ffffff;
-  color: #102033;
-  font-size: 15px;
-  font-weight: 650;
-  text-decoration: none;
-  white-space: nowrap;
-}
-</style>

@@ -1,41 +1,41 @@
 <template>
-  <div class="admin-page">
-    <div class="admin-page-header">
+  <div>
+    <div class="mb-5 flex items-start justify-between gap-4">
       <div>
-        <div class="admin-page-title">{{ $t('admin.newsCategories.title') }}</div>
-        <div class="admin-page-subtitle">
+        <div class="mb-1.5 text-[28px] font-bold">{{ $t('admin.newsCategories.title') }}</div>
+        <div class="text-sm text-gray-500">
           {{ $t('admin.newsCategories.subtitle') }}
           <span v-if="!pending"> · {{ $t('admin.common.totalCount', { count: total }) }}</span>
         </div>
       </div>
-      <div class="admin-page-header-actions">
+      <div class="flex flex-wrap items-center gap-3">
         <div
           v-if="selectedSlugs.length"
-          class="admin-page-btn admin-page-btn-danger"
-          :class="{ 'is-disabled': batchDeleting }"
+          class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#b42318] px-4 text-sm font-semibold whitespace-nowrap text-white"
+          :class="{ 'pointer-events-none opacity-60': batchDeleting }"
           @click="removeSelected"
         >
           {{ $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}
         </div>
-        <div class="admin-page-btn" @click="startCreate">{{ $t('admin.newsCategories.new') }}</div>
+        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white" @click="startCreate">{{ $t('admin.newsCategories.new') }}</div>
       </div>
     </div>
 
-    <div v-if="formOpen" class="admin-form-card">
-      <div class="admin-form-title">
+    <div v-if="formOpen" class="mb-[18px] rounded-xl border border-[#e5eaf0] bg-white p-5">
+      <div class="mb-4 text-lg font-bold">
         {{ editingSlug ? $t('admin.newsCategories.editTitle') : $t('admin.newsCategories.createTitle') }}
       </div>
-      <div class="admin-form-grid">
-        <label class="admin-field">
-          <div class="admin-field-label is-required">{{ $t('admin.common.nameEn') }}</div>
-          <input v-model="form.nameEn" class="admin-field-input" />
+      <div class="grid grid-cols-1 gap-3.5 md:grid-cols-2">
+        <label class="block">
+          <div class="mb-1.5 text-[13px] font-semibold text-gray-600 after:text-[#b42318] after:content-["_*"]">{{ $t('admin.common.nameEn') }}</div>
+          <input v-model="form.nameEn" class="h-[42px] w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" />
         </label>
         <label class="admin-field">
           <div class="admin-field-label is-required">{{ $t('admin.common.nameZh') }}</div>
           <input v-model="form.nameZh" class="admin-field-input" />
         </label>
         <label class="admin-field">
-          <div class="admin-field-label">{{ $t('admin.common.sort') }}</div>
+          <div class="mb-1.5 text-[13px] font-semibold text-gray-600">{{ $t('admin.common.sort') }}</div>
           <input v-model.number="form.sortOrder" class="admin-field-input" type="number" />
         </label>
         <label class="admin-field">
@@ -46,19 +46,19 @@
           </select>
         </label>
       </div>
-      <div v-if="formError" class="admin-error">{{ formError }}</div>
-      <div class="admin-form-actions">
+      <div v-if="formError" class="mt-3 text-[13px] text-[#b42318]">{{ formError }}</div>
+      <div class="mt-4 flex gap-2.5">
         <div class="admin-page-btn" @click="save">{{ $t('admin.common.save') }}</div>
-        <div class="admin-page-btn admin-page-btn-muted" @click="closeForm">{{ $t('admin.common.cancel') }}</div>
+        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="closeForm">{{ $t('admin.common.cancel') }}</div>
       </div>
     </div>
 
-    <div class="admin-table-card">
-      <div v-if="pending" class="admin-empty">{{ $t('admin.common.loading') }}</div>
+    <div class="mb-[18px] rounded-xl border border-[#e5eaf0] bg-white p-5">
+      <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
       <div v-else-if="!items.length" class="admin-empty">{{ $t('admin.newsCategories.empty') }}</div>
-      <div v-else class="admin-table">
-        <div class="admin-table-row admin-table-head">
-          <div class="admin-table-check">
+      <div v-else class="overflow-x-auto">
+        <div class="grid min-w-[700px] grid-cols-[36px_1.4fr_1fr_.5fr_.7fr_.9fr] items-center gap-3 border-b border-[#eef1f4] py-3.5 text-xs font-bold tracking-[.04em] text-gray-500 uppercase">
+          <div class="flex items-center justify-center [&_input]:size-4 [&_input]:cursor-pointer">
             <input
               type="checkbox"
               :checked="allSelected"
@@ -72,7 +72,7 @@
           <div>{{ $t('admin.common.status') }}</div>
           <div>{{ $t('admin.common.actions') }}</div>
         </div>
-        <div v-for="item in items" :key="item.id" class="admin-table-row">
+        <div v-for="item in items" :key="item.id" class="grid min-w-[700px] grid-cols-[36px_1.4fr_1fr_.5fr_.7fr_.9fr] items-center gap-3 border-b border-[#eef1f4] py-3.5 text-sm">
           <div class="admin-table-check">
             <input
               type="checkbox"
@@ -81,24 +81,24 @@
             />
           </div>
           <div>
-            <div class="admin-strong">{{ lt(item.name) }}</div>
-            <div class="admin-muted">{{ secondaryName(item.name) }}</div>
+            <div class="font-semibold">{{ lt(item.name) }}</div>
+            <div class="mt-0.5 text-xs text-gray-500">{{ secondaryName(item.name) }}</div>
           </div>
           <div>{{ item.slug }}</div>
           <div>{{ item.sortOrder }}</div>
           <div>{{ item.isPublished ? $t('admin.common.published') : $t('admin.common.draft') }}</div>
-          <div class="admin-row-actions">
-            <div class="admin-link" @click="startEdit(item)">{{ $t('admin.common.edit') }}</div>
-            <div class="admin-link admin-link-danger" @click="remove(item)">{{ $t('admin.common.delete') }}</div>
+          <div class="flex gap-3">
+            <div class="cursor-pointer font-semibold text-[#0e7f8f]" @click="startEdit(item)">{{ $t('admin.common.edit') }}</div>
+            <div class="cursor-pointer font-semibold text-[#b42318]" @click="remove(item)">{{ $t('admin.common.delete') }}</div>
           </div>
         </div>
       </div>
 
-      <div v-if="totalPages > 1" class="admin-pagination">
-        <button type="button" class="admin-pagination-btn" :disabled="page <= 1" @click="goPage(page - 1)">
+      <div v-if="totalPages > 1" class="mt-4 flex items-center justify-end gap-2.5">
+        <button type="button" class="h-[34px] cursor-pointer rounded-[10px] border border-[#d7dee7] bg-white px-3 text-[13px] font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page <= 1" @click="goPage(page - 1)">
           {{ $t('admin.common.prevPage') }}
         </button>
-        <span class="admin-pagination-status">{{ $t('admin.common.pageStatus', { page, totalPages }) }}</span>
+        <span class="text-[13px] text-gray-500">{{ $t('admin.common.pageStatus', { page, totalPages }) }}</span>
         <button type="button" class="admin-pagination-btn" :disabled="page >= totalPages" @click="goPage(page + 1)">
           {{ $t('admin.common.nextPage') }}
         </button>
@@ -317,206 +317,3 @@ function isCategoryHasArticlesError(err: any) {
 
 onMounted(load)
 </script>
-
-<style scoped>
-.admin-page .admin-page-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-.admin-page .admin-page-header .admin-page-title {
-  margin-bottom: 6px;
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: 0;
-}
-.admin-page .admin-page-header .admin-page-subtitle {
-  color: #6b7280;
-  font-size: 14px;
-}
-.admin-page .admin-page-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 12px;
-  background: #0e7f8f;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 650;
-  cursor: pointer;
-  white-space: nowrap;
-}
-.admin-page .admin-page-btn-muted {
-  background: #eef1f4;
-  color: #374151;
-}
-.admin-page .admin-page-btn-danger {
-  background: #b42318;
-}
-.admin-page .admin-page-btn.is-disabled {
-  opacity: 0.6;
-  pointer-events: none;
-}
-.admin-page .admin-page-header-actions {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.admin-page .admin-table-check {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.admin-page .admin-table-check input {
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-}
-.admin-page .admin-form-card,
-.admin-page .admin-table-card {
-  margin-bottom: 18px;
-  padding: 20px;
-  border-radius: 12px;
-  background: #ffffff;
-  border: 1px solid #e5eaf0;
-}
-.admin-page .admin-form-title {
-  margin-bottom: 16px;
-  font-size: 18px;
-  font-weight: 700;
-}
-.admin-page .admin-form-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-@media (min-width: 768px) {
-  .admin-page .admin-form-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-.admin-page .admin-field {
-  display: block;
-}
-.admin-page .admin-field .admin-field-label {
-  margin-bottom: 6px;
-  color: #4b5563;
-  font-size: 13px;
-  font-weight: 600;
-}
-.admin-page .admin-field .admin-field-label.is-required::after {
-  content: " *";
-  color: #b42318;
-}
-.admin-page .admin-field .admin-field-input,
-.admin-page .admin-field .admin-field-textarea {
-  width: 100%;
-  border: 1px solid #d7dee7;
-  border-radius: 12px;
-  background-color: #ffffff;
-  outline: none;
-}
-.admin-page .admin-field .admin-field-input {
-  height: 42px;
-  padding: 0 12px;
-}
-.admin-page .admin-field .admin-field-textarea {
-  padding: 10px 12px;
-  resize: vertical;
-}
-@media (min-width: 768px) {
-  .admin-page .admin-field-full {
-    grid-column: 1/-1;
-  }
-}
-.admin-page .admin-form-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 16px;
-}
-.admin-page .admin-error {
-  margin-top: 12px;
-  color: #b42318;
-  font-size: 13px;
-}
-.admin-page .admin-empty {
-  color: #6b7280;
-  font-size: 14px;
-}
-.admin-page .admin-table {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-.admin-page .admin-table .admin-table-row {
-  display: grid;
-  grid-template-columns: 36px 1.4fr 1fr 0.5fr 0.7fr 0.9fr;
-  min-width: 700px;
-  gap: 12px;
-  padding: 14px 0;
-  border-bottom: 1px solid #eef1f4;
-  align-items: center;
-  font-size: 14px;
-}
-.admin-page .admin-table .admin-table-head {
-  color: #6b7280;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-.admin-page .admin-strong {
-  font-weight: 650;
-}
-.admin-page .admin-muted {
-  margin-top: 2px;
-  color: #6b7280;
-  font-size: 12px;
-}
-.admin-page .admin-row-actions {
-  display: flex;
-  gap: 12px;
-}
-.admin-page .admin-link {
-  color: #0e7f8f;
-  font-weight: 650;
-  cursor: pointer;
-}
-.admin-page .admin-link-danger {
-  color: #b42318;
-}
-
-.admin-pagination {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 16px;
-}
-
-.admin-pagination-btn {
-  height: 34px;
-  padding: 0 12px;
-  border-radius: 10px;
-  border: 1px solid #d7dee7;
-  background: #ffffff;
-  color: #374151;
-  font-size: 13px;
-  font-weight: 650;
-  cursor: pointer;
-}
-
-.admin-pagination-btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-.admin-pagination-status {
-  color: #6b7280;
-  font-size: 13px;
-}
-</style>

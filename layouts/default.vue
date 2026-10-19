@@ -1,21 +1,10 @@
 <template>
-  <div class="layout-default">
+  <div class="flex min-h-screen flex-col">
     <Header />
-    <main class="layout-default-main">
+    <main class="flex-1">
       <slot />
     </main>
     <Footer />
     <BackToTop />
   </div>
 </template>
-
-<style scoped>
-.layout-default {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-.layout-default .layout-default-main {
-  flex: 1;
-}
-</style>

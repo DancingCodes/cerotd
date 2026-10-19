@@ -1,67 +1,67 @@
 <template>
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <div class="footer-brand">
-            <img src="/images/logo.webp" alt="Cerotd" class="footer-brand-image" loading="lazy" decoding="async" />
+  <footer class="bg-[var(--color-ink)] py-[72px] pb-9 text-white">
+    <div class="mx-auto w-full max-w-[1180px] px-6">
+      <div class="mb-10 grid grid-cols-1 gap-9 md:grid-cols-2 lg:grid-cols-[1.35fr_repeat(3,minmax(0,1fr))]">
+        <div>
+          <div class="mb-4">
+            <img src="/images/logo.webp" alt="Cerotd" class="h-[34px] w-auto" loading="lazy" decoding="async" />
           </div>
-          <p class="footer-desc">{{ $t('footer.tagline') }}</p>
-          <div class="footer-social">
-            <a class="footer-social-link" href="https://www.facebook.com/profile.php?id=61575320303094&sk=reels_tab" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a class="footer-social-link" href="https://www.instagram.com/hanxiansheng889/reels/" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a class="footer-social-link" href="https://wa.me/8615263792384" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            <a class="footer-social-link" href="https://t.me/cerotdshand" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <p class="max-w-[280px] text-sm leading-[1.7] text-white/60">{{ $t('footer.tagline') }}</p>
+          <div class="mt-[18px] flex flex-wrap gap-2.5">
+            <a class="inline-flex items-center rounded-full bg-white/[.06] px-3 py-2 text-[13px] text-white/70 transition-colors hover:bg-white/[.12] hover:text-white" href="https://www.facebook.com/profile.php?id=61575320303094&sk=reels_tab" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a class="inline-flex items-center rounded-full bg-white/[.06] px-3 py-2 text-[13px] text-white/70 transition-colors hover:bg-white/[.12] hover:text-white" href="https://www.instagram.com/hanxiansheng889/reels/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="inline-flex items-center rounded-full bg-white/[.06] px-3 py-2 text-[13px] text-white/70 transition-colors hover:bg-white/[.12] hover:text-white" href="https://wa.me/8615263792384" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a class="inline-flex items-center rounded-full bg-white/[.06] px-3 py-2 text-[13px] text-white/70 transition-colors hover:bg-white/[.12] hover:text-white" href="https://t.me/cerotdshand" target="_blank" rel="noopener noreferrer">Telegram</a>
           </div>
         </div>
 
-        <div class="footer-col">
-          <h2 class="footer-title">{{ $t('footer.trustTitle') }}</h2>
-          <ul class="footer-list">
-            <li v-for="n in 4" :key="n" class="footer-item">{{ $t(`footer.trustItems.item${n}`) }}</li>
-            <li class="footer-item">
-              <NuxtLink to="/about#certificates" class="footer-link">{{ $t('footer.trustLink') }}</NuxtLink>
+        <div>
+          <h2 class="mb-[18px] text-[13px] font-semibold tracking-[.06em] text-white uppercase">{{ $t('footer.trustTitle') }}</h2>
+          <ul class="flex flex-col gap-2.5">
+            <li v-for="n in 4" :key="n" class="text-sm text-white/60">{{ $t(`footer.trustItems.item${n}`) }}</li>
+            <li class="text-sm text-white/60">
+              <NuxtLink to="/about#certificates" class="text-white/60 transition-colors hover:text-white">{{ $t('footer.trustLink') }}</NuxtLink>
             </li>
           </ul>
         </div>
 
-<div class="footer-col">
-          <h2 class="footer-title">{{ $t('footer.companyTitle') }}</h2>
-          <ul class="footer-list">
-            <li class="footer-item">
-              <NuxtLink to="/about" class="footer-link">{{ $t('footer.aboutUs') }}</NuxtLink>
+<div>
+          <h2 class="mb-[18px] text-[13px] font-semibold tracking-[.06em] text-white uppercase">{{ $t('footer.companyTitle') }}</h2>
+          <ul class="flex flex-col gap-2.5">
+            <li class="text-sm text-white/60">
+              <NuxtLink to="/about" class="text-white/60 transition-colors hover:text-white">{{ $t('footer.aboutUs') }}</NuxtLink>
             </li>
-            <li class="footer-item">
-              <NuxtLink to="/services" class="footer-link">{{ $t('footer.ourServices') }}</NuxtLink>
+            <li class="text-sm text-white/60">
+              <NuxtLink to="/services" class="text-white/60 transition-colors hover:text-white">{{ $t('footer.ourServices') }}</NuxtLink>
             </li>
-            <li class="footer-item">
-              <NuxtLink to="/advantages" class="footer-link">{{ $t('footer.ourAdvantages') }}</NuxtLink>
+            <li class="text-sm text-white/60">
+              <NuxtLink to="/advantages" class="text-white/60 transition-colors hover:text-white">{{ $t('footer.ourAdvantages') }}</NuxtLink>
             </li>
-            <li class="footer-item">
-              <NuxtLink to="/news" class="footer-link">{{ $t('common.news') }}</NuxtLink>
+            <li class="text-sm text-white/60">
+              <NuxtLink to="/news" class="text-white/60 transition-colors hover:text-white">{{ $t('common.news') }}</NuxtLink>
             </li>
-            <li class="footer-item">
-              <NuxtLink to="/contact" class="footer-link">{{ $t('common.contact') }}</NuxtLink>
+            <li class="text-sm text-white/60">
+              <NuxtLink to="/contact" class="text-white/60 transition-colors hover:text-white">{{ $t('common.contact') }}</NuxtLink>
             </li>
           </ul>
         </div>
 
-        <div class="footer-col">
-          <h2 class="footer-title">{{ $t('footer.contactTitle') }}</h2>
-          <ul class="footer-list">
-            <li class="footer-item">{{ $t('footer.location') }}</li>
-            <li class="footer-item">{{ $t('footer.phone') }}</li>
-            <li v-if="locale === 'zh'" class="footer-item">{{ $t('footer.wechatTitle') }}: {{ $t('footer.wechatId') }}</li>
+        <div>
+          <h2 class="mb-[18px] text-[13px] font-semibold tracking-[.06em] text-white uppercase">{{ $t('footer.contactTitle') }}</h2>
+          <ul class="flex flex-col gap-2.5">
+            <li class="text-sm text-white/60">{{ $t('footer.location') }}</li>
+            <li class="text-sm text-white/60">{{ $t('footer.phone') }}</li>
+            <li v-if="locale === 'zh'" class="text-sm text-white/60">{{ $t('footer.wechatTitle') }}: {{ $t('footer.wechatId') }}</li>
           </ul>
-          <div v-if="locale === 'zh'" class="footer-wechat">
-            <img src="/images/wechat.webp" :alt="$t('footer.wechatTitle')" class="footer-wechat-image" loading="lazy" decoding="async" />
+          <div v-if="locale === 'zh'" class="mt-4">
+            <img src="/images/wechat.webp" :alt="$t('footer.wechatTitle')" class="h-24 w-24 rounded-xl bg-white object-cover" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <p class="footer-copyright">&copy; {{ year }} {{ $t('footer.copyright') }}</p>
-        <a v-if="locale === 'zh'" class="footer-beian" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">鲁ICP备2026051999号-1</a>
+      <div class="border-t border-white/[.08] pt-6">
+        <p class="text-center text-[13px] text-gray-500">&copy; {{ year }} {{ $t('footer.copyright') }}</p>
+        <a v-if="locale === 'zh'" class="mt-2 block text-center text-[13px] text-gray-500 transition-colors hover:text-white/40" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">鲁ICP备2026051999号-1</a>
       </div>
     </div>
   </footer>
@@ -71,124 +71,3 @@
 const { locale } = useI18n()
 const year = new Date().getFullYear()
 </script>
-
-<style scoped>
-.footer {
-  background: var(--color-ink);
-  color: #ffffff;
-  padding: 72px 0 36px;
-}
-.footer .footer-container {
-  width: 100%;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding-left: 24px;
-  padding-right: 24px;
-}
-.footer .footer-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 36px;
-  margin-bottom: 40px;
-}
-@media (min-width: 768px) {
-  .footer .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (min-width: 1024px) {
-  .footer .footer-grid {
-    grid-template-columns: 1.35fr repeat(3, 1fr);
-  }
-}
-.footer .footer-col .footer-brand {
-  margin-bottom: 16px;
-}
-.footer .footer-col .footer-brand .footer-brand-image {
-  height: 34px;
-  width: auto;
-}
-.footer .footer-col .footer-desc {
-  max-width: 280px;
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 14px;
-  line-height: 1.7;
-}
-.footer .footer-col .footer-social {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 18px;
-}
-.footer .footer-col .footer-social .footer-social-link {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 13px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-.footer .footer-col .footer-social .footer-social-link:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.12);
-}
-.footer .footer-col .footer-title {
-  margin-bottom: 18px;
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 650;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-.footer .footer-col .footer-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.footer .footer-col .footer-list .footer-item {
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 14px;
-}
-.footer .footer-col .footer-list .footer-item .footer-link {
-  color: rgba(255, 255, 255, 0.58);
-  text-decoration: none;
-  transition: all 0.25s ease;
-}
-.footer .footer-col .footer-list .footer-item .footer-link:hover {
-  color: #ffffff;
-}
-.footer .footer-col .footer-wechat {
-  margin-top: 16px;
-}
-.footer .footer-col .footer-wechat .footer-wechat-image {
-  width: 96px;
-  height: 96px;
-  object-fit: cover;
-  border-radius: 12px;
-  background: #ffffff;
-}
-.footer .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 24px;
-}
-.footer .footer-bottom .footer-copyright {
-  color: #6b7280;
-  font-size: 13px;
-  text-align: center;
-}
-.footer .footer-bottom .footer-beian {
-  display: block;
-  margin-top: 8px;
-  color: #6b7280;
-  font-size: 13px;
-  text-align: center;
-  text-decoration: none;
-}
-.footer .footer-bottom .footer-beian:hover {
-  color: rgba(255, 255, 255, 0.38);
-}
-</style>

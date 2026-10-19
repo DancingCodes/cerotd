@@ -1,24 +1,24 @@
 <template>
-  <div class="products-page">
-    <section class="page-hero">
+  <div>
+    <section class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-[72px] text-white md:py-[88px]">
       <div v-motion-slide-visible-once-bottom class="container">
-        <h1 class="page-hero-title">{{ $t('products.hero.title') }}</h1>
-        <p class="page-hero-subtitle">{{ $t('products.hero.subtitle') }}</p>
+        <h1 class="mb-[18px] text-4xl leading-[1.08] md:text-[56px]">{{ $t('products.hero.title') }}</h1>
+        <p class="max-w-[34ch] text-lg leading-[1.7] text-[#c8ced6] md:text-xl">{{ $t('products.hero.subtitle') }}</p>
       </div>
     </section>
 
-    <section v-motion-slide-visible-once-bottom class="section catalog">
+    <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-[120px]">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">{{ $t('products.listTitle') }}</h2>
-          <p class="section-subtitle">{{ $t('products.listSubtitle') }}</p>
+        <div class="mb-9 max-w-[720px]">
+          <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('products.listTitle') }}</h2>
+          <p class="text-[17px] leading-[1.7] text-gray-600">{{ $t('products.listSubtitle') }}</p>
         </div>
 
-        <div class="filter-bar" role="tablist" :aria-label="$t('products.listTitle')">
+        <div class="mb-7 flex flex-wrap gap-2.5" role="tablist" :aria-label="$t('products.listTitle')">
           <button
             type="button"
-            class="filter-chip"
-            :class="{ 'filter-chip-active': !selectedCategory }"
+            class="min-h-10 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-4 text-sm font-medium text-gray-600 transition hover:border-[#b8c2cf] hover:text-gray-900"
+            :class="{ 'border-[#3f7f88]/45 bg-[#3f7f88]/10 text-[#0f4c56]': !selectedCategory }"
             role="tab"
             :aria-selected="!selectedCategory"
             @click="setCategory('')"
@@ -29,8 +29,8 @@
             v-for="category in categoryList"
             :key="category.slug"
             type="button"
-            class="filter-chip"
-            :class="{ 'filter-chip-active': selectedCategory === category.slug }"
+            class="min-h-10 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-4 text-sm font-medium text-gray-600 transition hover:border-[#b8c2cf] hover:text-gray-900"
+            :class="{ 'border-[#3f7f88]/45 bg-[#3f7f88]/10 text-[#0f4c56]': selectedCategory === category.slug }"
             role="tab"
             :aria-selected="selectedCategory === category.slug"
             @click="setCategory(category.slug)"
@@ -39,37 +39,37 @@
           </button>
         </div>
 
-        <p v-if="pending" class="state-text">{{ $t('products.loading') }}</p>
-        <p v-else-if="!productList.length" class="state-text">{{ $t('products.empty') }}</p>
+        <p v-if="pending" class="text-[15px] text-gray-500">{{ $t('products.loading') }}</p>
+        <p v-else-if="!productList.length" class="text-[15px] text-gray-500">{{ $t('products.empty') }}</p>
         <template v-else>
-          <div class="product-grid">
+          <div class="grid grid-cols-1 gap-5 md:grid-cols-2 min-[1100px]:grid-cols-3">
             <NuxtLink
               v-for="item in productList"
               :key="item.slug"
               :to="`/products/${item.slug}`"
-              class="product-card"
+              class="overflow-hidden rounded-xl border border-[#e8edf2] bg-white no-underline transition-colors hover:border-[#cfd8e3]"
             >
-              <div class="product-card-media">
+              <div class="aspect-[4/3] overflow-hidden bg-[#f3f5f7]">
                 <AppImage
-                  class="product-card-image"
-                  :class="{ 'product-card-image-cover': !(item.coverUrl || item.images[0]) }"
+                  class="block size-full bg-[#f3f5f7] object-contain"
+                  :class="{ 'object-cover saturate-[.8] contrast-[1.05]': !(item.coverUrl || item.images[0]) }"
                   :src="item.coverUrl || item.images[0]"
                   :alt="t(item.name)"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
-              <div class="product-card-body">
-                <h3 class="product-card-title">{{ t(item.name) }}</h3>
-                <p class="product-card-desc">{{ t(item.summary) }}</p>
-                <span class="product-card-link">{{ $t('common.learnMore') }}</span>
+              <div class="p-6">
+                <h3 class="mb-2.5 text-xl text-gray-900">{{ t(item.name) }}</h3>
+                <p class="mb-4 text-sm leading-[1.7] text-gray-600">{{ t(item.summary) }}</p>
+                <span class="text-sm font-semibold text-[var(--color-accent)]">{{ $t('common.learnMore') }}</span>
               </div>
             </NuxtLink>
           </div>
-          <div v-if="hasMore" class="load-more">
+          <div v-if="hasMore" class="mt-8 flex justify-center">
             <button
               type="button"
-              class="load-more-btn"
+              class="min-h-11 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-[22px] text-sm font-semibold text-[#0f4c56] transition hover:border-[#3f7f88]/45 hover:bg-[#3f7f88]/[.08] disabled:cursor-wait disabled:opacity-65"
               :disabled="loadingMore"
               @click="loadMore"
             >
@@ -180,180 +180,3 @@ async function loadMore() {
   }
 }
 </script>
-
-<style scoped>
-.products-page .page-hero {
-  padding: 88px 0 72px;
-  background: radial-gradient(circle at 80% 10%, rgba(139, 154, 171, 0.14), transparent 26%), linear-gradient(180deg, var(--color-ink) 0%, var(--color-ink-soft) 100%);
-  color: #ffffff;
-}
-.products-page .page-hero .page-hero-title {
-  margin-bottom: 18px;
-  font-size: 56px;
-  line-height: 1.08;
-  letter-spacing: 0;
-}
-.products-page .page-hero .page-hero-subtitle {
-  max-width: 34ch;
-  color: #c8ced6;
-  font-size: 20px;
-  line-height: 1.7;
-}
-.products-page .section {
-  padding: 96px 0;
-}
-@media (min-width: 768px) {
-  .products-page .section {
-    padding: 120px 0;
-  }
-}
-.products-page .section-header {
-  max-width: 720px;
-  margin-bottom: 36px;
-}
-.products-page .section-header .section-title {
-  margin-bottom: 14px;
-  font-size: 36px;
-  letter-spacing: 0;
-  color: #111827;
-}
-.products-page .section-header .section-subtitle {
-  color: #4b5563;
-  font-size: 17px;
-  line-height: 1.7;
-}
-.products-page .state-text {
-  color: #6b7280;
-  font-size: 15px;
-}
-.products-page .load-more {
-  display: flex;
-  justify-content: center;
-  margin-top: 32px;
-}
-.products-page .load-more-btn {
-  min-height: 44px;
-  padding: 0 22px;
-  border-radius: 999px;
-  border: 1px solid #d7dde5;
-  background: #ffffff;
-  color: #0f4c56;
-  font-size: 14px;
-  font-weight: 650;
-  cursor: pointer;
-  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-}
-.products-page .load-more-btn:hover:not(:disabled) {
-  border-color: rgba(63, 127, 136, 0.45);
-  background: rgba(63, 127, 136, 0.08);
-}
-.products-page .load-more-btn:disabled {
-  opacity: 0.65;
-  cursor: wait;
-}
-.products-page .filter-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 28px;
-}
-.products-page .filter-chip {
-  min-height: 40px;
-  padding: 0 16px;
-  border-radius: 999px;
-  border: 1px solid #d7dde5;
-  background: #ffffff;
-  color: #4b5563;
-  font-size: 14px;
-  font-weight: 550;
-  cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
-}
-.products-page .filter-chip:hover {
-  border-color: #b8c2cf;
-  color: #111827;
-}
-.products-page .filter-chip.filter-chip-active {
-  border-color: rgba(63, 127, 136, 0.45);
-  background: rgba(63, 127, 136, 0.1);
-  color: #0f4c56;
-}
-.products-page .catalog {
-  background: #ffffff;
-}
-.products-page .catalog .product-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
-@media (min-width: 768px) {
-  .products-page .catalog .product-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (min-width: 1100px) {
-  .products-page .catalog .product-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-.products-page .catalog .product-card {
-  overflow: hidden;
-  border-radius: 12px;
-  background: #ffffff;
-  border: 1px solid #e8edf2;
-  text-decoration: none;
-  transition: border-color 0.25s ease;
-}
-.products-page .catalog .product-card:hover {
-  border-color: #cfd8e3;
-}
-.products-page .catalog .product-card .product-card-media {
-  aspect-ratio: 4/3;
-  background: #f3f5f7;
-  overflow: hidden;
-}
-.products-page .catalog .product-card .product-card-media .product-card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  background: #f3f5f7;
-}
-.products-page .catalog .product-card .product-card-media .product-card-image.product-card-image-cover {
-  object-fit: cover;
-  filter: saturate(0.8) contrast(1.05);
-}
-.products-page .catalog .product-card .product-card-media .media-blank {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #e8edf2;
-}
-.products-page .catalog .product-card .product-card-media .media-blank .media-blank-label {
-  color: #98a2b3;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-.products-page .catalog .product-card .product-card-body {
-  padding: 24px;
-}
-.products-page .catalog .product-card .product-card-body .product-card-title {
-  margin-bottom: 10px;
-  color: #111827;
-  font-size: 20px;
-}
-.products-page .catalog .product-card .product-card-body .product-card-desc {
-  margin-bottom: 16px;
-  color: #4b5563;
-  font-size: 14px;
-  line-height: 1.7;
-}
-.products-page .catalog .product-card .product-card-body .product-card-link {
-  color: var(--color-accent);
-  font-size: 14px;
-  font-weight: 650;
-}
-</style>

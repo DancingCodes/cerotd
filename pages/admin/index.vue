@@ -1,18 +1,17 @@
 <template>
-  <div class="admin-login">
-    <div class="admin-login-card">
-      <div class="admin-login-title">{{ $t('admin.login.title') }}</div>
-      <div class="admin-login-desc">{{ $t('admin.login.desc') }}</div>
-      <input
+  <div class="flex min-h-[calc(100vh-140px)] items-center justify-center">
+    <div class="w-full max-w-[420px] rounded-xl border border-[#e5eaf0] bg-white p-7 shadow-[0_10px_30px_rgba(15,23,42,.04)]">
+      <div class="mb-2 text-2xl font-bold tracking-normal">{{ $t('admin.login.title') }}</div>
+      <div class="mb-5 text-sm leading-[1.6] text-gray-500">{{ $t('admin.login.desc') }}</div>
+      <UInput
         v-model="input"
-        class="admin-login-input"
         type="password"
         :placeholder="$t('admin.login.placeholder')"
         @keyup.enter="login"
       />
-      <div v-if="error" class="admin-login-error">{{ error }}</div>
-      <div class="admin-login-actions">
-        <div class="admin-login-btn" @click="login">{{ $t('admin.login.enter') }}</div>
+      <div v-if="error" class="mt-2.5 text-[13px] text-[#b42318]">{{ error }}</div>
+      <div class="mt-4">
+        <UButton color="primary" @click="login">{{ $t('admin.login.enter') }}</UButton>
       </div>
     </div>
   </div>
@@ -55,63 +54,3 @@ async function login() {
   }
 }
 </script>
-
-<style scoped>
-.admin-login {
-  min-height: calc(100vh - 140px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.admin-login .admin-login-card {
-  width: 100%;
-  max-width: 420px;
-  padding: 28px;
-  border-radius: 12px;
-  background: #ffffff;
-  border: 1px solid #e5eaf0;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
-}
-.admin-login .admin-login-card .admin-login-title {
-  margin-bottom: 8px;
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: 0;
-}
-.admin-login .admin-login-card .admin-login-desc {
-  margin-bottom: 20px;
-  color: #6b7280;
-  font-size: 14px;
-  line-height: 1.6;
-}
-.admin-login .admin-login-card .admin-login-input {
-  width: 100%;
-  height: 44px;
-  padding: 0 14px;
-  border-radius: 12px;
-  border: 1px solid #d7dee7;
-  background: #ffffff;
-  outline: none;
-}
-.admin-login .admin-login-card .admin-login-error {
-  margin-top: 10px;
-  color: #b42318;
-  font-size: 13px;
-}
-.admin-login .admin-login-card .admin-login-actions {
-  margin-top: 16px;
-}
-.admin-login .admin-login-card .admin-login-actions .admin-login-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 120px;
-  height: 42px;
-  padding: 0 18px;
-  border-radius: 12px;
-  background: #0e7f8f;
-  color: #ffffff;
-  font-weight: 650;
-  cursor: pointer;
-}
-</style>

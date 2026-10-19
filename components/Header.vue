@@ -1,53 +1,53 @@
 <template>
-  <header class="header">
-    <nav class="nav" aria-label="Primary">
-      <div class="nav-container">
-        <NuxtLink to="/" class="nav-logo">
-          <img src="/images/logo.webp" alt="Cerotd" class="nav-logo-image" />
+  <header class="sticky top-0 z-50 border-b border-[#d9dde3]/95 bg-white/90 backdrop-blur-[18px]">
+    <nav aria-label="Primary">
+      <div class="mx-auto flex min-h-[74px] w-full max-w-[1180px] items-center justify-between px-6">
+        <NuxtLink to="/" class="inline-flex items-center no-underline">
+          <img src="/images/logo.webp" alt="Cerotd" class="h-9 w-auto" />
         </NuxtLink>
 
-        <div class="nav-desktop">
-          <NuxtLink v-for="item in navItems" :key="item.to" :to="item.to" class="nav-link">
+        <div class="hidden items-center gap-[26px] lg:flex">
+          <NuxtLink v-for="item in navItems" :key="item.to" :to="item.to" class="relative text-[15px] font-medium tracking-[0.01em] text-[#5b6572] no-underline transition-colors hover:text-[var(--color-text)] [&.router-link-active]:font-semibold [&.router-link-active]:text-[#0f4c56] [&.router-link-active]:after:absolute [&.router-link-active]:after:-bottom-2 [&.router-link-active]:after:left-0 [&.router-link-active]:after:right-0 [&.router-link-active]:after:h-0.5 [&.router-link-active]:after:rounded-full [&.router-link-active]:after:bg-[#0f4c56]">
             {{ $t(item.label) }}
           </NuxtLink>
 
-          <NuxtLink to="/contact" class="nav-cta">
+          <NuxtLink to="/contact" class="inline-flex min-h-10 items-center justify-center rounded-full bg-gradient-to-br from-[#0f9aa8] to-[#3dd6e0] px-[18px] text-sm font-semibold text-white no-underline transition-opacity hover:opacity-90 [&.router-link-active]:ring-2 [&.router-link-active]:ring-[#0f4c56]/20">
             {{ $t('common.contact') }}
           </NuxtLink>
 
-          <button type="button" class="nav-lang" @click="toggleLocale">
+          <button type="button" class="ml-1 cursor-pointer rounded-full bg-[var(--color-surface)] px-3.5 py-2 text-[13px] font-semibold text-[#3d4654] transition-colors hover:bg-[#e2e6eb]" @click="toggleLocale">
             {{ locale === 'en' ? '中文' : 'EN' }}
           </button>
         </div>
 
         <button
           type="button"
-          class="nav-mobile-btn"
+          class="inline-flex h-[42px] w-[42px] cursor-pointer flex-col items-center justify-center gap-[5px] rounded-xl bg-[var(--color-surface)] lg:hidden"
           :aria-expanded="mobileMenuOpen"
           aria-label="Toggle menu"
           @click="mobileMenuOpen = !mobileMenuOpen"
         >
-          <span class="nav-mobile-btn-line"></span>
-          <span class="nav-mobile-btn-line"></span>
-          <span class="nav-mobile-btn-line"></span>
+          <span class="h-0.5 w-[18px] rounded-full bg-[#1f2937]"></span>
+          <span class="h-0.5 w-[18px] rounded-full bg-[#1f2937]"></span>
+          <span class="h-0.5 w-[18px] rounded-full bg-[#1f2937]"></span>
         </button>
       </div>
 
-      <div v-if="mobileMenuOpen" class="nav-mobile">
+      <div v-if="mobileMenuOpen" class="mx-auto flex w-full max-w-[1180px] flex-col gap-1 px-6 pb-[18px] lg:hidden">
         <NuxtLink
           v-for="item in navItems"
           :key="`mobile-${item.to}`"
           :to="item.to"
-          class="nav-mobile-link"
-          :class="{ 'is-active': isNavActive(item.to) }"
+          class="border-b border-[var(--color-line)] py-3 text-base font-medium text-[#7a8490] no-underline"
+          :class="{ 'font-bold text-[#0f4c56]': isNavActive(item.to) }"
           @click="mobileMenuOpen = false"
         >
           {{ $t(item.label) }}
         </NuxtLink>
-        <NuxtLink to="/contact" class="nav-mobile-cta" @click="mobileMenuOpen = false">
+        <NuxtLink to="/contact" class="mt-3 inline-flex min-h-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#0f9aa8] to-[#3dd6e0] text-center font-semibold text-white no-underline" @click="mobileMenuOpen = false">
           {{ $t('common.contact') }}
         </NuxtLink>
-        <button type="button" class="nav-mobile-lang" @click="toggleLocale">
+        <button type="button" class="mt-2.5 cursor-pointer rounded-xl bg-[var(--color-surface)] px-4 py-3 text-left font-semibold text-[#3d4654]" @click="toggleLocale">
           {{ locale === 'en' ? '中文' : 'EN' }}
         </button>
       </div>
@@ -84,177 +84,3 @@ const toggleLocale = () => {
   setLocale(locale.value === 'en' ? 'zh' : 'en')
 }
 </script>
-
-<style scoped>
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(217, 221, 227, 0.95);
-}
-.header .nav .nav-container {
-  width: 100%;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding-left: 24px;
-  padding-right: 24px;
-  min-height: 74px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.header .nav .nav-logo {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-}
-.header .nav .nav-logo .nav-logo-image {
-  height: 36px;
-  width: auto;
-}
-.header .nav .nav-desktop {
-  display: none;
-  align-items: center;
-  gap: 26px;
-}
-@media (min-width: 1024px) {
-  .header .nav .nav-desktop {
-    display: flex;
-  }
-}
-.header .nav .nav-desktop .nav-link {
-  position: relative;
-  color: #5b6572;
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  text-decoration: none;
-  transition: color 0.25s ease;
-}
-.header .nav .nav-desktop .nav-link:hover {
-  color: var(--color-text);
-}
-.header .nav .nav-desktop .nav-link.router-link-active {
-  color: #0f4c56;
-  font-weight: 650;
-}
-.header .nav .nav-desktop .nav-link.router-link-active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -8px;
-  height: 2px;
-  border-radius: 999px;
-  background: #0f4c56;
-}
-.header .nav .nav-desktop .nav-lang {
-  margin-left: 4px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: var(--color-surface);
-  color: #3d4654;
-  font-size: 13px;
-  font-weight: 650;
-  transition: background-color 0.25s ease;
-  cursor: pointer;
-}
-.header .nav .nav-desktop .nav-lang:hover {
-  background: #e2e6eb;
-}
-.header .nav .nav-desktop .nav-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 40px;
-  padding: 0 18px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #0f9aa8 0%, #3dd6e0 100%);
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 650;
-  text-decoration: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-.header .nav .nav-desktop .nav-cta:hover {
-  opacity: 0.92;
-}
-.header .nav .nav-desktop .nav-cta.router-link-active {
-  box-shadow: 0 0 0 2px rgba(15, 76, 86, 0.18);
-}
-.header .nav .nav-mobile-btn {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  background: var(--color-surface);
-  cursor: pointer;
-}
-@media (min-width: 1024px) {
-  .header .nav .nav-mobile-btn {
-    display: none;
-  }
-}
-.header .nav .nav-mobile-btn .nav-mobile-btn-line {
-  width: 18px;
-  height: 2px;
-  border-radius: 999px;
-  background: #1f2937;
-}
-.header .nav .nav-mobile {
-  width: 100%;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding-left: 24px;
-  padding-right: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding-bottom: 18px;
-}
-@media (min-width: 1024px) {
-  .header .nav .nav-mobile {
-    display: none;
-  }
-}
-.header .nav .nav-mobile .nav-mobile-link {
-  padding: 12px 0;
-  color: #7a8490;
-  font-size: 16px;
-  font-weight: 500;
-  text-decoration: none;
-  border-bottom: 1px solid var(--color-line);
-}
-.header .nav .nav-mobile .nav-mobile-link.is-active {
-  color: #0f4c56;
-  font-weight: 700;
-}
-.header .nav .nav-mobile .nav-mobile-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  margin-top: 12px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #0f9aa8 0%, #3dd6e0 100%);
-  color: #ffffff;
-  font-weight: 650;
-  text-decoration: none;
-}
-.header .nav .nav-mobile .nav-mobile-lang {
-  margin-top: 10px;
-  padding: 12px 16px;
-  border-radius: 12px;
-  background: var(--color-surface);
-  color: #3d4654;
-  font-weight: 650;
-  text-align: left;
-  cursor: pointer;
-}
-</style>

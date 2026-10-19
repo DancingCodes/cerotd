@@ -1,25 +1,25 @@
 <template>
-  <div class="admin-page">
-    <div class="admin-page-header">
+  <div>
+    <div class="mb-[18px] flex items-start justify-between gap-4">
       <div>
-        <div class="admin-page-title">{{ $t('admin.inquiries.title') }}</div>
-        <div class="admin-page-subtitle">
+        <div class="text-[28px] font-semibold">{{ $t('admin.inquiries.title') }}</div>
+        <div class="mt-1.5 text-sm text-gray-500">
           {{ $t('admin.inquiries.subtitle') }}
           <span v-if="!pending"> · {{ $t('admin.common.totalCount', { count: total }) }}</span>
           <span v-if="unreadCount"> · {{ $t('admin.inquiries.unreadCount', { count: unreadCount }) }}</span>
         </div>
       </div>
-      <div class="admin-page-btn admin-page-btn-muted" @click="load">{{ $t('admin.inquiries.refresh') }}</div>
+      <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="load">{{ $t('admin.inquiries.refresh') }}</div>
     </div>
 
-    <div class="admin-filters">
-      <div class="admin-filter-group" role="tablist" :aria-label="$t('admin.inquiries.filterStatus')">
+    <div class="mb-4 grid gap-2.5">
+      <div class="flex flex-wrap gap-2" role="tablist" :aria-label="$t('admin.inquiries.filterStatus')">
         <button
           v-for="item in statusFilters"
           :key="item.value"
           type="button"
-          class="admin-filter-chip"
-          :class="{ 'admin-filter-chip-active': status === item.value }"
+          class="h-[34px] cursor-pointer rounded-full border border-[#e5eaf0] bg-white px-3 text-[13px] font-semibold text-gray-600"
+          :class="{ 'border-[#0e7f8f] bg-[#e8f7f9] text-[#0e7f8f]': status === item.value }"
           @click="setStatus(item.value)"
         >
           {{ item.label }}
@@ -31,7 +31,7 @@
           :key="item.value"
           type="button"
           class="admin-filter-chip"
-          :class="{ 'admin-filter-chip-active': range === item.value }"
+          :class="{ 'border-[#0e7f8f] bg-[#e8f7f9] text-[#0e7f8f]': range === item.value }"
           @click="setRange(item.value)"
         >
           {{ item.label }}
@@ -39,60 +39,60 @@
       </div>
     </div>
 
-    <div class="admin-table-card">
-      <div v-if="pending" class="admin-empty">{{ $t('admin.common.loading') }}</div>
+    <div class="mb-[18px] rounded-xl border border-[#e5eaf0] bg-white p-5">
+      <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
       <div v-else-if="!items.length" class="admin-empty">{{ $t('admin.inquiries.empty') }}</div>
-      <div v-else class="inquiry-list">
+      <div v-else class="grid gap-3.5">
         <article
           v-for="item in items"
           :key="item.id"
-          class="inquiry-card"
-          :class="{ 'inquiry-card-unread': !item.isRead }"
+          class="rounded-[14px] border border-[#eef1f4] bg-[#fbfcfd] p-4"
+          :class="{ 'border-[#cfeef2] bg-[#f3fbfd]': !item.isRead }"
         >
-          <div class="inquiry-card-top">
+          <div class="mb-3 flex items-start justify-between gap-3">
             <div>
-              <div class="admin-strong">
-                <span v-if="!item.isRead" class="inquiry-dot" aria-hidden="true"></span>
+              <div class="font-semibold">
+                <span v-if="!item.isRead" class="mr-2 inline-block size-2 rounded-full bg-[#0e7f8f] align-middle" aria-hidden="true"></span>
                 {{ item.name }}
-                <span class="inquiry-status">{{ item.isRead ? $t('admin.inquiries.read') : $t('admin.inquiries.unread') }}</span>
+                <span class="ml-2 rounded-full bg-[#eef1f4] px-2 py-0.5 text-[11px] font-bold text-gray-500 align-middle">{{ item.isRead ? $t('admin.inquiries.read') : $t('admin.inquiries.unread') }}</span>
               </div>
-              <div class="admin-muted">{{ item.company || $t('admin.inquiries.noCompany') }} · {{ formatDate(item.createdAt) }}</div>
+              <div class="mt-0.5 text-xs text-gray-500">{{ item.company || $t('admin.inquiries.noCompany') }} · {{ formatDate(item.createdAt) }}</div>
             </div>
-            <div class="admin-row-actions">
-              <div class="admin-link" @click="toggle(item)">
+            <div class="flex flex-wrap gap-3">
+              <div class="cursor-pointer font-semibold text-[#0e7f8f]" @click="toggle(item)">
                 {{ openId === item.id ? $t('admin.inquiries.hide') : $t('admin.inquiries.view') }}
               </div>
               <div class="admin-link" @click="setRead(item, !item.isRead)">
                 {{ item.isRead ? $t('admin.inquiries.markUnread') : $t('admin.inquiries.markRead') }}
               </div>
-              <div class="admin-link admin-link-danger" @click="remove(item)">{{ $t('admin.common.delete') }}</div>
+              <div class="cursor-pointer font-semibold text-[#b42318]" @click="remove(item)">{{ $t('admin.common.delete') }}</div>
             </div>
           </div>
 
-          <div class="inquiry-card-grid">
+          <div class="grid grid-cols-1 gap-2 text-[13px] text-gray-700 md:grid-cols-2 [&>div]:break-words [&_span]:mr-2 [&_span]:inline-block [&_span]:min-w-[72px] [&_span]:font-semibold [&_span]:text-gray-500">
             <div><span>{{ $t('admin.inquiries.email') }}</span>{{ item.email || '-' }}</div>
             <div><span>{{ $t('admin.inquiries.phone') }}</span>{{ item.phone || '-' }}</div>
             <div><span>{{ $t('admin.inquiries.country') }}</span>{{ item.country || '-' }}</div>
             <div><span>{{ $t('admin.inquiries.product') }}</span>{{ item.productSlug || '-' }}</div>
           </div>
 
-          <div v-if="openId === item.id" class="inquiry-card-detail">
-            <div class="inquiry-detail-row"><span>{{ $t('admin.inquiries.im') }}</span>{{ item.im || '-' }}</div>
+          <div v-if="openId === item.id" class="mt-3.5 border-t border-[#eef1f4] pt-3.5">
+            <div class="mb-2 break-words text-[13px] text-gray-700 [&_span]:mr-2 [&_span]:inline-block [&_span]:min-w-[72px] [&_span]:font-semibold [&_span]:text-gray-500"><span>{{ $t('admin.inquiries.im') }}</span>{{ item.im || '-' }}</div>
             <div class="inquiry-detail-row"><span>{{ $t('admin.inquiries.bulk') }}</span>{{ formatBulk(item.bulkIntent) }}</div>
             <div class="inquiry-detail-row"><span>{{ $t('admin.inquiries.locale') }}</span>{{ item.locale }}</div>
-            <div class="inquiry-message">
-              <div class="inquiry-message-label">{{ $t('admin.inquiries.message') }}</div>
-              <p>{{ item.message || $t('admin.inquiries.noMessage') }}</p>
+            <div class="mt-3 rounded-xl border border-[#e5eaf0] bg-white p-3">
+              <div class="mb-1.5 text-xs font-bold tracking-[.04em] text-gray-500 uppercase">{{ $t('admin.inquiries.message') }}</div>
+              <p class="break-words text-sm leading-[1.7] whitespace-pre-wrap text-gray-900">{{ item.message || $t('admin.inquiries.noMessage') }}</p>
             </div>
           </div>
         </article>
       </div>
 
-      <div v-if="totalPages > 1" class="admin-pagination">
-        <button type="button" class="admin-pagination-btn" :disabled="page <= 1" @click="goPage(page - 1)">
+      <div v-if="totalPages > 1" class="mt-4 flex items-center justify-end gap-2.5">
+        <button type="button" class="h-[34px] cursor-pointer rounded-[10px] border border-[#d7dee7] bg-white px-3 text-[13px] font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page <= 1" @click="goPage(page - 1)">
           {{ $t('admin.common.prevPage') }}
         </button>
-        <span class="admin-pagination-status">{{ $t('admin.common.pageStatus', { page, totalPages }) }}</span>
+        <span class="text-[13px] text-gray-500">{{ $t('admin.common.pageStatus', { page, totalPages }) }}</span>
         <button type="button" class="admin-pagination-btn" :disabled="page >= totalPages" @click="goPage(page + 1)">
           {{ $t('admin.common.nextPage') }}
         </button>
@@ -252,236 +252,3 @@ async function remove(item: InquiryItem) {
 
 onMounted(load)
 </script>
-
-<style scoped>
-.admin-page .admin-page-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 18px;
-}
-.admin-page .admin-page-title {
-  font-size: 28px;
-  font-weight: 650;
-}
-.admin-page .admin-page-subtitle {
-  margin-top: 6px;
-  color: #6b7280;
-  font-size: 14px;
-}
-.admin-page .admin-page-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 12px;
-  background: #0e7f8f;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 650;
-  cursor: pointer;
-  white-space: nowrap;
-}
-.admin-page .admin-page-btn-muted {
-  background: #eef1f4;
-  color: #374151;
-}
-.admin-page .admin-filters {
-  display: grid;
-  gap: 10px;
-  margin-bottom: 16px;
-}
-.admin-page .admin-filter-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.admin-page .admin-filter-chip {
-  height: 34px;
-  padding: 0 12px;
-  border-radius: 999px;
-  border: 1px solid #e5eaf0;
-  background: #ffffff;
-  color: #4b5563;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-}
-.admin-page .admin-filter-chip-active {
-  border-color: #0e7f8f;
-  background: #e8f7f9;
-  color: #0e7f8f;
-}
-.admin-page .admin-table-card {
-  margin-bottom: 18px;
-  padding: 20px;
-  border-radius: 12px;
-  background: #ffffff;
-  border: 1px solid #e5eaf0;
-}
-.admin-page .admin-empty {
-  color: #6b7280;
-  font-size: 14px;
-}
-.admin-page .inquiry-list {
-  display: grid;
-  gap: 14px;
-}
-.admin-page .inquiry-card {
-  padding: 16px;
-  border-radius: 14px;
-  border: 1px solid #eef1f4;
-  background: #fbfcfd;
-}
-.admin-page .inquiry-card-unread {
-  border-color: #cfeef2;
-  background: #f3fbfd;
-}
-.admin-page .inquiry-card-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-.admin-page .inquiry-card-top > div:first-child {
-  min-width: 0;
-}
-.admin-page .inquiry-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 8px;
-  border-radius: 50%;
-  background: #0e7f8f;
-  vertical-align: middle;
-}
-.admin-page .inquiry-status {
-  margin-left: 8px;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: #eef1f4;
-  color: #6b7280;
-  font-size: 11px;
-  font-weight: 700;
-  vertical-align: middle;
-}
-.admin-page .inquiry-card-unread .inquiry-status {
-  background: #d8f3f7;
-  color: #0e7f8f;
-}
-.admin-page .inquiry-card-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
-  font-size: 13px;
-  color: #374151;
-}
-.admin-page .inquiry-card-grid > div {
-  overflow-wrap: anywhere;
-}
-@media (min-width: 768px) {
-  .admin-page .inquiry-card-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-.admin-page .inquiry-card-grid span {
-  display: inline-block;
-  min-width: 72px;
-  color: #6b7280;
-  font-weight: 600;
-}
-.admin-page .inquiry-card-detail {
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px solid #eef1f4;
-}
-.admin-page .inquiry-detail-row {
-  margin-bottom: 8px;
-  font-size: 13px;
-  color: #374151;
-  overflow-wrap: anywhere;
-}
-.admin-page .inquiry-detail-row span {
-  display: inline-block;
-  min-width: 72px;
-  color: #6b7280;
-  font-weight: 600;
-}
-.admin-page .inquiry-message {
-  margin-top: 12px;
-  padding: 12px;
-  border-radius: 12px;
-  background: #ffffff;
-  border: 1px solid #e5eaf0;
-}
-.admin-page .inquiry-message .inquiry-message-label {
-  margin-bottom: 6px;
-  color: #6b7280;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-.admin-page .inquiry-message p {
-  color: #111827;
-  font-size: 14px;
-  line-height: 1.7;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-.admin-page .admin-strong {
-  font-weight: 650;
-}
-.admin-page .admin-muted {
-  margin-top: 2px;
-  color: #6b7280;
-  font-size: 12px;
-}
-.admin-page .admin-row-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.admin-page .admin-link {
-  color: #0e7f8f;
-  font-weight: 650;
-  cursor: pointer;
-  text-decoration: none;
-}
-.admin-page .admin-link-danger {
-  color: #b42318;
-}
-
-.admin-pagination {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 16px;
-}
-
-.admin-pagination-btn {
-  height: 34px;
-  padding: 0 12px;
-  border-radius: 10px;
-  border: 1px solid #d7dee7;
-  background: #ffffff;
-  color: #374151;
-  font-size: 13px;
-  font-weight: 650;
-  cursor: pointer;
-}
-
-.admin-pagination-btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-.admin-pagination-status {
-  color: #6b7280;
-  font-size: 13px;
-}
-</style>

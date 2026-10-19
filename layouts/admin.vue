@@ -1,25 +1,25 @@
 <template>
-  <div class="admin-layout">
-    <div class="admin-top">
-      <div class="admin-top-inner">
-        <NuxtLink to="/admin" class="admin-brand">{{ $t('admin.brand') }}</NuxtLink>
-        <div class="admin-nav">
+  <div class="min-h-screen bg-[#f5f7fa] text-gray-900">
+    <div class="border-b border-[#e5eaf0] bg-white">
+      <div class="mx-auto flex min-h-16 w-full max-w-[1180px] items-center justify-between gap-4 px-6 max-[720px]:gap-2 max-[720px]:px-4 max-[720px]:py-3">
+        <NuxtLink to="/admin" class="shrink-0 text-base font-bold text-[#0e7f8f] no-underline">{{ $t('admin.brand') }}</NuxtLink>
+        <div class="flex min-w-0 flex-wrap items-center justify-end gap-2 max-[720px]:gap-1">
           <template v-if="isReady">
-            <NuxtLink to="/admin/products" class="admin-nav-link">{{ $t('admin.nav.products') }}</NuxtLink>
-            <NuxtLink to="/admin/news-categories" class="admin-nav-link">{{ $t('admin.nav.newsCategories') }}</NuxtLink>
-            <NuxtLink to="/admin/news" class="admin-nav-link">{{ $t('admin.nav.news') }}</NuxtLink>
-            <NuxtLink to="/admin/inquiries" class="admin-nav-link">{{ $t('admin.nav.inquiries') }}</NuxtLink>
-            <NuxtLink to="/" class="admin-nav-link" target="_blank">{{ $t('admin.nav.viewSite') }}</NuxtLink>
-            <div class="admin-nav-link admin-nav-logout" @click="logout">{{ $t('admin.nav.logout') }}</div>
+            <NuxtLink to="/admin/products" class="cursor-pointer rounded-[10px] px-3 py-2 text-sm font-semibold text-gray-600 no-underline [&.router-link-active]:bg-[#e8f7f9] [&.router-link-active]:text-[#0e7f8f] max-[720px]:px-2 max-[720px]:py-1.5">{{ $t('admin.nav.products') }}</NuxtLink>
+            <NuxtLink to="/admin/news-categories" class="cursor-pointer rounded-[10px] px-3 py-2 text-sm font-semibold text-gray-600 no-underline [&.router-link-active]:bg-[#e8f7f9] [&.router-link-active]:text-[#0e7f8f] max-[720px]:px-2 max-[720px]:py-1.5">{{ $t('admin.nav.newsCategories') }}</NuxtLink>
+            <NuxtLink to="/admin/news" class="cursor-pointer rounded-[10px] px-3 py-2 text-sm font-semibold text-gray-600 no-underline [&.router-link-active]:bg-[#e8f7f9] [&.router-link-active]:text-[#0e7f8f] max-[720px]:px-2 max-[720px]:py-1.5">{{ $t('admin.nav.news') }}</NuxtLink>
+            <NuxtLink to="/admin/inquiries" class="cursor-pointer rounded-[10px] px-3 py-2 text-sm font-semibold text-gray-600 no-underline [&.router-link-active]:bg-[#e8f7f9] [&.router-link-active]:text-[#0e7f8f] max-[720px]:px-2 max-[720px]:py-1.5">{{ $t('admin.nav.inquiries') }}</NuxtLink>
+            <NuxtLink to="/" class="cursor-pointer rounded-[10px] px-3 py-2 text-sm font-semibold text-gray-600 no-underline max-[720px]:px-2 max-[720px]:py-1.5" target="_blank">{{ $t('admin.nav.viewSite') }}</NuxtLink>
+            <button type="button" class="cursor-pointer rounded-[10px] bg-[#eef1f4] px-3 py-2 text-sm font-semibold text-gray-600 max-[720px]:px-2 max-[720px]:py-1.5" @click="logout">{{ $t('admin.nav.logout') }}</button>
           </template>
-          <div class="admin-nav-link admin-nav-lang" @click="toggleLocale">
+          <button type="button" class="cursor-pointer rounded-[10px] bg-[#eef1f4] px-3 py-2 text-sm font-semibold text-gray-600 max-[720px]:px-2 max-[720px]:py-1.5" @click="toggleLocale">
             {{ locale === 'en' ? '中文' : 'EN' }}
-          </div>
+          </button>
         </div>
       </div>
     </div>
-    <div class="admin-main">
-      <div class="admin-container">
+    <div class="py-7 pb-12 max-[720px]:pt-5">
+      <div class="mx-auto w-full max-w-[1180px] px-6 max-[720px]:px-4">
         <slot />
       </div>
     </div>
@@ -44,91 +44,3 @@ function toggleLocale() {
   setLocale(locale.value === 'en' ? 'zh' : 'en')
 }
 </script>
-
-<style scoped>
-.admin-layout {
-  min-height: 100vh;
-  background: #f5f7fa;
-  color: #111827;
-}
-.admin-layout .admin-top {
-  background: #ffffff;
-  border-bottom: 1px solid #e5eaf0;
-}
-.admin-layout .admin-top .admin-top-inner {
-  width: 100%;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 24px;
-  min-height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-.admin-layout .admin-top .admin-brand {
-  font-size: 16px;
-  font-weight: 700;
-  color: #0e7f8f;
-  text-decoration: none;
-}
-.admin-layout .admin-top .admin-nav {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.admin-layout .admin-top .admin-nav .admin-nav-link {
-  padding: 8px 12px;
-  border-radius: 10px;
-  color: #4b5563;
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-}
-.admin-layout .admin-top .admin-nav .admin-nav-link.router-link-active {
-  background: #e8f7f9;
-  color: #0e7f8f;
-}
-.admin-layout .admin-top .admin-nav .admin-nav-logout,
-.admin-layout .admin-top .admin-nav .admin-nav-lang {
-  background: #eef1f4;
-}
-.admin-layout .admin-main {
-  padding: 28px 0 48px;
-}
-.admin-layout .admin-main .admin-container {
-  width: 100%;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-@media (max-width: 720px) {
-  .admin-layout .admin-top .admin-top-inner {
-    align-items: center;
-    gap: 8px;
-    padding: 12px 16px;
-  }
-  .admin-layout .admin-top .admin-brand {
-    flex-shrink: 0;
-  }
-  .admin-layout .admin-top .admin-nav {
-    min-width: 0;
-    justify-content: flex-end;
-    gap: 4px;
-  }
-  .admin-layout .admin-top .admin-nav .admin-nav-link {
-    min-width: 0;
-    padding: 7px 8px;
-    text-align: center;
-    white-space: normal;
-  }
-  .admin-layout .admin-main {
-    padding-top: 20px;
-  }
-  .admin-layout .admin-main .admin-container {
-    padding: 0 16px;
-  }
-}
-</style>
