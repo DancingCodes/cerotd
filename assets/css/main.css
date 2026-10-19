@@ -10,11 +10,9 @@
   --color-surface: #f3f4f6;
   --color-accent: #3f7f88;
   --color-metal: #a8b0ba;
-  --font-sans: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
 html {
-  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }

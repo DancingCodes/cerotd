@@ -1,9 +1,6 @@
 export default defineNuxtConfig({
   compatibilityDate: '2026-09-23',
   modules: ['@nuxt/ui', '@nuxtjs/i18n', '@vueuse/motion/nuxt', 'nitro-cloudflare-dev'],
-  ui: {
-    fonts: false
-  },
   runtimeConfig: {
     adminApiToken: '',
     public: {
@@ -30,12 +27,6 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/webp', href: '/images/logo.webp' },
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
-        }
       ]
     }
   },
