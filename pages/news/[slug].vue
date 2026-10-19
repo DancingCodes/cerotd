@@ -14,7 +14,7 @@
 
     <section v-motion-slide-visible-once-bottom class="bg-white py-[72px] pb-24">
       <div class="container max-w-[820px]">
-        <AppImage
+        <img
           v-if="article.coverUrl"
           class="mb-7 block max-h-[460px] w-full rounded-xl object-cover"
           :src="article.coverUrl"

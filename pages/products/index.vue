@@ -50,7 +50,7 @@
               class="overflow-hidden rounded-xl border border-[#e8edf2] bg-white no-underline transition-colors hover:border-[#cfd8e3]"
             >
               <div class="aspect-[4/3] overflow-hidden bg-[#f3f5f7]">
-                <AppImage
+                <img
                   class="block size-full bg-[#f3f5f7] object-contain"
                   :class="{ 'object-cover saturate-[.8] contrast-[1.05]': !(item.coverUrl || item.images[0]) }"
                   :src="item.coverUrl || item.images[0]"

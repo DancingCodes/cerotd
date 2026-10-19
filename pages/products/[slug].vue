@@ -13,7 +13,7 @@
         <div class="min-w-0">
           <div class="mb-6">
             <button type="button" class="flex min-h-80 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-xl bg-[#f3f5f7]" @click="openPreview(activeIndex)">
-              <AppImage
+              <img
                 v-if="product.images[activeIndex]"
                 class="block max-h-[420px] w-full object-contain"
                 :src="product.images[activeIndex]"
@@ -33,7 +33,7 @@
                 :class="{ 'border-[var(--color-accent)]': index === activeIndex }"
                 @click="activeIndex = index"
               >
-                <AppImage class="block size-full object-contain" :src="img" :alt="t(product.name)" loading="lazy" decoding="async" />
+                <img class="block size-full object-contain" :src="img" :alt="t(product.name)" loading="lazy" decoding="async" />
               </button>
             </div>
           </div>
@@ -86,7 +86,7 @@
         >
           ‹
         </button>
-        <AppImage class="relative z-10 max-h-[80vh] max-w-full rounded-xl bg-white object-contain shadow-[0_24px_64px_rgba(0,0,0,.45)]" :src="product.images[previewIndex]" :alt="t(product.name)" loading="eager" decoding="async" />
+        <img class="relative z-10 max-h-[80vh] max-w-full rounded-xl bg-white object-contain shadow-[0_24px_64px_rgba(0,0,0,.45)]" :src="product.images[previewIndex]" :alt="t(product.name)" loading="eager" decoding="async" />
         <button
           v-if="product.images.length > 1"
           type="button"

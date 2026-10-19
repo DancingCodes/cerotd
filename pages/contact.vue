@@ -16,37 +16,37 @@
               <p class="mb-1.5 text-[13px] font-semibold tracking-[.04em] text-[#9aa3af] uppercase">{{ $t('contact.info.addressLabel') }}</p>
               <p class="text-base leading-[1.6] text-white">{{ $t('contact.info.addressValue') }}</p>
             </li>
-            <li class="info-item">
-              <p class="info-item-label">{{ $t('contact.info.phoneLabel') }}</p>
-              <p class="info-item-value">{{ $t('contact.info.phoneValue') }}</p>
+            <li>
+              <p class="mb-1.5 text-[13px] font-semibold tracking-[.04em] text-[#9aa3af] uppercase">{{ $t('contact.info.phoneLabel') }}</p>
+              <p class="text-base leading-[1.6] text-white">{{ $t('contact.info.phoneValue') }}</p>
             </li>
-            <li class="info-item">
-              <p class="info-item-label">{{ $t('contact.info.whatsappLabel') }}</p>
+            <li>
+              <p class="mb-1.5 text-[13px] font-semibold tracking-[.04em] text-[#9aa3af] uppercase">{{ $t('contact.info.whatsappLabel') }}</p>
               <a class="text-base leading-[1.6] text-white no-underline transition-colors hover:text-[#5fd0dc]" href="https://wa.me/8615263792384" target="_blank" rel="noopener noreferrer">
                 {{ $t('contact.info.whatsappValue') }}
               </a>
             </li>
-            <li class="info-item">
-              <p class="info-item-label">{{ $t('contact.info.telegramLabel') }}</p>
-              <a class="info-item-link" href="https://t.me/cerotdshand" target="_blank" rel="noopener noreferrer">
+            <li>
+              <p class="mb-1.5 text-[13px] font-semibold tracking-[.04em] text-[#9aa3af] uppercase">{{ $t('contact.info.telegramLabel') }}</p>
+              <a class="text-base leading-[1.6] text-white no-underline transition-colors hover:text-[#5fd0dc]" href="https://t.me/cerotdshand" target="_blank" rel="noopener noreferrer">
                 {{ $t('contact.info.telegramValue') }}
               </a>
             </li>
-            <li class="info-item">
-              <p class="info-item-label">{{ $t('contact.info.facebookLabel') }}</p>
-              <a class="info-item-link" href="https://www.facebook.com/profile.php?id=61575320303094&sk=reels_tab" target="_blank" rel="noopener noreferrer">
+            <li>
+              <p class="mb-1.5 text-[13px] font-semibold tracking-[.04em] text-[#9aa3af] uppercase">{{ $t('contact.info.facebookLabel') }}</p>
+              <a class="text-base leading-[1.6] text-white no-underline transition-colors hover:text-[#5fd0dc]" href="https://www.facebook.com/profile.php?id=61575320303094&sk=reels_tab" target="_blank" rel="noopener noreferrer">
                 {{ $t('contact.info.facebookValue') }}
               </a>
             </li>
-            <li class="info-item">
-              <p class="info-item-label">{{ $t('contact.info.instagramLabel') }}</p>
-              <a class="info-item-link" href="https://www.instagram.com/hanxiansheng889/reels/" target="_blank" rel="noopener noreferrer">
+            <li>
+              <p class="mb-1.5 text-[13px] font-semibold tracking-[.04em] text-[#9aa3af] uppercase">{{ $t('contact.info.instagramLabel') }}</p>
+              <a class="text-base leading-[1.6] text-white no-underline transition-colors hover:text-[#5fd0dc]" href="https://www.instagram.com/hanxiansheng889/reels/" target="_blank" rel="noopener noreferrer">
                 {{ $t('contact.info.instagramValue') }}
               </a>
             </li>
-            <li class="info-item">
-              <p class="info-item-label">{{ $t('contact.info.wechatLabel') }}</p>
-              <p class="info-item-value">{{ $t('contact.info.wechatValue') }}</p>
+            <li>
+              <p class="mb-1.5 text-[13px] font-semibold tracking-[.04em] text-[#9aa3af] uppercase">{{ $t('contact.info.wechatLabel') }}</p>
+              <p class="text-base leading-[1.6] text-white">{{ $t('contact.info.wechatValue') }}</p>
             </li>
           </ul>
 
@@ -64,55 +64,55 @@
               <span class="text-[13px] font-semibold text-gray-700 after:text-[#b42318] after:content-["_*"]">{{ $t('contact.form.name') }}</span>
               <input v-model="form.name" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[var(--color-surface)] px-4 py-3.5 text-gray-900 outline-none transition focus:border-[#1aa6b8]/55 focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" type="text" name="name" autocomplete="name" required :placeholder="$t('contact.form.name')" />
             </label>
-            <label class="form-field">
+            <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
               <span class="text-[13px] font-semibold text-gray-700">{{ $t('contact.form.company') }}</span>
-              <input v-model="form.company" class="form-field-input" type="text" name="company" autocomplete="organization" :placeholder="$t('contact.form.company')" />
+              <input v-model="form.company" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[var(--color-surface)] px-4 py-3.5 text-gray-900 outline-none transition focus:border-[#1aa6b8]/55 focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" type="text" name="company" autocomplete="organization" :placeholder="$t('contact.form.company')" />
             </label>
             <div class="col-span-full flex min-w-0 flex-col gap-2 border-0 p-0">
               <div class="grid grid-cols-1 gap-4 min-[720px]:grid-cols-2">
-                <label class="form-field">
-                  <span class="form-field-label">{{ $t('contact.form.email') }}</span>
-                  <input v-model="form.email" class="form-field-input" type="email" name="email" autocomplete="email" :placeholder="$t('contact.form.email')" />
+                <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
+                  <span class="text-[13px] font-semibold text-gray-700">{{ $t('contact.form.email') }}</span>
+                  <input v-model="form.email" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[var(--color-surface)] px-4 py-3.5 text-gray-900 outline-none transition focus:border-[#1aa6b8]/55 focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" type="email" name="email" autocomplete="email" :placeholder="$t('contact.form.email')" />
                 </label>
-                <label class="form-field">
-                  <span class="form-field-label">{{ $t('contact.form.phone') }}</span>
-                  <input v-model="form.phone" class="form-field-input" type="tel" name="phone" autocomplete="tel" :placeholder="$t('contact.form.phone')" />
+                <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
+                  <span class="text-[13px] font-semibold text-gray-700">{{ $t('contact.form.phone') }}</span>
+                  <input v-model="form.phone" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[var(--color-surface)] px-4 py-3.5 text-gray-900 outline-none transition focus:border-[#1aa6b8]/55 focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" type="tel" name="phone" autocomplete="tel" :placeholder="$t('contact.form.phone')" />
                 </label>
               </div>
               <p class="text-xs leading-normal text-gray-500">{{ $t('contact.form.emailOrPhoneHint') }}</p>
             </div>
-            <label class="form-field">
-              <span class="form-field-label">{{ $t('contact.form.country') }}</span>
-              <input v-model="form.country" class="form-field-input" type="text" name="country" autocomplete="country-name" :placeholder="$t('contact.form.country')" />
+            <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
+              <span class="text-[13px] font-semibold text-gray-700">{{ $t('contact.form.country') }}</span>
+              <input v-model="form.country" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[var(--color-surface)] px-4 py-3.5 text-gray-900 outline-none transition focus:border-[#1aa6b8]/55 focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" type="text" name="country" autocomplete="country-name" :placeholder="$t('contact.form.country')" />
             </label>
-            <label class="form-field">
-              <span class="form-field-label">{{ $t('contact.form.im') }}</span>
-              <input v-model="form.im" class="form-field-input" type="text" name="im" :placeholder="$t('contact.form.im')" />
+            <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
+              <span class="text-[13px] font-semibold text-gray-700">{{ $t('contact.form.im') }}</span>
+              <input v-model="form.im" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[var(--color-surface)] px-4 py-3.5 text-gray-900 outline-none transition focus:border-[#1aa6b8]/55 focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" type="text" name="im" :placeholder="$t('contact.form.im')" />
             </label>
             <fieldset class="col-span-full flex min-w-0 flex-col gap-2 border-0 p-0">
-              <legend class="form-field-label">{{ $t('contact.form.bulk') }}</legend>
+              <legend class="text-[13px] font-semibold text-gray-700">{{ $t('contact.form.bulk') }}</legend>
               <div class="flex flex-wrap gap-3">
                 <label class="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-[#e2e6eb] bg-[var(--color-surface)] px-3.5 text-sm text-gray-900">
                   <input v-model="form.bulk" type="radio" name="bulk" value="yes" />
                   <span>{{ $t('contact.form.bulkYes') }}</span>
                 </label>
-                <label class="form-radio-item">
+                <label class="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-[#e2e6eb] bg-[var(--color-surface)] px-3.5 text-sm text-gray-900">
                   <input v-model="form.bulk" type="radio" name="bulk" value="no" />
                   <span>{{ $t('contact.form.bulkNo') }}</span>
                 </label>
               </div>
             </fieldset>
-            <label class="form-field form-field-full">
-              <span class="form-field-label">{{ $t('contact.form.product') }}</span>
-              <select v-model="form.product" class="form-field-input" name="product">
+            <label class="col-span-full flex min-w-0 flex-col gap-2 border-0 p-0">
+              <span class="text-[13px] font-semibold text-gray-700">{{ $t('contact.form.product') }}</span>
+              <select v-model="form.product" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[var(--color-surface)] px-4 py-3.5 text-gray-900 outline-none transition focus:border-[#1aa6b8]/55 focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" name="product">
                 <option value="">{{ $t('contact.form.productPlaceholder') }}</option>
                 <option v-for="category in productOptions" :key="category.slug" :value="category.slug">
                   {{ t(category.name) }}
                 </option>
               </select>
             </label>
-            <label class="form-field form-field-full">
-              <span class="form-field-label">{{ $t('contact.form.message') }}</span>
+            <label class="col-span-full flex min-w-0 flex-col gap-2 border-0 p-0">
+              <span class="text-[13px] font-semibold text-gray-700">{{ $t('contact.form.message') }}</span>
               <textarea v-model="form.message" class="min-h-[140px] w-full resize-y rounded-[14px] border border-[#e2e6eb] bg-[var(--color-surface)] px-4 py-3.5 text-gray-900 outline-none transition focus:border-[#1aa6b8]/55 focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" name="message" rows="5" :placeholder="$t('contact.form.message')"></textarea>
             </label>
             <button type="submit" class="col-span-full mt-1 inline-flex min-h-[52px] w-full cursor-pointer items-center justify-center rounded-full bg-gradient-to-br from-[#0f9aa8] to-[#3dd6e0] px-7 text-[15px] font-semibold text-white transition hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(26,166,184,.24)] disabled:cursor-wait disabled:opacity-70" :disabled="submitting">

@@ -15,8 +15,8 @@
         </div>
         <ul class="flex flex-wrap gap-2.5">
           <li class="rounded-full border border-white/[.16] bg-white/[.04] px-3 py-2 text-xs font-medium tracking-[.04em] text-white/80">{{ $t('home.hero.trust1') }}</li>
-          <li class="hero-trust-item">{{ $t('home.hero.trust2') }}</li>
-          <li class="hero-trust-item">{{ $t('home.hero.trust3') }}</li>
+          <li class="rounded-full border border-white/[.16] bg-white/[.04] px-3 py-2 text-xs font-medium tracking-[.04em] text-white/80">{{ $t('home.hero.trust2') }}</li>
+          <li class="rounded-full border border-white/[.16] bg-white/[.04] px-3 py-2 text-xs font-medium tracking-[.04em] text-white/80">{{ $t('home.hero.trust3') }}</li>
         </ul>
       </div>
     </section>
@@ -58,8 +58,8 @@
     <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-28">
       <div class="container">
         <div class="max-w-[620px]">
-          <h2 class="section-title">{{ $t("home.facility.title") }}</h2>
-          <p class="section-subtitle">{{ $t("home.facility.subtitle") }}</p>
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t("home.facility.title") }}</h2>
+          <p class="text-[17px] leading-[1.7] text-[var(--color-muted)]">{{ $t("home.facility.subtitle") }}</p>
         </div>
         <div class="my-6 mt-8 flex flex-wrap gap-2.5" role="tablist">
           <button
@@ -84,7 +84,7 @@
             :aria-label="`${item.caption} - ${$t('home.facility.open')}`"
             @click="openFacility(index)"
           >
-            <AppImage
+            <img
               class="block aspect-[4/3] w-full object-cover saturate-[.82] contrast-[1.04]"
               :src="item.src"
               :alt="item.caption"
@@ -95,7 +95,7 @@
           </button>
         </div>
         <div class="mt-7">
-          <NuxtLink to="/about" class="section-link">{{ $t("home.facility.cta") }}</NuxtLink>
+          <NuxtLink to="/about" class="text-sm font-semibold tracking-[.02em] text-[var(--color-accent)] no-underline">{{ $t("home.facility.cta") }}</NuxtLink>
         </div>
       </div>
     </section>
@@ -125,7 +125,7 @@
         >
           ‹
         </button>
-        <AppImage
+        <img
           class="relative z-10 max-h-[80vh] max-w-full rounded-xl bg-[#0d1524] object-contain shadow-[0_24px_64px_rgba(0,0,0,.45)]"
           :src="facilityPreviewImage.src"
           :alt="facilityPreviewImage.caption"
@@ -146,9 +146,9 @@
 
     <section v-motion-slide-visible-once-bottom class="bg-[var(--color-ink)] py-24 md:py-28">
       <div class="container">
-        <div class="mb-10 max-w-[620px] [&_.section-title]:text-white [&_.section-subtitle]:text-white/60">
-          <h2 class="section-title">{{ $t('home.exportServices.title') }}</h2>
-          <p class="section-subtitle">{{ $t('home.exportServices.subtitle') }}</p>
+        <div class="mb-10 max-w-[620px]">
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-white max-md:text-[32px]">{{ $t('home.exportServices.title') }}</h2>
+          <p class="text-[17px] leading-[1.7] text-white/60">{{ $t('home.exportServices.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-1 gap-3.5 min-[680px]:grid-cols-2 min-[1080px]:grid-cols-4 min-[1080px]:gap-4">
           <article v-for="(item, index) in exportServices" :key="item.name" class="min-h-full rounded-xl border border-white/10 bg-white/[.04] px-[22px] py-6 transition hover:-translate-y-[3px] hover:border-[#5fd0dc]/45 hover:bg-white/[.07]">
@@ -167,9 +167,9 @@
 
     <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-28">
       <div class="container">
-        <div class="section-copy">
-          <h2 class="section-title">{{ $t('home.lines.title') }}</h2>
-          <p class="section-subtitle">{{ $t('home.lines.subtitle') }}</p>
+        <div class="mb-10 max-w-[620px]">
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('home.lines.title') }}</h2>
+          <p class="text-[17px] leading-[1.7] text-[var(--color-muted)]">{{ $t('home.lines.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-1 gap-3.5 md:grid-cols-2 min-[1100px]:grid-cols-3">
           <NuxtLink
@@ -183,16 +183,16 @@
           </NuxtLink>
         </div>
         <div class="mt-7">
-          <NuxtLink to="/products" class="section-link">{{ $t('common.viewProducts') }}</NuxtLink>
+          <NuxtLink to="/products" class="text-sm font-semibold tracking-[.02em] text-[var(--color-accent)] no-underline">{{ $t('common.viewProducts') }}</NuxtLink>
         </div>
       </div>
     </section>
 
     <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-28">
       <div class="container">
-        <div class="section-copy">
-          <h2 class="section-title">{{ $t('home.advantages.title') }}</h2>
-          <p class="section-subtitle">{{ $t('home.advantages.subtitle') }}</p>
+        <div class="mb-10 max-w-[620px]">
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('home.advantages.title') }}</h2>
+          <p class="text-[17px] leading-[1.7] text-[var(--color-muted)]">{{ $t('home.advantages.subtitle') }}</p>
         </div>
         <div class="mt-10 grid grid-cols-1 gap-[18px] md:grid-cols-2">
           <article v-for="(item, index) in advantages" :key="item.name" class="overflow-hidden rounded-xl border border-[var(--color-line)] bg-[var(--color-surface)]">
@@ -213,17 +213,17 @@
             </div>
           </article>
         </div>
-        <div class="section-actions">
-          <NuxtLink to="/advantages" class="section-link">{{ $t('home.advantages.link') }}</NuxtLink>
+        <div class="mt-7">
+          <NuxtLink to="/advantages" class="text-sm font-semibold tracking-[.02em] text-[var(--color-accent)] no-underline">{{ $t('home.advantages.link') }}</NuxtLink>
         </div>
       </div>
     </section>
 
     <section v-motion-slide-visible-once-bottom class="bg-[var(--color-surface)] py-24 md:py-28">
       <div class="container">
-        <div class="section-copy">
-          <h2 class="section-title">{{ $t('home.partners.title') }}</h2>
-          <p class="section-subtitle">{{ $t('home.partners.subtitle') }}</p>
+        <div class="mb-10 max-w-[620px]">
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('home.partners.title') }}</h2>
+          <p class="text-[17px] leading-[1.7] text-[var(--color-muted)]">{{ $t('home.partners.subtitle') }}</p>
         </div>
         <div class="mt-10 grid grid-cols-2 gap-3.5 md:grid-cols-4">
           <a

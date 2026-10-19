@@ -46,8 +46,8 @@
 
     <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-[120px]">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">{{ $t('about.stats.title') }}</h2>
+        <div class="mb-12 max-w-[620px]">
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('about.stats.title') }}</h2>
         </div>
         <div class="grid grid-cols-2 gap-3 min-[900px]:grid-cols-4 min-[900px]:gap-[18px]">
           <div v-for="n in 4" :key="n" class="min-w-0 rounded-xl border border-[#e8edf2] bg-[var(--color-surface)] px-3.5 py-5 transition hover:-translate-y-[3px] hover:bg-[#eef2f6] min-[900px]:px-6 min-[900px]:py-7">
@@ -60,8 +60,8 @@
 
     <section v-motion-slide-visible-once-bottom class="bg-[var(--color-surface)] py-24 md:py-[120px]">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">{{ $t('about.trust.title') }}</h2>
+        <div class="mb-12 max-w-[620px]">
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('about.trust.title') }}</h2>
           <p class="max-w-[52ch] text-[17px] leading-[1.7] text-gray-600">{{ $t('about.trust.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-2 gap-3.5 min-[900px]:grid-cols-3 min-[900px]:gap-4">
@@ -75,9 +75,9 @@
 
     <section id="certificates" v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-[120px]">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">{{ $t('about.certificates.title') }}</h2>
-          <p class="section-subtitle">{{ $t('about.certificates.subtitle') }}</p>
+        <div class="mb-12 max-w-[620px]">
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('about.certificates.title') }}</h2>
+          <p class="text-[17px] leading-[1.7] text-[var(--color-muted)]">{{ $t('about.certificates.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-2 gap-3.5 md:grid-cols-3 md:gap-4 min-[1100px]:grid-cols-4">
           <button
@@ -87,7 +87,7 @@
             class="block w-full cursor-pointer rounded-xl border border-[#e8edf2] bg-[var(--color-surface)] p-3.5 transition hover:-translate-y-[3px] hover:border-[#cfd8e3] hover:shadow-[0_12px_28px_rgba(15,23,42,.08)]"
             @click="openCertificate(index)"
           >
-            <AppImage
+            <img
               class="block aspect-[3/4] w-full rounded-xl bg-white object-contain"
               :src="item.src"
               :alt="item.alt"
@@ -121,7 +121,7 @@
         >
           ‹
         </button>
-        <AppImage
+        <img
           class="relative z-10 max-h-[80vh] max-w-full rounded-xl bg-white object-contain shadow-[0_24px_64px_rgba(0,0,0,.45)]"
           :src="certificatePreviewItem.src"
           :alt="certificatePreviewItem.alt"

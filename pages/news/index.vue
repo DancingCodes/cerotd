@@ -50,7 +50,7 @@
               class="overflow-hidden rounded-xl border border-[#e8edf2] bg-white no-underline transition-colors hover:border-[#cfd8e3]"
             >
               <div class="aspect-video overflow-hidden bg-[#f3f5f7]">
-                <AppImage
+                <img
                   class="block size-full object-cover saturate-[.86] contrast-[1.04]"
                   :src="item.coverUrl"
                   :alt="t(item.title)"

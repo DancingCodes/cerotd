@@ -24,9 +24,9 @@
 
     <section v-motion-slide-visible-once-bottom class="bg-[var(--color-surface)] py-24 md:py-[120px]">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">{{ $t('advantages.compare.title') }}</h2>
-          <p class="section-subtitle">{{ $t('advantages.compare.subtitle') }}</p>
+        <div class="mb-12 max-w-[620px]">
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('advantages.compare.title') }}</h2>
+          <p class="text-[17px] leading-[1.7] text-[var(--color-muted)]">{{ $t('advantages.compare.subtitle') }}</p>
         </div>
         <div class="grid">
           <article v-for="item in compare" :key="item.name" class="grid grid-cols-1 gap-2.5 border-t border-[#e2e6eb] py-7 last:border-b min-[800px]:grid-cols-[.9fr_1.1fr] min-[800px]:gap-8">
@@ -39,9 +39,9 @@
 
     <section v-motion-slide-visible-once-bottom class="bg-white py-24 md:py-[120px]">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">{{ $t('advantages.pillars.title') }}</h2>
-          <p class="section-subtitle">{{ $t('advantages.pillars.subtitle') }}</p>
+        <div class="mb-12 max-w-[620px]">
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('advantages.pillars.title') }}</h2>
+          <p class="text-[17px] leading-[1.7] text-[var(--color-muted)]">{{ $t('advantages.pillars.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-1 gap-[18px] min-[900px]:grid-cols-2">
           <article v-for="(item, index) in pillars" :key="item.name" class="rounded-xl border border-[var(--color-line)] bg-[var(--color-surface)] p-7 transition hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(15,23,42,.1)]">
@@ -55,9 +55,9 @@
 
     <section v-motion-slide-visible-once-bottom class="bg-[var(--color-ink)] py-24 md:py-[120px]">
       <div class="container">
-        <div class="mb-12">
-          <h2 class="section-title">{{ $t('advantages.assurance.title') }}</h2>
-          <p class="section-subtitle">{{ $t('advantages.assurance.subtitle') }}</p>
+        <div class="mb-12 max-w-[620px]">
+          <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-white max-md:text-[32px]">{{ $t('advantages.assurance.title') }}</h2>
+          <p class="text-[17px] leading-[1.7] text-white/60">{{ $t('advantages.assurance.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-1 gap-3.5 min-[900px]:grid-cols-2">
           <article v-for="(item, index) in assurance" :key="item.name" class="rounded-xl border border-white/10 bg-white/[.04] px-[22px] py-[26px]">
