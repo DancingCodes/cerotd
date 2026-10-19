@@ -1,6 +1,5 @@
 .nuxt
 .output
-.vscode
 .wrangler
 node_modules
 dist
