@@ -180,127 +180,106 @@ function formatDate(value: string) {
 }
 </script>
 
-<style lang="scss" scoped>
-.news-detail-page {
-  .page-hero {
-    padding: 72px 0 64px;
-    background:
-      radial-gradient(circle at 80% 10%, rgba(#8b9aab, 0.14), transparent 26%),
-      linear-gradient(180deg, var(--color-ink) 0%, var(--color-ink-soft) 100%);
-    color: #ffffff;
-
-    .page-hero-back {
-      display: inline-block;
-      margin-bottom: 18px;
-      color: #c8ced6;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .page-hero-meta {
-      display: flex;
-      gap: 14px;
-      margin-bottom: 14px;
-      color: #b7c0cb;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .page-hero-title {
-      margin-bottom: 16px;
-      max-width: 18ch;
-      font-size: 48px;
-      line-height: 1.1;
-      letter-spacing: 0;
-    }
-
-    .page-hero-subtitle {
-      max-width: 48ch;
-      color: #c8ced6;
-      font-size: 18px;
-      line-height: 1.7;
-    }
-  }
-
-  .section {
-    padding: 72px 0 96px;
-  }
-
-  .content {
-    background: #ffffff;
-
-    .content-wrap {
-      max-width: 820px;
-    }
-
-    .cover-image {
-      width: 100%;
-      max-height: 460px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 28px;
-      display: block;
-    }
-
-    .article-body {
-      color: #1f2937;
-      font-size: 17px;
-      line-height: 1.8;
-
-      :deep(p) {
-        margin: 0 0 18px;
-      }
-
-      :deep(h2),
-      :deep(h3) {
-        margin: 28px 0 12px;
-        color: #111827;
-        letter-spacing: 0;
-      }
-
-      :deep(ul),
-      :deep(ol) {
-        margin: 0 0 18px;
-        padding-left: 22px;
-      }
-
-      :deep(li) {
-        margin-bottom: 8px;
-      }
-
-      :deep(img) {
-        display: block;
-        width: 100%;
-        height: auto;
-        margin: 24px 0;
-        border-radius: 10px;
-      }
-
-      :deep(a) {
-        color: var(--color-accent);
-      }
-    }
-
-    .article-cta {
-      margin-top: 36px;
-
-      .article-cta-link {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 46px;
-        padding: 0 20px;
-        border-radius: 999px;
-        background: var(--color-ink);
-        color: #ffffff;
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 650;
-      }
-    }
-  }
+<style scoped>
+.news-detail-page .page-hero {
+  padding: 72px 0 64px;
+  background: radial-gradient(circle at 80% 10%, rgba(139, 154, 171, 0.14), transparent 26%), linear-gradient(180deg, var(--color-ink) 0%, var(--color-ink-soft) 100%);
+  color: #ffffff;
+}
+.news-detail-page .page-hero .page-hero-back {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #c8ced6;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+.news-detail-page .page-hero .page-hero-meta {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 14px;
+  color: #b7c0cb;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.news-detail-page .page-hero .page-hero-title {
+  margin-bottom: 16px;
+  max-width: 18ch;
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+.news-detail-page .page-hero .page-hero-subtitle {
+  max-width: 48ch;
+  color: #c8ced6;
+  font-size: 18px;
+  line-height: 1.7;
+}
+.news-detail-page .section {
+  padding: 72px 0 96px;
+}
+.news-detail-page .content {
+  background: #ffffff;
+}
+.news-detail-page .content .content-wrap {
+  max-width: 820px;
+}
+.news-detail-page .content .cover-image {
+  width: 100%;
+  max-height: 460px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 28px;
+  display: block;
+}
+.news-detail-page .content .article-body {
+  color: #1f2937;
+  font-size: 17px;
+  line-height: 1.8;
+}
+.news-detail-page .content .article-body :deep(p) {
+  margin: 0 0 18px;
+}
+.news-detail-page .content .article-body :deep(h2),
+.news-detail-page .content .article-body :deep(h3) {
+  margin: 28px 0 12px;
+  color: #111827;
+  letter-spacing: 0;
+}
+.news-detail-page .content .article-body :deep(ul),
+.news-detail-page .content .article-body :deep(ol) {
+  margin: 0 0 18px;
+  padding-left: 22px;
+}
+.news-detail-page .content .article-body :deep(li) {
+  margin-bottom: 8px;
+}
+.news-detail-page .content .article-body :deep(img) {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 24px 0;
+  border-radius: 10px;
+}
+.news-detail-page .content .article-body :deep(a) {
+  color: var(--color-accent);
+}
+.news-detail-page .content .article-cta {
+  margin-top: 36px;
+}
+.news-detail-page .content .article-cta .article-cta-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: var(--color-ink);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 650;
 }
 </style>

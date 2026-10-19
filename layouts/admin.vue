@@ -45,107 +45,90 @@ function toggleLocale() {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .admin-layout {
   min-height: 100vh;
   background: #f5f7fa;
   color: #111827;
-
-  .admin-top {
-    background: #ffffff;
-    border-bottom: 1px solid #e5eaf0;
-
-    .admin-top-inner {
-      width: 100%;
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 24px;
-      min-height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .admin-brand {
-      font-size: 16px;
-      font-weight: 700;
-      color: #0e7f8f;
-      text-decoration: none;
-    }
-
-    .admin-nav {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-
-      .admin-nav-link {
-        padding: 8px 12px;
-        border-radius: 10px;
-        color: #4b5563;
-        font-size: 14px;
-        font-weight: 600;
-        text-decoration: none;
-        cursor: pointer;
-      }
-
-      .admin-nav-link.router-link-active {
-        background: #e8f7f9;
-        color: #0e7f8f;
-      }
-
-      .admin-nav-logout,
-      .admin-nav-lang {
-        background: #eef1f4;
-      }
-    }
+}
+.admin-layout .admin-top {
+  background: #ffffff;
+  border-bottom: 1px solid #e5eaf0;
+}
+.admin-layout .admin-top .admin-top-inner {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.admin-layout .admin-top .admin-brand {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0e7f8f;
+  text-decoration: none;
+}
+.admin-layout .admin-top .admin-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.admin-layout .admin-top .admin-nav .admin-nav-link {
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: #4b5563;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.admin-layout .admin-top .admin-nav .admin-nav-link.router-link-active {
+  background: #e8f7f9;
+  color: #0e7f8f;
+}
+.admin-layout .admin-top .admin-nav .admin-nav-logout,
+.admin-layout .admin-top .admin-nav .admin-nav-lang {
+  background: #eef1f4;
+}
+.admin-layout .admin-main {
+  padding: 28px 0 48px;
+}
+.admin-layout .admin-main .admin-container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+@media (max-width: 720px) {
+  .admin-layout .admin-top .admin-top-inner {
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
   }
-
-  .admin-main {
-    padding: 28px 0 48px;
-
-    .admin-container {
-      width: 100%;
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+  .admin-layout .admin-top .admin-brand {
+    flex-shrink: 0;
   }
-
-  @media (max-width: 720px) {
-    .admin-top {
-      .admin-top-inner {
-        align-items: center;
-        gap: 8px;
-        padding: 12px 16px;
-      }
-
-      .admin-brand {
-        flex-shrink: 0;
-      }
-
-      .admin-nav {
-        min-width: 0;
-        justify-content: flex-end;
-        gap: 4px;
-
-        .admin-nav-link {
-          min-width: 0;
-          padding: 7px 8px;
-          text-align: center;
-          white-space: normal;
-        }
-      }
-    }
-
-    .admin-main {
-      padding-top: 20px;
-
-      .admin-container {
-        padding: 0 16px;
-      }
-    }
+  .admin-layout .admin-top .admin-nav {
+    min-width: 0;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+  .admin-layout .admin-top .admin-nav .admin-nav-link {
+    min-width: 0;
+    padding: 7px 8px;
+    text-align: center;
+    white-space: normal;
+  }
+  .admin-layout .admin-main {
+    padding-top: 20px;
+  }
+  .admin-layout .admin-main .admin-container {
+    padding: 0 16px;
   }
 }
 </style>

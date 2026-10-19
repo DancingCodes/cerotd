@@ -253,269 +253,235 @@ async function remove(item: InquiryItem) {
 onMounted(load)
 </script>
 
-<style lang="scss" scoped>
-.admin-page {
-  .admin-page-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 18px;
-  }
-
-  .admin-page-title {
-    font-size: 28px;
-    font-weight: 650;
-  }
-
-  .admin-page-subtitle {
-    margin-top: 6px;
-    color: #6b7280;
-    font-size: 14px;
-  }
-
-  .admin-page-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    padding: 0 16px;
-    border-radius: 12px;
-    background: #0e7f8f;
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 650;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-
-  .admin-page-btn-muted {
-    background: #eef1f4;
-    color: #374151;
-  }
-
-  .admin-filters {
-    display: grid;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-
-  .admin-filter-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .admin-filter-chip {
-    height: 34px;
-    padding: 0 12px;
-    border-radius: 999px;
-    border: 1px solid #e5eaf0;
-    background: #ffffff;
-    color: #4b5563;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-
-  .admin-filter-chip-active {
-    border-color: #0e7f8f;
-    background: #e8f7f9;
-    color: #0e7f8f;
-  }
-
-  .admin-table-card {
-    margin-bottom: 18px;
-    padding: 20px;
-    border-radius: 12px;
-    background: #ffffff;
-    border: 1px solid #e5eaf0;
-  }
-
-  .admin-empty {
-    color: #6b7280;
-    font-size: 14px;
-  }
-
-  .inquiry-list {
-    display: grid;
-    gap: 14px;
-  }
-
-  .inquiry-card {
-    padding: 16px;
-    border-radius: 14px;
-    border: 1px solid #eef1f4;
-    background: #fbfcfd;
-  }
-
-  .inquiry-card-unread {
-    border-color: #cfeef2;
-    background: #f3fbfd;
-  }
-
-  .inquiry-card-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-
-  .inquiry-card-top > div:first-child {
-    min-width: 0;
-  }
-
-  .inquiry-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    margin-right: 8px;
-    border-radius: 50%;
-    background: #0e7f8f;
-    vertical-align: middle;
-  }
-
-  .inquiry-status {
-    margin-left: 8px;
-    padding: 2px 8px;
-    border-radius: 999px;
-    background: #eef1f4;
-    color: #6b7280;
-    font-size: 11px;
-    font-weight: 700;
-    vertical-align: middle;
-  }
-
-  .inquiry-card-unread .inquiry-status {
-    background: #d8f3f7;
-    color: #0e7f8f;
-  }
-
-  .inquiry-card-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px;
-    font-size: 13px;
-    color: #374151;
-
-    > div {
-      overflow-wrap: anywhere;
-    }
-
-    @media (min-width: 768px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    span {
-      display: inline-block;
-      min-width: 72px;
-      color: #6b7280;
-      font-weight: 600;
-    }
-  }
-
-  .inquiry-card-detail {
-    margin-top: 14px;
-    padding-top: 14px;
-    border-top: 1px solid #eef1f4;
-  }
-
-  .inquiry-detail-row {
-    margin-bottom: 8px;
-    font-size: 13px;
-    color: #374151;
-    overflow-wrap: anywhere;
-
-    span {
-      display: inline-block;
-      min-width: 72px;
-      color: #6b7280;
-      font-weight: 600;
-    }
-  }
-
-  .inquiry-message {
-    margin-top: 12px;
-    padding: 12px;
-    border-radius: 12px;
-    background: #ffffff;
-    border: 1px solid #e5eaf0;
-
-    .inquiry-message-label {
-      margin-bottom: 6px;
-      color: #6b7280;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    p {
-      color: #111827;
-      font-size: 14px;
-      line-height: 1.7;
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-    }
-  }
-
-  .admin-strong {
-    font-weight: 650;
-  }
-
-  .admin-muted {
-    margin-top: 2px;
-    color: #6b7280;
-    font-size: 12px;
-  }
-
-  .admin-row-actions {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .admin-link {
-    color: #0e7f8f;
-    font-weight: 650;
-    cursor: pointer;
-    text-decoration: none;
-  }
-
-  .admin-link-danger {
-    color: #b42318;
+<style scoped>
+.admin-page .admin-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.admin-page .admin-page-title {
+  font-size: 28px;
+  font-weight: 650;
+}
+.admin-page .admin-page-subtitle {
+  margin-top: 6px;
+  color: #6b7280;
+  font-size: 14px;
+}
+.admin-page .admin-page-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 12px;
+  background: #0e7f8f;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.admin-page .admin-page-btn-muted {
+  background: #eef1f4;
+  color: #374151;
+}
+.admin-page .admin-filters {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.admin-page .admin-filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.admin-page .admin-filter-chip {
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid #e5eaf0;
+  background: #ffffff;
+  color: #4b5563;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.admin-page .admin-filter-chip-active {
+  border-color: #0e7f8f;
+  background: #e8f7f9;
+  color: #0e7f8f;
+}
+.admin-page .admin-table-card {
+  margin-bottom: 18px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e5eaf0;
+}
+.admin-page .admin-empty {
+  color: #6b7280;
+  font-size: 14px;
+}
+.admin-page .inquiry-list {
+  display: grid;
+  gap: 14px;
+}
+.admin-page .inquiry-card {
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid #eef1f4;
+  background: #fbfcfd;
+}
+.admin-page .inquiry-card-unread {
+  border-color: #cfeef2;
+  background: #f3fbfd;
+}
+.admin-page .inquiry-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.admin-page .inquiry-card-top > div:first-child {
+  min-width: 0;
+}
+.admin-page .inquiry-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #0e7f8f;
+  vertical-align: middle;
+}
+.admin-page .inquiry-status {
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #eef1f4;
+  color: #6b7280;
+  font-size: 11px;
+  font-weight: 700;
+  vertical-align: middle;
+}
+.admin-page .inquiry-card-unread .inquiry-status {
+  background: #d8f3f7;
+  color: #0e7f8f;
+}
+.admin-page .inquiry-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  font-size: 13px;
+  color: #374151;
+}
+.admin-page .inquiry-card-grid > div {
+  overflow-wrap: anywhere;
+}
+@media (min-width: 768px) {
+  .admin-page .inquiry-card-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
+.admin-page .inquiry-card-grid span {
+  display: inline-block;
+  min-width: 72px;
+  color: #6b7280;
+  font-weight: 600;
+}
+.admin-page .inquiry-card-detail {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #eef1f4;
+}
+.admin-page .inquiry-detail-row {
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #374151;
+  overflow-wrap: anywhere;
+}
+.admin-page .inquiry-detail-row span {
+  display: inline-block;
+  min-width: 72px;
+  color: #6b7280;
+  font-weight: 600;
+}
+.admin-page .inquiry-message {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e5eaf0;
+}
+.admin-page .inquiry-message .inquiry-message-label {
+  margin-bottom: 6px;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.admin-page .inquiry-message p {
+  color: #111827;
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.admin-page .admin-strong {
+  font-weight: 650;
+}
+.admin-page .admin-muted {
+  margin-top: 2px;
+  color: #6b7280;
+  font-size: 12px;
+}
+.admin-page .admin-row-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.admin-page .admin-link {
+  color: #0e7f8f;
+  font-weight: 650;
+  cursor: pointer;
+  text-decoration: none;
+}
+.admin-page .admin-link-danger {
+  color: #b42318;
+}
 
-  .admin-pagination {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 16px;
-  }
+.admin-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
+}
 
-  .admin-pagination-btn {
-    height: 34px;
-    padding: 0 12px;
-    border-radius: 10px;
-    border: 1px solid #d7dee7;
-    background: #ffffff;
-    color: #374151;
-    font-size: 13px;
-    font-weight: 650;
-    cursor: pointer;
-  }
+.admin-pagination-btn {
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid #d7dee7;
+  background: #ffffff;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+}
 
-  .admin-pagination-btn:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
-  }
+.admin-pagination-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
 
-  .admin-pagination-status {
-    color: #6b7280;
-    font-size: 13px;
-  }
-
+.admin-pagination-status {
+  color: #6b7280;
+  font-size: 13px;
+}
 </style>

@@ -9,14 +9,13 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .layout-default {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-
-  .layout-default-main {
-    flex: 1;
-  }
+}
+.layout-default .layout-default-main {
+  flex: 1;
 }
 </style>

@@ -95,82 +95,73 @@ async function onFiles(event: Event) {
 }
 </script>
 
-<style lang="scss" scoped>
-.image-list-upload {
-  .image-list-upload-actions {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+<style scoped>
+.image-list-upload .image-list-upload-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.image-list-upload .image-list-upload-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 12px;
+  background: #e8f7f9;
+  color: #0e7f8f;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.image-list-upload .image-list-upload-file {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.image-list-upload .image-list-upload-error {
+  margin-top: 8px;
+  color: #b42318;
+  font-size: 12px;
+}
+.image-list-upload .image-list-upload-empty {
+  margin-top: 10px;
+  color: #6b7280;
+  font-size: 13px;
+}
+.image-list-upload .image-list-upload-grid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (min-width: 768px) {
+  .image-list-upload .image-list-upload-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-
-  .image-list-upload-btn {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 42px;
-    padding: 0 14px;
-    border-radius: 12px;
-    background: #e8f7f9;
-    color: #0e7f8f;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-
-  .image-list-upload-file {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    cursor: pointer;
-  }
-
-  .image-list-upload-error {
-    margin-top: 8px;
-    color: #b42318;
-    font-size: 12px;
-  }
-
-  .image-list-upload-empty {
-    margin-top: 10px;
-    color: #6b7280;
-    font-size: 13px;
-  }
-
-  .image-list-upload-grid {
-    margin-top: 12px;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-
-    @media (min-width: 768px) {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-
-  .image-list-upload-item {
-    border: 1px solid #e5eaf0;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #fff;
-  }
-
-  .image-list-upload-preview {
-    display: block;
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-  }
-
-  .image-list-upload-remove {
-    width: 100%;
-    height: 34px;
-    border: none;
-    background: #f8fafc;
-    color: #b42318;
-    font-size: 12px;
-    font-weight: 700;
-    cursor: pointer;
-  }
+}
+.image-list-upload .image-list-upload-item {
+  border: 1px solid #e5eaf0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+.image-list-upload .image-list-upload-preview {
+  display: block;
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+.image-list-upload .image-list-upload-remove {
+  width: 100%;
+  height: 34px;
+  border: none;
+  background: #f8fafc;
+  color: #b42318;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
 }
 </style>

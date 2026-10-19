@@ -1,6 +1,9 @@
 export default defineNuxtConfig({
   compatibilityDate: '2026-09-23',
-  modules: ['@nuxtjs/i18n', '@vueuse/motion/nuxt', 'nitro-cloudflare-dev'],
+  modules: ['@nuxt/ui', '@nuxtjs/i18n', '@vueuse/motion/nuxt', 'nitro-cloudflare-dev'],
+  ui: {
+    fonts: false
+  },
   runtimeConfig: {
     adminApiToken: '',
     public: {
@@ -12,7 +15,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/admin/**': { ssr: false }
   },
-  css: ['~/assets/reset.scss', '~/assets/main.scss'],
+  css: ['~/assets/css/main.css'],
   typescript: {
     typeCheck: false,
     strict: true

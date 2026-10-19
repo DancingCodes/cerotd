@@ -94,69 +94,61 @@ async function onFile(event: Event) {
 }
 </script>
 
-<style lang="scss" scoped>
-.image-upload {
-  .image-upload-row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-
-  .image-upload-btn {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 42px;
-    padding: 0 14px;
-    border-radius: 12px;
-    background: #e8f7f9;
-    color: #0e7f8f;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-
-  .image-upload-clear {
-    height: 42px;
-    padding: 0 14px;
-    border-radius: 12px;
-    border: 1px solid #f0d0cc;
-    background: #fff5f4;
-    color: #b42318;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-
-  .image-upload-file {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    cursor: pointer;
-  }
-
-  .image-upload-error {
-    margin-top: 8px;
-    color: #b42318;
-    font-size: 12px;
-  }
-
-  .image-upload-empty {
-    margin-top: 10px;
-    color: #6b7280;
-    font-size: 13px;
-  }
-
-  .image-upload-preview {
-    display: block;
-    margin-top: 10px;
-    max-width: 220px;
-    max-height: 140px;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 1px solid #e5eaf0;
-  }
+<style scoped>
+.image-upload .image-upload-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.image-upload .image-upload-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 12px;
+  background: #e8f7f9;
+  color: #0e7f8f;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.image-upload .image-upload-clear {
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid #f0d0cc;
+  background: #fff5f4;
+  color: #b42318;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.image-upload .image-upload-file {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.image-upload .image-upload-error {
+  margin-top: 8px;
+  color: #b42318;
+  font-size: 12px;
+}
+.image-upload .image-upload-empty {
+  margin-top: 10px;
+  color: #6b7280;
+  font-size: 13px;
+}
+.image-upload .image-upload-preview {
+  display: block;
+  margin-top: 10px;
+  max-width: 220px;
+  max-height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #e5eaf0;
 }
 </style>

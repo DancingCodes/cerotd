@@ -104,51 +104,46 @@ async function addImage() {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .rich-editor {
   border: 1px solid #d7dee7;
   border-radius: 12px;
   background: #ffffff;
   overflow: hidden;
-
-  .rich-editor-toolbar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 10px;
-    border-bottom: 1px solid #eef1f4;
-    background: #f8fafc;
-  }
-
-  .rich-editor-btn {
-    min-width: 36px;
-    height: 32px;
-    padding: 0 10px;
-    border-radius: 8px;
-    background: #ffffff;
-    border: 1px solid #d7dee7;
-    color: #374151;
-    font-size: 12px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-
-  .rich-editor-btn.rich-editor-btn-active {
-    background: #e8f7f9;
-    border-color: #9fd3da;
-    color: #0e7f8f;
-  }
-
-  .rich-editor-content {
-    min-height: 220px;
-    padding: 14px 16px;
-  }
-
-  .rich-editor-hint {
-    padding: 0 16px 12px;
-    color: #6b7280;
-    font-size: 12px;
-  }
+}
+.rich-editor .rich-editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
+  border-bottom: 1px solid #eef1f4;
+  background: #f8fafc;
+}
+.rich-editor .rich-editor-btn {
+  min-width: 36px;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #d7dee7;
+  color: #374151;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.rich-editor .rich-editor-btn.rich-editor-btn-active {
+  background: #e8f7f9;
+  border-color: #9fd3da;
+  color: #0e7f8f;
+}
+.rich-editor .rich-editor-content {
+  min-height: 220px;
+  padding: 14px 16px;
+}
+.rich-editor .rich-editor-hint {
+  padding: 0 16px 12px;
+  color: #6b7280;
+  font-size: 12px;
 }
 
 :deep(.ProseMirror) {
@@ -157,33 +152,28 @@ async function addImage() {
   color: #111827;
   font-size: 14px;
   line-height: 1.7;
-
-  p {
-    margin: 0 0 12px;
-  }
-
-  h2,
-  h3 {
-    margin: 16px 0 10px;
-    font-weight: 700;
-  }
-
-  ul,
-  ol {
-    margin: 0 0 12px;
-    padding-left: 20px;
-  }
-
-  img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 14px 0;
-    border-radius: 12px;
-  }
-
-  a {
-    color: #0e7f8f;
-  }
+}
+:deep(.ProseMirror) p {
+  margin: 0 0 12px;
+}
+:deep(.ProseMirror) h2,
+:deep(.ProseMirror) h3 {
+  margin: 16px 0 10px;
+  font-weight: 700;
+}
+:deep(.ProseMirror) ul,
+:deep(.ProseMirror) ol {
+  margin: 0 0 12px;
+  padding-left: 20px;
+}
+:deep(.ProseMirror) img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 14px 0;
+  border-radius: 12px;
+}
+:deep(.ProseMirror) a {
+  color: #0e7f8f;
 }
 </style>

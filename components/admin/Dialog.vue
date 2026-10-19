@@ -1,20 +1,8 @@
 <template>
   <Teleport to="body">
-    <div
-      v-if="state.open"
-      class="admin-dialog-backdrop"
-      role="presentation"
-      @click.self="cancel"
-      @keydown.esc="cancel"
-    >
-      <section
-        class="admin-dialog"
-        role="dialog"
-        aria-modal="true"
-        :aria-labelledby="titleId"
-        :aria-describedby="messageId"
-        tabindex="-1"
-      >
+    <div v-if="state.open" class="admin-dialog-backdrop" role="presentation" @click.self="cancel" @keydown.esc="cancel">
+      <section class="admin-dialog" role="dialog" aria-modal="true" :aria-labelledby="titleId"
+        :aria-describedby="messageId" tabindex="-1">
         <div class="admin-dialog-header">
           <h2 :id="titleId" class="admin-dialog-title">{{ state.title }}</h2>
           <button type="button" class="admin-dialog-close" :aria-label="state.cancelText" @click="cancel">
@@ -23,20 +11,12 @@
         </div>
         <p :id="messageId" class="admin-dialog-message">{{ state.message }}</p>
         <div class="admin-dialog-actions">
-          <button
-            v-if="state.kind === 'confirm'"
-            type="button"
-            class="admin-dialog-button admin-dialog-button-muted"
-            @click="cancel"
-          >
+          <button v-if="state.kind === 'confirm'" type="button" class="admin-dialog-button admin-dialog-button-muted"
+            @click="cancel">
             {{ state.cancelText }}
           </button>
-          <button
-            type="button"
-            class="admin-dialog-button"
-            :class="{ 'admin-dialog-button-danger': state.kind === 'confirm' }"
-            @click="confirm"
-          >
+          <button type="button" class="admin-dialog-button"
+            :class="{ 'admin-dialog-button-danger': state.kind === 'confirm' }" @click="confirm">
             {{ state.confirmText }}
           </button>
         </div>
@@ -69,7 +49,7 @@ function cancel() {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .admin-dialog-backdrop {
   position: fixed;
   inset: 0;

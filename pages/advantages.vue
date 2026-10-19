@@ -128,299 +128,258 @@ const assurance = computed(() => {
 })
 </script>
 
-<style lang="scss" scoped>
-.advantages-page {
-  .page-hero {
-    padding: 88px 0 72px;
-    background:
-      radial-gradient(circle at 70% 20%, rgba(#8b9aab, 0.14), transparent 28%),
-      linear-gradient(180deg, var(--color-ink) 0%, var(--color-ink-soft) 100%);
-    color: #ffffff;
-
-    .page-hero-title {
-      margin-bottom: 18px;
-      font-size: 56px;
-      line-height: 1.08;
-      letter-spacing: 0;
-    }
-
-    .page-hero-subtitle {
-      max-width: 34ch;
-      color: #c8ced6;
-      font-size: 20px;
-      line-height: 1.7;
-    }
+<style scoped>
+.advantages-page .page-hero {
+  padding: 88px 0 72px;
+  background: radial-gradient(circle at 70% 20%, rgba(139, 154, 171, 0.14), transparent 28%), linear-gradient(180deg, var(--color-ink) 0%, var(--color-ink-soft) 100%);
+  color: #ffffff;
+}
+.advantages-page .page-hero .page-hero-title {
+  margin-bottom: 18px;
+  font-size: 56px;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+.advantages-page .page-hero .page-hero-subtitle {
+  max-width: 34ch;
+  color: #c8ced6;
+  font-size: 20px;
+  line-height: 1.7;
+}
+.advantages-page .section {
+  padding: 96px 0;
+}
+@media (min-width: 768px) {
+  .advantages-page .section {
+    padding: 120px 0;
   }
-
-  .section {
-    padding: 96px 0;
-
-    @media (min-width: 768px) {
-      padding: 120px 0;
-    }
+}
+.advantages-page .section-header {
+  margin-bottom: 48px;
+}
+.advantages-page .section-header .section-title {
+  margin-bottom: 14px;
+  font-size: 36px;
+  letter-spacing: 0;
+  color: #111827;
+}
+.advantages-page .section-header .section-subtitle {
+  max-width: 48ch;
+  color: #4b5563;
+  font-size: 17px;
+  line-height: 1.7;
+}
+.advantages-page .section-header.section-header-light .section-title {
+  color: #ffffff;
+}
+.advantages-page .section-header.section-header-light .section-subtitle {
+  color: #c8ced6;
+}
+.advantages-page .outcomes {
+  background: #ffffff;
+}
+.advantages-page .outcomes .outcomes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 900px) {
+  .advantages-page .outcomes .outcomes-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  .section-header {
-    margin-bottom: 48px;
-
-    .section-title {
-      margin-bottom: 14px;
-      font-size: 36px;
-      letter-spacing: 0;
-      color: #111827;
-    }
-
-    .section-subtitle {
-      max-width: 48ch;
-      color: #4b5563;
-      font-size: 17px;
-      line-height: 1.7;
-    }
+}
+.advantages-page .outcomes .outcome-card {
+  padding: 26px 24px;
+  border-radius: 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+}
+.advantages-page .outcomes .outcome-card-title {
+  margin-bottom: 12px;
+  color: #0f4c56;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.advantages-page .outcomes .outcome-card-desc {
+  color: #4b5563;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.advantages-page .compare {
+  background: var(--color-surface);
+}
+.advantages-page .compare .compare-list {
+  display: grid;
+  gap: 0;
+}
+.advantages-page .compare .compare-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 28px 0;
+  border-top: 1px solid #e2e6eb;
+}
+.advantages-page .compare .compare-item:last-child {
+  border-bottom: 1px solid #e2e6eb;
+}
+@media (min-width: 800px) {
+  .advantages-page .compare .compare-item {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 32px;
+    align-items: start;
   }
-
-  .section-header.section-header-light {
-    .section-title {
-      color: #ffffff;
-    }
-
-    .section-subtitle {
-      color: #c8ced6;
-    }
+}
+.advantages-page .compare .compare-item .compare-item-title {
+  font-size: 22px;
+  color: #111827;
+  letter-spacing: 0;
+}
+.advantages-page .compare .compare-item .compare-item-desc {
+  color: #4b5563;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.advantages-page .pillars {
+  background: #ffffff;
+}
+.advantages-page .pillars .pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+@media (min-width: 900px) {
+  .advantages-page .pillars .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  .outcomes {
-    background: #ffffff;
-
-    .outcomes-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-
-      @media (min-width: 900px) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .outcome-card {
-      padding: 26px 24px;
-      border-radius: 12px;
-      background: var(--color-surface);
-      border: 1px solid var(--color-line);
-    }
-
-    .outcome-card-title {
-      margin-bottom: 12px;
-      color: #0f4c56;
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 0;
-    }
-
-    .outcome-card-desc {
-      color: #4b5563;
-      font-size: 15px;
-      line-height: 1.7;
-    }
+}
+.advantages-page .pillars .pillar-card {
+  padding: 28px;
+  border-radius: 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.advantages-page .pillars .pillar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
+}
+.advantages-page .pillars .pillar-card .pillar-card-index {
+  margin-bottom: 24px;
+  color: var(--color-accent);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.advantages-page .pillars .pillar-card .pillar-card-title {
+  margin-bottom: 12px;
+  font-size: 24px;
+  color: #111827;
+}
+.advantages-page .pillars .pillar-card .pillar-card-desc {
+  color: #4b5563;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.advantages-page .assurance {
+  background: var(--color-ink);
+}
+.advantages-page .assurance .assurance-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 900px) {
+  .advantages-page .assurance .assurance-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  .compare {
-    background: var(--color-surface);
-
-    .compare-list {
-      display: grid;
-      gap: 0;
-    }
-
-    .compare-item {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      padding: 28px 0;
-      border-top: 1px solid #e2e6eb;
-
-      &:last-child {
-        border-bottom: 1px solid #e2e6eb;
-      }
-
-      @media (min-width: 800px) {
-        grid-template-columns: 0.9fr 1.1fr;
-        gap: 32px;
-        align-items: start;
-      }
-
-      .compare-item-title {
-        font-size: 22px;
-        color: #111827;
-        letter-spacing: 0;
-      }
-
-      .compare-item-desc {
-        color: #4b5563;
-        font-size: 16px;
-        line-height: 1.7;
-      }
-    }
+}
+.advantages-page .assurance .assurance-card {
+  padding: 26px 22px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.advantages-page .assurance .assurance-card-index {
+  margin-bottom: 22px;
+  color: #5fd0dc;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.advantages-page .assurance .assurance-card-title {
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-size: 22px;
+  letter-spacing: 0;
+}
+.advantages-page .assurance .assurance-card-desc {
+  color: #9aa3af;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.advantages-page .cta {
+  padding: 28px 0 96px;
+  background: #ffffff;
+}
+@media (min-width: 768px) {
+  .advantages-page .cta {
+    padding: 20px 0 120px;
   }
-
-  .pillars {
-    background: #ffffff;
-
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-
-      @media (min-width: 900px) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .pillar-card {
-      padding: 28px;
-      border-radius: 12px;
-      background: var(--color-surface);
-      border: 1px solid var(--color-line);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-
-      &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
-      }
-
-      .pillar-card-index {
-        margin-bottom: 24px;
-        color: var(--color-accent);
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-      }
-
-      .pillar-card-title {
-        margin-bottom: 12px;
-        font-size: 24px;
-        color: #111827;
-      }
-
-      .pillar-card-desc {
-        color: #4b5563;
-        font-size: 15px;
-        line-height: 1.7;
-      }
-    }
+}
+.advantages-page .cta .cta-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 34px 28px;
+  border-radius: 14px;
+  background: radial-gradient(circle at 100% 0%, rgba(95, 208, 220, 0.18), transparent 34%), linear-gradient(135deg, #102033 0%, #0b1522 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+@media (min-width: 800px) {
+  .advantages-page .cta .cta-panel {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 44px;
   }
-
-  .assurance {
-    background: var(--color-ink);
-
-    .assurance-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-
-      @media (min-width: 900px) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .assurance-card {
-      padding: 26px 22px;
-      border-radius: 12px;
-      background: rgba(#ffffff, 0.04);
-      border: 1px solid rgba(#ffffff, 0.1);
-    }
-
-    .assurance-card-index {
-      margin-bottom: 22px;
-      color: #5fd0dc;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-    }
-
-    .assurance-card-title {
-      margin-bottom: 10px;
-      color: #ffffff;
-      font-size: 22px;
-      letter-spacing: 0;
-    }
-
-    .assurance-card-desc {
-      color: #9aa3af;
-      font-size: 14px;
-      line-height: 1.7;
-    }
-  }
-
-  .cta {
-    padding: 28px 0 96px;
-    background: #ffffff;
-
-    @media (min-width: 768px) {
-      padding: 20px 0 120px;
-    }
-
-    .cta-panel {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-      padding: 34px 28px;
-      border-radius: 14px;
-      background:
-        radial-gradient(circle at 100% 0%, rgba(#5fd0dc, 0.18), transparent 34%),
-        linear-gradient(135deg, #102033 0%, #0b1522 100%);
-      border: 1px solid rgba(#ffffff, 0.08);
-
-      @media (min-width: 800px) {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding: 40px 44px;
-      }
-    }
-
-    .cta-title {
-      margin-bottom: 10px;
-      color: #ffffff;
-      font-size: 30px;
-      font-weight: 650;
-      letter-spacing: 0;
-    }
-
-    .cta-subtitle {
-      max-width: 46ch;
-      color: rgba(#ffffff, 0.7);
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    .cta-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 22px;
-      border-radius: 999px;
-      font-size: 15px;
-      font-weight: 650;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .btn.btn-light {
-      background: #ffffff;
-      color: #102033;
-    }
-
-    .btn.btn-ghost {
-      background: transparent;
-      color: #ffffff;
-      border: 1px solid rgba(#ffffff, 0.28);
-    }
-  }
+}
+.advantages-page .cta .cta-title {
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+.advantages-page .cta .cta-subtitle {
+  max-width: 46ch;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 1.7;
+}
+.advantages-page .cta .cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.advantages-page .cta .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 650;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.advantages-page .cta .btn.btn-light {
+  background: #ffffff;
+  color: #102033;
+}
+.advantages-page .cta .btn.btn-ghost {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
 }
 </style>

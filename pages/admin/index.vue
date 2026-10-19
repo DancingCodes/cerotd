@@ -56,69 +56,62 @@ async function login() {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .admin-login {
   min-height: calc(100vh - 140px);
   display: flex;
   align-items: center;
   justify-content: center;
-
-  .admin-login-card {
-    width: 100%;
-    max-width: 420px;
-    padding: 28px;
-    border-radius: 12px;
-    background: #ffffff;
-    border: 1px solid #e5eaf0;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
-
-    .admin-login-title {
-      margin-bottom: 8px;
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: 0;
-    }
-
-    .admin-login-desc {
-      margin-bottom: 20px;
-      color: #6b7280;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .admin-login-input {
-      width: 100%;
-      height: 44px;
-      padding: 0 14px;
-      border-radius: 12px;
-      border: 1px solid #d7dee7;
-      background: #ffffff;
-      outline: none;
-    }
-
-    .admin-login-error {
-      margin-top: 10px;
-      color: #b42318;
-      font-size: 13px;
-    }
-
-    .admin-login-actions {
-      margin-top: 16px;
-
-      .admin-login-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 120px;
-        height: 42px;
-        padding: 0 18px;
-        border-radius: 12px;
-        background: #0e7f8f;
-        color: #ffffff;
-        font-weight: 650;
-        cursor: pointer;
-      }
-    }
-  }
+}
+.admin-login .admin-login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 28px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e5eaf0;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+}
+.admin-login .admin-login-card .admin-login-title {
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.admin-login .admin-login-card .admin-login-desc {
+  margin-bottom: 20px;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.admin-login .admin-login-card .admin-login-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid #d7dee7;
+  background: #ffffff;
+  outline: none;
+}
+.admin-login .admin-login-card .admin-login-error {
+  margin-top: 10px;
+  color: #b42318;
+  font-size: 13px;
+}
+.admin-login .admin-login-card .admin-login-actions {
+  margin-top: 16px;
+}
+.admin-login .admin-login-card .admin-login-actions .admin-login-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  height: 42px;
+  padding: 0 18px;
+  border-radius: 12px;
+  background: #0e7f8f;
+  color: #ffffff;
+  font-weight: 650;
+  cursor: pointer;
 }
 </style>
