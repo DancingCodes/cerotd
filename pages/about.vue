@@ -9,9 +9,9 @@
 
     <section class="bg-white py-24 md:py-30">
       <UContainer class="max-w-295 grid grid-cols-1 gap-8 px-6 md:gap-10">
-        <div class="min-w-0 overflow-hidden rounded-3.5 bg-[#0d1524]">
+        <div class="min-w-0 overflow-hidden rounded-[14px] bg-[#0d1524]">
           <video
-            class="block aspect-video w-full object-cover"
+            class="block aspect-video w-full rounded-[14px] object-cover"
             :src="aboutVideoSrc"
             autoplay
             muted

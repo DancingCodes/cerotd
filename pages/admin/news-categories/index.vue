@@ -11,36 +11,36 @@
       <div class="flex flex-wrap items-center gap-3">
         <div
           v-if="selectedSlugs.length"
-          class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#b42318] px-4 text-sm font-semibold whitespace-nowrap text-white"
+          class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#b42318] px-4 text-sm font-semibold whitespace-nowrap text-white"
           :class="{ 'pointer-events-none opacity-60': batchDeleting }"
           @click="removeSelected"
         >
           {{ $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}
         </div>
-        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white" @click="startCreate">{{ $t('admin.newsCategories.new') }}</div>
+        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white" @click="startCreate">{{ $t('admin.newsCategories.new') }}</div>
       </div>
     </div>
 
-    <div v-if="formOpen" class="mb-4.5 rounded-xl border border-[#e5eaf0] bg-white p-5">
+    <div v-if="formOpen" class="mb-4.5 rounded-[12px] border border-[#e5eaf0] bg-white p-5">
       <div class="mb-4 text-lg font-bold">
         {{ editingSlug ? $t('admin.newsCategories.editTitle') : $t('admin.newsCategories.createTitle') }}
       </div>
       <div class="grid grid-cols-1 gap-3.5 md:grid-cols-2">
         <label class="block">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600 after:text-[#b42318] after:content-['_*']">{{ $t('admin.common.nameEn') }}</div>
-          <input v-model="form.nameEn" class="h-10.5 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" />
+          <input v-model="form.nameEn" class="h-10.5 w-full rounded-[12px] border border-[#d7dee7] bg-white px-3 outline-none" />
         </label>
         <label class="block">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600 after:text-[#b42318] after:content-['_*']">{{ $t('admin.common.nameZh') }}</div>
-          <input v-model="form.nameZh" class="h-10.5 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" />
+          <input v-model="form.nameZh" class="h-10.5 w-full rounded-[12px] border border-[#d7dee7] bg-white px-3 outline-none" />
         </label>
         <label class="block">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.sort') }}</div>
-          <input v-model.number="form.sortOrder" class="h-10.5 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" type="number" />
+          <input v-model.number="form.sortOrder" class="h-10.5 w-full rounded-[12px] border border-[#d7dee7] bg-white px-3 outline-none" type="number" />
         </label>
         <label class="block">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.published') }}</div>
-          <select v-model="form.isPublished" class="h-10.5 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none">
+          <select v-model="form.isPublished" class="h-10.5 w-full rounded-[12px] border border-[#d7dee7] bg-white px-3 outline-none">
             <option :value="true">{{ $t('admin.common.yes') }}</option>
             <option :value="false">{{ $t('admin.common.no') }}</option>
           </select>
@@ -48,12 +48,12 @@
       </div>
       <div v-if="formError" class="mt-3 text-3.25 text-[#b42318]">{{ formError }}</div>
       <div class="mt-4 flex gap-2.5">
-        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white" @click="save">{{ $t('admin.common.save') }}</div>
-        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="closeForm">{{ $t('admin.common.cancel') }}</div>
+        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white" @click="save">{{ $t('admin.common.save') }}</div>
+        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="closeForm">{{ $t('admin.common.cancel') }}</div>
       </div>
     </div>
 
-    <div class="mb-4.5 rounded-xl border border-[#e5eaf0] bg-white p-5">
+    <div class="mb-4.5 rounded-[12px] border border-[#e5eaf0] bg-white p-5">
       <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
       <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.newsCategories.empty') }}</div>
       <div v-else class="overflow-x-auto">
@@ -95,11 +95,11 @@
       </div>
 
       <div v-if="totalPages > 1" class="mt-4 flex items-center justify-end gap-2.5">
-        <button type="button" class="h-8.5 cursor-pointer rounded-2.5 border border-[#d7dee7] bg-white px-3 text-3.25 font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page <= 1" @click="goPage(page - 1)">
+        <button type="button" class="h-8.5 cursor-pointer rounded-[10px] border border-[#d7dee7] bg-white px-3 text-3.25 font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page <= 1" @click="goPage(page - 1)">
           {{ $t('admin.common.prevPage') }}
         </button>
         <span class="text-3.25 text-gray-500">{{ $t('admin.common.pageStatus', { page, totalPages }) }}</span>
-        <button type="button" class="h-8.5 cursor-pointer rounded-2.5 border border-[#d7dee7] bg-white px-3 text-3.25 font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page >= totalPages" @click="goPage(page + 1)">
+        <button type="button" class="h-8.5 cursor-pointer rounded-[10px] border border-[#d7dee7] bg-white px-3 text-3.25 font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page >= totalPages" @click="goPage(page + 1)">
           {{ $t('admin.common.nextPage') }}
         </button>
       </div>

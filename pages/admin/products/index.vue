@@ -11,14 +11,14 @@
       <div class="flex flex-wrap items-center gap-3">
         <div
           v-if="selectedSlugs.length"
-          class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#b42318] px-4 text-sm font-semibold whitespace-nowrap text-white"
+          class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#b42318] px-4 text-sm font-semibold whitespace-nowrap text-white"
           :class="{ 'pointer-events-none opacity-60': batchDeleting }"
           @click="removeSelected"
         >
           {{ $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}
         </div>
         <div
-          class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white"
+          class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white"
           :class="{ 'pointer-events-none opacity-60': !categories.length }"
           @click="startCreate"
         >{{ $t('admin.products.new') }}</div>
@@ -29,43 +29,43 @@
       <div class="grid grid-cols-1 gap-2.5 md:grid-cols-[1.4fr_1fr_1fr_auto] md:items-center">
         <input
           v-model="searchInput"
-          class="h-10 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none"
+          class="h-10 w-full rounded-[12px] border border-[#d7dee7] bg-white px-3 outline-none"
           type="search"
           :placeholder="$t('admin.common.searchPlaceholder')"
           @keyup.enter="applyFilters"
         />
-        <select v-model="filterCategory" class="h-10 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" @change="applyFilters">
+        <select v-model="filterCategory" class="h-10 w-full rounded-[12px] border border-[#d7dee7] bg-white px-3 outline-none" @change="applyFilters">
           <option value="">{{ $t('admin.common.allCategories') }}</option>
           <option v-for="category in categories" :key="category.slug" :value="category.slug">
             {{ lt(category.name) }}
           </option>
         </select>
-        <select v-model="filterStatus" class="h-10 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" @change="applyFilters">
+        <select v-model="filterStatus" class="h-10 w-full rounded-[12px] border border-[#d7dee7] bg-white px-3 outline-none" @change="applyFilters">
           <option value="all">{{ $t('admin.common.allStatuses') }}</option>
           <option value="published">{{ $t('admin.common.filterPublished') }}</option>
           <option value="draft">{{ $t('admin.common.filterDraft') }}</option>
         </select>
-        <button type="button" class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="applyFilters">
+        <button type="button" class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="applyFilters">
           {{ $t('admin.common.search') }}
         </button>
       </div>
     </div>
-    <div v-if="formOpen" class="mb-4.5 rounded-xl border border-[#e5eaf0] bg-white p-5">
+    <div v-if="formOpen" class="mb-4.5 rounded-[12px] border border-[#e5eaf0] bg-white p-5">
       <div class="mb-4 text-lg font-bold">
         {{ editingSlug ? $t('admin.products.editTitle') : $t('admin.products.createTitle') }}
       </div>
       <div class="grid grid-cols-1 gap-3.5 md:grid-cols-2">
         <label class="block">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600 after:text-[#b42318] after:content-['_*']">{{ $t('admin.common.nameEn') }}</div>
-          <input v-model="form.nameEn" class="h-10.5 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" />
+          <input v-model="form.nameEn" class="h-10.5 w-full rounded-[12px] border border-[#d7dee7] bg-white px-3 outline-none" />
         </label>
         <label class="block">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600 after:text-[#b42318] after:content-['_*']">{{ $t('admin.common.nameZh') }}</div>
-          <input v-model="form.nameZh" class="h-10.5 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" />
+          <input v-model="form.nameZh" class="h-10.5 w-full rounded-[12px] border border-[#d7dee7] bg-white px-3 outline-none" />
         </label>
         <label class="block">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600 after:text-[#b42318] after:content-['_*']">{{ $t('admin.products.category') }}</div>
-          <select v-model="form.categorySlug" class="h-10.5 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none">
+          <select v-model="form.categorySlug" class="h-10.5 w-full rounded-[12px] border border-[#d7dee7] bg-white px-3 outline-none">
             <option value="">{{ $t('admin.products.selectCategory') }}</option>
             <option v-for="category in categories" :key="category.slug" :value="category.slug">
               {{ lt(category.name) }}
@@ -74,30 +74,30 @@
         </label>
         <label class="block">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.sort') }}</div>
-          <input v-model.number="form.sortOrder" class="h-10.5 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" type="number" />
+          <input v-model.number="form.sortOrder" class="h-10.5 w-full rounded-[12px] border border-[#d7dee7] bg-white px-3 outline-none" type="number" />
         </label>
         <label class="block">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.published') }}</div>
-          <select v-model="form.isPublished" class="h-10.5 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none">
+          <select v-model="form.isPublished" class="h-10.5 w-full rounded-[12px] border border-[#d7dee7] bg-white px-3 outline-none">
             <option :value="true">{{ $t('admin.common.yes') }}</option>
             <option :value="false">{{ $t('admin.common.no') }}</option>
           </select>
         </label>
         <label class="col-span-full block">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.products.summaryEn') }}</div>
-          <textarea v-model="form.summaryEn" class="w-full resize-y rounded-xl border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="2" />
+          <textarea v-model="form.summaryEn" class="w-full resize-y rounded-[12px] border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="2" />
         </label>
         <label class="col-span-full block">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.products.summaryZh') }}</div>
-          <textarea v-model="form.summaryZh" class="w-full resize-y rounded-xl border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="2" />
+          <textarea v-model="form.summaryZh" class="w-full resize-y rounded-[12px] border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="2" />
         </label>
         <label class="col-span-full block">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.products.descriptionEn') }}</div>
-          <textarea v-model="form.descriptionEn" class="w-full resize-y rounded-xl border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="4" />
+          <textarea v-model="form.descriptionEn" class="w-full resize-y rounded-[12px] border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="4" />
         </label>
         <label class="col-span-full block">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.products.descriptionZh') }}</div>
-          <textarea v-model="form.descriptionZh" class="w-full resize-y rounded-xl border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="4" />
+          <textarea v-model="form.descriptionZh" class="w-full resize-y rounded-[12px] border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="4" />
         </label>
         <div class="col-span-full">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.coverUrl') }}</div>
@@ -122,21 +122,21 @@
         </div>
         <label class="col-span-full block">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.products.specsEn') }}</div>
-          <textarea v-model="form.specsEnText" class="w-full resize-y rounded-xl border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="3" />
+          <textarea v-model="form.specsEnText" class="w-full resize-y rounded-[12px] border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="3" />
         </label>
         <label class="col-span-full block">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.products.specsZh') }}</div>
-          <textarea v-model="form.specsZhText" class="w-full resize-y rounded-xl border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="3" />
+          <textarea v-model="form.specsZhText" class="w-full resize-y rounded-[12px] border border-[#d7dee7] bg-white px-3 py-2.5 outline-none" rows="3" />
         </label>
       </div>
       <div v-if="formError" class="mt-3 text-3.25 text-[#b42318]">{{ formError }}</div>
       <div class="mt-4 flex gap-2.5">
-        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white" @click="save">{{ $t('admin.common.save') }}</div>
-        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="closeForm">{{ $t('admin.common.cancel') }}</div>
+        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white" @click="save">{{ $t('admin.common.save') }}</div>
+        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="closeForm">{{ $t('admin.common.cancel') }}</div>
       </div>
     </div>
 
-    <div class="mb-4.5 rounded-xl border border-[#e5eaf0] bg-white p-5">
+    <div class="mb-4.5 rounded-[12px] border border-[#e5eaf0] bg-white p-5">
       <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
       <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.products.empty') }}</div>
       <div v-else class="overflow-x-auto">
@@ -179,11 +179,11 @@
       </div>
 
       <div v-if="totalPages > 1" class="mt-4 flex items-center justify-end gap-2.5">
-        <button type="button" class="h-8.5 cursor-pointer rounded-2.5 border border-[#d7dee7] bg-white px-3 text-3.25 font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page <= 1" @click="goPage(page - 1)">
+        <button type="button" class="h-8.5 cursor-pointer rounded-[10px] border border-[#d7dee7] bg-white px-3 text-3.25 font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page <= 1" @click="goPage(page - 1)">
           {{ $t('admin.common.prevPage') }}
         </button>
         <span class="text-3.25 text-gray-500">{{ $t('admin.common.pageStatus', { page, totalPages }) }}</span>
-        <button type="button" class="h-8.5 cursor-pointer rounded-2.5 border border-[#d7dee7] bg-white px-3 text-3.25 font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page >= totalPages" @click="goPage(page + 1)">
+        <button type="button" class="h-8.5 cursor-pointer rounded-[10px] border border-[#d7dee7] bg-white px-3 text-3.25 font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page >= totalPages" @click="goPage(page + 1)">
           {{ $t('admin.common.nextPage') }}
         </button>
       </div>

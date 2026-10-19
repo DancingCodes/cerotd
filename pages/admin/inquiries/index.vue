@@ -9,7 +9,7 @@
           <span v-if="unreadCount"> · {{ $t('admin.inquiries.unreadCount', { count: unreadCount }) }}</span>
         </div>
       </div>
-      <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-xl bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="load">{{ $t('admin.inquiries.refresh') }}</div>
+      <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="load">{{ $t('admin.inquiries.refresh') }}</div>
     </div>
 
     <div class="mb-4 grid gap-2.5">
@@ -39,14 +39,14 @@
       </div>
     </div>
 
-    <div class="mb-4.5 rounded-xl border border-[#e5eaf0] bg-white p-5">
+    <div class="mb-4.5 rounded-[12px] border border-[#e5eaf0] bg-white p-5">
       <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
       <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.inquiries.empty') }}</div>
       <div v-else class="grid gap-3.5">
         <article
           v-for="item in items"
           :key="item.id"
-          class="rounded-3.5 border border-[#eef1f4] bg-[#fbfcfd] p-4"
+          class="rounded-[14px] border border-[#eef1f4] bg-[#fbfcfd] p-4"
           :class="{ 'border-[#cfeef2] bg-[#f3fbfd]': !item.isRead }"
         >
           <div class="mb-3 flex items-start justify-between gap-3">
@@ -80,7 +80,7 @@
             <div class="mb-2 wrap-break-word text-3.25 text-gray-700 [&_span]:mr-2 [&_span]:inline-block [&_span]:min-w-18 [&_span]:font-semibold [&_span]:text-gray-500"><span>{{ $t('admin.inquiries.im') }}</span>{{ item.im || '-' }}</div>
             <div class="mb-2 wrap-break-word text-3.25 text-gray-700 [&_span]:mr-2 [&_span]:inline-block [&_span]:min-w-18 [&_span]:font-semibold [&_span]:text-gray-500"><span>{{ $t('admin.inquiries.bulk') }}</span>{{ formatBulk(item.bulkIntent) }}</div>
             <div class="mb-2 wrap-break-word text-3.25 text-gray-700 [&_span]:mr-2 [&_span]:inline-block [&_span]:min-w-18 [&_span]:font-semibold [&_span]:text-gray-500"><span>{{ $t('admin.inquiries.locale') }}</span>{{ item.locale }}</div>
-            <div class="mt-3 rounded-xl border border-[#e5eaf0] bg-white p-3">
+            <div class="mt-3 rounded-[12px] border border-[#e5eaf0] bg-white p-3">
               <div class="mb-1.5 text-xs font-bold tracking-[.04em] text-gray-500 uppercase">{{ $t('admin.inquiries.message') }}</div>
               <p class="wrap-break-word text-sm leading-[1.7] whitespace-pre-wrap text-gray-900">{{ item.message || $t('admin.inquiries.noMessage') }}</p>
             </div>
@@ -89,11 +89,11 @@
       </div>
 
       <div v-if="totalPages > 1" class="mt-4 flex items-center justify-end gap-2.5">
-        <button type="button" class="h-8.5 cursor-pointer rounded-2.5 border border-[#d7dee7] bg-white px-3 text-3.25 font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page <= 1" @click="goPage(page - 1)">
+        <button type="button" class="h-8.5 cursor-pointer rounded-[10px] border border-[#d7dee7] bg-white px-3 text-3.25 font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page <= 1" @click="goPage(page - 1)">
           {{ $t('admin.common.prevPage') }}
         </button>
         <span class="text-3.25 text-gray-500">{{ $t('admin.common.pageStatus', { page, totalPages }) }}</span>
-        <button type="button" class="h-8.5 cursor-pointer rounded-2.5 border border-[#d7dee7] bg-white px-3 text-3.25 font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page >= totalPages" @click="goPage(page + 1)">
+        <button type="button" class="h-8.5 cursor-pointer rounded-[10px] border border-[#d7dee7] bg-white px-3 text-3.25 font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page >= totalPages" @click="goPage(page + 1)">
           {{ $t('admin.common.nextPage') }}
         </button>
       </div>
