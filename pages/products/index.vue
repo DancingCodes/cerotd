@@ -69,7 +69,7 @@
           <div v-if="hasMore" class="mt-8 flex justify-center">
             <button
               type="button"
-              class="min-h-11 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-5.5 text-[14px] leading-normal font-semibold text-[#0f4c56] transition hover:border-[#3f7f88]/45 hover:bg-[#3f7f88]/[.08] disabled:cursor-wait disabled:opacity-65"
+              class="min-h-11 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-5.5 text-[14px] leading-normal font-semibold text-[#0f4c56] transition hover:border-[#3f7f88]/45 hover:bg-[#3f7f88]/8 disabled:cursor-wait disabled:opacity-65"
               :disabled="loadingMore"
               @click="loadMore"
             >

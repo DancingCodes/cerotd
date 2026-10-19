@@ -58,36 +58,36 @@
 
         <div class="rounded-[14px] border border-[#e6e8ec] bg-white px-7 py-8 shadow-[0_10px_30px_rgba(15,23,42,.08)]">
           <h2 class="mb-4 text-[28px] leading-normal tracking-normal text-[#111827]">{{ $t('contact.form.title') }}</h2>
-          <p class="mb-6 rounded-[10px] border border-[#1aa6b8]/[.18] bg-[#1aa6b8]/[.08] px-4 py-3.5 text-[14px] leading-[1.7] text-[#0f4c56]">{{ $t('contact.form.notice') }}</p>
+          <p class="mb-6 rounded-[10px] border border-[#1aa6b8]/18 bg-[#1aa6b8]/8 px-4 py-3.5 text-[14px] leading-[1.7] text-[#0f4c56]">{{ $t('contact.form.notice') }}</p>
           <form class="grid grid-cols-1 gap-4 min-[720px]:grid-cols-2" @submit.prevent="onSubmit">
             <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
               <span class="text-[13px] leading-normal font-semibold text-[#374151] after:text-[#b42318] after:content-['_*']">{{ $t('contact.form.name') }}</span>
-              <input v-model="form.name" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" type="text" name="name" autocomplete="name" required :placeholder="$t('contact.form.name')" />
+              <input v-model="form.name" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" type="text" name="name" autocomplete="name" required :placeholder="$t('contact.form.name')" />
             </label>
             <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
               <span class="text-[13px] leading-normal font-semibold text-[#374151]">{{ $t('contact.form.company') }}</span>
-              <input v-model="form.company" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" type="text" name="company" autocomplete="organization" :placeholder="$t('contact.form.company')" />
+              <input v-model="form.company" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" type="text" name="company" autocomplete="organization" :placeholder="$t('contact.form.company')" />
             </label>
             <div class="col-span-full flex min-w-0 flex-col gap-2 border-0 p-0">
               <div class="grid grid-cols-1 gap-4 min-[720px]:grid-cols-2">
                 <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
                   <span class="text-[13px] leading-normal font-semibold text-[#374151]">{{ $t('contact.form.email') }}</span>
-                  <input v-model="form.email" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" type="email" name="email" autocomplete="email" :placeholder="$t('contact.form.email')" />
+                  <input v-model="form.email" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" type="email" name="email" autocomplete="email" :placeholder="$t('contact.form.email')" />
                 </label>
                 <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
                   <span class="text-[13px] leading-normal font-semibold text-[#374151]">{{ $t('contact.form.phone') }}</span>
-                  <input v-model="form.phone" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" type="tel" name="phone" autocomplete="tel" :placeholder="$t('contact.form.phone')" />
+                  <input v-model="form.phone" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" type="tel" name="phone" autocomplete="tel" :placeholder="$t('contact.form.phone')" />
                 </label>
               </div>
               <p class="text-[12px] leading-normal text-[#6b7280]">{{ $t('contact.form.emailOrPhoneHint') }}</p>
             </div>
             <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
               <span class="text-[13px] leading-normal font-semibold text-[#374151]">{{ $t('contact.form.country') }}</span>
-              <input v-model="form.country" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" type="text" name="country" autocomplete="country-name" :placeholder="$t('contact.form.country')" />
+              <input v-model="form.country" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" type="text" name="country" autocomplete="country-name" :placeholder="$t('contact.form.country')" />
             </label>
             <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
               <span class="text-[13px] leading-normal font-semibold text-[#374151]">{{ $t('contact.form.im') }}</span>
-              <input v-model="form.im" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" type="text" name="im" :placeholder="$t('contact.form.im')" />
+              <input v-model="form.im" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" type="text" name="im" :placeholder="$t('contact.form.im')" />
             </label>
             <fieldset class="col-span-full flex min-w-0 flex-col gap-2 border-0 p-0">
               <legend class="text-[13px] leading-normal font-semibold text-[#374151]">{{ $t('contact.form.bulk') }}</legend>
@@ -104,7 +104,7 @@
             </fieldset>
             <label class="col-span-full flex min-w-0 flex-col gap-2 border-0 p-0">
               <span class="text-[13px] leading-normal font-semibold text-[#374151]">{{ $t('contact.form.product') }}</span>
-              <select v-model="form.product" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" name="product">
+              <select v-model="form.product" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" name="product">
                 <option value="">{{ $t('contact.form.productPlaceholder') }}</option>
                 <option v-for="category in productOptions" :key="category.slug" :value="category.slug">
                   {{ t(category.name) }}
@@ -113,7 +113,7 @@
             </label>
             <label class="col-span-full flex min-w-0 flex-col gap-2 border-0 p-0">
               <span class="text-[13px] leading-normal font-semibold text-[#374151]">{{ $t('contact.form.message') }}</span>
-              <textarea v-model="form.message" class="min-h-35 w-full resize-y rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" name="message" rows="5" :placeholder="$t('contact.form.message')"></textarea>
+              <textarea v-model="form.message" class="min-h-35 w-full resize-y rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" name="message" rows="5" :placeholder="$t('contact.form.message')"></textarea>
             </label>
             <button type="submit" class="col-span-full mt-1 inline-flex min-h-13 w-full cursor-pointer items-center justify-center rounded-full bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] px-7 text-[15px] leading-normal font-semibold text-white transition hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(26,166,184,.24)] disabled:cursor-wait disabled:opacity-70" :disabled="submitting">
               {{ submitting ? $t('contact.form.submitting') : $t('contact.form.submit') }}

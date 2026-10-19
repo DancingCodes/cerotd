@@ -8,15 +8,15 @@
       <UContainer class="relative z-10 max-w-205 px-6">
         <p class="mb-5 text-[12px] leading-normal font-semibold tracking-[.16em] text-[#a8b0ba] uppercase">{{ $t('home.badge') }}</p>
         <h1 class="mb-4.5 max-w-[18ch] text-[64px] leading-[1.06] font-semibold tracking-normal max-md:max-w-none max-md:text-[42px]">{{ $t('home.hero.title') }}</h1>
-        <p class="mb-7 max-w-[44ch] text-[18px] leading-[1.7] font-normal text-white/[.78] max-md:text-[16px]">{{ $t('home.hero.subtitle') }}</p>
+        <p class="mb-7 max-w-[44ch] text-[18px] leading-[1.7] font-normal text-white/78 max-md:text-[16px]">{{ $t('home.hero.subtitle') }}</p>
         <div class="mb-7 flex flex-wrap gap-3">
           <NuxtLink to="/products" class="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-5.5 text-[14px] leading-normal font-semibold tracking-[.01em] text-[#070b12] no-underline transition hover:bg-[#e8eef3]">{{ $t('home.hero.ctaPrimary') }}</NuxtLink>
           <NuxtLink to="/contact" class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/[.28] bg-transparent px-5.5 text-[14px] leading-normal font-semibold tracking-[.01em] text-white no-underline transition hover:border-white/[.55] hover:bg-white/4">{{ $t('home.hero.ctaSecondary') }}</NuxtLink>
         </div>
         <ul class="flex flex-wrap gap-2.5">
-          <li class="rounded-full border border-white/16 bg-white/4 px-3 py-2 text-[12px] leading-normal font-medium tracking-[.04em] text-white/[.82]">{{ $t('home.hero.trust1') }}</li>
-          <li class="rounded-full border border-white/16 bg-white/4 px-3 py-2 text-[12px] leading-normal font-medium tracking-[.04em] text-white/[.82]">{{ $t('home.hero.trust2') }}</li>
-          <li class="rounded-full border border-white/16 bg-white/4 px-3 py-2 text-[12px] leading-normal font-medium tracking-[.04em] text-white/[.82]">{{ $t('home.hero.trust3') }}</li>
+          <li class="rounded-full border border-white/16 bg-white/4 px-3 py-2 text-[12px] leading-normal font-medium tracking-[.04em] text-white/82">{{ $t('home.hero.trust1') }}</li>
+          <li class="rounded-full border border-white/16 bg-white/4 px-3 py-2 text-[12px] leading-normal font-medium tracking-[.04em] text-white/82">{{ $t('home.hero.trust2') }}</li>
+          <li class="rounded-full border border-white/16 bg-white/4 px-3 py-2 text-[12px] leading-normal font-medium tracking-[.04em] text-white/82">{{ $t('home.hero.trust3') }}</li>
         </ul>
       </UContainer>
     </section>
