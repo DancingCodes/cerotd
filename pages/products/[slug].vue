@@ -55,7 +55,7 @@
       </UContainer>
     </section>
 
-    <section v-if="relatedProducts.length" class="bg-[var(--ui-bg-muted)] py-24 md:py-30">
+    <section v-if="relatedProducts.length" class="bg-muted py-24 md:py-30">
       <UContainer>
         <h2 class="mb-6 text-7 text-gray-900">{{ $t('products.relatedTitle') }}</h2>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-3">

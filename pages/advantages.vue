@@ -14,7 +14,7 @@
           <p class="max-w-[48ch] text-4.25 leading-[1.7] text-gray-600">{{ $t('advantages.outcomes.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-1 gap-4 min-[900px]:grid-cols-2">
-          <article v-for="item in outcomes" :key="item.name" class="rounded-xl border border-[var(--ui-border)] bg-[var(--ui-bg-muted)] px-6 py-6.5">
+          <article v-for="item in outcomes" :key="item.name" class="rounded-xl border border-[var(--ui-border)] bg-muted px-6 py-6.5">
             <h3 class="mb-3 text-xl font-bold text-[#0f4c56]">{{ item.name }}</h3>
             <p class="text-3.75 leading-[1.7] text-gray-600">{{ item.desc }}</p>
           </article>
@@ -22,7 +22,7 @@
       </UContainer>
     </section>
 
-    <section class="bg-[var(--ui-bg-muted)] py-24 md:py-30">
+    <section class="bg-muted py-24 md:py-30">
       <UContainer>
         <div class="mb-12 max-w-155">
           <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[var(--ui-text-highlighted)] max-md:text-8">{{ $t('advantages.compare.title') }}</h2>
@@ -44,7 +44,7 @@
           <p class="text-4.25 leading-[1.7] text-[var(--ui-text-muted)]">{{ $t('advantages.pillars.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-1 gap-4.5 min-[900px]:grid-cols-2">
-          <article v-for="(item, index) in pillars" :key="item.name" class="rounded-xl border border-[var(--ui-border)] bg-[var(--ui-bg-muted)] p-7 transition hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(15,23,42,.1)]">
+          <article v-for="(item, index) in pillars" :key="item.name" class="rounded-xl border border-[var(--ui-border)] bg-muted p-7 transition hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(15,23,42,.1)]">
             <p class="mb-6 text-3.25 font-bold tracking-[.08em] text-[var(--ui-primary)]">0{{ index + 1 }}</p>
             <h3 class="mb-3 text-2xl text-gray-900">{{ item.name }}</h3>
             <p class="text-3.75 leading-[1.7] text-gray-600">{{ item.desc }}</p>

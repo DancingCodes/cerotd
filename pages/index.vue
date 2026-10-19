@@ -30,7 +30,7 @@
       </UContainer>
     </section>
 
-    <section class="bg-[var(--ui-bg-muted)] py-24 md:py-28">
+    <section class="bg-muted py-24 md:py-28">
       <UContainer>
         <div class="grid grid-cols-1 items-start gap-7 min-[960px]:grid-cols-[.95fr_1.05fr] min-[960px]:gap-12">
           <div>
@@ -66,7 +66,7 @@
             v-for="tab in facilityTabs"
             :key="tab"
             type="button"
-            class="min-h-10 cursor-pointer rounded-full border border-[#e8edf2] bg-[var(--ui-bg-muted)] px-4 text-sm font-semibold text-[#3d4654] transition hover:border-[#cfd8e3]"
+            class="min-h-10 cursor-pointer rounded-full border border-[#e8edf2] bg-muted px-4 text-sm font-semibold text-[#3d4654] transition hover:border-[#cfd8e3]"
             :class="{ 'border-[#0f4c56] bg-[#0f4c56] text-white': activeTab === tab }"
             role="tab"
             :aria-selected="activeTab === tab"
@@ -80,7 +80,7 @@
             v-for="(item, index) in facilityVisibleImages"
             :key="item.src"
             type="button"
-            class="block w-full cursor-pointer overflow-hidden rounded-xl border border-[#e8edf2] bg-[var(--ui-bg-muted)] text-left transition hover:-translate-y-0.75 hover:border-[#cfd8e3] hover:shadow-[0_12px_28px_rgba(15,23,42,.08)]"
+            class="block w-full cursor-pointer overflow-hidden rounded-xl border border-[#e8edf2] bg-muted text-left transition hover:-translate-y-0.75 hover:border-[#cfd8e3] hover:shadow-[0_12px_28px_rgba(15,23,42,.08)]"
             :aria-label="`${item.caption} - ${$t('home.facility.open')}`"
             @click="openFacility(index)"
           >
@@ -176,7 +176,7 @@
             v-for="item in productLines"
             :key="item.slug"
             :to="`/products?category=${item.slug}`"
-            class="block cursor-pointer rounded-xl border border-[#e8edf2] bg-[var(--ui-bg-muted)] px-5 py-5.5 text-inherit no-underline transition hover:-translate-y-0.75 hover:border-[#cfd8e3]"
+            class="block cursor-pointer rounded-xl border border-[#e8edf2] bg-muted px-5 py-5.5 text-inherit no-underline transition hover:-translate-y-0.75 hover:border-[#cfd8e3]"
           >
             <h3 class="mb-2.5 text-lg font-bold text-[#0f4c56]">{{ item.name }}</h3>
             <p class="text-sm leading-[1.7] text-gray-600">{{ item.desc }}</p>
@@ -195,7 +195,7 @@
           <p class="text-4.25 leading-[1.7] text-[var(--ui-text-muted)]">{{ $t('home.advantages.subtitle') }}</p>
         </div>
         <div class="mt-10 grid grid-cols-1 gap-4.5 md:grid-cols-2">
-          <article v-for="(item, index) in advantages" :key="item.name" class="overflow-hidden rounded-xl border border-[var(--ui-border)] bg-[var(--ui-bg-muted)]">
+          <article v-for="(item, index) in advantages" :key="item.name" class="overflow-hidden rounded-xl border border-[var(--ui-border)] bg-muted">
             <div class="aspect-video overflow-hidden bg-[#dfe3e8]">
               <img
                 v-if="advantageImages[index]"
@@ -219,7 +219,7 @@
       </UContainer>
     </section>
 
-    <section class="bg-[var(--ui-bg-muted)] py-24 md:py-28">
+    <section class="bg-muted py-24 md:py-28">
       <UContainer>
         <div class="mb-10 max-w-155">
           <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[var(--ui-text-highlighted)] max-md:text-8">{{ $t('home.partners.title') }}</h2>
@@ -241,7 +241,7 @@
       </UContainer>
     </section>
 
-    <section class="bg-[var(--ui-bg-muted)] pb-24 md:pb-28">
+    <section class="bg-muted pb-24 md:pb-28">
       <UContainer>
         <div class="flex flex-col gap-6 rounded-xl border border-white/6 bg-[var(--ui-color-neutral-950)] px-7 py-10 text-white min-[800px]:flex-row min-[800px]:items-center min-[800px]:justify-between min-[800px]:px-10 min-[800px]:py-12">
           <div>

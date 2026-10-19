@@ -30,7 +30,7 @@
       </UContainer>
     </section>
 
-    <section class="bg-[var(--ui-bg-muted)] py-24 md:py-30">
+    <section class="bg-muted py-24 md:py-30">
       <UContainer>
         <div class="mb-12">
           <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('about.values.title') }}</h2>
@@ -50,7 +50,7 @@
           <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[var(--ui-text-highlighted)] max-md:text-8">{{ $t('about.stats.title') }}</h2>
         </div>
         <div class="grid grid-cols-2 gap-3 min-[900px]:grid-cols-4 min-[900px]:gap-4.5">
-          <div v-for="n in 4" :key="n" class="min-w-0 rounded-xl border border-[#e8edf2] bg-[var(--ui-bg-muted)] px-3.5 py-5 transition hover:-translate-y-0.75 hover:bg-[#eef2f6] min-[900px]:px-6 min-[900px]:py-7">
+          <div v-for="n in 4" :key="n" class="min-w-0 rounded-xl border border-[#e8edf2] bg-muted px-3.5 py-5 transition hover:-translate-y-0.75 hover:bg-[#eef2f6] min-[900px]:px-6 min-[900px]:py-7">
             <p class="mb-2.5 break-words text-6.5 leading-[1.15] font-bold text-[#0f4c56] min-[900px]:text-4xl min-[900px]:leading-none">{{ $t(`about.stats.item${n}.value`) }}</p>
             <p class="text-3.25 leading-[1.5] text-gray-600 min-[900px]:text-3.75">{{ $t(`about.stats.item${n}.label`) }}</p>
           </div>
@@ -58,7 +58,7 @@
       </UContainer>
     </section>
 
-    <section class="bg-[var(--ui-bg-muted)] py-24 md:py-30">
+    <section class="bg-muted py-24 md:py-30">
       <UContainer>
         <div class="mb-12 max-w-155">
           <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[var(--ui-text-highlighted)] max-md:text-8">{{ $t('about.trust.title') }}</h2>
@@ -84,7 +84,7 @@
             v-for="(item, index) in certificateItems"
             :key="item.src"
             type="button"
-            class="block w-full cursor-pointer rounded-xl border border-[#e8edf2] bg-[var(--ui-bg-muted)] p-3.5 transition hover:-translate-y-0.75 hover:border-[#cfd8e3] hover:shadow-[0_12px_28px_rgba(15,23,42,.08)]"
+            class="block w-full cursor-pointer rounded-xl border border-[#e8edf2] bg-muted p-3.5 transition hover:-translate-y-0.75 hover:border-[#cfd8e3] hover:shadow-[0_12px_28px_rgba(15,23,42,.08)]"
             @click="openCertificate(index)"
           >
             <img

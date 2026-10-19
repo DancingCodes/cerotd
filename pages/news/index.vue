@@ -7,7 +7,7 @@
       </UContainer>
     </section>
 
-    <section class="bg-[var(--ui-bg-muted)] py-24 md:py-30">
+    <section class="bg-muted py-24 md:py-30">
       <UContainer>
         <div class="mb-9 max-w-180">
           <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('news.listTitle') }}</h2>
