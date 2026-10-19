@@ -79,7 +79,7 @@
                   <input v-model="form.phone" class="w-full rounded-3.5 border border-[#e2e6eb] bg-muted px-4 py-3.5 text-gray-900 outline-none transition focus:border-[#1aa6b8]/55 focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" type="tel" name="phone" autocomplete="tel" :placeholder="$t('contact.form.phone')" />
                 </label>
               </div>
-              <p class="text-xs leading-normal text-gray-500">{{ $t('contact.form.emailOrPhoneHint') }}</p>
+              <p class="text-xs text-gray-500">{{ $t('contact.form.emailOrPhoneHint') }}</p>
             </div>
             <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
               <span class="text-3.25 font-semibold text-gray-700">{{ $t('contact.form.country') }}</span>

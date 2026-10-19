@@ -91,7 +91,7 @@
               loading="lazy"
               decoding="async"
             />
-            <p class="px-3.5 py-3 pb-3.5 text-3.25 font-semibold leading-normal text-[#3d4654]">{{ item.caption }}</p>
+            <p class="px-3.5 py-3 pb-3.5 text-3.25 font-semibold text-[#3d4654]">{{ item.caption }}</p>
           </button>
         </div>
         <div class="mt-7">
@@ -132,7 +132,7 @@
           loading="eager"
           decoding="async"
         />
-        <p class="absolute -bottom-8.5 left-12 right-12 text-center text-3.25 leading-normal text-white/80 max-md:-bottom-7.5 max-md:left-2 max-md:right-2">{{ facilityPreviewImage.caption }}</p>
+        <p class="absolute -bottom-8.5 left-12 right-12 text-center text-3.25 text-white/80 max-md:-bottom-7.5 max-md:left-2 max-md:right-2">{{ facilityPreviewImage.caption }}</p>
         <button
           type="button"
           class="absolute -right-2 top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white max-md:right-3.5"

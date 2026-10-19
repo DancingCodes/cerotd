@@ -52,7 +52,7 @@
         <div class="grid grid-cols-2 gap-3 min-[900px]:grid-cols-4 min-[900px]:gap-4.5">
           <div v-for="n in 4" :key="n" class="min-w-0 rounded-xl border border-[#e8edf2] bg-muted px-3.5 py-5 transition hover:-translate-y-0.75 hover:bg-[#eef2f6] min-[900px]:px-6 min-[900px]:py-7">
             <p class="mb-2.5 wrap-break-word text-6.5 leading-[1.15] font-bold text-[#0f4c56] min-[900px]:text-4xl min-[900px]:leading-none">{{ $t(`about.stats.item${n}.value`) }}</p>
-            <p class="text-3.25 leading-normal text-gray-600 min-[900px]:text-3.75">{{ $t(`about.stats.item${n}.label`) }}</p>
+            <p class="text-3.25 text-gray-600 min-[900px]:text-3.75">{{ $t(`about.stats.item${n}.label`) }}</p>
           </div>
         </div>
       </UContainer>
