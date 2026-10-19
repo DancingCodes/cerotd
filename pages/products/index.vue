@@ -10,14 +10,14 @@
     <section class="bg-white py-24 md:py-30">
       <UContainer class="max-w-295 px-6">
         <div class="mb-9 max-w-180">
-          <h2 class="mb-3.5 text-[36px] leading-[1.5] tracking-normal text-[#111827]">{{ $t('products.listTitle') }}</h2>
+          <h2 class="mb-3.5 text-[36px] leading-normal tracking-normal text-[#111827]">{{ $t('products.listTitle') }}</h2>
           <p class="text-[17px] leading-[1.7] text-[#4b5563]">{{ $t('products.listSubtitle') }}</p>
         </div>
 
         <div class="mb-7 flex flex-wrap gap-2.5" role="tablist" :aria-label="$t('products.listTitle')">
           <button
             type="button"
-            class="min-h-10 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-4 text-[14px] leading-[1.5] font-medium text-[#4b5563] transition hover:border-[#b8c2cf] hover:text-[#111827]"
+            class="min-h-10 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-4 text-[14px] leading-normal font-medium text-[#4b5563] transition hover:border-[#b8c2cf] hover:text-[#111827]"
             :class="{ 'border-[#3f7f88]/45 bg-[#3f7f88]/10 text-[#0f4c56]': !selectedCategory }"
             role="tab"
             :aria-selected="!selectedCategory"
@@ -29,7 +29,7 @@
             v-for="category in categoryList"
             :key="category.slug"
             type="button"
-            class="min-h-10 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-4 text-[14px] leading-[1.5] font-medium text-[#4b5563] transition hover:border-[#b8c2cf] hover:text-[#111827]"
+            class="min-h-10 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-4 text-[14px] leading-normal font-medium text-[#4b5563] transition hover:border-[#b8c2cf] hover:text-[#111827]"
             :class="{ 'border-[#3f7f88]/45 bg-[#3f7f88]/10 text-[#0f4c56]': selectedCategory === category.slug }"
             role="tab"
             :aria-selected="selectedCategory === category.slug"
@@ -39,8 +39,8 @@
           </button>
         </div>
 
-        <p v-if="pending" class="text-[15px] leading-[1.5] text-[#6b7280]">{{ $t('products.loading') }}</p>
-        <p v-else-if="!productList.length" class="text-[15px] leading-[1.5] text-[#6b7280]">{{ $t('products.empty') }}</p>
+        <p v-if="pending" class="text-[15px] leading-normal text-[#6b7280]">{{ $t('products.loading') }}</p>
+        <p v-else-if="!productList.length" class="text-[15px] leading-normal text-[#6b7280]">{{ $t('products.empty') }}</p>
         <template v-else>
           <div class="grid grid-cols-1 gap-5 md:grid-cols-2 min-[1100px]:grid-cols-3">
             <NuxtLink
@@ -60,16 +60,16 @@
                 />
               </div>
               <div class="p-6">
-                <h3 class="mb-2.5 text-[20px] leading-[1.5] tracking-normal text-[#111827]">{{ t(item.name) }}</h3>
+                <h3 class="mb-2.5 text-[20px] leading-normal tracking-normal text-[#111827]">{{ t(item.name) }}</h3>
                 <p class="mb-4 text-[14px] leading-[1.7] text-[#4b5563]">{{ t(item.summary) }}</p>
-                <span class="text-[14px] leading-[1.5] font-semibold text-[#3f7f88]">{{ $t('common.learnMore') }}</span>
+                <span class="text-[14px] leading-normal font-semibold text-[#3f7f88]">{{ $t('common.learnMore') }}</span>
               </div>
             </NuxtLink>
           </div>
           <div v-if="hasMore" class="mt-8 flex justify-center">
             <button
               type="button"
-              class="min-h-11 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-[22px] text-[14px] leading-[1.5] font-semibold text-[#0f4c56] transition hover:border-[#3f7f88]/45 hover:bg-[#3f7f88]/[.08] disabled:cursor-wait disabled:opacity-65"
+              class="min-h-11 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-[22px] text-[14px] leading-normal font-semibold text-[#0f4c56] transition hover:border-[#3f7f88]/45 hover:bg-[#3f7f88]/[.08] disabled:cursor-wait disabled:opacity-65"
               :disabled="loadingMore"
               @click="loadMore"
             >
