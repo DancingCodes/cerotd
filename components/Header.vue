@@ -38,7 +38,7 @@
           v-for="item in navItems"
           :key="`mobile-${item.to}`"
           :to="item.to"
-          class="border-b border-[var(--ui-border)] py-3 text-base font-medium text-[#7a8490] no-underline"
+          class="border-b border-default py-3 text-base font-medium text-[#7a8490] no-underline"
           :class="{ 'font-bold text-[#0f4c56]': isNavActive(item.to) }"
           @click="mobileMenuOpen = false"
         >

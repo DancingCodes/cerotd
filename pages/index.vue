@@ -21,8 +21,8 @@
       </UContainer>
     </section>
 
-    <section class="border-b border-[var(--ui-border)] bg-white" aria-label="Company stats">
-      <UContainer class="grid grid-cols-2 min-[900px]:grid-cols-4 [&>div]:py-7 [&>div:nth-child(odd)]:border-r [&>div:nth-child(odd)]:border-[var(--ui-border)] [&>div:nth-child(odd)]:pr-6 [&>div:nth-child(even)]:pl-6 [&>div:nth-child(-n+2)]:border-b [&>div:nth-child(-n+2)]:border-[var(--ui-border)] min-[900px]:[&>div]:border-b-0 min-[900px]:[&>div]:border-r min-[900px]:[&>div]:border-[var(--ui-border)] min-[900px]:[&>div]:py-8.5 min-[900px]:[&>div]:pr-6 min-[900px]:[&>div:not(:first-child)]:pl-6 min-[900px]:[&>div:last-child]:border-r-0">
+    <section class="border-b border-default bg-white" aria-label="Company stats">
+      <UContainer class="grid grid-cols-2 min-[900px]:grid-cols-4 [&>div]:py-7 [&>div:nth-child(odd)]:border-r [&>div:nth-child(odd)]:border-default [&>div:nth-child(odd)]:pr-6 [&>div:nth-child(even)]:pl-6 [&>div:nth-child(-n+2)]:border-b [&>div:nth-child(-n+2)]:border-default min-[900px]:[&>div]:border-b-0 min-[900px]:[&>div]:border-r min-[900px]:[&>div]:border-default min-[900px]:[&>div]:py-8.5 min-[900px]:[&>div]:pr-6 min-[900px]:[&>div:not(:first-child)]:pl-6 min-[900px]:[&>div:last-child]:border-r-0">
         <div v-for="n in 4" :key="n">
           <p class="mb-1.5 text-7 font-semibold text-[var(--ui-text-highlighted)]">{{ $t(`home.stats.item${n}.value`) }}</p>
           <p class="text-3.25 font-medium tracking-[.02em] text-[var(--ui-text-muted)]">{{ $t(`home.stats.item${n}.label`) }}</p>
@@ -37,12 +37,12 @@
             <h2 class="mb-3.5 text-10 leading-[1.12] font-semibold text-[var(--ui-text-highlighted)] max-md:text-8">{{ $t('home.lab.title') }}</h2>
             <p class="text-4.25 leading-[1.7] text-[var(--ui-text-muted)]">{{ $t('home.lab.subtitle') }}</p>
             <ul class="my-7 flex flex-col gap-3.5">
-              <li v-for="n in 3" :key="n" class="border-t border-[var(--ui-border)] pt-3.5 text-base leading-[1.7] text-[#3d4654]">{{ $t(`home.lab.point${n}`) }}</li>
+              <li v-for="n in 3" :key="n" class="border-t border-default pt-3.5 text-base leading-[1.7] text-[#3d4654]">{{ $t(`home.lab.point${n}`) }}</li>
             </ul>
             <NuxtLink to="/about" class="text-sm font-semibold tracking-[.02em] text-[var(--ui-primary)] no-underline">{{ $t('home.lab.link') }}</NuxtLink>
           </div>
           <div class="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
-            <article v-for="(item, index) in labItems" :key="item.name" class="grid min-h-full grid-cols-[42px_1fr] gap-3.5 rounded-xl border border-[var(--ui-border)] bg-white px-5 py-5.5">
+            <article v-for="(item, index) in labItems" :key="item.name" class="grid min-h-full grid-cols-[42px_1fr] gap-3.5 rounded-xl border border-default bg-white px-5 py-5.5">
               <p class="text-3.25 font-semibold tracking-[.08em] text-[var(--ui-text-dimmed)]">0{{ index + 1 }}</p>
               <div>
                 <h3 class="mb-2 text-lg font-semibold text-[var(--ui-text-highlighted)]">{{ item.name }}</h3>
@@ -195,7 +195,7 @@
           <p class="text-4.25 leading-[1.7] text-[var(--ui-text-muted)]">{{ $t('home.advantages.subtitle') }}</p>
         </div>
         <div class="mt-10 grid grid-cols-1 gap-4.5 md:grid-cols-2">
-          <article v-for="(item, index) in advantages" :key="item.name" class="overflow-hidden rounded-xl border border-[var(--ui-border)] bg-muted">
+          <article v-for="(item, index) in advantages" :key="item.name" class="overflow-hidden rounded-xl border border-default bg-muted">
             <div class="aspect-video overflow-hidden bg-[#dfe3e8]">
               <img
                 v-if="advantageImages[index]"

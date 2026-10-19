@@ -56,7 +56,7 @@
           </div>
         </aside>
 
-        <div class="rounded-3.5 border border-[var(--ui-border)] bg-white px-7 py-8 shadow-[0_10px_30px_rgba(15,23,42,.08)]">
+        <div class="rounded-3.5 border border-default bg-white px-7 py-8 shadow-[0_10px_30px_rgba(15,23,42,.08)]">
           <h2 class="mb-4 text-7 text-gray-900">{{ $t('contact.form.title') }}</h2>
           <p class="mb-6 rounded-2.5 border border-[#1aa6b8]/20 bg-[#1aa6b8]/[.08] px-4 py-3.5 text-sm leading-[1.7] text-[#0f4c56]">{{ $t('contact.form.notice') }}</p>
           <form class="grid grid-cols-1 gap-4 min-[720px]:grid-cols-2" @submit.prevent="onSubmit">

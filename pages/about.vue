@@ -36,7 +36,7 @@
           <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('about.values.title') }}</h2>
         </div>
         <div class="grid grid-cols-1 gap-4.5 min-[900px]:grid-cols-3">
-          <article v-for="item in values" :key="item.name" class="rounded-3.5 border border-[var(--ui-border)] bg-white p-7 shadow-[0_10px_30px_rgba(15,23,42,.08)] transition hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(15,23,42,.12)]">
+          <article v-for="item in values" :key="item.name" class="rounded-3.5 border border-default bg-white p-7 shadow-[0_10px_30px_rgba(15,23,42,.08)] transition hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(15,23,42,.12)]">
             <h3 class="mb-3 text-5.5 text-gray-900">{{ item.name }}</h3>
             <p class="text-3.75 leading-[1.7] text-gray-600">{{ item.desc }}</p>
           </article>

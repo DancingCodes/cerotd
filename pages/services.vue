@@ -14,7 +14,7 @@
           <p class="max-w-[48ch] text-4.25 leading-[1.7] text-gray-600">{{ $t('services.audience.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-1 gap-4 min-[900px]:grid-cols-3">
-          <article v-for="item in audience" :key="item.name" class="rounded-xl border border-[var(--ui-border)] bg-white px-6 py-6.5">
+          <article v-for="item in audience" :key="item.name" class="rounded-xl border border-default bg-white px-6 py-6.5">
             <h3 class="mb-3 text-xl font-bold text-[#0f4c56]">{{ item.name }}</h3>
             <p class="text-3.75 leading-[1.7] text-gray-600">{{ item.desc }}</p>
           </article>
@@ -28,7 +28,7 @@
           <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('services.list.title') }}</h2>
         </div>
         <div class="grid grid-cols-1 gap-4.5 min-[900px]:grid-cols-2">
-          <article v-for="(item, index) in list" :key="item.name" class="rounded-xl border border-[var(--ui-border)] bg-muted p-7 transition hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(15,23,42,.1)]">
+          <article v-for="(item, index) in list" :key="item.name" class="rounded-xl border border-default bg-muted p-7 transition hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(15,23,42,.1)]">
             <p class="mb-6 text-3.25 font-bold tracking-[.08em] text-[var(--ui-primary)]">0{{ index + 1 }}</p>
             <h3 class="mb-3 text-2xl text-gray-900">{{ item.name }}</h3>
             <p class="text-3.75 leading-[1.7] text-gray-600">{{ item.desc }}</p>
@@ -67,7 +67,7 @@
           <p class="max-w-[48ch] text-4.25 leading-[1.7] text-gray-600">{{ $t('services.checklist.subtitle') }}</p>
         </div>
         <ol class="flex flex-col gap-3">
-          <li v-for="(item, index) in checklist" :key="index" class="grid grid-cols-[42px_1fr] items-start gap-3.5 rounded-xl border border-[var(--ui-border)] bg-muted px-5 py-4.5">
+          <li v-for="(item, index) in checklist" :key="index" class="grid grid-cols-[42px_1fr] items-start gap-3.5 rounded-xl border border-default bg-muted px-5 py-4.5">
             <span class="pt-0.5 text-3.25 font-bold tracking-[.08em] text-[var(--ui-primary)]">0{{ index + 1 }}</span>
             <p class="text-3.75 leading-[1.7] text-gray-800">{{ item }}</p>
           </li>
