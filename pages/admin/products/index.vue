@@ -56,7 +56,7 @@
       </div>
       <div class="grid grid-cols-1 gap-3.5 md:grid-cols-2">
         <label class="block">
-          <div class="mb-1.5 text-3.25 font-semibold text-gray-600 after:text-[#b42318] after:content-["_*"]">{{ $t('admin.common.nameEn') }}</div>
+          <div class="mb-1.5 text-3.25 font-semibold text-gray-600 after:text-[#b42318] after:content-['_*']">{{ $t('admin.common.nameEn') }}</div>
           <input v-model="form.nameEn" class="h-10.5 w-full rounded-xl border border-[#d7dee7] bg-white px-3 outline-none" />
         </label>
         <label class="block">

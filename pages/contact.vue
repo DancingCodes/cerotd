@@ -61,7 +61,7 @@
           <p class="mb-6 rounded-2.5 border border-[#1aa6b8]/20 bg-[#1aa6b8]/[.08] px-4 py-3.5 text-sm leading-[1.7] text-[#0f4c56]">{{ $t('contact.form.notice') }}</p>
           <form class="grid grid-cols-1 gap-4 min-[720px]:grid-cols-2" @submit.prevent="onSubmit">
             <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
-              <span class="text-3.25 font-semibold text-gray-700 after:text-[#b42318] after:content-["_*"]">{{ $t('contact.form.name') }}</span>
+              <span class="text-3.25 font-semibold text-gray-700 after:text-[#b42318] after:content-['_*']">{{ $t('contact.form.name') }}</span>
               <input v-model="form.name" class="w-full rounded-3.5 border border-[#e2e6eb] bg-muted px-4 py-3.5 text-gray-900 outline-none transition focus:border-[#1aa6b8]/55 focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/[.12]" type="text" name="name" autocomplete="name" required :placeholder="$t('contact.form.name')" />
             </label>
             <label class="flex min-w-0 flex-col gap-2 border-0 p-0">

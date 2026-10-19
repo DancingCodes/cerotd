@@ -11,7 +11,7 @@
             {{ $t(item.label) }}
           </NuxtLink>
 
-          <NuxtLink to="/contact" class="inline-flex min-h-10 items-center justify-center rounded-full bg-gradient-to-br from-[#0f9aa8] to-[#3dd6e0] px-4.5 text-sm font-semibold text-white no-underline transition-opacity hover:opacity-90 [&.router-link-active]:ring-2 [&.router-link-active]:ring-[#0f4c56]/20">
+          <NuxtLink to="/contact" class="inline-flex min-h-10 items-center justify-center rounded-full bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] px-4.5 text-sm font-semibold text-white no-underline transition-opacity hover:opacity-90 [&.router-link-active]:ring-2 [&.router-link-active]:ring-[#0f4c56]/20">
             {{ $t('common.contact') }}
           </NuxtLink>
 
