@@ -242,7 +242,24 @@ const formOpen = ref(false)
 const editingSlug = ref('')
 const formError = ref('')
 
-const emptyForm = () => ({
+type ProductForm = {
+  slug: string
+  categorySlug: string
+  nameEn: string
+  nameZh: string
+  summaryEn: string
+  summaryZh: string
+  descriptionEn: string
+  descriptionZh: string
+  coverUrl: string
+  images: string[]
+  specsEnText: string
+  specsZhText: string
+  sortOrder: number
+  isPublished: boolean
+}
+
+const emptyForm = (): ProductForm => ({
   slug: '',
   categorySlug: '',
   nameEn: '',

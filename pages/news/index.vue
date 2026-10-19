@@ -52,7 +52,7 @@
               <div class="aspect-video overflow-hidden bg-[#f3f5f7]">
                 <img
                   class="block size-full object-cover saturate-[.86] contrast-[1.04]"
-                  :src="item.coverUrl"
+                  :src="item.coverUrl || undefined"
                   :alt="t(item.title)"
                   loading="lazy"
                   decoding="async"
