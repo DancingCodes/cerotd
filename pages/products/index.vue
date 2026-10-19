@@ -2,7 +2,7 @@
   <div>
     <section class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,#070b12_0%,#121821_100%)] py-18 text-white md:py-22">
       <UContainer class="max-w-295 px-6">
-        <h1 class="mb-[18px] text-[56px] leading-[1.08] tracking-normal">{{ $t('products.hero.title') }}</h1>
+        <h1 class="mb-4.5 text-[56px] leading-[1.08] tracking-normal">{{ $t('products.hero.title') }}</h1>
         <p class="max-w-[34ch] text-[20px] leading-[1.7] text-[#c8ced6]">{{ $t('products.hero.subtitle') }}</p>
       </UContainer>
     </section>
@@ -69,7 +69,7 @@
           <div v-if="hasMore" class="mt-8 flex justify-center">
             <button
               type="button"
-              class="min-h-11 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-[22px] text-[14px] leading-normal font-semibold text-[#0f4c56] transition hover:border-[#3f7f88]/45 hover:bg-[#3f7f88]/[.08] disabled:cursor-wait disabled:opacity-65"
+              class="min-h-11 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-5.5 text-[14px] leading-normal font-semibold text-[#0f4c56] transition hover:border-[#3f7f88]/45 hover:bg-[#3f7f88]/[.08] disabled:cursor-wait disabled:opacity-65"
               :disabled="loadingMore"
               @click="loadMore"
             >

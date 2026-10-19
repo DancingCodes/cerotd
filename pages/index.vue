@@ -7,11 +7,11 @@
       <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,11,18,.88)_0%,rgba(7,11,18,.72)_42%,rgba(7,11,18,.34)_100%),linear-gradient(180deg,rgba(7,11,18,.28)_0%,rgba(7,11,18,.78)_100%)]" aria-hidden="true"></div>
       <UContainer class="relative z-10 max-w-205 px-6">
         <p class="mb-5 text-[12px] leading-normal font-semibold tracking-[.16em] text-[#a8b0ba] uppercase">{{ $t('home.badge') }}</p>
-        <h1 class="mb-[18px] max-w-[18ch] text-[64px] leading-[1.06] font-semibold tracking-normal max-md:max-w-none max-md:text-[42px]">{{ $t('home.hero.title') }}</h1>
+        <h1 class="mb-4.5 max-w-[18ch] text-[64px] leading-[1.06] font-semibold tracking-normal max-md:max-w-none max-md:text-[42px]">{{ $t('home.hero.title') }}</h1>
         <p class="mb-7 max-w-[44ch] text-[18px] leading-[1.7] font-normal text-white/[.78] max-md:text-[16px]">{{ $t('home.hero.subtitle') }}</p>
         <div class="mb-7 flex flex-wrap gap-3">
-          <NuxtLink to="/products" class="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-[22px] text-[14px] leading-normal font-semibold tracking-[.01em] text-[#070b12] no-underline transition hover:bg-[#e8eef3]">{{ $t('home.hero.ctaPrimary') }}</NuxtLink>
-          <NuxtLink to="/contact" class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/[.28] bg-transparent px-[22px] text-[14px] leading-normal font-semibold tracking-[.01em] text-white no-underline transition hover:border-white/[.55] hover:bg-white/4">{{ $t('home.hero.ctaSecondary') }}</NuxtLink>
+          <NuxtLink to="/products" class="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-5.5 text-[14px] leading-normal font-semibold tracking-[.01em] text-[#070b12] no-underline transition hover:bg-[#e8eef3]">{{ $t('home.hero.ctaPrimary') }}</NuxtLink>
+          <NuxtLink to="/contact" class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/[.28] bg-transparent px-5.5 text-[14px] leading-normal font-semibold tracking-[.01em] text-white no-underline transition hover:border-white/[.55] hover:bg-white/4">{{ $t('home.hero.ctaSecondary') }}</NuxtLink>
         </div>
         <ul class="flex flex-wrap gap-2.5">
           <li class="rounded-full border border-white/16 bg-white/4 px-3 py-2 text-[12px] leading-normal font-medium tracking-[.04em] text-white/[.82]">{{ $t('home.hero.trust1') }}</li>
@@ -148,7 +148,7 @@
       <UContainer class="max-w-295 px-6">
         <div class="mb-10 max-w-155">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold tracking-normal text-white max-md:text-[32px]">{{ $t('home.exportServices.title') }}</h2>
-          <p class="text-4.25 leading-[1.7] text-white/[.62]">{{ $t('home.exportServices.subtitle') }}</p>
+          <p class="text-4.25 leading-[1.7] text-white/62">{{ $t('home.exportServices.subtitle') }}</p>
         </div>
         <div class="grid grid-cols-1 gap-3.5 min-[680px]:grid-cols-2 min-[1080px]:grid-cols-4 min-[1080px]:gap-4">
           <article v-for="(item, index) in exportServices" :key="item.name" class="min-h-full rounded-xl border border-white/10 bg-white/4 px-5.5 py-6 transition hover:-translate-y-0.75 hover:border-[#5fd0dc]/45 hover:bg-white/7">
@@ -246,7 +246,7 @@
         <div class="flex flex-col gap-6 rounded-[12px] border border-white/6 bg-[#070b12] px-7 py-10 text-white min-[800px]:flex-row min-[800px]:items-center min-[800px]:justify-between min-[800px]:px-10 min-[800px]:py-12">
           <div>
             <h2 class="mb-2.5 text-8 font-semibold">{{ $t('home.cta.title') }}</h2>
-            <p class="max-w-140 text-base leading-[1.7] text-white/[.62]">{{ $t('home.cta.subtitle') }}</p>
+            <p class="max-w-140 text-base leading-[1.7] text-white/62">{{ $t('home.cta.subtitle') }}</p>
           </div>
           <NuxtLink to="/contact" class="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-5.5 text-sm font-semibold tracking-[.01em] text-neutral-950 no-underline transition hover:bg-[#e8eef3]">{{ $t('home.cta.button') }}</NuxtLink>
         </div>
