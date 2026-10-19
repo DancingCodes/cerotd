@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky top-0 z-50 border-b border-[#d9dde3]/95 bg-white/90 backdrop-blur-4.5">
+  <header class="sticky top-0 z-50 border-b border-[#d9dde3]/95 bg-white">
     <nav aria-label="Primary">
       <div class="mx-auto flex min-h-18.5 w-full max-w-295 items-center justify-between px-6">
         <NuxtLink to="/" class="inline-flex items-center no-underline">

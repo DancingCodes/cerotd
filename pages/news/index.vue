@@ -2,7 +2,7 @@
   <div>
     <section class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,var(--ui-color-neutral-950)_0%,var(--ui-color-neutral-900)_100%)] py-18 text-white md:py-22">
       <UContainer>
-        <h1 class="mb-4.5 text-4xl leading-[1.08] md:text-14">{{ $t('news.hero.title') }}</h1>
+        <h1 class="mb-4.5 text-14 leading-[1.08]">{{ $t('news.hero.title') }}</h1>
         <p class="max-w-[36ch] text-lg leading-[1.7] text-[#c8ced6] md:text-xl">{{ $t('news.hero.subtitle') }}</p>
       </UContainer>
     </section>
