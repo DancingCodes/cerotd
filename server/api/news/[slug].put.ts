@@ -1,5 +1,4 @@
 type UpdateNewsBody = {
-  slug?: string
   category?: string
   titleEn?: string
   titleZh?: string

@@ -1,5 +1,4 @@
 type CreateNewsBody = {
-  slug?: string
   category?: string
   titleEn?: string
   titleZh?: string

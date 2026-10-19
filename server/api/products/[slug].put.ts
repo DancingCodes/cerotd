@@ -1,5 +1,4 @@
 type UpdateProductBody = {
-  slug?: string
   categorySlug?: string
   nameEn?: string
   nameZh?: string

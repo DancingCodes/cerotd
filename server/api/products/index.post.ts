@@ -1,5 +1,4 @@
 type CreateProductBody = {
-  slug?: string
   categorySlug?: string
   nameEn?: string
   nameZh?: string
