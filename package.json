@@ -18,7 +18,6 @@
     "@tiptap/starter-kit": "^3.31.3",
     "@tiptap/vue-3": "^3.31.3",
     "@vueuse/motion": "^3.0.3",
-    "modern-normalize": "^3.0.1",
     "nuxt": "^4.5.2",
     "vue": "^3.5.43"
   },

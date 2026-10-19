@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/admin/**': { ssr: false }
   },
-  css: ['modern-normalize/modern-normalize.css', '~/assets/styles/main.scss'],
+  css: ['~/assets/reset.scss', '~/assets/main.scss'],
   typescript: {
     typeCheck: false,
     strict: true
