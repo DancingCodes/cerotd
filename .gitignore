@@ -1,7 +1,7 @@
 .nuxt
-node_modules
-.wrangler
-.dev.vars
 .output
+.vscode
+.wrangler
+node_modules
 dist
-.env
+.dev.vars
