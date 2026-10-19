@@ -5,7 +5,7 @@
         <img class="size-full scale-[1.04] object-cover object-[center_40%] saturate-[.78] contrast-[1.05]" src="/images/hero-bg.webp" alt="" fetchpriority="high" decoding="async" />
       </div>
       <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,11,18,.88)_0%,rgba(7,11,18,.72)_42%,rgba(7,11,18,.34)_100%),linear-gradient(180deg,rgba(7,11,18,.28)_0%,rgba(7,11,18,.78)_100%)]" aria-hidden="true"></div>
-      <div class="container relative z-10 max-w-[820px]">
+      <UContainer class="relative z-10 max-w-[820px]">
         <p class="mb-5 text-xs font-semibold tracking-[.16em] text-[var(--color-metal)] uppercase">{{ $t('home.badge') }}</p>
         <h1 class="mb-[18px] max-w-[18ch] text-[64px] leading-[1.06] font-semibold max-md:max-w-none max-md:text-[42px]">{{ $t('home.hero.title') }}</h1>
         <p class="mb-7 max-w-[44ch] text-lg leading-[1.7] text-white/80 max-md:text-base">{{ $t('home.hero.subtitle') }}</p>
@@ -18,20 +18,20 @@
           <li class="rounded-full border border-white/[.16] bg-white/[.04] px-3 py-2 text-xs font-medium tracking-[.04em] text-white/80">{{ $t('home.hero.trust2') }}</li>
           <li class="rounded-full border border-white/[.16] bg-white/[.04] px-3 py-2 text-xs font-medium tracking-[.04em] text-white/80">{{ $t('home.hero.trust3') }}</li>
         </ul>
-      </div>
+      </UContainer>
     </section>
 
     <section class="border-b border-[var(--color-line)] bg-white" aria-label="Company stats">
-      <div class="container grid grid-cols-2 min-[900px]:grid-cols-4 [&>div]:py-7 [&>div:nth-child(odd)]:border-r [&>div:nth-child(odd)]:border-[var(--color-line)] [&>div:nth-child(odd)]:pr-6 [&>div:nth-child(even)]:pl-6 [&>div:nth-child(-n+2)]:border-b [&>div:nth-child(-n+2)]:border-[var(--color-line)] min-[900px]:[&>div]:border-b-0 min-[900px]:[&>div]:border-r min-[900px]:[&>div]:border-[var(--color-line)] min-[900px]:[&>div]:py-[34px] min-[900px]:[&>div]:pr-6 min-[900px]:[&>div:not(:first-child)]:pl-6 min-[900px]:[&>div:last-child]:border-r-0">
+      <UContainer class="grid grid-cols-2 min-[900px]:grid-cols-4 [&>div]:py-7 [&>div:nth-child(odd)]:border-r [&>div:nth-child(odd)]:border-[var(--color-line)] [&>div:nth-child(odd)]:pr-6 [&>div:nth-child(even)]:pl-6 [&>div:nth-child(-n+2)]:border-b [&>div:nth-child(-n+2)]:border-[var(--color-line)] min-[900px]:[&>div]:border-b-0 min-[900px]:[&>div]:border-r min-[900px]:[&>div]:border-[var(--color-line)] min-[900px]:[&>div]:py-[34px] min-[900px]:[&>div]:pr-6 min-[900px]:[&>div:not(:first-child)]:pl-6 min-[900px]:[&>div:last-child]:border-r-0">
         <div v-for="n in 4" :key="n">
           <p class="mb-1.5 text-[28px] font-semibold text-[var(--color-text)]">{{ $t(`home.stats.item${n}.value`) }}</p>
           <p class="text-[13px] font-medium tracking-[.02em] text-[var(--color-muted)]">{{ $t(`home.stats.item${n}.label`) }}</p>
         </div>
-      </div>
+      </UContainer>
     </section>
 
     <section class="bg-[var(--color-surface)] py-24 md:py-28">
-      <div class="container">
+      <UContainer>
         <div class="grid grid-cols-1 items-start gap-7 min-[960px]:grid-cols-[.95fr_1.05fr] min-[960px]:gap-12">
           <div>
             <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('home.lab.title') }}</h2>
@@ -51,12 +51,12 @@
             </article>
           </div>
         </div>
-      </div>
+      </UContainer>
     </section>
 
 
     <section class="bg-white py-24 md:py-28">
-      <div class="container">
+      <UContainer>
         <div class="max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t("home.facility.title") }}</h2>
           <p class="text-[17px] leading-[1.7] text-[var(--color-muted)]">{{ $t("home.facility.subtitle") }}</p>
@@ -97,7 +97,7 @@
         <div class="mt-7">
           <NuxtLink to="/about" class="text-sm font-semibold tracking-[.02em] text-[var(--color-accent)] no-underline">{{ $t("home.facility.cta") }}</NuxtLink>
         </div>
-      </div>
+      </UContainer>
     </section>
 
     <div
@@ -145,7 +145,7 @@
     </div>
 
     <section class="bg-[var(--color-ink)] py-24 md:py-28">
-      <div class="container">
+      <UContainer>
         <div class="mb-10 max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-white max-md:text-[32px]">{{ $t('home.exportServices.title') }}</h2>
           <p class="text-[17px] leading-[1.7] text-white/60">{{ $t('home.exportServices.subtitle') }}</p>
@@ -162,11 +162,11 @@
             {{ $t('home.exportServices.cta') }}
           </NuxtLink>
         </div>
-      </div>
+      </UContainer>
     </section>
 
     <section class="bg-white py-24 md:py-28">
-      <div class="container">
+      <UContainer>
         <div class="mb-10 max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('home.lines.title') }}</h2>
           <p class="text-[17px] leading-[1.7] text-[var(--color-muted)]">{{ $t('home.lines.subtitle') }}</p>
@@ -185,11 +185,11 @@
         <div class="mt-7">
           <NuxtLink to="/products" class="text-sm font-semibold tracking-[.02em] text-[var(--color-accent)] no-underline">{{ $t('common.viewProducts') }}</NuxtLink>
         </div>
-      </div>
+      </UContainer>
     </section>
 
     <section class="bg-white py-24 md:py-28">
-      <div class="container">
+      <UContainer>
         <div class="mb-10 max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('home.advantages.title') }}</h2>
           <p class="text-[17px] leading-[1.7] text-[var(--color-muted)]">{{ $t('home.advantages.subtitle') }}</p>
@@ -216,11 +216,11 @@
         <div class="mt-7">
           <NuxtLink to="/advantages" class="text-sm font-semibold tracking-[.02em] text-[var(--color-accent)] no-underline">{{ $t('home.advantages.link') }}</NuxtLink>
         </div>
-      </div>
+      </UContainer>
     </section>
 
     <section class="bg-[var(--color-surface)] py-24 md:py-28">
-      <div class="container">
+      <UContainer>
         <div class="mb-10 max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('home.partners.title') }}</h2>
           <p class="text-[17px] leading-[1.7] text-[var(--color-muted)]">{{ $t('home.partners.subtitle') }}</p>
@@ -238,11 +238,11 @@
             <img class="block h-14 w-full max-w-40 object-contain object-center opacity-90" :src="partner.logo" :alt="partner.name" loading="lazy" decoding="async" />
           </a>
         </div>
-      </div>
+      </UContainer>
     </section>
 
     <section class="bg-[var(--color-surface)] pb-24 md:pb-28">
-      <div class="container">
+      <UContainer>
         <div class="flex flex-col gap-6 rounded-xl border border-white/[.06] bg-[var(--color-ink)] px-7 py-10 text-white min-[800px]:flex-row min-[800px]:items-center min-[800px]:justify-between min-[800px]:px-10 min-[800px]:py-12">
           <div>
             <h2 class="mb-2.5 text-[32px] font-semibold">{{ $t('home.cta.title') }}</h2>
@@ -250,7 +250,7 @@
           </div>
           <NuxtLink to="/contact" class="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-[22px] text-sm font-semibold tracking-[.01em] text-[var(--color-ink)] no-underline transition hover:bg-[#e8eef3]">{{ $t('home.cta.button') }}</NuxtLink>
         </div>
-      </div>
+      </UContainer>
     </section>
   </div>
 </template>

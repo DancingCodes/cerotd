@@ -1,7 +1,7 @@
 <template>
   <div v-if="article">
     <section class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-16 text-white md:py-[72px]">
-      <div class="container">
+      <UContainer>
         <NuxtLink to="/news" class="mb-[18px] inline-block text-sm font-semibold text-[#c8ced6] no-underline">{{ $t('news.backToList') }}</NuxtLink>
         <div class="mb-3.5 flex gap-3.5 text-[13px] font-semibold tracking-[.04em] text-[#b7c0cb] uppercase">
           <span>{{ categoryLabel(article.category) }}</span>
@@ -9,11 +9,11 @@
         </div>
         <h1 class="mb-4 max-w-[18ch] text-4xl leading-[1.1] md:text-5xl">{{ t(article.title) }}</h1>
         <p class="max-w-[48ch] text-lg leading-[1.7] text-[#c8ced6]">{{ t(article.summary) }}</p>
-      </div>
+      </UContainer>
     </section>
 
     <section class="bg-white py-[72px] pb-24">
-      <div class="container max-w-[820px]">
+      <UContainer class="max-w-[820px]">
         <img
           v-if="article.coverUrl"
           class="mb-7 block max-h-[460px] w-full rounded-xl object-cover"
@@ -27,7 +27,7 @@
         <div class="mt-9">
           <NuxtLink to="/contact" class="inline-flex min-h-[46px] items-center justify-center rounded-full bg-[var(--color-ink)] px-5 text-sm font-semibold text-white no-underline">{{ $t('news.detailCta') }}</NuxtLink>
         </div>
-      </div>
+      </UContainer>
     </section>
   </div>
 </template>

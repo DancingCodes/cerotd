@@ -1,14 +1,14 @@
 <template>
   <div>
     <section class="bg-[radial-gradient(circle_at_20%_0%,rgba(95,208,220,.14),transparent_28%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-[72px] text-white md:py-[88px]">
-      <div class="container">
+      <UContainer>
         <h1 class="mb-[18px] text-4xl leading-[1.08] md:text-[56px]">{{ $t('services.hero.title') }}</h1>
         <p class="max-w-[30ch] text-lg leading-[1.7] text-[#c8ced6] md:text-xl">{{ $t('services.hero.subtitle') }}</p>
-      </div>
+      </UContainer>
     </section>
 
     <section class="bg-[var(--color-surface)] py-24 md:py-[120px]">
-      <div class="container">
+      <UContainer>
         <div class="mb-12">
           <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('services.audience.title') }}</h2>
           <p class="max-w-[48ch] text-[17px] leading-[1.7] text-gray-600">{{ $t('services.audience.subtitle') }}</p>
@@ -19,11 +19,11 @@
             <p class="text-[15px] leading-[1.7] text-gray-600">{{ item.desc }}</p>
           </article>
         </div>
-      </div>
+      </UContainer>
     </section>
 
     <section class="bg-white py-24 md:py-[120px]">
-      <div class="container">
+      <UContainer>
         <div class="mb-12">
           <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('services.list.title') }}</h2>
         </div>
@@ -34,11 +34,11 @@
             <p class="text-[15px] leading-[1.7] text-gray-600">{{ item.desc }}</p>
           </article>
         </div>
-      </div>
+      </UContainer>
     </section>
 
     <section class="bg-[var(--color-ink)] py-24 md:py-[120px]">
-      <div class="container">
+      <UContainer>
         <div class="mb-12">
           <h2 class="mb-3.5 text-3xl text-white md:text-4xl">{{ $t('services.process.title') }}</h2>
           <p class="max-w-[48ch] text-[17px] leading-[1.7] text-[#c8ced6]">{{ $t('services.process.subtitle') }}</p>
@@ -57,11 +57,11 @@
             ></span>
           </li>
         </ol>
-      </div>
+      </UContainer>
     </section>
 
     <section class="bg-white py-24 md:py-[120px]">
-      <div class="container">
+      <UContainer>
         <div class="mb-12">
           <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('services.checklist.title') }}</h2>
           <p class="max-w-[48ch] text-[17px] leading-[1.7] text-gray-600">{{ $t('services.checklist.subtitle') }}</p>
@@ -72,11 +72,11 @@
             <p class="text-[15px] leading-[1.7] text-gray-800">{{ item }}</p>
           </li>
         </ol>
-      </div>
+      </UContainer>
     </section>
 
     <section class="bg-white pt-7 pb-24 md:pt-5 md:pb-[120px]">
-      <div class="container">
+      <UContainer>
         <div class="flex flex-col gap-[22px] rounded-[14px] border border-white/[.08] bg-[radial-gradient(circle_at_100%_0%,rgba(95,208,220,.18),transparent_34%),linear-gradient(135deg,#102033_0%,#0b1522_100%)] px-7 py-[34px] min-[800px]:flex-row min-[800px]:items-center min-[800px]:justify-between min-[800px]:px-11 min-[800px]:py-10">
           <div>
             <h2 class="mb-2.5 text-3xl font-semibold text-white">{{ $t('services.cta.title') }}</h2>
@@ -84,7 +84,7 @@
           </div>
           <NuxtLink to="/contact" class="inline-flex items-center justify-center rounded-full bg-white px-[22px] py-3.5 text-[15px] font-semibold whitespace-nowrap text-[#102033] no-underline">{{ $t('services.cta.button') }}</NuxtLink>
         </div>
-      </div>
+      </UContainer>
     </section>
   </div>
 </template>

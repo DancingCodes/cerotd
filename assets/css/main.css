@@ -2,6 +2,7 @@
 @import "@nuxt/ui";
 
 :root {
+  --ui-container: 1180px;
   --color-ink: var(--ui-color-neutral-950);
   --color-ink-soft: var(--ui-color-neutral-900);
   --color-text: var(--ui-text-highlighted);
@@ -20,13 +21,6 @@ html {
 body {
   color: var(--ui-text);
   background: var(--ui-bg);
-}
-
-.container {
-  width: 100%;
-  max-width: 1180px;
-  margin-inline: auto;
-  padding-inline: 24px;
 }
 
 .page-enter-active,

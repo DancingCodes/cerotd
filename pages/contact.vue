@@ -1,14 +1,14 @@
 <template>
   <div>
     <section class="bg-[radial-gradient(circle_at_30%_10%,rgba(95,208,220,.14),transparent_28%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-[72px] text-white md:py-[88px]">
-      <div class="container">
+      <UContainer>
         <h1 class="mb-[18px] text-4xl leading-[1.08] md:text-[56px]">{{ $t('contact.hero.title') }}</h1>
         <p class="max-w-[30ch] text-lg leading-[1.7] text-[#c8ced6] md:text-xl">{{ $t('contact.hero.subtitle') }}</p>
-      </div>
+      </UContainer>
     </section>
 
     <section class="bg-[var(--color-surface)] py-24 md:py-[120px]">
-      <div class="container grid grid-cols-1 gap-6 min-[980px]:grid-cols-[.85fr_1.15fr] min-[980px]:gap-7">
+      <UContainer class="grid grid-cols-1 gap-6 min-[980px]:grid-cols-[.85fr_1.15fr] min-[980px]:gap-7">
         <aside class="rounded-[14px] bg-[var(--color-ink)] px-7 py-8 text-white">
           <h2 class="mb-7 text-[28px]">{{ $t('contact.info.title') }}</h2>
           <ul class="grid gap-[22px]">
@@ -123,7 +123,7 @@
           <p v-else-if="submitStatus === 'error'" class="mt-3.5 text-[13px] leading-[1.6] text-[#b42318]">{{ submitError || $t('contact.form.error') }}</p>
           <p v-else class="mt-3.5 text-[13px] leading-[1.6] text-gray-500">{{ $t('contact.form.tip') }}</p>
         </div>
-      </div>
+      </UContainer>
     </section>
   </div>
 </template>

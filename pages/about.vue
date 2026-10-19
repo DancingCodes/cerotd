@@ -1,14 +1,14 @@
 <template>
   <div>
     <section class="bg-[radial-gradient(circle_at_15%_20%,rgba(95,208,220,.16),transparent_30%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-[72px] text-white md:py-[88px]">
-      <div class="container">
+      <UContainer>
         <h1 class="mb-[18px] max-w-[12ch] text-4xl leading-[1.08] md:text-[56px]">{{ $t('about.hero.title') }}</h1>
         <p class="max-w-[28ch] text-lg leading-[1.7] text-[#c8ced6] md:text-xl">{{ $t('about.hero.subtitle') }}</p>
-      </div>
+      </UContainer>
     </section>
 
     <section class="bg-white py-24 md:py-[120px]">
-      <div class="container grid grid-cols-1 gap-8 md:gap-10">
+      <UContainer class="grid grid-cols-1 gap-8 md:gap-10">
         <div class="min-w-0 overflow-hidden rounded-[14px] bg-[#0d1524]">
           <video
             class="block aspect-video w-full object-cover"
@@ -27,11 +27,11 @@
           <p class="intro-desc">{{ $t('about.intro.p2') }}</p>
           <p class="intro-desc">{{ $t('about.intro.p3') }}</p>
         </div>
-      </div>
+      </UContainer>
     </section>
 
     <section class="bg-[var(--color-surface)] py-24 md:py-[120px]">
-      <div class="container">
+      <UContainer>
         <div class="mb-12">
           <h2 class="mb-3.5 text-3xl text-gray-900 md:text-4xl">{{ $t('about.values.title') }}</h2>
         </div>
@@ -41,11 +41,11 @@
             <p class="text-[15px] leading-[1.7] text-gray-600">{{ item.desc }}</p>
           </article>
         </div>
-      </div>
+      </UContainer>
     </section>
 
     <section class="bg-white py-24 md:py-[120px]">
-      <div class="container">
+      <UContainer>
         <div class="mb-12 max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('about.stats.title') }}</h2>
         </div>
@@ -55,11 +55,11 @@
             <p class="text-[13px] leading-[1.5] text-gray-600 min-[900px]:text-[15px]">{{ $t(`about.stats.item${n}.label`) }}</p>
           </div>
         </div>
-      </div>
+      </UContainer>
     </section>
 
     <section class="bg-[var(--color-surface)] py-24 md:py-[120px]">
-      <div class="container">
+      <UContainer>
         <div class="mb-12 max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('about.trust.title') }}</h2>
           <p class="max-w-[52ch] text-[17px] leading-[1.7] text-gray-600">{{ $t('about.trust.subtitle') }}</p>
@@ -70,11 +70,11 @@
             <p class="text-sm leading-[1.6] text-gray-600">{{ item.desc }}</p>
           </article>
         </div>
-      </div>
+      </UContainer>
     </section>
 
     <section id="certificates" class="bg-white py-24 md:py-[120px]">
-      <div class="container">
+      <UContainer>
         <div class="mb-12 max-w-[620px]">
           <h2 class="mb-3.5 text-[40px] leading-[1.12] font-semibold text-[var(--color-text)] max-md:text-[32px]">{{ $t('about.certificates.title') }}</h2>
           <p class="text-[17px] leading-[1.7] text-[var(--color-muted)]">{{ $t('about.certificates.subtitle') }}</p>
@@ -96,7 +96,7 @@
             />
           </button>
         </div>
-      </div>
+      </UContainer>
     </section>
 
     <div

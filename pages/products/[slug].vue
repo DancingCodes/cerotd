@@ -1,15 +1,15 @@
 <template>
   <div v-if="product" class="pb-[calc(70px+env(safe-area-inset-bottom))] md:pb-0">
     <section class="bg-[radial-gradient(circle_at_20%_20%,rgba(95,208,220,.16),transparent_28%),linear-gradient(180deg,var(--color-ink)_0%,var(--color-ink-soft)_100%)] py-[72px] text-white md:py-[88px]">
-      <div class="container">
+      <UContainer>
         <NuxtLink to="/products" class="mb-6 inline-flex text-sm font-semibold text-[#5fd0dc] no-underline">{{ $t('products.backToList') }}</NuxtLink>
         <h1 class="mb-[18px] text-4xl leading-[1.1] md:text-5xl">{{ t(product.name) }}</h1>
         <p class="max-w-[40ch] text-lg leading-[1.7] text-[#c8ced6]">{{ t(product.summary) }}</p>
-      </div>
+      </UContainer>
     </section>
 
     <section class="bg-white py-24 md:py-[120px]">
-      <div class="container grid grid-cols-1 gap-6 min-[960px]:grid-cols-[1.2fr_.8fr] min-[960px]:gap-8">
+      <UContainer class="grid grid-cols-1 gap-6 min-[960px]:grid-cols-[1.2fr_.8fr] min-[960px]:gap-8">
         <div class="min-w-0">
           <div class="mb-6">
             <button type="button" class="flex min-h-80 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-xl bg-[#f3f5f7]" @click="openPreview(activeIndex)">
@@ -52,11 +52,11 @@
             <NuxtLink to="/contact" class="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-br from-[#0f9aa8] to-[#3dd6e0] px-6 text-sm font-semibold text-white no-underline">{{ $t('products.detailCta') }}</NuxtLink>
           </div>
         </aside>
-      </div>
+      </UContainer>
     </section>
 
     <section v-if="relatedProducts.length" class="bg-[var(--color-surface)] py-24 md:py-[120px]">
-      <div class="container">
+      <UContainer>
         <h2 class="mb-6 text-[28px] text-gray-900">{{ $t('products.relatedTitle') }}</h2>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
           <NuxtLink
@@ -69,7 +69,7 @@
             <p class="text-sm leading-[1.6] text-gray-600">{{ t(item.summary) }}</p>
           </NuxtLink>
         </div>
-      </div>
+      </UContainer>
     </section>
 
     <NuxtLink to="/contact" class="fixed inset-x-0 bottom-0 z-40 flex min-h-[58px] items-center justify-center border-t border-slate-900/10 bg-white/95 px-5 pt-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] text-[15px] font-bold text-[#0f4c56] no-underline backdrop-blur md:hidden">{{ $t('products.detailCta') }}</NuxtLink>
