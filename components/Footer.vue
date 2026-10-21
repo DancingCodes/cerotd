@@ -56,7 +56,7 @@
             </li>
             <li class="text-sm text-white/60">
               <NuxtLink to="/contact" class="text-white/60 transition-colors hover:text-white">{{ $t('common.contact')
-                }}</NuxtLink>
+              }}</NuxtLink>
             </li>
           </ul>
         </div>
