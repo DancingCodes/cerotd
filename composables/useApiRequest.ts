@@ -1,4 +1,19 @@
 import type { ApiResponse } from '#shared/api'
+import { ADMIN_API_TOKEN_STORAGE_KEY } from './useAdminAuth'
+
+function withAdminToken(request: string, options: Record<string, unknown>) {
+  if (!import.meta.client) return options
+
+  const url = new URL(request, window.location.origin)
+  if (url.origin !== window.location.origin || !url.pathname.startsWith('/api/')) return options
+
+  const token = window.localStorage.getItem(ADMIN_API_TOKEN_STORAGE_KEY)
+  if (!token) return options
+
+  const headers = new Headers(options.headers as HeadersInit | undefined)
+  headers.set('Authorization', `Bearer ${token}`)
+  return { ...options, headers }
+}
 
 export class ApiResponseError extends Error {
   code: string
@@ -21,7 +36,7 @@ export function unwrapApiResponse<T>(response: ApiResponse<T>) {
 
 export async function apiFetch<T>(request: string, options: Record<string, unknown> = {}) {
   try {
-    return unwrapApiResponse(await $fetch<ApiResponse<T>>(request, options))
+    return unwrapApiResponse(await $fetch<ApiResponse<T>>(request, withAdminToken(request, options)))
   } catch (error: any) {
     if (error instanceof ApiResponseError) throw error
     if (error?.data?.code && error?.data?.msg) {
