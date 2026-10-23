@@ -125,7 +125,6 @@ type StatusFilter = 'all' | 'unread' | 'read'
 type RangeFilter = 'all' | 'today' | '7d' | '30d'
 
 const { t } = useI18n()
-const { authHeaders } = useAdminAuth()
 const toast = useToast()
 
 const items = ref<InquiryItem[]>([])
@@ -185,7 +184,6 @@ async function load() {
   pending.value = true
   try {
     const data = await apiFetch<{ items: InquiryItem[]; unreadCount: number; total?: number }>('/api/inquiries', {
-      headers: authHeaders(),
       query: {
         status: status.value,
         range: range.value,
@@ -215,7 +213,6 @@ async function setRead(item: InquiryItem, isRead: boolean, reload = true) {
   try {
     await apiFetch('/api/inquiries/' + item.id, {
       method: 'PATCH',
-      headers: authHeaders(),
       body: { isRead }
     })
     item.isRead = isRead
@@ -233,8 +230,7 @@ async function remove(item: InquiryItem) {
   if (!window.confirm(t('admin.inquiries.deleteConfirm', { name: item.name }))) return
   try {
     await apiFetch('/api/inquiries/' + item.id, {
-      method: 'DELETE',
-      headers: authHeaders()
+      method: 'DELETE'
     })
     if (openId.value === item.id) openId.value = null
     await load()

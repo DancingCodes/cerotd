@@ -210,7 +210,6 @@ type NewsItem = {
 
 const { t } = useI18n()
 const lt = useLocalized()
-const { authHeaders } = useAdminAuth()
 const toast = useToast()
 
 type CategoryItem = {
@@ -282,7 +281,6 @@ async function uploadImage(file: File) {
   body.append('folder', 'news')
   const result = await apiFetch<{ url: string }>('/api/upload', {
     method: 'POST',
-    headers: authHeaders(),
     body
   })
   return result.url
@@ -393,7 +391,6 @@ async function load() {
   try {
     const [newsData, categoryData] = await Promise.all([
       apiFetch<{ items: NewsItem[]; total?: number }>('/api/news', {
-        headers: authHeaders(),
         query: {
           all: 1,
           page: page.value,
@@ -403,7 +400,7 @@ async function load() {
           status: filterStatus.value
         }
       }),
-      apiFetch<{ items: CategoryItem[] }>('/api/news-categories?all=1', { headers: authHeaders() })
+      apiFetch<{ items: CategoryItem[] }>('/api/news-categories?all=1')
     ])
     items.value = newsData.items
     total.value = Number(newsData.total || newsData.items.length)
@@ -500,13 +497,11 @@ async function save() {
     if (editingSlug.value) {
       await apiFetch(`/api/news/${editingSlug.value}`, {
         method: 'PUT',
-        headers: authHeaders(),
         body: payload
       })
     } else {
       await apiFetch('/api/news', {
         method: 'POST',
-        headers: authHeaders(),
         body: payload
       })
     }
@@ -521,8 +516,7 @@ async function remove(item: NewsItem) {
   if (!window.confirm(t('admin.news.deleteConfirm', { name: lt(item.title) }))) return
   try {
     await apiFetch(`/api/news/${item.slug}`, {
-      method: 'DELETE',
-      headers: authHeaders()
+      method: 'DELETE'
     })
     await load()
   } catch (err: any) {
@@ -538,8 +532,7 @@ async function removeSelected() {
     const slugs = [...selectedSlugs.value]
     for (const slug of slugs) {
       await apiFetch(`/api/news/${slug}`, {
-        method: 'DELETE',
-        headers: authHeaders()
+        method: 'DELETE'
       })
     }
     selectedSlugs.value = []

@@ -23,7 +23,7 @@ definePageMeta({
 })
 
 const { t } = useI18n()
-const { token, setToken, clearToken, authHeaders } = useAdminAuth()
+const { token, setToken, clearToken } = useAdminAuth()
 const input = ref(token.value)
 const error = ref('')
 
@@ -44,9 +44,7 @@ async function login() {
   setToken(value)
 
   try {
-    await apiFetch('/api/admin/check', {
-      headers: authHeaders()
-    })
+    await apiFetch('/api/admin/check')
     navigateTo('/admin/products')
   } catch (err: any) {
     clearToken()

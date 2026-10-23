@@ -219,7 +219,6 @@ type ProductItem = {
 
 const { t } = useI18n()
 const lt = useLocalized()
-const { authHeaders } = useAdminAuth()
 const toast = useToast()
 const pending = ref(true)
 const searchInput = ref('')
@@ -299,7 +298,6 @@ async function uploadImage(file: File) {
   body.append('folder', 'products')
   const result = await apiFetch<{ url: string }>('/api/upload', {
     method: 'POST',
-    headers: authHeaders(),
     body
   })
   return result.url
@@ -388,7 +386,6 @@ async function load() {
   pending.value = true
   try {
     const productData = await apiFetch<{ items: ProductItem[]; total?: number }>('/api/products', {
-      headers: authHeaders(),
       query: {
         all: 1,
         page: page.value,
@@ -491,13 +488,11 @@ async function save() {
     if (editingSlug.value) {
       await apiFetch(`/api/products/${editingSlug.value}`, {
         method: 'PUT',
-        headers: authHeaders(),
         body: payload
       })
     } else {
       await apiFetch('/api/products', {
         method: 'POST',
-        headers: authHeaders(),
         body: payload
       })
     }
@@ -512,8 +507,7 @@ async function remove(item: ProductItem) {
   if (!window.confirm(t('admin.products.deleteConfirm', { name: lt(item.name) }))) return
   try {
     await apiFetch(`/api/products/${item.slug}`, {
-      method: 'DELETE',
-      headers: authHeaders()
+      method: 'DELETE'
     })
     await load()
   } catch (err: any) {
@@ -529,8 +523,7 @@ async function removeSelected() {
     const slugs = [...selectedSlugs.value]
     for (const slug of slugs) {
       await apiFetch(`/api/products/${slug}`, {
-        method: 'DELETE',
-        headers: authHeaders()
+        method: 'DELETE'
       })
     }
     selectedSlugs.value = []

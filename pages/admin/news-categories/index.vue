@@ -122,7 +122,6 @@ type CategoryItem = {
 
 const { t, locale } = useI18n()
 const lt = useLocalized()
-const { authHeaders } = useAdminAuth()
 const toast = useToast()
 const pending = ref(true)
 const page = ref(1)
@@ -175,7 +174,6 @@ async function load() {
   pending.value = true
   try {
     const data = await apiFetch<{ items: CategoryItem[]; total?: number }>('/api/news-categories', {
-      headers: authHeaders(),
       query: { all: 1, page: page.value, pageSize: pageSize.value }
     })
     items.value = data.items
@@ -242,13 +240,11 @@ async function save() {
     if (editingSlug.value) {
       await apiFetch(`/api/news-categories/${editingSlug.value}`, {
         method: 'PUT',
-        headers: authHeaders(),
         body: payload
       })
     } else {
       await apiFetch('/api/news-categories', {
         method: 'POST',
-        headers: authHeaders(),
         body: payload
       })
     }
@@ -263,8 +259,7 @@ async function remove(item: CategoryItem) {
   if (!window.confirm(t('admin.newsCategories.deleteConfirm', { name: lt(item.name) }))) return
   try {
     await apiFetch(`/api/news-categories/${item.slug}`, {
-      method: 'DELETE',
-      headers: authHeaders()
+      method: 'DELETE'
     })
     await load()
   } catch (err: any) {
@@ -284,8 +279,7 @@ async function removeSelected() {
     const slugs = [...selectedSlugs.value]
     for (const slug of slugs) {
       await apiFetch(`/api/news-categories/${slug}`, {
-        method: 'DELETE',
-        headers: authHeaders()
+        method: 'DELETE'
       })
     }
     selectedSlugs.value = []
