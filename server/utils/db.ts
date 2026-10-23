@@ -14,7 +14,6 @@ export type ProductRow = {
   images_json: string
   specs_en_json: string
   specs_zh_json: string
-  sort_order: number
   is_published: number
   created_at: string
   updated_at: string
@@ -95,7 +94,6 @@ export function mapProduct(row: ProductRow) {
       en: parseJsonArray(row.specs_en_json),
       zh: parseJsonArray(row.specs_zh_json)
     },
-    sortOrder: row.sort_order,
     isPublished: row.is_published === 1,
     createdAt: row.created_at,
     updatedAt: row.updated_at
@@ -140,7 +138,6 @@ export type NewsCategoryRow = {
   name_en: string
   name_zh: string
   sort_order: number
-  is_published: number
   created_at: string
   updated_at: string
 }
@@ -154,18 +151,13 @@ export function mapNewsCategory(row: NewsCategoryRow) {
       zh: row.name_zh
     },
     sortOrder: row.sort_order,
-    isPublished: row.is_published === 1,
     createdAt: row.created_at,
     updatedAt: row.updated_at
   }
 }
 
-export async function findNewsCategory(db: D1Database, slug: string, opts?: { publishedOnly?: boolean }) {
-  const publishedOnly = opts?.publishedOnly === true
-  const sql = publishedOnly
-    ? 'SELECT * FROM news_categories WHERE slug = ? AND is_published = 1'
-    : 'SELECT * FROM news_categories WHERE slug = ?'
-  return db.prepare(sql).bind(slug).first<NewsCategoryRow>()
+export async function findNewsCategory(db: D1Database, slug: string) {
+  return db.prepare('SELECT * FROM news_categories WHERE slug = ?').bind(slug).first<NewsCategoryRow>()
 }
 
 export function mapNews(row: NewsRow) {

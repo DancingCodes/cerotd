@@ -24,14 +24,12 @@ CREATE TABLE products (
   images_json TEXT NOT NULL DEFAULT '[]',
   specs_en_json TEXT NOT NULL DEFAULT '[]',
   specs_zh_json TEXT NOT NULL DEFAULT '[]',
-  sort_order INTEGER NOT NULL DEFAULT 0,
   is_published INTEGER NOT NULL DEFAULT 1,
   created_at TEXT NOT NULL DEFAULT (datetime('now')),
   updated_at TEXT NOT NULL DEFAULT (datetime('now')),
   FOREIGN KEY (category_id) REFERENCES products_categories(id)
 );
 
-CREATE INDEX idx_products_sort ON products (sort_order, id);
 CREATE INDEX idx_products_published ON products (is_published);
 CREATE INDEX idx_products_category ON products (category_id);
 
@@ -60,13 +58,11 @@ CREATE TABLE news_categories (
   name_en TEXT NOT NULL,
   name_zh TEXT NOT NULL,
   sort_order INTEGER NOT NULL DEFAULT 0,
-  is_published INTEGER NOT NULL DEFAULT 1,
   created_at TEXT NOT NULL DEFAULT (datetime('now')),
   updated_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
 CREATE INDEX idx_news_categories_sort ON news_categories (sort_order, id);
-CREATE INDEX idx_news_categories_published ON news_categories (is_published);
 
 CREATE TABLE news (
   id INTEGER PRIMARY KEY AUTOINCREMENT,

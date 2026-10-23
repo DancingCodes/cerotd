@@ -10,7 +10,6 @@ type CreateProductBody = {
   images?: string[]
   specsEn?: string[]
   specsZh?: string[]
-  sortOrder?: number
   isPublished?: boolean
 }
 
@@ -38,15 +37,14 @@ export default defineApiHandler(async (event) => {
   const specsEn = Array.isArray(body.specsEn) ? body.specsEn.map((item) => String(item).trim()).filter(Boolean) : []
   const specsZh = Array.isArray(body.specsZh) ? body.specsZh.map((item) => String(item).trim()).filter(Boolean) : []
   const coverUrl = body.coverUrl ?? images[0] ?? null
-  const sortOrder = Number.isFinite(body.sortOrder) ? Number(body.sortOrder) : 0
   const isPublished = body.isPublished === false ? 0 : 1
 
   const inserted = await db
     .prepare(
       `INSERT INTO products (
         slug, category_id, name_en, name_zh, summary_en, summary_zh, description_en, description_zh,
-        cover_url, images_json, specs_en_json, specs_zh_json, sort_order, is_published
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        cover_url, images_json, specs_en_json, specs_zh_json, is_published
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       RETURNING id`
     )
     .bind(
@@ -62,7 +60,6 @@ export default defineApiHandler(async (event) => {
       JSON.stringify(images),
       JSON.stringify(specsEn),
       JSON.stringify(specsZh),
-      sortOrder,
       isPublished
     )
     .first<{ id: number }>()

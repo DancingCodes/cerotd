@@ -1,26 +1,25 @@
 <template>
   <div class="flex h-full min-h-0 flex-col">
     <div class="mb-4 grid grid-cols-1 gap-2.5 md:grid-cols-[1.4fr_1fr_1fr_auto_auto_auto] md:items-center">
-        <UInput v-model="searchInput" type="search" :placeholder="$t('admin.common.searchPlaceholder')" @keyup.enter="applyFilters" />
-        <USelect v-model="filterCategory" :items="categoryOptions" @update:model-value="applyFilters" />
-        <USelect v-model="filterStatus" :items="statusOptions" @update:model-value="applyFilters" />
+        <UInput v-model="searchInput" type="search" class="w-full" :placeholder="$t('admin.common.searchPlaceholder')" @keyup.enter="applyFilters" />
+        <USelect v-model="filterCategory" :items="categoryOptions" class="w-full" @update:model-value="applyFilters" />
+        <USelect v-model="filterStatus" :items="statusOptions" class="w-full" @update:model-value="applyFilters" />
         <UButton color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}</UButton>
         <UButton v-if="selectedSlugs.length" color="error" :loading="batchDeleting" @click="removeSelected">{{ $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}</UButton>
         <UButton :disabled="!categories.length" @click="startCreate">{{ $t('admin.products.new') }}</UButton>
     </div>
-    <UModal v-model:open="formOpen" :title="editingSlug ? $t('admin.products.editTitle') : $t('admin.products.createTitle')" scrollable fullscreen>
+    <UModal v-model:open="formOpen" :title="editingSlug ? $t('admin.products.editTitle') : $t('admin.products.createTitle')" scrollable :ui="{ content: 'max-w-7xl' }">
       <template #body>
-      <UForm :state="form" class="grid grid-cols-1 gap-4 md:grid-cols-2" @submit="save">
-        <UFormField :label="$t('admin.common.nameEn')" name="nameEn" required><UInput v-model="form.nameEn" /></UFormField>
-        <UFormField :label="$t('admin.common.nameZh')" name="nameZh" required><UInput v-model="form.nameZh" /></UFormField>
-        <UFormField :label="$t('admin.products.category')" name="categorySlug" required><USelect v-model="form.categorySlug" :items="productCategoryOptions" /></UFormField>
-        <UFormField :label="$t('admin.common.sort')" name="sortOrder"><UInput v-model.number="form.sortOrder" type="number" /></UFormField>
-        <UFormField :label="$t('admin.common.published')" name="isPublished"><USelect v-model="form.isPublished" :items="publishOptions" /></UFormField>
-        <UFormField class="col-span-full" :label="$t('admin.products.summaryEn')" name="summaryEn"><UTextarea v-model="form.summaryEn" :rows="2" /></UFormField>
-        <UFormField class="col-span-full" :label="$t('admin.products.summaryZh')" name="summaryZh"><UTextarea v-model="form.summaryZh" :rows="2" /></UFormField>
-        <UFormField class="col-span-full" :label="$t('admin.products.descriptionEn')" name="descriptionEn"><UTextarea v-model="form.descriptionEn" :rows="4" /></UFormField>
-        <UFormField class="col-span-full" :label="$t('admin.products.descriptionZh')" name="descriptionZh"><UTextarea v-model="form.descriptionZh" :rows="4" /></UFormField>
-        <div class="col-span-full">
+      <UForm :state="form" class="grid grid-cols-1 gap-4 md:grid-cols-4" @submit="save">
+        <UFormField :label="$t('admin.common.nameEn')" name="nameEn" required><UInput v-model="form.nameEn" class="w-full"/></UFormField>
+        <UFormField :label="$t('admin.common.nameZh')" name="nameZh" required><UInput v-model="form.nameZh" class="w-full" /></UFormField>
+        <UFormField :label="$t('admin.products.category')" name="categorySlug" required><USelect v-model="form.categorySlug" :items="productCategoryOptions" class="w-full" /></UFormField>
+        <UFormField :label="$t('admin.common.published')" name="isPublished"><USelect v-model="form.isPublished" :items="publishOptions" class="w-full" /></UFormField>
+        <UFormField class="md:col-span-2" :label="$t('admin.products.summaryEn')" name="summaryEn"><UTextarea v-model="form.summaryEn" class="w-full" :rows="2" /></UFormField>
+        <UFormField class="md:col-span-2" :label="$t('admin.products.summaryZh')" name="summaryZh"><UTextarea v-model="form.summaryZh" class="w-full" :rows="2" /></UFormField>
+        <UFormField class="md:col-span-2" :label="$t('admin.products.descriptionEn')" name="descriptionEn"><UTextarea v-model="form.descriptionEn" class="w-full" :rows="4" /></UFormField>
+        <UFormField class="md:col-span-2" :label="$t('admin.products.descriptionZh')" name="descriptionZh"><UTextarea v-model="form.descriptionZh" class="w-full" :rows="4" /></UFormField>
+        <div class="md:col-span-2">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.coverUrl') }}</div>
           <UFileUpload
             :model-value="coverUploadItem"
@@ -30,7 +29,7 @@
             @update:model-value="onCoverUpload"
           />
         </div>
-        <div class="col-span-full">
+        <div class="md:col-span-2">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.products.images') }}</div>
           <UFileUpload
             :model-value="imageUploadItems"
@@ -41,8 +40,8 @@
             @update:model-value="onImageUpload"
           />
         </div>
-        <UFormField class="col-span-full" :label="$t('admin.products.specsEn')" name="specsEnText"><UTextarea v-model="form.specsEnText" :rows="3" /></UFormField>
-        <UFormField class="col-span-full" :label="$t('admin.products.specsZh')" name="specsZhText"><UTextarea v-model="form.specsZhText" :rows="3" /></UFormField>
+        <UFormField class="md:col-span-2" :label="$t('admin.products.specsEn')" name="specsEnText"><UTextarea v-model="form.specsEnText" class="w-full" :rows="3" /></UFormField>
+        <UFormField class="md:col-span-2" :label="$t('admin.products.specsZh')" name="specsZhText"><UTextarea v-model="form.specsZhText" class="w-full" :rows="3" /></UFormField>
         <p v-if="formError" class="col-span-full text-sm text-error">{{ formError }}</p>
         <div class="col-span-full flex justify-end gap-2"><UButton color="neutral" variant="ghost" @click="closeForm">{{ $t('admin.common.cancel') }}</UButton><UButton type="submit">{{ $t('admin.common.save') }}</UButton></div>
       </UForm>
@@ -91,7 +90,6 @@ type ProductItem = {
   coverUrl: string | null
   images: string[]
   specs: { en: string[]; zh: string[] }
-  sortOrder: number
   isPublished: boolean
 }
 
@@ -152,7 +150,6 @@ type ProductForm = {
   images: string[]
   specsEnText: string
   specsZhText: string
-  sortOrder: number
   isPublished: boolean
 }
 
@@ -169,7 +166,6 @@ const emptyForm = (): ProductForm => ({
   images: [],
   specsEnText: '',
   specsZhText: '',
-  sortOrder: 0,
   isPublished: true,
 })
 
@@ -323,7 +319,6 @@ function startEdit(item: ProductItem) {
     images: [...item.images],
     specsEnText: item.specs.en.join('\n'),
     specsZhText: item.specs.zh.join('\n'),
-    sortOrder: item.sortOrder,
     isPublished: item.isPublished,
   })
   formError.value = ''
@@ -362,7 +357,6 @@ async function save() {
     images: form.images,
     specsEn: linesToArray(form.specsEnText),
     specsZh: linesToArray(form.specsZhText),
-    sortOrder: Number(form.sortOrder) || 0,
     isPublished: form.isPublished,
   }
 

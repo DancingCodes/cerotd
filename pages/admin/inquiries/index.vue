@@ -1,8 +1,8 @@
 <template>
   <div class="flex h-full min-h-0 flex-col">
   <div class="mb-4 grid grid-cols-1 gap-2.5 md:grid-cols-[1fr_1fr_auto]">
-    <USelect v-model="status" :items="statusFilters" @update:model-value="applyFilters" />
-    <USelect v-model="range" :items="rangeFilters" @update:model-value="applyFilters" />
+    <USelect v-model="status" :items="statusFilters" class="w-full" @update:model-value="applyFilters" />
+    <USelect v-model="range" :items="rangeFilters" class="w-full" @update:model-value="applyFilters" />
     <UButton color="neutral" variant="soft" @click="load">{{ $t('admin.inquiries.refresh') }}</UButton>
   </div>
 

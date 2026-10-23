@@ -25,7 +25,7 @@ export default defineApiHandler(async (event) => {
   let category = (body.category?.trim() || '').toLowerCase()
   if (!category) {
     const first = await db
-      .prepare('SELECT slug FROM news_categories WHERE is_published = 1 ORDER BY sort_order ASC, id ASC LIMIT 1')
+      .prepare('SELECT slug FROM news_categories ORDER BY sort_order ASC, id ASC LIMIT 1')
       .first<{ slug: string }>()
     category = first?.slug || ''
   }

@@ -10,7 +10,6 @@ type UpdateProductBody = {
   images?: string[]
   specsEn?: string[]
   specsZh?: string[]
-  sortOrder?: number
   isPublished?: boolean
 }
 
@@ -39,7 +38,6 @@ export default defineApiHandler(async (event) => {
   const summaryZh = body.summaryZh?.trim() ?? current.summary_zh
   const descriptionEn = body.descriptionEn?.trim() ?? current.description_en
   const descriptionZh = body.descriptionZh?.trim() ?? current.description_zh
-  const sortOrder = body.sortOrder === undefined ? current.sort_order : Number(body.sortOrder)
   const isPublished =
     body.isPublished === undefined ? current.is_published : body.isPublished ? 1 : 0
 
@@ -72,7 +70,7 @@ export default defineApiHandler(async (event) => {
       `UPDATE products
        SET slug = ?, category_id = ?, name_en = ?, name_zh = ?, summary_en = ?, summary_zh = ?,
            description_en = ?, description_zh = ?, cover_url = ?, images_json = ?, specs_en_json = ?,
-           specs_zh_json = ?, sort_order = ?, is_published = ?, updated_at = datetime('now')
+           specs_zh_json = ?, is_published = ?, updated_at = datetime('now')
        WHERE id = ?`
     )
     .bind(
@@ -88,7 +86,6 @@ export default defineApiHandler(async (event) => {
       JSON.stringify(images),
       JSON.stringify(specsEn),
       JSON.stringify(specsZh),
-      sortOrder,
       isPublished,
       current.id
     )

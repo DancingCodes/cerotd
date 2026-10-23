@@ -3,7 +3,6 @@ type CreateNewsCategoryBody = {
   nameEn?: string
   nameZh?: string
   sortOrder?: number
-  isPublished?: boolean
 }
 
 export default defineApiHandler(async (event) => {
@@ -21,15 +20,14 @@ export default defineApiHandler(async (event) => {
   const slug = allocated.slug
 
   const sortOrder = Number.isFinite(body.sortOrder) ? Number(body.sortOrder) : 0
-  const isPublished = body.isPublished === false ? 0 : 1
 
   const inserted = await db
     .prepare(
-      `INSERT INTO news_categories (slug, name_en, name_zh, sort_order, is_published)
-       VALUES (?, ?, ?, ?, ?)
+      `INSERT INTO news_categories (slug, name_en, name_zh, sort_order)
+       VALUES (?, ?, ?, ?)
        RETURNING *`
     )
-    .bind(slug, nameEn, nameZh, sortOrder, isPublished)
+    .bind(slug, nameEn, nameZh, sortOrder)
     .first<NewsCategoryRow>()
 
   if (!inserted) {

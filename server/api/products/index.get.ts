@@ -34,7 +34,7 @@ export default defineApiHandler(async (event) => {
   }
 
   const whereSql = where.length ? `WHERE ${where.join(' AND ')}` : ''
-  const orderSql = 'ORDER BY p.sort_order ASC, p.id ASC'
+  const orderSql = 'ORDER BY p.created_at DESC, p.id DESC'
 
   if (!paging.enabled) {
     const result = await db

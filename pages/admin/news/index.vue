@@ -1,21 +1,20 @@
 <template>
   <div class="flex h-full min-h-0 flex-col">
     <div class="mb-4 grid grid-cols-1 gap-2.5 md:grid-cols-[1.4fr_1fr_1fr_auto_auto_auto] md:items-center">
-        <UInput v-model="searchInput" type="search" :placeholder="$t('admin.news.searchPlaceholder')" @keyup.enter="applyFilters" />
-        <USelect v-model="filterCategory" :items="categoryOptions" @update:model-value="applyFilters" />
-        <USelect v-model="filterStatus" :items="statusOptions" @update:model-value="applyFilters" />
+        <UInput v-model="searchInput" type="search" class="w-full" :placeholder="$t('admin.news.searchPlaceholder')" @keyup.enter="applyFilters" />
+        <USelect v-model="filterCategory" :items="categoryOptions" class="w-full" @update:model-value="applyFilters" />
+        <USelect v-model="filterStatus" :items="statusOptions" class="w-full" @update:model-value="applyFilters" />
         <UButton color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}</UButton>
         <UButton v-if="selectedSlugs.length" color="error" :loading="batchDeleting" @click="removeSelected">{{ $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}</UButton>
         <UButton :disabled="!categories.length" @click="startCreate">{{ $t('admin.news.new') }}</UButton>
     </div>
-    <UModal v-model:open="formOpen" :title="editingSlug ? $t('admin.news.editTitle') : $t('admin.news.createTitle')" scrollable fullscreen>
+    <UModal v-model:open="formOpen" :title="editingSlug ? $t('admin.news.editTitle') : $t('admin.news.createTitle')" scrollable :ui="{ content: 'max-w-7xl' }">
       <template #body>
-      <UForm :state="form" class="grid grid-cols-1 gap-4 md:grid-cols-2" @submit="save">
-        <UFormField :label="$t('admin.news.titleEn')" name="titleEn" required><UInput v-model="form.titleEn" /></UFormField>
-        <UFormField :label="$t('admin.news.titleZh')" name="titleZh" required><UInput v-model="form.titleZh" /></UFormField>
-        <UFormField :label="$t('admin.news.category')" name="category" required><USelect v-model="form.category" :items="newsCategoryOptions" /></UFormField>
-        <UFormField :label="$t('admin.news.publishedAt')" name="publishedAt"><UInput v-model="form.publishedAt" type="datetime-local" /></UFormField>
-        <UFormField :label="$t('admin.common.published')" name="isPublished"><USelect v-model="form.isPublished" :items="publishOptions" /></UFormField>
+      <UForm :state="form" class="grid grid-cols-1 gap-4 md:grid-cols-4" @submit="save">
+        <UFormField :label="$t('admin.news.titleEn')" name="titleEn" required><UInput v-model="form.titleEn" class="w-full" /></UFormField>
+        <UFormField :label="$t('admin.news.titleZh')" name="titleZh" required><UInput v-model="form.titleZh" class="w-full" /></UFormField>
+        <UFormField :label="$t('admin.news.category')" name="category" required><USelect v-model="form.category" :items="newsCategoryOptions" class="w-full" /></UFormField>
+        <UFormField :label="$t('admin.common.published')" name="isPublished"><USelect v-model="form.isPublished" :items="publishOptions" class="w-full" /></UFormField>
         <div class="col-span-full">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.coverUrl') }}</div>
           <UFileUpload
@@ -26,12 +25,12 @@
             @update:model-value="onCoverUpload"
           />
         </div>
-        <UFormField class="col-span-full" :label="$t('admin.news.summaryEn')" name="summaryEn"><UTextarea v-model="form.summaryEn" :rows="2" /></UFormField>
-        <UFormField class="col-span-full" :label="$t('admin.news.summaryZh')" name="summaryZh"><UTextarea v-model="form.summaryZh" :rows="2" /></UFormField>
-        <div class="col-span-full">
+        <UFormField class="md:col-span-2" :label="$t('admin.news.summaryEn')" name="summaryEn"><UTextarea v-model="form.summaryEn" class="w-full" :rows="2" /></UFormField>
+        <UFormField class="md:col-span-2" :label="$t('admin.news.summaryZh')" name="summaryZh"><UTextarea v-model="form.summaryZh" class="w-full" :rows="2" /></UFormField>
+        <div class="md:col-span-2">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.news.contentEn') }}</div>
           <ClientOnly>
-            <UEditor v-model="form.contentEn" content-type="html" :image="{ inline: false, allowBase64: false }">
+            <UEditor v-model="form.contentEn" class="min-h-100" content-type="html" :image="{ inline: false, allowBase64: false }">
               <template #default="{ editor }">
                 <div class="flex flex-wrap items-center gap-1 border-b border-[#e5eaf0] p-2">
                   <UEditorToolbar :editor="editor" :items="editorToolbarItems" />
@@ -42,10 +41,10 @@
             <p class="mt-2 text-xs text-gray-500">{{ $t('admin.news.imageHint') }}</p>
           </ClientOnly>
         </div>
-        <div class="col-span-full">
+        <div class="md:col-span-2">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.news.contentZh') }}</div>
           <ClientOnly>
-            <UEditor v-model="form.contentZh" content-type="html" :image="{ inline: false, allowBase64: false }">
+            <UEditor v-model="form.contentZh" class="min-h-100" content-type="html" :image="{ inline: false, allowBase64: false }">
               <template #default="{ editor }">
                 <div class="flex flex-wrap items-center gap-1 border-b border-[#e5eaf0] p-2">
                   <UEditorToolbar :editor="editor" :items="editorToolbarItems" />
