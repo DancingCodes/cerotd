@@ -128,8 +128,6 @@
 
 
 <script setup lang="ts">
-import { PRODUCT_CATEGORIES } from '#shared/product-categories'
-
 const t = useLocalized()
 const { locale, t: i18nT } = useI18n()
 
@@ -139,7 +137,9 @@ usePageSeo({
   path: '/contact'
 })
 
-const productOptions = PRODUCT_CATEGORIES
+type ProductCategory = { slug: string; name: { en: string; zh: string } }
+const { data: productCategories } = await useApiFetch<{ items: ProductCategory[] }>('/api/product-categories')
+const productOptions = computed(() => productCategories.value?.items || [])
 
 const form = reactive({
   name: '',

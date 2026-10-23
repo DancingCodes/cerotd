@@ -110,6 +110,30 @@ export const productSelectSql = `SELECT
 FROM products p
 JOIN products_categories c ON c.id = p.category_id`
 
+export type ProductCategoryRow = {
+  id: number
+  slug: string
+  name_en: string
+  name_zh: string
+  sort_order: number
+  created_at: string
+  updated_at: string
+}
+
+export function mapProductCategory(row: ProductCategoryRow) {
+  return {
+    id: row.id,
+    slug: row.slug,
+    name: {
+      en: row.name_en,
+      zh: row.name_zh
+    },
+    sortOrder: row.sort_order,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at
+  }
+}
+
 export type NewsCategoryRow = {
   id: number
   slug: string

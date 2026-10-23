@@ -83,9 +83,8 @@
 
 
 <script setup lang="ts">
-import { PRODUCT_CATEGORIES } from '#shared/product-categories'
-
 type Localized = { en: string; zh: string }
+type CategoryItem = { slug: string; name: Localized }
 
 type ProductItem = {
   slug: string
@@ -115,7 +114,8 @@ function setCategory(slug: string) {
   })
 }
 
-const categoryList = PRODUCT_CATEGORIES
+const { data: categoriesData } = await useApiFetch<{ items: CategoryItem[] }>('/api/product-categories')
+const categoryList = computed(() => categoriesData.value?.items || [])
 
 const pageSize = 6
 type ProductListResponse = {

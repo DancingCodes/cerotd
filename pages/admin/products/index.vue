@@ -189,8 +189,6 @@
 </template>
 
 <script setup lang="ts">
-import { PRODUCT_CATEGORIES } from '#shared/product-categories'
-
 definePageMeta({
   layout: 'admin',
   middleware: ['admin']
@@ -232,7 +230,7 @@ const selectedSlugs = ref<string[]>([])
 const batchDeleting = ref(false)
 const allSelected = computed(() => items.value.length > 0 && items.value.every((item) => selectedSlugs.value.includes(item.slug)))
 const items = ref<ProductItem[]>([])
-const categories = computed(() => PRODUCT_CATEGORIES.map((item) => ({ slug: item.slug, name: item.name })))
+const categories = ref<CategoryItem[]>([])
 const formOpen = ref(false)
 const editingSlug = ref('')
 const formError = ref('')
@@ -374,17 +372,21 @@ function onSelectChange(slug: string, event: Event) {
 async function load() {
   pending.value = true
   try {
-    const productData = await apiFetch<{ items: ProductItem[]; total?: number }>('/api/products', {
-      query: {
-        all: 1,
-        page: page.value,
-        pageSize: pageSize.value,
-        q: search.value || undefined,
-        category: filterCategory.value || undefined,
-        status: filterStatus.value
-      }
-    })
+    const [productData, categoryData] = await Promise.all([
+      apiFetch<{ items: ProductItem[]; total?: number }>('/api/products', {
+        query: {
+          all: 1,
+          page: page.value,
+          pageSize: pageSize.value,
+          q: search.value || undefined,
+          category: filterCategory.value || undefined,
+          status: filterStatus.value
+        }
+      }),
+      apiFetch<{ items: CategoryItem[] }>('/api/product-categories')
+    ])
     items.value = productData.items
+    categories.value = categoryData.items
     total.value = Number(productData.total || productData.items.length)
     if (items.value.length === 0 && page.value > 1) {
       page.value -= 1

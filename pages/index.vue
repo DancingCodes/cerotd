@@ -173,7 +173,6 @@
             class="block cursor-pointer rounded-xl border border-[#e8edf2] bg-[#f3f4f6] px-5 py-5.5 text-inherit no-underline transition hover:-translate-y-0.75 hover:border-[#cfd8e3]"
           >
             <h3 class="mb-2.5 text-lg font-bold text-[#0f4c56]">{{ item.name }}</h3>
-            <p class="text-sm leading-[1.7] text-gray-600">{{ item.desc }}</p>
           </NuxtLink>
         </div>
         <div class="mt-7">
@@ -249,8 +248,6 @@
 
 
 <script setup lang="ts">
-import { PRODUCT_CATEGORIES } from '#shared/product-categories'
-
 const { t, locale } = useI18n()
 const tLocal = useLocalized()
 
@@ -293,14 +290,12 @@ const advantageImages = [
   '/images/factory/11.webp'
 ]
 
-const productLines = computed(() => {
-  locale.value
-  return PRODUCT_CATEGORIES.map((item) => ({
-    slug: item.slug,
-    name: tLocal(item.name),
-    desc: t(`home.lines.items.${item.slug}.desc`)
-  }))
-})
+type ProductCategory = { slug: string; name: { en: string; zh: string } }
+const { data: productCategories } = await useApiFetch<{ items: ProductCategory[] }>('/api/product-categories')
+const productLines = computed(() => productCategories.value?.items.map((item) => ({
+  slug: item.slug,
+  name: tLocal(item.name)
+})) || [])
 
 const advantages = computed(() => {
   locale.value

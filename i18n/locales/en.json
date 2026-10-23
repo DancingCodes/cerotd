@@ -589,7 +589,8 @@
       "logout": "Logout",
       "news": "News",
       "inquiries": "Inquiries",
-      "newsCategories": "News Categories"
+      "newsCategories": "News Categories",
+      "productCategories": "Product Categories"
     },
     "login": {
       "title": "Admin Login",
@@ -732,6 +733,15 @@
       "addImage": "Upload image",
       "empty": "No image yet. Click upload above.",
       "replace": "Replace image"
+    },
+    "productCategories": {
+      "title": "Product Categories",
+      "subtitle": "Manage categories used by product pages and inquiry forms",
+      "new": "New category",
+      "editTitle": "Edit product category",
+      "createTitle": "Create product category",
+      "empty": "No product categories yet.",
+      "deleteConfirm": "Delete product category \"{name}\"? It must have no products."
     },
     "newsCategories": {
       "title": "News Categories",
