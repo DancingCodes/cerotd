@@ -82,7 +82,7 @@
             <h2 class="mb-2.5 text-[30px] font-semibold tracking-normal text-white">{{ $t('services.cta.title') }}</h2>
             <p class="max-w-[42ch] text-[16px] leading-[1.7] text-white/70">{{ $t('services.cta.subtitle') }}</p>
           </div>
-          <NuxtLink to="/contact" class="inline-flex items-center justify-center rounded-full bg-white px-5.5 py-3.5 text-[15px] font-semibold whitespace-nowrap text-[#102033] no-underline">{{ $t('services.cta.button') }}</NuxtLink>
+          <NuxtLink to="/contact" class="flex items-center justify-center rounded-full bg-white px-5.5 py-3.5 text-[15px] font-semibold whitespace-nowrap text-[#102033] no-underline">{{ $t('services.cta.button') }}</NuxtLink>
         </div>
       </UContainer>
     </section>

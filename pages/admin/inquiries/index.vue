@@ -9,7 +9,7 @@
           <span v-if="unreadCount"> · {{ $t('admin.inquiries.unreadCount', { count: unreadCount }) }}</span>
         </div>
       </div>
-      <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="load">{{ $t('admin.inquiries.refresh') }}</div>
+      <div class="flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="load">{{ $t('admin.inquiries.refresh') }}</div>
     </div>
 
     <div class="mb-4 grid gap-2.5">

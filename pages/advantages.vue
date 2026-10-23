@@ -77,8 +77,8 @@
             <p class="max-w-[46ch] text-[16px] leading-[1.7] text-white/70">{{ $t('advantages.cta.subtitle') }}</p>
           </div>
           <div class="flex flex-wrap gap-3">
-            <NuxtLink to="/contact" class="inline-flex items-center justify-center rounded-full bg-white px-5.5 py-3.5 text-[15px] font-semibold whitespace-nowrap text-[#102033] no-underline">{{ $t('advantages.cta.button') }}</NuxtLink>
-            <NuxtLink to="/products" class="inline-flex items-center justify-center rounded-full border border-white/[.28] bg-transparent px-5.5 py-3.5 text-[15px] font-semibold whitespace-nowrap text-white no-underline">{{ $t('advantages.cta.secondary') }}</NuxtLink>
+            <NuxtLink to="/contact" class="flex items-center justify-center rounded-full bg-white px-5.5 py-3.5 text-[15px] font-semibold whitespace-nowrap text-[#102033] no-underline">{{ $t('advantages.cta.button') }}</NuxtLink>
+            <NuxtLink to="/products" class="flex items-center justify-center rounded-full border border-white/[.28] bg-transparent px-5.5 py-3.5 text-[15px] font-semibold whitespace-nowrap text-white no-underline">{{ $t('advantages.cta.secondary') }}</NuxtLink>
           </div>
         </div>
       </UContainer>

@@ -11,13 +11,13 @@
       <div class="flex flex-wrap items-center gap-3">
         <div
           v-if="selectedSlugs.length"
-          class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#b42318] px-4 text-sm font-semibold whitespace-nowrap text-white"
+          class="flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#b42318] px-4 text-sm font-semibold whitespace-nowrap text-white"
           :class="{ 'pointer-events-none opacity-60': batchDeleting }"
           @click="removeSelected"
         >
           {{ $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}
         </div>
-        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white" @click="startCreate">{{ $t('admin.newsCategories.new') }}</div>
+        <div class="flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white" @click="startCreate">{{ $t('admin.newsCategories.new') }}</div>
       </div>
     </div>
 
@@ -48,8 +48,8 @@
       </div>
       <div v-if="formError" class="mt-3 text-3.25 text-[#b42318]">{{ formError }}</div>
       <div class="mt-4 flex gap-2.5">
-        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white" @click="save">{{ $t('admin.common.save') }}</div>
-        <div class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="closeForm">{{ $t('admin.common.cancel') }}</div>
+        <div class="flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white" @click="save">{{ $t('admin.common.save') }}</div>
+        <div class="flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="closeForm">{{ $t('admin.common.cancel') }}</div>
       </div>
     </div>
 

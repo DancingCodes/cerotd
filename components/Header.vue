@@ -2,7 +2,7 @@
   <header class="sticky top-0 z-50 border-b border-[#d9dde3]/95 bg-white">
     <nav aria-label="Primary">
       <div class="mx-auto flex min-h-18.5 w-full max-w-295 items-center justify-between px-6">
-        <NuxtLink to="/" class="inline-flex items-center no-underline">
+        <NuxtLink to="/" class="flex items-center no-underline">
           <img src="/images/logo.webp" alt="Cerotd" class="h-9 w-auto" />
         </NuxtLink>
 
@@ -13,7 +13,7 @@
           </NuxtLink>
 
           <NuxtLink to="/contact"
-            class="inline-flex min-h-10 items-center justify-center rounded-full bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] px-4.5 text-[14px] font-[650] text-white no-underline transition-opacity hover:opacity-90 [&.router-link-active]:ring-2 [&.router-link-active]:ring-[#0f4c56]/20">
+            class="flex min-h-10 items-center justify-center rounded-full bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] px-4.5 text-[14px] font-[650] text-white no-underline transition-opacity hover:opacity-90 [&.router-link-active]:ring-2 [&.router-link-active]:ring-[#0f4c56]/20">
             {{ $t('common.contact') }}
           </NuxtLink>
 
@@ -25,7 +25,7 @@
         </div>
 
         <button type="button"
-          class="inline-flex h-10.5 w-10.5 cursor-pointer flex-col items-center justify-center gap-1.25 rounded-xl bg-[#f3f4f6] lg:hidden"
+          class="flex h-10.5 w-10.5 cursor-pointer flex-col items-center justify-center gap-1.25 rounded-xl bg-[#f3f4f6] lg:hidden"
           :aria-expanded="mobileMenuOpen" aria-label="Toggle menu" @click="mobileMenuOpen = !mobileMenuOpen">
           <span class="h-0.5 w-4.5 rounded-full bg-[#1f2937]"></span>
           <span class="h-0.5 w-4.5 rounded-full bg-[#1f2937]"></span>
@@ -40,7 +40,7 @@
           {{ $t(item.label) }}
         </NuxtLink>
         <NuxtLink to="/contact"
-          class="mt-3 inline-flex min-h-11 items-center justify-center rounded-xl bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] text-center text-[16px] font-[650] text-white no-underline"
+          class="mt-3 flex min-h-11 items-center justify-center rounded-xl bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] text-center text-[16px] font-[650] text-white no-underline"
           @click="mobileMenuOpen = false">
           {{ $t('common.contact') }}
         </NuxtLink>

@@ -92,11 +92,11 @@
             <fieldset class="col-span-full flex min-w-0 flex-col gap-2 border-0 p-0">
               <legend class="text-[13px] font-semibold text-[#374151]">{{ $t('contact.form.bulk') }}</legend>
               <div class="flex flex-wrap gap-3">
-                <label class="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-[#e2e6eb] bg-[#f3f4f6] px-3.5 text-[14px] text-[#111827]">
+                <label class="flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-[#e2e6eb] bg-[#f3f4f6] px-3.5 text-[14px] text-[#111827]">
                   <input v-model="form.bulk" type="radio" name="bulk" value="yes" />
                   <span>{{ $t('contact.form.bulkYes') }}</span>
                 </label>
-                <label class="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-[#e2e6eb] bg-[#f3f4f6] px-3.5 text-[14px] text-[#111827]">
+                <label class="flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-[#e2e6eb] bg-[#f3f4f6] px-3.5 text-[14px] text-[#111827]">
                   <input v-model="form.bulk" type="radio" name="bulk" value="no" />
                   <span>{{ $t('contact.form.bulkNo') }}</span>
                 </label>
@@ -115,7 +115,7 @@
               <span class="text-[13px] font-semibold text-[#374151]">{{ $t('contact.form.message') }}</span>
               <textarea v-model="form.message" class="min-h-35 w-full resize-y rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" name="message" rows="5" :placeholder="$t('contact.form.message')"></textarea>
             </label>
-            <button type="submit" class="col-span-full mt-1 inline-flex min-h-13 w-full cursor-pointer items-center justify-center rounded-full bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] px-7 text-[15px] font-semibold text-white transition hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(26,166,184,.24)] disabled:cursor-wait disabled:opacity-70" :disabled="submitting">
+            <button type="submit" class="col-span-full mt-1 flex min-h-13 w-full cursor-pointer items-center justify-center rounded-full bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] px-7 text-[15px] font-semibold text-white transition hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(26,166,184,.24)] disabled:cursor-wait disabled:opacity-70" :disabled="submitting">
               {{ submitting ? $t('contact.form.submitting') : $t('contact.form.submit') }}
             </button>
           </form>
