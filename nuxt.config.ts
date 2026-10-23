@@ -5,6 +5,12 @@ export default defineNuxtConfig({
     preference: 'light',
     fallback: 'light'
   },
+  fonts: {
+    providers: {
+      google: false,
+      googleicons: false
+    }
+  },
   runtimeConfig: {
     adminApiToken: ''
   },
