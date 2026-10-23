@@ -6,10 +6,7 @@ export function assertAdmin(event: H3Event) {
   const token = fromCloudflare || fromRuntime
 
   if (!token) {
-    throw createError({
-      statusCode: 500,
-      statusMessage: 'ADMIN_API_TOKEN is not configured'
-    })
+    throw createError({ statusCode: 401, statusMessage: 'Unauthorized' })
   }
 
   const header = getHeader(event, 'authorization') || ''

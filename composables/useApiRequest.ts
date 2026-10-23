@@ -9,7 +9,13 @@ export async function apiFetch<T>(request: string, options: Record<string, unkno
   const response = await $fetch<ApiResponse<T>>(request, requestOptions)
 
   if (response.code !== 200) {
-    if (import.meta.client) useToast().add({ title: response.msg, color: 'error' })
+    if (import.meta.client) {
+      if (response.code === 401 && useRoute().path.startsWith('/admin')) {
+        useAdminAuth().clearToken()
+        navigateTo('/admin')
+      }
+      useToast().add({ title: response.msg, color: 'error' })
+    }
     throw response
   }
   return response.data
@@ -20,7 +26,9 @@ export function useApiFetch<T>(request: any, options: Record<string, any> = {}) 
     ...options,
     transform: (response: ApiResponse<T>) => {
       if (response.code !== 200) {
-        if (import.meta.client) useToast().add({ title: response.msg, color: 'error' })
+        if (import.meta.client) {
+          useToast().add({ title: response.msg, color: 'error' })
+        }
         throw response
       }
       return response.data
