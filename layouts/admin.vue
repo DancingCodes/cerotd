@@ -8,7 +8,9 @@
         <div class="flex min-w-0 flex-wrap items-center justify-end gap-2 max-[720px]:gap-1">
           <template v-if="token">
             <NuxtLink to="/admin/dashboard"
-              class="cursor-pointer rounded-[10px] px-3 py-2 text-sm font-semibold text-gray-600 no-underline [&.router-link-active]:bg-[#e8f7f9] [&.router-link-active]:text-[#0e7f8f] max-[720px]:px-2 max-[720px]:py-1.5">{{ $t('admin.nav.dashboard') }}</NuxtLink>
+              class="cursor-pointer rounded-[10px] px-3 py-2 text-sm font-semibold text-gray-600 no-underline [&.router-link-active]:bg-[#e8f7f9] [&.router-link-active]:text-[#0e7f8f] max-[720px]:px-2 max-[720px]:py-1.5">
+              {{ $t('admin.nav.dashboard') }}
+            </NuxtLink>
             <NuxtLink to="/admin/product-categories"
               class="cursor-pointer rounded-[10px] px-3 py-2 text-sm font-semibold text-gray-600 no-underline [&.router-link-active]:bg-[#e8f7f9] [&.router-link-active]:text-[#0e7f8f] max-[720px]:px-2 max-[720px]:py-1.5">
               {{ $t('admin.nav.productCategories') }}
