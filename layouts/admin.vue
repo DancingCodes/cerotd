@@ -2,8 +2,7 @@
   <div class="flex h-screen flex-col overflow-hidden bg-[#f5f7fa] text-gray-900">
     <div v-if="route.path !== '/admin'" class="border-b border-[#e5eaf0] bg-white">
       <div class="mx-auto flex min-h-16 w-full max-w-295 items-center justify-between gap-4 px-6">
-        <NuxtLink to="/admin/dashboard" class="shrink-0 text-base font-bold text-[#0e7f8f] no-underline">{{
-          $t('admin.brand') }}</NuxtLink>
+        <NuxtLink to="/admin/dashboard" class="shrink-0"><img src="/images/logo.webp" alt="Cerotd" class="h-8.5 w-auto" /></NuxtLink>
         <div class="flex min-w-0 items-center justify-end gap-2">
           <template v-if="token">
             <NuxtLink to="/admin/dashboard"
