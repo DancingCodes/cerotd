@@ -1,6 +1,6 @@
 import type { H3Event } from 'h3'
 
-export function assertAdmin(event: H3Event) {
+export function assertAdmin(event: H3Event, invalidTokenStatus = 401) {
   const fromRuntime = useRuntimeConfig(event).adminApiToken
   const fromCloudflare = event.context.cloudflare?.env?.ADMIN_API_TOKEN
   const token = fromCloudflare || fromRuntime
@@ -14,7 +14,7 @@ export function assertAdmin(event: H3Event) {
 
   const header = getHeader(event, 'authorization') || ''
   if (header !== `Bearer ${token}`) {
-    throw createError({ statusCode: 500, statusMessage: 'Invalid token' })
+    throw createError({ statusCode: invalidTokenStatus, statusMessage: 'Invalid token' })
   }
 }
 

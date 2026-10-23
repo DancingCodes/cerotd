@@ -11,15 +11,9 @@
     <UButton color="neutral" variant="soft" @click="load">{{ $t('admin.inquiries.refresh') }}</UButton>
   </div>
 
-  <div class="mb-4 grid gap-2.5">
-    <div class="flex flex-wrap gap-2">
-      <UButton v-for="item in statusFilters" :key="item.value" :color="status === item.value ? 'primary' : 'neutral'"
-        :variant="status === item.value ? 'soft' : 'outline'" size="xs" @click="setStatus(item.value)">{{ item.label }}</UButton>
-    </div>
-    <div class="flex flex-wrap gap-2">
-      <UButton v-for="item in rangeFilters" :key="item.value" :color="range === item.value ? 'primary' : 'neutral'"
-        :variant="range === item.value ? 'soft' : 'outline'" size="xs" @click="setRange(item.value)">{{ item.label }}</UButton>
-    </div>
+  <div class="mb-4 grid grid-cols-1 gap-2.5 md:grid-cols-2">
+    <USelect v-model="status" :items="statusFilters" @update:model-value="applyFilters" />
+    <USelect v-model="range" :items="rangeFilters" @update:model-value="applyFilters" />
   </div>
 
   <UCard>
@@ -104,8 +98,7 @@ const rangeFilters = computed(() => [
 
 function formatDate(value: string) { return value ? value.slice(0, 16).replace('T', ' ') : '' }
 function formatBulk(value: string) { return value === 'yes' ? t('admin.inquiries.bulkYes') : value === 'no' ? t('admin.inquiries.bulkNo') : '-' }
-function setStatus(value: StatusFilter) { status.value = value; page.value = 1; load() }
-function setRange(value: RangeFilter) { range.value = value; page.value = 1; load() }
+function applyFilters() { page.value = 1; load() }
 
 async function toggle(item: InquiryItem) {
   openId.value = openId.value === item.id ? null : item.id
