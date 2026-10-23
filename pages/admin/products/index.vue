@@ -219,7 +219,6 @@ type ProductItem = {
 
 const { t } = useI18n()
 const lt = useLocalized()
-const toast = useToast()
 const pending = ref(true)
 const searchInput = ref('')
 const search = ref('')
@@ -316,12 +315,7 @@ async function onCoverUpload(value: File | UploadedImage | null | undefined) {
   uploadingCover.value = true
   try {
     form.coverUrl = await uploadImage(value)
-  } catch (err: any) {
-    toast.add({
-      title: t('admin.upload.failed'),
-      description: err?.msg || t('admin.upload.failed'),
-      color: 'error'
-    })
+  } catch {
   } finally {
     uploadingCover.value = false
   }
@@ -343,13 +337,8 @@ async function onImageUpload(value: Array<File | UploadedImage> | null | undefin
   try {
     const uploaded = await Promise.all(newFiles.map(uploadImage))
     form.images = [...retained, ...uploaded]
-  } catch (err: any) {
+  } catch {
     form.images = retained
-    toast.add({
-      title: t('admin.upload.failed'),
-      description: err?.msg || t('admin.upload.failed'),
-      color: 'error'
-    })
   } finally {
     uploadingImages.value = false
   }
@@ -498,9 +487,7 @@ async function save() {
     }
     closeForm()
     await load()
-  } catch (err: any) {
-    formError.value = err?.msg || t('admin.common.saveFailed')
-  }
+  } catch {}
 }
 
 async function remove(item: ProductItem) {
@@ -510,9 +497,7 @@ async function remove(item: ProductItem) {
       method: 'DELETE'
     })
     await load()
-  } catch (err: any) {
-    toast.add({ title: t('admin.common.deleteFailed'), description: err?.msg || t('admin.common.deleteFailed'), color: 'error' })
-  }
+  } catch {}
 }
 
 async function removeSelected() {
@@ -528,8 +513,7 @@ async function removeSelected() {
     }
     selectedSlugs.value = []
     await load()
-  } catch (err: any) {
-    toast.add({ title: t('admin.common.deleteFailed'), description: err?.msg || t('admin.common.deleteFailed'), color: 'error' })
+  } catch {
     await load()
   } finally {
     batchDeleting.value = false

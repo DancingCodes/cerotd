@@ -122,7 +122,6 @@ type CategoryItem = {
 
 const { t, locale } = useI18n()
 const lt = useLocalized()
-const toast = useToast()
 const pending = ref(true)
 const page = ref(1)
 const pageSize = ref(20)
@@ -250,9 +249,7 @@ async function save() {
     }
     closeForm()
     await load()
-  } catch (err: any) {
-    formError.value = err?.msg || t('admin.common.saveFailed')
-  }
+  } catch {}
 }
 
 async function remove(item: CategoryItem) {
@@ -262,13 +259,7 @@ async function remove(item: CategoryItem) {
       method: 'DELETE'
     })
     await load()
-  } catch (err: any) {
-    toast.add({
-      title: t('admin.common.deleteFailed'),
-      description: err?.msg,
-      color: 'error'
-    })
-  }
+  } catch {}
 }
 
 async function removeSelected() {
@@ -284,12 +275,7 @@ async function removeSelected() {
     }
     selectedSlugs.value = []
     await load()
-  } catch (err: any) {
-    toast.add({
-      title: t('admin.common.deleteFailed'),
-      description: err?.msg,
-      color: 'error'
-    })
+  } catch {
     await load()
   } finally {
     batchDeleting.value = false

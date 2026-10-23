@@ -210,7 +210,6 @@ type NewsItem = {
 
 const { t } = useI18n()
 const lt = useLocalized()
-const toast = useToast()
 
 type CategoryItem = {
   slug: string
@@ -299,12 +298,7 @@ async function onCoverUpload(value: File | UploadedImage | null | undefined) {
   uploadingCover.value = true
   try {
     form.coverUrl = await uploadImage(value)
-  } catch (err: any) {
-    toast.add({
-      title: t('admin.upload.failed'),
-      description: err?.msg || t('admin.upload.failed'),
-      color: 'error'
-    })
+  } catch {
   } finally {
     uploadingCover.value = false
   }
@@ -320,13 +314,7 @@ function uploadEditorImage(editor: any) {
     try {
       const url = await uploadImage(file)
       editor.chain().focus().setImage({ src: url }).run()
-    } catch (err: any) {
-      toast.add({
-        title: t('admin.upload.failed'),
-        description: err?.msg || t('admin.upload.failed'),
-        color: 'error'
-      })
-    }
+    } catch {}
   }
   input.click()
 }
@@ -507,9 +495,7 @@ async function save() {
     }
     closeForm()
     await load()
-  } catch (err: any) {
-    formError.value = err?.msg || t('admin.common.saveFailed')
-  }
+  } catch {}
 }
 
 async function remove(item: NewsItem) {
@@ -519,9 +505,7 @@ async function remove(item: NewsItem) {
       method: 'DELETE'
     })
     await load()
-  } catch (err: any) {
-    toast.add({ title: t('admin.common.deleteFailed'), description: err?.msg || t('admin.common.deleteFailed'), color: 'error' })
-  }
+  } catch {}
 }
 
 async function removeSelected() {
@@ -537,8 +521,7 @@ async function removeSelected() {
     }
     selectedSlugs.value = []
     await load()
-  } catch (err: any) {
-    toast.add({ title: t('admin.common.deleteFailed'), description: err?.msg || t('admin.common.deleteFailed'), color: 'error' })
+  } catch {
     await load()
   } finally {
     batchDeleting.value = false

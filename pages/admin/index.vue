@@ -46,9 +46,8 @@ async function login() {
   try {
     await apiFetch('/api/admin/check')
     navigateTo('/admin/products')
-  } catch (err: any) {
+  } catch {
     clearToken()
-    error.value = err?.code === 401 ? t('admin.login.invalidToken') : t('admin.login.failed')
   }
 }
 </script>

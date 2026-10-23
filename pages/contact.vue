@@ -208,10 +208,8 @@ async function onSubmit() {
     })
     submitStatus.value = 'success'
     resetForm()
-  } catch (error) {
-    submitStatus.value = 'error'
-    const err = error as { msg?: string } | null
-    submitError.value = err?.msg || i18nT('contact.form.error')
+  } catch {
+    submitStatus.value = 'idle'
   } finally {
     submitting.value = false
   }

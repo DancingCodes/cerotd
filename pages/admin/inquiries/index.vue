@@ -125,7 +125,6 @@ type StatusFilter = 'all' | 'unread' | 'read'
 type RangeFilter = 'all' | 'today' | '7d' | '30d'
 
 const { t } = useI18n()
-const toast = useToast()
 
 const items = ref<InquiryItem[]>([])
 const unreadCount = ref(0)
@@ -221,9 +220,7 @@ async function setRead(item: InquiryItem, isRead: boolean, reload = true) {
     if (reload && (status.value === 'unread' || status.value === 'read')) {
       await load()
     }
-  } catch (err: any) {
-    toast.add({ title: t('admin.common.saveFailed'), description: err?.msg || t('admin.common.saveFailed'), color: 'error' })
-  }
+  } catch {}
 }
 
 async function remove(item: InquiryItem) {
@@ -234,9 +231,7 @@ async function remove(item: InquiryItem) {
     })
     if (openId.value === item.id) openId.value = null
     await load()
-  } catch (err: any) {
-    toast.add({ title: t('admin.common.deleteFailed'), description: err?.msg || t('admin.common.deleteFailed'), color: 'error' })
-  }
+  } catch {}
 }
 
 onMounted(load)
