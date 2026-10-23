@@ -594,7 +594,7 @@
     },
     "login": {
       "title": "后台登录",
-      "desc": "输入 ADMIN_API_TOKEN 以管理分类和产品。",
+      "desc": "输入 ADMIN_API_TOKEN 以管理网站。",
       "placeholder": "ADMIN_API_TOKEN",
       "enter": "进入",
       "tokenRequired": "请输入 Token",

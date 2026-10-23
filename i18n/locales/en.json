@@ -594,7 +594,7 @@
     },
     "login": {
       "title": "Admin Login",
-      "desc": "Enter ADMIN_API_TOKEN to manage categories and products.",
+      "desc": "Enter ADMIN_API_TOKEN to manage the website.",
       "placeholder": "ADMIN_API_TOKEN",
       "enter": "Enter",
       "tokenRequired": "Token is required",
