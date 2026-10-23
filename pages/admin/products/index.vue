@@ -52,7 +52,7 @@
     <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">
       <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
       <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.products.empty') }}</div>
-      <div v-else class="min-h-0 flex-1 overflow-auto"><UTable :data="items" :columns="columns">
+      <div v-else class="min-h-0 flex-1 overflow-auto [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-white"><UTable :data="items" :columns="columns">
         <template #select-header>
           <UCheckbox :model-value="allSelected" @update:model-value="toggleSelectAll(Boolean($event))" />
         </template>
