@@ -1,5 +1,5 @@
-export type ApiResponse<T> = {
-  data: T
+export type ApiErrorResponse = {
+  data: unknown
   code: string
   msg: string
 }

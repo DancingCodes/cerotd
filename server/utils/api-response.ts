@@ -1,31 +1,28 @@
 import type { H3Event, EventHandler, EventHandlerRequest } from 'h3'
-import type { ApiResponse } from '#shared/api'
-
-export function apiResponse<T>(data: T, code = 'OK', msg = 'OK'): ApiResponse<T> {
-  return { data, code, msg }
-}
+import type { ApiErrorResponse } from '#shared/api'
 
 export function defineApiHandler<T extends EventHandlerRequest, D>(handler: EventHandler<T, D>) {
   return defineEventHandler(async (event: H3Event) => {
     try {
-      return apiResponse(await handler(event as never))
+      return await handler(event as never)
     } catch (error: any) {
       const statusCode = Number(error?.statusCode || error?.status || 500)
       const details = error?.data || {}
+      setResponseStatus(event, statusCode)
 
       if (statusCode === 401) {
-        return apiResponse(null, 'UNAUTHORIZED', error?.statusMessage || 'Unauthorized')
+        return { data: null, code: 'UNAUTHORIZED', msg: error?.statusMessage || 'Unauthorized' } satisfies ApiErrorResponse
       }
 
       if (error?.unhandled || !error?.statusCode) {
-        return apiResponse(null, 'INTERNAL_ERROR', 'Internal server error')
+        return { data: null, code: 'INTERNAL_ERROR', msg: 'Internal server error' } satisfies ApiErrorResponse
       }
 
-      return apiResponse(
-        details.payload ?? null,
-        details.apiCode || 'REQUEST_FAILED',
-        error?.statusMessage || 'Request failed'
-      )
+      return {
+        data: details.payload ?? null,
+        code: details.apiCode || 'REQUEST_FAILED',
+        msg: error?.statusMessage || 'Request failed'
+      } satisfies ApiErrorResponse
     }
   })
 }
