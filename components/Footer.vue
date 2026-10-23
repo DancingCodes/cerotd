@@ -22,55 +22,64 @@
         </div>
 
         <div>
-          <h2 class="mb-4.5 text-[13px] font-[650] tracking-[.06em] text-white uppercase">{{
-            $t('footer.trustTitle') }}</h2>
+          <h2 class="mb-4.5 text-[13px] font-[650] tracking-[.06em] text-white uppercase">
+            {{ $t('footer.trustTitle') }}
+          </h2>
           <ul class="flex flex-col gap-2.5">
-            <li v-for="n in 4" :key="n" class="text-[14px] text-white/[.58]">{{
-              $t(`footer.trustItems.item${n}`) }}</li>
+            <li v-for="n in 4" :key="n" class="text-[14px] text-white/[.58]">
+              {{ $t(`footer.trustItems.item${n}`) }}
+            </li>
             <li class="text-[14px] text-white/[.58]">
-              <NuxtLink to="/about#certificates" class="text-white/[.58] transition-colors hover:text-white">{{
-                $t('footer.trustLink') }}</NuxtLink>
+              <NuxtLink to="/about#certificates" class="text-white/[.58] transition-colors hover:text-white">
+                {{ $t('footer.trustLink') }}</NuxtLink>
             </li>
           </ul>
         </div>
-
         <div>
-          <h2 class="mb-4.5 text-[13px] font-[650] tracking-[.06em] text-white uppercase">{{
-            $t('footer.companyTitle') }}</h2>
+          <h2 class="mb-4.5 text-[13px] font-[650] tracking-[.06em] text-white uppercase">
+            {{ $t('footer.companyTitle') }}
+          </h2>
           <ul class="flex flex-col gap-2.5">
             <li class="text-sm text-white/60">
-              <NuxtLink to="/about" class="text-white/60 transition-colors hover:text-white">{{ $t('footer.aboutUs') }}
+              <NuxtLink to="/about" class="text-white/60 transition-colors hover:text-white">
+                {{ $t('footer.aboutUs') }}
               </NuxtLink>
             </li>
             <li class="text-sm text-white/60">
-              <NuxtLink to="/services" class="text-white/60 transition-colors hover:text-white">{{
-                $t('footer.ourServices') }}</NuxtLink>
-            </li>
-            <li class="text-sm text-white/60">
-              <NuxtLink to="/advantages" class="text-white/60 transition-colors hover:text-white">{{
-                $t('footer.ourAdvantages') }}</NuxtLink>
-            </li>
-            <li class="text-sm text-white/60">
-              <NuxtLink to="/news" class="text-white/60 transition-colors hover:text-white">{{ $t('common.news') }}
+              <NuxtLink to="/services" class="text-white/60 transition-colors hover:text-white">
+                {{ $t('footer.ourServices') }}
               </NuxtLink>
             </li>
             <li class="text-sm text-white/60">
-              <NuxtLink to="/contact" class="text-white/60 transition-colors hover:text-white">{{ $t('common.contact')
-              }}</NuxtLink>
+              <NuxtLink to="/advantages" class="text-white/60 transition-colors hover:text-white">
+                {{ $t('footer.ourAdvantages') }}
+              </NuxtLink>
+            </li>
+            <li class="text-sm text-white/60">
+              <NuxtLink to="/news" class="text-white/60 transition-colors hover:text-white">
+                {{ $t('common.news') }}
+              </NuxtLink>
+            </li>
+            <li class="text-sm text-white/60">
+              <NuxtLink to="/contact" class="text-white/60 transition-colors hover:text-white">
+                {{ $t('common.contact') }}
+              </NuxtLink>
             </li>
           </ul>
         </div>
 
         <div>
-          <h2 class="mb-4.5 text-[13px] font-[650] tracking-[.06em] text-white uppercase">{{
-            $t('footer.contactTitle') }}</h2>
+          <h2 class="mb-4.5 text-[13px] font-[650] tracking-[.06em] text-white uppercase">
+            {{ $t('footer.contactTitle') }}
+          </h2>
           <ul class="flex flex-col gap-2.5">
             <li class="text-sm text-white/60">{{ $t('footer.location') }}</li>
             <li class="text-sm text-white/60">{{ $t('footer.phone') }}</li>
-            <li v-if="locale === 'zh'" class="text-sm text-white/60">{{ $t('footer.wechatTitle') }}: {{
-              $t('footer.wechatId') }}</li>
+            <li class="text-sm text-white/60">
+              {{ $t('footer.wechatTitle') }}: {{ $t('footer.wechatId') }}
+            </li>
           </ul>
-          <div v-if="locale === 'zh'" class="mt-4">
+          <div class="mt-4">
             <img src="/images/wechat.webp" :alt="$t('footer.wechatTitle')"
               class="h-24 w-24 rounded-xl bg-white object-cover" loading="lazy" decoding="async" />
           </div>
@@ -80,7 +89,7 @@
       <div class="border-t border-white/8 pt-6">
         <p class="text-center text-[13px] text-[#6b7280]">&copy; {{ year }} {{ $t('footer.copyright') }}
         </p>
-        <a v-if="locale === 'zh'"
+        <a
           class="mt-2 block text-center text-[13px] text-[#6b7280] transition-colors hover:text-white/38"
           href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">鲁ICP备2026051999号-1</a>
       </div>
@@ -89,6 +98,5 @@
 </template>
 
 <script setup lang="ts">
-const { locale } = useI18n()
 const year = new Date().getFullYear()
 </script>
