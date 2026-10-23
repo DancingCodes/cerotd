@@ -1,6 +1,5 @@
 <template>
   <header class="sticky top-0 z-50 border-b border-[#d9dde3]/95 bg-white">
-    <nav aria-label="Primary">
       <div class="mx-auto flex min-h-18.5 w-full max-w-295 items-center justify-between px-6">
         <NuxtLink to="/" class="flex items-center no-underline">
           <img src="/images/logo.webp" alt="Cerotd" class="h-9 w-auto" />
@@ -50,7 +49,6 @@
           {{ locale === 'en' ? '中文' : 'EN' }}
         </button>
       </div>
-    </nav>
   </header>
 </template>
 

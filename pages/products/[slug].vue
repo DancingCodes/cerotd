@@ -2,7 +2,7 @@
   <div v-if="product" class="pb-[calc(70px+env(safe-area-inset-bottom))] md:pb-0">
     <section class="bg-[radial-gradient(circle_at_20%_20%,rgba(95,208,220,.16),transparent_28%),linear-gradient(180deg,#070b12_0%,#121821_100%)] py-18 text-white md:py-22">
       <UContainer class="max-w-295 px-6">
-        <NuxtLink to="/products" class="mb-6 inline-flex text-[14px] font-semibold text-[#5fd0dc] no-underline">{{ $t('products.backToList') }}</NuxtLink>
+        <NuxtLink to="/products" class="mb-6 inline-block text-[14px] font-semibold text-[#5fd0dc] no-underline">{{ $t('products.backToList') }}</NuxtLink>
         <h1 class="mb-4.5 text-[48px] leading-[1.1] tracking-normal">{{ t(product.name) }}</h1>
         <p class="max-w-[40ch] text-[18px] leading-[1.7] text-[#c8ced6]">{{ t(product.summary) }}</p>
       </UContainer>
