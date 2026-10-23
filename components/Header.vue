@@ -17,7 +17,7 @@
           </NuxtLink>
 
           <button type="button"
-            class="ml-1 cursor-pointer rounded-full bg-[#f3f4f6] px-3.5 py-2 text-[13px] font-[650] text-[#3d4654] transition-colors hover:bg-[#e2e6eb]"
+            class="min-h-10 cursor-pointer px-1 text-[14px] font-semibold text-[#66707c] transition-colors hover:text-[#0f4c56]"
             @click="toggleLocale">
             {{ locale === 'en' ? '中文' : 'EN' }}
           </button>
@@ -25,7 +25,7 @@
 
         <button type="button"
           class="flex h-10.5 w-10.5 cursor-pointer flex-col items-center justify-center gap-1.25 rounded-xl bg-[#f3f4f6] lg:hidden"
-          :aria-expanded="mobileMenuOpen" aria-label="Toggle menu" @click="mobileMenuOpen = !mobileMenuOpen">
+          @click="mobileMenuOpen = !mobileMenuOpen">
           <span class="h-0.5 w-4.5 rounded-full bg-[#1f2937]"></span>
           <span class="h-0.5 w-4.5 rounded-full bg-[#1f2937]"></span>
           <span class="h-0.5 w-4.5 rounded-full bg-[#1f2937]"></span>
@@ -44,7 +44,7 @@
           {{ $t('common.contact') }}
         </NuxtLink>
         <button type="button"
-          class="mt-2.5 cursor-pointer rounded-xl bg-[#f3f4f6] px-4 py-3 text-left text-[16px] font-[650] text-[#3d4654]"
+          class="mt-1 flex min-h-11 self-end cursor-pointer items-center px-1 text-[14px] font-semibold text-[#66707c] transition-colors hover:text-[#0f4c56]"
           @click="toggleLocale">
           {{ locale === 'en' ? '中文' : 'EN' }}
         </button>
