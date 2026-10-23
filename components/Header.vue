@@ -8,17 +8,17 @@
 
         <div class="hidden items-center gap-6.5 lg:flex">
           <NuxtLink v-for="item in navItems" :key="item.to" :to="item.to"
-            class="relative text-[15px] leading-normal font-medium tracking-[.01em] text-[#5b6572] no-underline transition-colors hover:text-[#10141a] [&.router-link-active]:font-[650] [&.router-link-active]:text-[#0f4c56] [&.router-link-active]:after:absolute [&.router-link-active]:after:-bottom-2 [&.router-link-active]:after:left-0 [&.router-link-active]:after:right-0 [&.router-link-active]:after:h-0.5 [&.router-link-active]:after:rounded-full [&.router-link-active]:after:bg-[#0f4c56]">
+            class="relative text-[15px] font-medium tracking-[.01em] text-[#5b6572] no-underline transition-colors hover:text-[#10141a] [&.router-link-active]:font-[650] [&.router-link-active]:text-[#0f4c56] [&.router-link-active]:after:absolute [&.router-link-active]:after:-bottom-2 [&.router-link-active]:after:left-0 [&.router-link-active]:after:right-0 [&.router-link-active]:after:h-0.5 [&.router-link-active]:after:rounded-full [&.router-link-active]:after:bg-[#0f4c56]">
             {{ $t(item.label) }}
           </NuxtLink>
 
           <NuxtLink to="/contact"
-            class="inline-flex min-h-10 items-center justify-center rounded-full bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] px-4.5 text-[14px] leading-normal font-[650] text-white no-underline transition-opacity hover:opacity-90 [&.router-link-active]:ring-2 [&.router-link-active]:ring-[#0f4c56]/20">
+            class="inline-flex min-h-10 items-center justify-center rounded-full bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] px-4.5 text-[14px] font-[650] text-white no-underline transition-opacity hover:opacity-90 [&.router-link-active]:ring-2 [&.router-link-active]:ring-[#0f4c56]/20">
             {{ $t('common.contact') }}
           </NuxtLink>
 
           <button type="button"
-            class="ml-1 cursor-pointer rounded-full bg-[#f3f4f6] px-3.5 py-2 text-[13px] leading-normal font-[650] text-[#3d4654] transition-colors hover:bg-[#e2e6eb]"
+            class="ml-1 cursor-pointer rounded-full bg-[#f3f4f6] px-3.5 py-2 text-[13px] font-[650] text-[#3d4654] transition-colors hover:bg-[#e2e6eb]"
             @click="toggleLocale">
             {{ locale === 'en' ? '中文' : 'EN' }}
           </button>
@@ -35,17 +35,17 @@
 
       <div v-if="mobileMenuOpen" class="mx-auto flex w-full max-w-295 flex-col gap-1 px-6 pb-4.5 lg:hidden">
         <NuxtLink v-for="item in navItems" :key="`mobile-${item.to}`" :to="item.to"
-          class="border-b border-[#e6e8ec] py-3 text-[16px] leading-normal font-medium text-[#7a8490] no-underline"
+          class="border-b border-[#e6e8ec] py-3 text-[16px] font-medium text-[#7a8490] no-underline"
           :class="{ 'font-bold text-[#0f4c56]': isNavActive(item.to) }" @click="mobileMenuOpen = false">
           {{ $t(item.label) }}
         </NuxtLink>
         <NuxtLink to="/contact"
-          class="mt-3 inline-flex min-h-11 items-center justify-center rounded-xl bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] text-center text-[16px] leading-normal font-[650] text-white no-underline"
+          class="mt-3 inline-flex min-h-11 items-center justify-center rounded-xl bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] text-center text-[16px] font-[650] text-white no-underline"
           @click="mobileMenuOpen = false">
           {{ $t('common.contact') }}
         </NuxtLink>
         <button type="button"
-          class="mt-2.5 cursor-pointer rounded-xl bg-[#f3f4f6] px-4 py-3 text-left text-[16px] leading-normal font-[650] text-[#3d4654]"
+          class="mt-2.5 cursor-pointer rounded-xl bg-[#f3f4f6] px-4 py-3 text-left text-[16px] font-[650] text-[#3d4654]"
           @click="toggleLocale">
           {{ locale === 'en' ? '中文' : 'EN' }}
         </button>

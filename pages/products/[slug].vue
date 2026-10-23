@@ -2,7 +2,7 @@
   <div v-if="product" class="pb-[calc(70px+env(safe-area-inset-bottom))] md:pb-0">
     <section class="bg-[radial-gradient(circle_at_20%_20%,rgba(95,208,220,.16),transparent_28%),linear-gradient(180deg,#070b12_0%,#121821_100%)] py-18 text-white md:py-22">
       <UContainer class="max-w-295 px-6">
-        <NuxtLink to="/products" class="mb-6 inline-flex text-[14px] leading-normal font-semibold text-[#5fd0dc] no-underline">{{ $t('products.backToList') }}</NuxtLink>
+        <NuxtLink to="/products" class="mb-6 inline-flex text-[14px] font-semibold text-[#5fd0dc] no-underline">{{ $t('products.backToList') }}</NuxtLink>
         <h1 class="mb-4.5 text-[48px] leading-[1.1] tracking-normal">{{ t(product.name) }}</h1>
         <p class="max-w-[40ch] text-[18px] leading-[1.7] text-[#c8ced6]">{{ t(product.summary) }}</p>
       </UContainer>
@@ -42,14 +42,14 @@
 
         <aside class="min-w-0">
           <div class="rounded-xl bg-[#070b12] p-7 text-white">
-            <h2 class="mb-5 text-[22px] leading-normal tracking-normal">{{ $t('products.specsTitle') }}</h2>
+            <h2 class="mb-5 text-[22px] tracking-normal">{{ $t('products.specsTitle') }}</h2>
             <ul class="mb-6 grid gap-3">
               <li v-if="product.category" class="rounded-[10px] bg-white/5 px-4 py-3.5 text-[14px] leading-[1.6] text-[#c8ced6]">{{ t(product.category.name) }}</li>
               <li v-for="(spec, index) in localizedSpecs" :key="`${spec}-${index}`" class="specs-item">
                 {{ spec }}
               </li>
             </ul>
-            <NuxtLink to="/contact" class="inline-flex min-h-12 items-center justify-center rounded-full bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] px-6 text-[14px] leading-normal font-semibold text-white no-underline">{{ $t('products.detailCta') }}</NuxtLink>
+            <NuxtLink to="/contact" class="inline-flex min-h-12 items-center justify-center rounded-full bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] px-6 text-[14px] font-semibold text-white no-underline">{{ $t('products.detailCta') }}</NuxtLink>
           </div>
         </aside>
       </UContainer>
@@ -57,7 +57,7 @@
 
     <section v-if="relatedProducts.length" class="bg-[#f3f4f6] py-24 md:py-30">
       <UContainer class="max-w-295 px-6">
-        <h2 class="mb-6 text-[28px] leading-normal tracking-normal text-[#111827]">{{ $t('products.relatedTitle') }}</h2>
+        <h2 class="mb-6 text-[28px] tracking-normal text-[#111827]">{{ $t('products.relatedTitle') }}</h2>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
           <NuxtLink
             v-for="item in relatedProducts"
@@ -65,7 +65,7 @@
             :to="`/products/${item.slug}`"
             class="rounded-xl border border-[#e8edf2] bg-white p-5.5 no-underline"
           >
-            <h3 class="mb-2 text-[18px] leading-normal font-semibold tracking-normal text-[#111827]">{{ t(item.name) }}</h3>
+            <h3 class="mb-2 text-[18px] font-semibold tracking-normal text-[#111827]">{{ t(item.name) }}</h3>
             <p class="text-[14px] leading-[1.6] text-[#4b5563]">{{ t(item.summary) }}</p>
           </NuxtLink>
         </div>
