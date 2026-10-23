@@ -12,7 +12,7 @@
     </div>
 
     <div class="mb-4 grid gap-2.5">
-      <div class="flex flex-wrap gap-2" role="tablist" :aria-label="$t('admin.inquiries.filterStatus')">
+      <div class="flex flex-wrap gap-2" role="tablist">
         <button
           v-for="item in statusFilters"
           :key="item.value"
@@ -24,7 +24,7 @@
           {{ item.label }}
         </button>
       </div>
-      <div class="flex flex-wrap gap-2" role="tablist" :aria-label="$t('admin.inquiries.filterRange')">
+      <div class="flex flex-wrap gap-2" role="tablist">
         <button
           v-for="item in rangeFilters"
           :key="item.value"

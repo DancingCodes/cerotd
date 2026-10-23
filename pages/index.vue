@@ -20,7 +20,7 @@
       </UContainer>
     </section>
 
-    <section class="border-b border-[#e6e8ec] bg-white" aria-label="Company stats">
+    <section class="border-b border-[#e6e8ec] bg-white">
       <UContainer class="max-w-295 px-6 grid grid-cols-2 min-[900px]:grid-cols-4 [&>div]:py-7 [&>div:nth-child(odd)]:border-r [&>div:nth-child(odd)]:border-[#e6e8ec] [&>div:nth-child(odd)]:pr-6 [&>div:nth-child(even)]:pl-6 [&>div:nth-child(-n+2)]:border-b [&>div:nth-child(-n+2)]:border-[#e6e8ec] min-[900px]:[&>div]:border-b-0 min-[900px]:[&>div]:border-r min-[900px]:[&>div]:border-[#e6e8ec] min-[900px]:[&>div]:py-8.5 min-[900px]:[&>div]:pr-6 min-[900px]:[&>div:not(:first-child)]:pl-6 min-[900px]:[&>div:last-child]:border-r-0">
         <div v-for="n in 4" :key="n">
           <p class="mb-1.5 text-[28px] font-semibold text-[#10141a]">{{ $t(`home.stats.item${n}.value`) }}</p>
@@ -80,7 +80,6 @@
             :key="item.src"
             type="button"
             class="block w-full cursor-pointer overflow-hidden rounded-xl border border-[#e8edf2] bg-[#f3f4f6] text-left transition hover:-translate-y-0.75 hover:border-[#cfd8e3] hover:shadow-[0_12px_28px_rgba(15,23,42,.08)]"
-            :aria-label="`${item.caption} - ${$t('home.facility.open')}`"
             @click="openFacility(index)"
           >
             <img
@@ -104,14 +103,12 @@
       class="fixed inset-0 z-80 flex items-center justify-center bg-linear-to-b from-[#070b12]/70 to-[#070b12]/90 p-6 backdrop-blur-2.5 max-md:p-4"
       role="dialog"
       aria-modal="true"
-      :aria-label="facilityPreviewImage.caption"
       @click.self="closeFacility"
     >
       <div class="relative flex w-full max-w-240 items-center justify-center px-12 max-md:px-2">
         <button
           type="button"
           class="absolute -top-10 right-0 z-20 cursor-pointer text-8 leading-none text-white max-md:top-2 max-md:right-3.5"
-          :aria-label="$t('home.facility.close')"
           @click="closeFacility"
         >
           ×
@@ -119,7 +116,6 @@
         <button
           type="button"
           class="absolute -left-2 top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white max-md:left-3.5"
-          :aria-label="$t('common.prev')"
           @click="prevFacility"
         >
           ‹
@@ -135,7 +131,6 @@
         <button
           type="button"
           class="absolute -right-2 top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white max-md:right-3.5"
-          :aria-label="$t('common.next')"
           @click="nextFacility"
         >
           ›

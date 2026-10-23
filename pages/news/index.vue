@@ -13,7 +13,7 @@
           <p class="text-[17px] leading-[1.7] text-[#4b5563]">{{ $t('news.listSubtitle') }}</p>
         </div>
 
-        <div class="mb-7 flex flex-wrap gap-2.5" role="tablist" :aria-label="$t('news.listTitle')">
+        <div class="mb-7 flex flex-wrap gap-2.5" role="tablist">
           <button
             type="button"
             class="min-h-10 cursor-pointer rounded-full border border-[#d7dde5] bg-white px-4 text-[14px] font-medium text-[#4b5563] transition hover:border-[#b8c2cf] hover:text-[#111827]"

@@ -76,12 +76,11 @@
 
     <div v-if="previewOpen" class="fixed inset-0 z-80 flex items-center justify-center bg-linear-to-b from-[#070b12]/70 to-[#070b12]/90 p-6 backdrop-blur-2.5" @click.self="closePreview">
       <div class="relative flex w-full max-w-240 items-center justify-center">
-        <button type="button" class="absolute -top-10 right-0 z-20 cursor-pointer text-8 leading-none text-white" aria-label="Close preview" @click="closePreview">×</button>
+        <button type="button" class="absolute -top-10 right-0 z-20 cursor-pointer text-8 leading-none text-white" @click="closePreview">×</button>
         <button
           v-if="product.images.length > 1"
           type="button"
           class="absolute -left-2 top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white"
-          aria-label="Previous image"
           @click="prevImage"
         >
           ‹
@@ -91,7 +90,6 @@
           v-if="product.images.length > 1"
           type="button"
           class="absolute -right-2 top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white"
-          aria-label="Next image"
           @click="nextImage"
         >
           ›

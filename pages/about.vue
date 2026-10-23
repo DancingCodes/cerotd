@@ -107,7 +107,6 @@
         <button
           type="button"
           class="absolute -top-10 right-0 z-20 cursor-pointer text-8 leading-none text-white"
-          :aria-label="$t('about.certificates.close')"
           @click="closeCertificate"
         >
           ×
@@ -115,7 +114,6 @@
         <button
           type="button"
           class="absolute -left-2 top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white"
-          :aria-label="$t('common.prev')"
           @click="prevCertificate"
         >
           ‹
@@ -130,7 +128,6 @@
         <button
           type="button"
           class="absolute -right-2 top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white"
-          :aria-label="$t('common.next')"
           @click="nextCertificate"
         >
           ›

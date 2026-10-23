@@ -61,7 +61,6 @@
             <input
               type="checkbox"
               :checked="allSelected"
-              :aria-label="$t('admin.common.batchDelete')"
               @change="onSelectAllChange($event)"
             />
           </div>
