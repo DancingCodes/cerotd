@@ -571,7 +571,18 @@
       "tokenRequired": "请输入 Token"
     },
     "dashboard": {
-      "welcome": "欢迎来到 Cerotd 后台"
+      "welcome": "欢迎来到 Cerotd 后台",
+      "newProduct": "新建产品",
+      "newNews": "新建新闻",
+      "productCategories": "产品分类",
+      "products": "产品",
+      "news": "新闻",
+      "inquiries": "客户留言",
+      "recentInquiries": "最新留言",
+      "unreadInquiries": "{count} 条未读",
+      "viewInquiries": "查看全部",
+      "noInquiries": "暂无留言。",
+      "unread": "未读"
     },
     "common": {
       "save": "保存",

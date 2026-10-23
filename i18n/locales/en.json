@@ -571,7 +571,18 @@
       "tokenRequired": "Token is required"
     },
     "dashboard": {
-      "welcome": "Welcome to Cerotd Admin"
+      "welcome": "Welcome to Cerotd Admin",
+      "newProduct": "New Product",
+      "newNews": "New Article",
+      "productCategories": "Product Categories",
+      "products": "Products",
+      "news": "News",
+      "inquiries": "Inquiries",
+      "recentInquiries": "Recent Inquiries",
+      "unreadInquiries": "{count} unread",
+      "viewInquiries": "View all",
+      "noInquiries": "No inquiries yet.",
+      "unread": "Unread"
     },
     "common": {
       "save": "Save",
