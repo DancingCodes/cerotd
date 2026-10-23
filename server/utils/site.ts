@@ -1,9 +1,6 @@
 import type { H3Event } from 'h3'
 
 export function getSiteUrl(event: H3Event) {
-  const configured = String(useRuntimeConfig(event).public.siteUrl || '').replace(/\/$/, '')
-  if (configured) return configured
-
   const host = getRequestHeader(event, 'host')
   if (!host) {
     throw createError({

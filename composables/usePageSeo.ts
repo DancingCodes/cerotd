@@ -8,10 +8,7 @@ function resolveValue(value: SeoValue | Ref<SeoValue> | ComputedRef<SeoValue>) {
 }
 
 export function useSiteUrl() {
-  const config = useRuntimeConfig()
   const requestUrl = useRequestURL()
-  const configured = String(config.public.siteUrl || '').replace(/\/$/, '')
-  if (configured) return configured
   return `${requestUrl.protocol}//${requestUrl.host}`
 }
 

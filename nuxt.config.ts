@@ -2,12 +2,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-09-23',
   modules: ['@nuxt/ui', '@nuxtjs/i18n', 'nitro-cloudflare-dev'],
   runtimeConfig: {
-    adminApiToken: '',
-    public: {
-      // Leave empty to auto-detect from request host.
-      // Later set NUXT_PUBLIC_SITE_URL=https://your-domain.com
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || ''
-    }
+    adminApiToken: ''
   },
   routeRules: {
     '/admin/**': { ssr: false }
