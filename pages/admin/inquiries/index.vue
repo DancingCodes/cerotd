@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="mb-4.5 flex items-start justify-between gap-4">
       <div>
         <div class="text-7 font-semibold">{{ $t('admin.inquiries.title') }}</div>
@@ -98,7 +97,6 @@
         </button>
       </div>
     </div>
-  </div>
 </template>
 
 <script setup lang="ts">

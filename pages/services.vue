@@ -1,5 +1,4 @@
 <template>
-  <div>
     <section class="bg-[radial-gradient(circle_at_20%_0%,rgba(95,208,220,.14),transparent_28%),linear-gradient(180deg,#070b12_0%,#121821_100%)] py-18 text-white md:py-22">
       <UContainer class="max-w-295 px-6">
         <h1 class="mb-4.5 text-[56px] leading-[1.08] tracking-normal">{{ $t('services.hero.title') }}</h1>
@@ -86,7 +85,6 @@
         </div>
       </UContainer>
     </section>
-  </div>
 </template>
 
 <script setup lang="ts">

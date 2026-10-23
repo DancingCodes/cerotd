@@ -1,5 +1,4 @@
 <template>
-  <div>
     <section class="relative flex min-h-[78vh] items-center overflow-hidden bg-[#070b12] py-24 pt-30 text-white max-md:min-h-[86vh] max-md:py-22 max-md:pt-27.5">
       <div class="absolute inset-0" aria-hidden="true">
         <img class="size-full scale-[1.04] object-cover object-[center_40%] saturate-[.78] contrast-[1.05]" src="/images/hero-bg.webp" alt="" fetchpriority="high" decoding="async" />
@@ -251,7 +250,6 @@
         </div>
       </UContainer>
     </section>
-  </div>
 </template>
 
 
