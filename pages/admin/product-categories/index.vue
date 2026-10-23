@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: 'admin', middleware: ['admin'] })
+definePageMeta({ layout: 'admin' })
 
 type Localized = { en: string; zh: string }
 type CategoryItem = { id: number; slug: string; name: Localized; sortOrder: number }

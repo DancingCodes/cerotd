@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: 'admin', middleware: ['admin'] })
+definePageMeta({ layout: 'admin' })
 
 type DashboardData = {
   productCategories: number
