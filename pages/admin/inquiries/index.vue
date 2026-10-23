@@ -10,7 +10,7 @@
     <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
     <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.inquiries.empty') }}</div>
     <template v-else>
-      <div class="min-h-0 flex-1 overflow-auto [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-white"><UTable :data="items" :columns="columns">
+      <div class="min-h-0 flex-1 overflow-auto [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-white"><UTable :data="items" :columns="columns" class="w-full table-fixed">
         <template #name-cell="{ row }">
           <div class="font-semibold"><span v-if="!row.original.isRead" class="mr-2 inline-block size-2 rounded-full bg-primary"></span>{{ row.original.name }}</div>
           <div class="text-xs text-gray-500">{{ row.original.company || $t('admin.inquiries.noCompany') }}</div>

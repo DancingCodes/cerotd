@@ -31,7 +31,7 @@
       <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.newsCategories.empty') }}</div>
       <div v-else
         class="min-h-0 flex-1 overflow-auto [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-white">
-        <UTable :data="items" :columns="columns">
+        <UTable :data="items" :columns="columns" class="w-full table-fixed">
           <template #name-cell="{ row }">
             <div class="font-semibold">{{ lt(row.original.name) }}</div>
             <div class="text-xs text-gray-500">{{ secondaryName(row.original.name) }}</div>
