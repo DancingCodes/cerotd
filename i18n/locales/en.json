@@ -555,6 +555,7 @@
   "admin": {
     "brand": "Cerotd Admin",
     "nav": {
+      "dashboard": "Dashboard",
       "products": "Products",
       "viewSite": "View site",
       "logout": "Logout",

@@ -555,6 +555,7 @@
   "admin": {
     "brand": "Cerotd 后台",
     "nav": {
+      "dashboard": "首页",
       "products": "产品",
       "viewSite": "查看网站",
       "logout": "退出",
