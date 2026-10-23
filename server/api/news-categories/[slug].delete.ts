@@ -16,7 +16,7 @@ export default defineApiHandler(async (event) => {
 
   const linked = await db.prepare('SELECT id FROM news WHERE category = ? LIMIT 1').bind(slug).first()
   if (linked) {
-    throwApiError('NEWS_CATEGORY_HAS_ARTICLES', 'News category has articles. Delete or move them first.')
+    throw createError({ statusCode: 500, statusMessage: 'News category has articles. Delete or move them first.' })
   }
 
   await db.prepare('DELETE FROM news_categories WHERE slug = ?').bind(slug).run()

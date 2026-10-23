@@ -264,7 +264,7 @@ async function remove(item: CategoryItem) {
     await load()
   } catch (err: any) {
     toast.add({
-      title: isCategoryHasArticlesError(err) ? t('admin.newsCategories.deleteBlockedHasNews') : t('admin.common.deleteFailed'),
+      title: t('admin.common.deleteFailed'),
       description: err?.msg,
       color: 'error'
     })
@@ -286,7 +286,7 @@ async function removeSelected() {
     await load()
   } catch (err: any) {
     toast.add({
-      title: isCategoryHasArticlesError(err) ? t('admin.newsCategories.deleteBlockedHasNews') : t('admin.common.deleteFailed'),
+      title: t('admin.common.deleteFailed'),
       description: err?.msg,
       color: 'error'
     })
@@ -295,11 +295,6 @@ async function removeSelected() {
     batchDeleting.value = false
   }
 }
-
-function isCategoryHasArticlesError(err: any) {
-  return err?.code === 'NEWS_CATEGORY_HAS_ARTICLES'
-}
-
 
 onMounted(load)
 </script>

@@ -48,7 +48,7 @@ async function login() {
     navigateTo('/admin/products')
   } catch (err: any) {
     clearToken()
-    error.value = err?.code === 'UNAUTHORIZED' ? t('admin.login.invalidToken') : t('admin.login.failed')
+    error.value = err?.code === 401 ? t('admin.login.invalidToken') : t('admin.login.failed')
   }
 }
 </script>

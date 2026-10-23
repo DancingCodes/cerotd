@@ -1,18 +1,23 @@
+import type { ApiResponse } from '#shared/api'
 import { ADMIN_API_TOKEN_STORAGE_KEY } from './useAdminAuth'
 
 export async function apiFetch<T>(request: string, options: Record<string, unknown> = {}) {
-  try {
-    const token = import.meta.client && window.localStorage.getItem(ADMIN_API_TOKEN_STORAGE_KEY)
-    const requestOptions = token
-      ? { ...options, headers: { ...(options.headers as Record<string, string>), Authorization: `Bearer ${token}` } }
-      : options
+  const token = import.meta.client && window.localStorage.getItem(ADMIN_API_TOKEN_STORAGE_KEY)
+  const requestOptions = token
+    ? { ...options, headers: { ...(options.headers as Record<string, string>), Authorization: `Bearer ${token}` } }
+    : options
+  const response = await $fetch<ApiResponse<T>>(request, requestOptions)
 
-    return await $fetch<T>(request, requestOptions)
-  } catch (error: any) {
-    throw error.data
-  }
+  if (response.code !== 200) throw response
+  return response.data
 }
 
 export function useApiFetch<T>(request: any, options: Record<string, any> = {}) {
-  return useFetch<T>(request, options)
+  return useFetch<T>(request, {
+    ...options,
+    transform: (response: ApiResponse<T>) => {
+      if (response.code !== 200) throw response
+      return response.data
+    }
+  } as any)
 }
