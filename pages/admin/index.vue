@@ -29,7 +29,7 @@ const error = ref('')
 
 onMounted(() => {
   if (token.value) {
-    navigateTo('/admin/products')
+    navigateTo('/admin/dashboard')
   }
 })
 
@@ -45,7 +45,7 @@ async function login() {
 
   try {
     await apiFetch('/api/admin/check')
-    navigateTo('/admin/products')
+    navigateTo('/admin/dashboard')
   } catch {
     clearToken()
   }

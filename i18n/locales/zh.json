@@ -601,6 +601,9 @@
       "invalidToken": "Token 无效",
       "failed": "登录失败"
     },
+    "dashboard": {
+      "welcome": "欢迎来到 Cerotd 后台"
+    },
     "common": {
       "save": "保存",
       "cancel": "取消",

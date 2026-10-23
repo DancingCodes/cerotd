@@ -601,6 +601,9 @@
       "invalidToken": "Invalid token",
       "failed": "Login failed"
     },
+    "dashboard": {
+      "welcome": "Welcome to Cerotd Admin"
+    },
     "common": {
       "save": "Save",
       "cancel": "Cancel",
