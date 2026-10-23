@@ -31,10 +31,6 @@
               class="cursor-pointer rounded-[10px] px-3 py-2 text-sm font-semibold text-gray-600 no-underline [&.router-link-active]:bg-[#e8f7f9] [&.router-link-active]:text-[#0e7f8f] max-[720px]:px-2 max-[720px]:py-1.5">
               {{ $t('admin.nav.inquiries') }}
             </NuxtLink>
-            <NuxtLink to="/"
-              class="cursor-pointer rounded-[10px] px-3 py-2 text-sm font-semibold text-gray-600 no-underline max-[720px]:px-2 max-[720px]:py-1.5"
-              target="_blank">{{ $t('admin.nav.viewSite') }}
-            </NuxtLink>
             <button type="button"
               class="cursor-pointer rounded-[10px] bg-[#eef1f4] px-3 py-2 text-sm font-semibold text-gray-600 max-[720px]:px-2 max-[720px]:py-1.5"
               @click="logout">{{ $t('admin.nav.logout') }}
