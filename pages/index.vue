@@ -233,7 +233,6 @@
             :href="partner.href"
             target="_blank"
             rel="noopener noreferrer"
-            :aria-label="partner.name"
           >
             <img class="block h-14 w-full max-w-40 object-contain object-center opacity-90" :src="partner.logo" :alt="partner.name" loading="lazy" decoding="async" />
           </a>
