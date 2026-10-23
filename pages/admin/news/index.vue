@@ -64,7 +64,7 @@
     <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">
       <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
       <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.news.empty') }}</div>
-      <div v-else class="min-h-0 flex-1 overflow-auto [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-white"><UTable :data="items" :columns="columns">
+      <div v-else class="min-h-0 flex-1 overflow-auto [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-white"><UTable :data="items" :columns="columns" :ui="{ base: 'w-full table-fixed' }">
         <template #select-header><UCheckbox :model-value="allSelected" @update:model-value="toggleSelectAll(Boolean($event))" /></template>
         <template #select-cell="{ row }"><UCheckbox :model-value="selectedSlugs.includes(row.original.slug)" @update:model-value="toggleSelect(row.original.slug, Boolean($event))" /></template>
         <template #title-cell="{ row }"><div class="font-semibold">{{ lt(row.original.title) }}</div></template>
@@ -123,12 +123,12 @@ const statusOptions = computed(() => [
   { label: t('admin.common.filterDraft'), value: 'draft' }
 ])
 const columns = computed<TableColumn<NewsItem>[]>(() => [
-  { id: 'select', header: '' },
-  { accessorKey: 'title', header: t('admin.common.name') },
-  { id: 'category', header: t('admin.news.category') },
-  { accessorKey: 'publishedAt', header: t('admin.news.publishedAt') },
-  { id: 'status', header: t('admin.common.status') },
-  { id: 'actions', header: '' }
+  { id: 'select', header: '', meta: { style: { th: { width: '3rem' }, td: { width: '3rem' } } } },
+  { accessorKey: 'title', header: t('admin.common.name'), meta: { style: { th: { width: 'calc((100% - 15rem) / 4)' }, td: { width: 'calc((100% - 15rem) / 4)' } } } },
+  { id: 'category', header: t('admin.news.category'), meta: { style: { th: { width: 'calc((100% - 15rem) / 4)' }, td: { width: 'calc((100% - 15rem) / 4)' } } } },
+  { accessorKey: 'publishedAt', header: t('admin.news.publishedAt'), meta: { style: { th: { width: 'calc((100% - 15rem) / 4)' }, td: { width: 'calc((100% - 15rem) / 4)' } } } },
+  { id: 'status', header: t('admin.common.status'), meta: { style: { th: { width: 'calc((100% - 15rem) / 4)' }, td: { width: 'calc((100% - 15rem) / 4)' } } } },
+  { id: 'actions', header: '', meta: { style: { th: { width: '12rem' }, td: { width: '12rem' } } } }
 ])
 const selectedSlugs = ref<string[]>([])
 const batchDeleting = ref(false)

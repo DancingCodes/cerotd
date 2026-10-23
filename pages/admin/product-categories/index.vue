@@ -5,16 +5,17 @@
     </div>
 
     <UModal v-model:open="formOpen"
-      :title="editingSlug ? $t('admin.productCategories.editTitle') : $t('admin.productCategories.createTitle')">
+      :title="editingSlug ? $t('admin.productCategories.editTitle') : $t('admin.productCategories.createTitle')"
+      :ui="{ content: 'max-w-2xl' }">
       <template #body>
-        <UForm :state="form" class="grid grid-cols-1 gap-4 md:grid-cols-3" @submit="save">
+        <UForm :state="form" class="grid grid-cols-2 gap-4" @submit="save">
           <UFormField :label="$t('admin.common.nameEn')" name="nameEn" required>
             <UInput v-model="form.nameEn" class="w-full" />
           </UFormField>
           <UFormField :label="$t('admin.common.nameZh')" name="nameZh" required>
             <UInput v-model="form.nameZh" class="w-full" />
           </UFormField>
-          <UFormField :label="$t('admin.common.sort')" name="sortOrder">
+          <UFormField class="col-span-2" :label="$t('admin.common.sort')" name="sortOrder">
             <UInput v-model.number="form.sortOrder" type="number" class="w-full" />
           </UFormField>
           <p v-if="formError" class="col-span-full text-sm text-error">{{ formError }}</p>

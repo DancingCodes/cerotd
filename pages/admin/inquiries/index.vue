@@ -10,7 +10,7 @@
     <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
     <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.inquiries.empty') }}</div>
     <template v-else>
-      <div class="min-h-0 flex-1 overflow-auto [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-white"><UTable :data="items" :columns="columns">
+      <div class="min-h-0 flex-1 overflow-auto [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-white"><UTable :data="items" :columns="columns" :ui="{ base: 'w-full table-fixed' }">
         <template #name-cell="{ row }">
           <div class="font-semibold"><span v-if="!row.original.isRead" class="mr-2 inline-block size-2 rounded-full bg-primary"></span>{{ row.original.name }}</div>
           <div class="text-xs text-gray-500">{{ row.original.company || $t('admin.inquiries.noCompany') }}</div>
@@ -67,11 +67,11 @@ const status = ref<StatusFilter>('all')
 const range = ref<RangeFilter>('all')
 
 const columns = computed<TableColumn<InquiryItem>[]>(() => [
-  { accessorKey: 'name', header: t('admin.inquiries.name') },
-  { id: 'contact', header: t('admin.inquiries.email') },
-  { accessorKey: 'createdAt', header: t('admin.inquiries.createdAt') },
-  { id: 'status', header: t('admin.inquiries.status') },
-  { id: 'actions', header: '' }
+  { accessorKey: 'name', header: t('admin.inquiries.name'), meta: { style: { th: { width: 'calc((100% - 12rem) / 4)' }, td: { width: 'calc((100% - 12rem) / 4)' } } } },
+  { id: 'contact', header: t('admin.inquiries.email'), meta: { style: { th: { width: 'calc((100% - 12rem) / 4)' }, td: { width: 'calc((100% - 12rem) / 4)' } } } },
+  { accessorKey: 'createdAt', header: t('admin.inquiries.createdAt'), meta: { style: { th: { width: 'calc((100% - 12rem) / 4)' }, td: { width: 'calc((100% - 12rem) / 4)' } } } },
+  { id: 'status', header: t('admin.inquiries.status'), meta: { style: { th: { width: 'calc((100% - 12rem) / 4)' }, td: { width: 'calc((100% - 12rem) / 4)' } } } },
+  { id: 'actions', header: '', meta: { style: { th: { width: '12rem' }, td: { width: '12rem' } } } }
 ])
 const statusFilters = computed(() => [
   { value: 'all' as const, label: t('admin.inquiries.filterAll') },
