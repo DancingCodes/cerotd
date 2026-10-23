@@ -724,8 +724,8 @@
       "title": "产品分类",
       "subtitle": "管理产品页面与询盘表单使用的分类",
       "new": "新建分类",
-      "editTitle": "编辑产品分类",
-      "createTitle": "新建产品分类",
+      "editTitle": "编辑分类",
+      "createTitle": "新建分类",
       "empty": "暂无产品分类。",
       "deleteConfirm": "确定删除产品分类「{name}」吗？分类下不能有产品。"
     },
