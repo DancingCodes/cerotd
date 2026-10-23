@@ -100,7 +100,7 @@ const lt = useLocalized()
 const pending = ref(true)
 const searchInput = ref('')
 const search = ref('')
-const filterCategory = ref('')
+const filterCategory = ref('all')
 const filterStatus = ref<'all' | 'published' | 'draft'>('all')
 const page = ref(1)
 const pageSize = ref(20)
@@ -112,7 +112,6 @@ const allSelected = computed(() => items.value.length > 0 && items.value.every((
 const items = ref<ProductItem[]>([])
 const categories = ref<CategoryItem[]>([])
 const productCategoryOptions = computed(() => [
-  { label: t('admin.products.selectCategory'), value: '' },
   ...categories.value.map(category => ({ label: lt(category.name), value: category.slug }))
 ])
 const publishOptions = computed(() => [
@@ -120,7 +119,7 @@ const publishOptions = computed(() => [
   { label: t('admin.common.no'), value: false }
 ])
 const categoryOptions = computed(() => [
-  { label: t('admin.common.allCategories'), value: '' },
+  { label: t('admin.common.allCategories'), value: 'all' },
   ...categories.value.map(category => ({ label: lt(category.name), value: category.slug }))
 ])
 const statusOptions = computed(() => [
@@ -276,7 +275,7 @@ async function load() {
           page: page.value,
           pageSize: pageSize.value,
           q: search.value || undefined,
-          category: filterCategory.value || undefined,
+          category: filterCategory.value === 'all' ? undefined : filterCategory.value,
           status: filterStatus.value
         }
       }),
