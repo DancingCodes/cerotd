@@ -1,16 +1,4 @@
-import type { ApiErrorResponse } from '#shared/api'
 import { ADMIN_API_TOKEN_STORAGE_KEY } from './useAdminAuth'
-
-export class ApiRequestError extends Error {
-  code: string
-  msg: string
-
-  constructor(response: ApiErrorResponse) {
-    super(response.msg)
-    this.code = response.code
-    this.msg = response.msg
-  }
-}
 
 export async function apiFetch<T>(request: string, options: Record<string, unknown> = {}) {
   try {
@@ -21,11 +9,7 @@ export async function apiFetch<T>(request: string, options: Record<string, unkno
 
     return await $fetch<T>(request, requestOptions)
   } catch (error: any) {
-    if (error instanceof ApiRequestError) throw error
-    const response = error?.data?.code && error?.data?.msg
-      ? error.data as ApiErrorResponse
-      : { data: null, code: 'INTERNAL_ERROR', msg: 'Internal server error' }
-    throw new ApiRequestError(response)
+    throw error.data
   }
 }
 
