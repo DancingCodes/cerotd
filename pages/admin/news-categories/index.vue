@@ -8,103 +8,41 @@
         </div>
       </div>
       <div class="flex flex-wrap items-center gap-3">
-        <div
-          v-if="selectedSlugs.length"
-          class="flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#b42318] px-4 text-sm font-semibold whitespace-nowrap text-white"
-          :class="{ 'pointer-events-none opacity-60': batchDeleting }"
-          @click="removeSelected"
-        >
-          {{ $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}
-        </div>
-        <div class="flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white" @click="startCreate">{{ $t('admin.newsCategories.new') }}</div>
+        <UButton v-if="selectedSlugs.length" color="error" :loading="batchDeleting" @click="removeSelected">{{ $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}</UButton>
+        <UButton @click="startCreate">{{ $t('admin.newsCategories.new') }}</UButton>
       </div>
     </div>
 
-    <div v-if="formOpen" class="mb-4.5 rounded-[12px] border border-[#e5eaf0] bg-white p-5">
-      <div class="mb-4 text-lg font-bold">
-        {{ editingSlug ? $t('admin.newsCategories.editTitle') : $t('admin.newsCategories.createTitle') }}
-      </div>
-      <div class="grid grid-cols-1 gap-3.5 md:grid-cols-2">
-        <label class="block">
-          <div class="mb-1.5 text-3.25 font-semibold text-gray-600 after:text-[#b42318] after:content-['_*']">{{ $t('admin.common.nameEn') }}</div>
-          <input v-model="form.nameEn" class="h-10.5 w-full rounded-[12px] border border-[#d7dee7] bg-white px-3 outline-none" />
-        </label>
-        <label class="block">
-          <div class="mb-1.5 text-3.25 font-semibold text-gray-600 after:text-[#b42318] after:content-['_*']">{{ $t('admin.common.nameZh') }}</div>
-          <input v-model="form.nameZh" class="h-10.5 w-full rounded-[12px] border border-[#d7dee7] bg-white px-3 outline-none" />
-        </label>
-        <label class="block">
-          <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.sort') }}</div>
-          <input v-model.number="form.sortOrder" class="h-10.5 w-full rounded-[12px] border border-[#d7dee7] bg-white px-3 outline-none" type="number" />
-        </label>
-        <label class="block">
-          <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.published') }}</div>
-          <select v-model="form.isPublished" class="h-10.5 w-full rounded-[12px] border border-[#d7dee7] bg-white px-3 outline-none">
-            <option :value="true">{{ $t('admin.common.yes') }}</option>
-            <option :value="false">{{ $t('admin.common.no') }}</option>
-          </select>
-        </label>
-      </div>
-      <div v-if="formError" class="mt-3 text-3.25 text-[#b42318]">{{ formError }}</div>
-      <div class="mt-4 flex gap-2.5">
-        <div class="flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#0e7f8f] px-4 text-sm font-semibold whitespace-nowrap text-white" @click="save">{{ $t('admin.common.save') }}</div>
-        <div class="flex h-10 cursor-pointer items-center justify-center rounded-[12px] bg-[#eef1f4] px-4 text-sm font-semibold whitespace-nowrap text-gray-700" @click="closeForm">{{ $t('admin.common.cancel') }}</div>
-      </div>
-    </div>
+    <UModal v-model:open="formOpen" :title="editingSlug ? $t('admin.newsCategories.editTitle') : $t('admin.newsCategories.createTitle')">
+      <template #body>
+        <UForm :state="form" class="grid grid-cols-1 gap-4 md:grid-cols-2" @submit="save">
+          <UFormField :label="$t('admin.common.nameEn')" name="nameEn" required><UInput v-model="form.nameEn" /></UFormField>
+          <UFormField :label="$t('admin.common.nameZh')" name="nameZh" required><UInput v-model="form.nameZh" /></UFormField>
+          <UFormField :label="$t('admin.common.sort')" name="sortOrder"><UInput v-model.number="form.sortOrder" type="number" /></UFormField>
+          <UFormField :label="$t('admin.common.published')" name="isPublished"><USelect v-model="form.isPublished" :items="publishOptions" /></UFormField>
+          <p v-if="formError" class="col-span-full text-sm text-error">{{ formError }}</p>
+          <div class="col-span-full flex justify-end gap-2"><UButton color="neutral" variant="ghost" @click="closeForm">{{ $t('admin.common.cancel') }}</UButton><UButton type="submit">{{ $t('admin.common.save') }}</UButton></div>
+        </UForm>
+      </template>
+    </UModal>
 
-    <div class="mb-4.5 rounded-[12px] border border-[#e5eaf0] bg-white p-5">
+    <UCard class="mb-4.5">
       <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
       <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.newsCategories.empty') }}</div>
-      <div v-else class="overflow-x-auto">
-        <div class="grid min-w-175 grid-cols-[36px_1.4fr_1fr_.5fr_.7fr_.9fr] items-center gap-3 border-b border-[#eef1f4] py-3.5 text-xs font-bold tracking-[.04em] text-gray-500 uppercase">
-          <div class="flex items-center justify-center [&_input]:size-4 [&_input]:cursor-pointer">
-            <input
-              type="checkbox"
-              :checked="allSelected"
-              @change="onSelectAllChange($event)"
-            />
-          </div>
-          <div>{{ $t('admin.common.name') }}</div>
-          <div>{{ $t('admin.common.slug') }}</div>
-          <div>{{ $t('admin.common.sort') }}</div>
-          <div>{{ $t('admin.common.status') }}</div>
-          <div>{{ $t('admin.common.actions') }}</div>
-        </div>
-        <div v-for="item in items" :key="item.id" class="grid min-w-175 grid-cols-[36px_1.4fr_1fr_.5fr_.7fr_.9fr] items-center gap-3 border-b border-[#eef1f4] py-3.5 text-sm">
-          <div class="flex items-center justify-center [&_input]:size-4 [&_input]:cursor-pointer">
-            <input
-              type="checkbox"
-              :checked="selectedSlugs.includes(item.slug)"
-              @change="onSelectChange(item.slug, $event)"
-            />
-          </div>
-          <div>
-            <div class="font-semibold">{{ lt(item.name) }}</div>
-            <div class="mt-0.5 text-xs text-gray-500">{{ secondaryName(item.name) }}</div>
-          </div>
-          <div>{{ item.slug }}</div>
-          <div>{{ item.sortOrder }}</div>
-          <div>{{ item.isPublished ? $t('admin.common.published') : $t('admin.common.draft') }}</div>
-          <div class="flex gap-3">
-            <div class="cursor-pointer font-semibold text-[#0e7f8f]" @click="startEdit(item)">{{ $t('admin.common.edit') }}</div>
-            <div class="cursor-pointer font-semibold text-[#b42318]" @click="remove(item)">{{ $t('admin.common.delete') }}</div>
-          </div>
-        </div>
-      </div>
+      <UTable v-else :data="items" :columns="columns">
+        <template #select-header><UCheckbox :model-value="allSelected" @update:model-value="toggleSelectAll(Boolean($event))" /></template>
+        <template #select-cell="{ row }"><UCheckbox :model-value="selectedSlugs.includes(row.original.slug)" @update:model-value="toggleSelect(row.original.slug, Boolean($event))" /></template>
+        <template #name-cell="{ row }"><div class="font-semibold">{{ lt(row.original.name) }}</div><div class="text-xs text-gray-500">{{ secondaryName(row.original.name) }}</div></template>
+        <template #status-cell="{ row }"><UBadge :color="row.original.isPublished ? 'success' : 'neutral'" variant="subtle">{{ row.original.isPublished ? $t('admin.common.published') : $t('admin.common.draft') }}</UBadge></template>
+        <template #actions-cell="{ row }"><div class="flex justify-end gap-1"><UButton color="neutral" variant="ghost" size="xs" @click="startEdit(row.original)">{{ $t('admin.common.edit') }}</UButton><UButton color="error" variant="ghost" size="xs" @click="remove(row.original)">{{ $t('admin.common.delete') }}</UButton></div></template>
+      </UTable>
 
-      <div v-if="totalPages > 1" class="mt-4 flex items-center justify-end gap-2.5">
-        <button type="button" class="h-8.5 cursor-pointer rounded-[10px] border border-[#d7dee7] bg-white px-3 text-3.25 font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page <= 1" @click="goPage(page - 1)">
-          {{ $t('admin.common.prevPage') }}
-        </button>
-        <span class="text-3.25 text-gray-500">{{ $t('admin.common.pageStatus', { page, totalPages }) }}</span>
-        <button type="button" class="h-8.5 cursor-pointer rounded-[10px] border border-[#d7dee7] bg-white px-3 text-3.25 font-semibold text-gray-700 disabled:cursor-not-allowed disabled:opacity-45" :disabled="page >= totalPages" @click="goPage(page + 1)">
-          {{ $t('admin.common.nextPage') }}
-        </button>
-      </div>
-    </div>
+      <div v-if="totalPages > 1" class="mt-4 flex justify-end"><UPagination v-model:page="page" :total="total" :items-per-page="pageSize" @update:page="load" /></div>
+    </UCard>
 </template>
 
 <script setup lang="ts">
+import type { TableColumn } from '@nuxt/ui'
 definePageMeta({
   layout: 'admin'
 })
@@ -143,6 +81,18 @@ const emptyForm = () => ({
 })
 
 const form = reactive(emptyForm())
+const publishOptions = computed(() => [
+  { label: t('admin.common.yes'), value: true },
+  { label: t('admin.common.no'), value: false }
+])
+const columns = computed<TableColumn<CategoryItem>[]>(() => [
+  { id: 'select', header: '' },
+  { accessorKey: 'name', header: t('admin.common.name') },
+  { accessorKey: 'slug', header: t('admin.common.slug') },
+  { accessorKey: 'sortOrder', header: t('admin.common.sort') },
+  { id: 'status', header: t('admin.common.status') },
+  { id: 'actions', header: '' }
+])
 
 function secondaryName(name: Localized) {
   return locale.value === 'zh' ? name.en : name.zh
@@ -158,14 +108,6 @@ function toggleSelect(slug: string, checked: boolean) {
 
 function toggleSelectAll(checked: boolean) {
   selectedSlugs.value = checked ? items.value.map((item) => item.slug) : []
-}
-
-function onSelectAllChange(event: Event) {
-  toggleSelectAll((event.target as HTMLInputElement).checked)
-}
-
-function onSelectChange(slug: string, event: Event) {
-  toggleSelect(slug, (event.target as HTMLInputElement).checked)
 }
 
 async function load() {
@@ -184,11 +126,6 @@ async function load() {
   } finally {
     pending.value = false
   }
-}
-
-function goPage(next: number) {
-  page.value = Math.max(1, next)
-  load()
 }
 
 function startCreate() {
