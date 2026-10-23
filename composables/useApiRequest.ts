@@ -4,12 +4,9 @@ import { ADMIN_API_TOKEN_STORAGE_KEY } from './useAdminAuth'
 export class ApiRequestError extends Error {
   code: string
   msg: string
-  statusCode: number
 
-  constructor(statusCode: number, response: ApiErrorResponse) {
+  constructor(response: ApiErrorResponse) {
     super(response.msg)
-    this.name = 'ApiRequestError'
-    this.statusCode = statusCode
     this.code = response.code
     this.msg = response.msg
   }
@@ -28,7 +25,7 @@ export async function apiFetch<T>(request: string, options: Record<string, unkno
     const response = error?.data?.code && error?.data?.msg
       ? error.data as ApiErrorResponse
       : { data: null, code: 'INTERNAL_ERROR', msg: 'Internal server error' }
-    throw new ApiRequestError(Number(error?.statusCode || error?.status || 500), response)
+    throw new ApiRequestError(response)
   }
 }
 
