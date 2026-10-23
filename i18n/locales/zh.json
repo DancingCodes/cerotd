@@ -192,36 +192,7 @@
     },
     "lines": {
       "title": "核心产品线",
-      "subtitle": "九大固定产品线，覆盖车用、工业与特种润滑应用。",
-      "items": {
-        "gasoline-engine-oil": {
-          "desc": "乘用车汽油机油，兼顾剪切稳定与低温流动性。"
-        },
-        "diesel-engine-oil": {
-          "desc": "重负荷柴油机油，强化烟炱控制、抗磨与长换油表现。"
-        },
-        "gear-oil": {
-          "desc": "极压齿轮油，适应冲击负荷与重载齿轮工况。"
-        },
-        "motorcycle-oil": {
-          "desc": "摩托车专用油，平衡离合兼容、抗磨与热稳定。"
-        },
-        "anti-wear-hydraulic-oil": {
-          "desc": "抗磨液压油，适配高压、清洁响应与系统防护。"
-        },
-        "new-energy-oil": {
-          "desc": "新能源专用油液，服务相关驱动与冷却系统。"
-        },
-        "antifreeze-coolant": {
-          "desc": "防冻冷却液，提供防冻、防沸、防腐蚀与防结垢保护。"
-        },
-        "transmission-oil": {
-          "desc": "变速箱油，关注换挡平顺、抗磨与热稳定性。"
-        },
-        "grease": {
-          "desc": "润滑脂，具备耐高温、抗水淋与承载能力。"
-        }
-      }
+      "subtitle": "浏览车用、工业与特种润滑应用的产品分类。"
     }
   },
   "about": {
@@ -597,9 +568,7 @@
       "desc": "输入 ADMIN_API_TOKEN 以管理网站。",
       "placeholder": "ADMIN_API_TOKEN",
       "enter": "进入",
-      "tokenRequired": "请输入 Token",
-      "invalidToken": "Token 无效",
-      "failed": "登录失败"
+      "tokenRequired": "请输入 Token"
     },
     "dashboard": {
       "welcome": "欢迎来到 Cerotd 后台"
@@ -753,8 +722,7 @@
       "editTitle": "编辑分类",
       "createTitle": "新建分类",
       "empty": "暂无新闻分类。",
-      "deleteConfirm": "确定删除分类「{name}」吗？分类下不能有新闻。",
-      "deleteBlockedHasNews": "该分类下仍有新闻，请先删除或移走新闻后再删除分类。"
+      "deleteConfirm": "确定删除分类「{name}」吗？分类下不能有新闻。"
     }
   },
   "seo": {

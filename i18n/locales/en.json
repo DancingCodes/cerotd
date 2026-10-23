@@ -192,36 +192,7 @@
     },
     "lines": {
       "title": "Core product lines",
-      "subtitle": "Nine fixed product lines for automotive, industrial and specialty applications.",
-      "items": {
-        "gasoline-engine-oil": {
-          "desc": "Passenger-car engine oils with shear stability and low-temperature fluidity."
-        },
-        "diesel-engine-oil": {
-          "desc": "Heavy-duty diesel oils for severe duty, soot control and extended drains."
-        },
-        "gear-oil": {
-          "desc": "EP gear oils for shock loads, heavy gear duty and long service life."
-        },
-        "motorcycle-oil": {
-          "desc": "Motorcycle oils balanced for clutch compatibility, wear protection and heat control."
-        },
-        "anti-wear-hydraulic-oil": {
-          "desc": "Anti-wear hydraulic oils for high pressure, clean response and system protection."
-        },
-        "new-energy-oil": {
-          "desc": "Dedicated fluids for new-energy vehicles and related drive systems."
-        },
-        "antifreeze-coolant": {
-          "desc": "Coolants for freeze, boil, corrosion and scale protection."
-        },
-        "transmission-oil": {
-          "desc": "Transmission fluids for smooth shifting, wear protection and thermal stability."
-        },
-        "grease": {
-          "desc": "Greases with high-temperature stability, water resistance and load capacity."
-        }
-      }
+      "subtitle": "Explore product categories for automotive, industrial and specialty applications."
     }
   },
   "about": {
@@ -597,9 +568,7 @@
       "desc": "Enter ADMIN_API_TOKEN to manage the website.",
       "placeholder": "ADMIN_API_TOKEN",
       "enter": "Enter",
-      "tokenRequired": "Token is required",
-      "invalidToken": "Invalid token",
-      "failed": "Login failed"
+      "tokenRequired": "Token is required"
     },
     "dashboard": {
       "welcome": "Welcome to Cerotd Admin"
@@ -753,8 +722,7 @@
       "editTitle": "Edit category",
       "createTitle": "Create category",
       "empty": "No news categories yet.",
-      "deleteConfirm": "Delete category \"{name}\"? It must have no news.",
-      "deleteBlockedHasNews": "This category still has news. Delete or move them first."
+      "deleteConfirm": "Delete category \"{name}\"? It must have no news."
     }
   },
   "seo": {
