@@ -1,11 +1,6 @@
 <template>
-  <div class="mb-5 flex items-start justify-between gap-4">
-    <div>
-      <div class="mb-1.5 text-7 font-bold">{{ $t('admin.productCategories.title') }}</div>
-      <div class="text-sm text-gray-500">{{ $t('admin.productCategories.subtitle') }}</div>
-    </div>
-    <UButton @click="startCreate">{{ $t('admin.productCategories.new') }}</UButton>
-  </div>
+  <div class="flex h-full min-h-0 flex-col">
+  <div class="mb-4 flex justify-end"><UButton @click="startCreate">{{ $t('admin.productCategories.new') }}</UButton></div>
 
   <UModal v-model:open="formOpen" :title="editingSlug ? $t('admin.productCategories.editTitle') : $t('admin.productCategories.createTitle')">
     <template #body>
@@ -19,14 +14,15 @@
     </template>
   </UModal>
 
-  <UCard>
+  <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">
     <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
     <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.productCategories.empty') }}</div>
-    <UTable v-else :data="items" :columns="columns">
+    <div v-else class="min-h-0 flex-1 overflow-auto"><UTable :data="items" :columns="columns">
       <template #name-cell="{ row }"><div class="font-semibold">{{ lt(row.original.name) }}</div><div class="text-xs text-gray-500">{{ secondaryName(row.original.name) }}</div></template>
       <template #actions-cell="{ row }"><div class="flex justify-end gap-1"><UButton color="neutral" variant="ghost" size="xs" @click="startEdit(row.original)">{{ $t('admin.common.edit') }}</UButton><UButton color="error" variant="ghost" size="xs" @click="remove(row.original)">{{ $t('admin.common.delete') }}</UButton></div></template>
-    </UTable>
+    </UTable></div>
   </UCard>
+  </div>
 </template>
 
 <script setup lang="ts">
