@@ -28,11 +28,8 @@
     </UModal>
 
     <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">
-      <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
-      <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.newsCategories.empty') }}</div>
-      <div v-else
-        class="min-h-0 flex-1 overflow-auto [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-white">
-        <UTable :data="items" :columns="columns">
+      <UTable :data="items" :columns="columns" :loading="pending" :empty="$t('admin.newsCategories.empty')" sticky="header"
+        class="min-h-0 flex-1">
           <template #name-cell="{ row }">
             <div class="font-semibold">{{ lt(row.original.name) }}</div>
             <div class="text-xs text-gray-500">{{ secondaryName(row.original.name) }}</div>
@@ -45,8 +42,7 @@
                 $t('admin.common.delete') }}</UButton>
             </div>
           </template>
-        </UTable>
-      </div>
+      </UTable>
     </UCard>
   </div>
 </template>

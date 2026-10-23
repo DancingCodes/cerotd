@@ -62,9 +62,7 @@
     </UModal>
 
     <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">
-      <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
-      <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.news.empty') }}</div>
-      <div v-else class="min-h-0 flex-1 overflow-auto [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-white"><UTable :data="items" :columns="columns" :ui="{ base: 'w-full table-fixed' }">
+      <UTable :data="items" :columns="columns" :loading="pending" :empty="$t('admin.news.empty')" sticky="header" :ui="{ base: 'w-full table-fixed' }" class="min-h-0 flex-1">
         <template #select-header><UCheckbox :model-value="allSelected" @update:model-value="toggleSelectAll(Boolean($event))" /></template>
         <template #select-cell="{ row }"><UCheckbox :model-value="selectedSlugs.includes(row.original.slug)" @update:model-value="toggleSelect(row.original.slug, Boolean($event))" /></template>
         <template #title-cell="{ row }"><div class="font-semibold">{{ lt(row.original.title) }}</div></template>
@@ -72,7 +70,7 @@
         <template #publishedAt-cell="{ row }">{{ formatDate(row.original.publishedAt) }}</template>
         <template #status-cell="{ row }"><UBadge :color="row.original.isPublished ? 'success' : 'neutral'" variant="subtle">{{ row.original.isPublished ? $t('admin.common.published') : $t('admin.common.draft') }}</UBadge></template>
         <template #actions-cell="{ row }"><div class="flex justify-end gap-1"><UButton :to="`/news/${row.original.slug}`" target="_blank" color="primary" variant="ghost" size="xs">{{ $t('admin.common.view') }}</UButton><UButton color="neutral" variant="ghost" size="xs" @click="startEdit(row.original)">{{ $t('admin.common.edit') }}</UButton><UButton color="error" variant="ghost" size="xs" @click="remove(row.original)">{{ $t('admin.common.delete') }}</UButton></div></template>
-      </UTable></div>
+      </UTable>
 
       <div v-if="totalPages > 1" class="mt-4 flex justify-end"><UPagination v-model:page="page" :total="total" :items-per-page="pageSize" @update:page="load" /></div>
     </UCard>

@@ -28,25 +28,21 @@
     </UModal>
 
     <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">
-      <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
-      <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.productCategories.empty') }}</div>
-      <div v-else
-        class="min-h-0 flex-1 overflow-auto [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-white">
-        <UTable :data="items" :columns="columns">
-          <template #name-cell="{ row }">
-            <div class="font-semibold">{{ lt(row.original.name) }}</div>
-            <div class="text-xs text-gray-500">{{ secondaryName(row.original.name) }}</div>
-          </template>
-          <template #actions-cell="{ row }">
-            <div class="flex justify-end gap-1">
-              <UButton color="neutral" variant="ghost" size="xs" @click="startEdit(row.original)">{{
-                $t('admin.common.edit') }}</UButton>
-              <UButton color="error" variant="ghost" size="xs" @click="remove(row.original)">{{
-                $t('admin.common.delete') }}</UButton>
-            </div>
-          </template>
-        </UTable>
-      </div>
+      <UTable :data="items" :columns="columns" :loading="pending" :empty="$t('admin.productCategories.empty')"
+        sticky="header" class="min-h-0 flex-1">
+        <template #name-cell="{ row }">
+          <div class="font-semibold">{{ lt(row.original.name) }}</div>
+          <div class="text-xs text-gray-500">{{ secondaryName(row.original.name) }}</div>
+        </template>
+        <template #actions-cell="{ row }">
+          <div class="flex justify-end gap-1">
+            <UButton color="neutral" variant="ghost" size="xs" @click="startEdit(row.original)">{{
+              $t('admin.common.edit') }}</UButton>
+            <UButton color="error" variant="ghost" size="xs" @click="remove(row.original)">{{
+              $t('admin.common.delete') }}</UButton>
+          </div>
+        </template>
+      </UTable>
     </UCard>
   </div>
 </template>

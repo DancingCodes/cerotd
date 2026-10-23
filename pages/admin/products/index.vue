@@ -1,68 +1,104 @@
 <template>
   <div class="flex h-full min-h-0 flex-col">
     <div class="mb-4 grid grid-cols-1 gap-2.5 md:grid-cols-[1.4fr_1fr_1fr_auto_auto_auto] md:items-center">
-        <UInput v-model="searchInput" type="search" class="w-full" :placeholder="$t('admin.common.searchPlaceholder')" @keyup.enter="applyFilters" />
-        <USelect v-model="filterCategory" :items="categoryOptions" class="w-full" @update:model-value="applyFilters" />
-        <USelect v-model="filterStatus" :items="statusOptions" class="w-full" @update:model-value="applyFilters" />
-        <UButton color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}</UButton>
-        <UButton v-if="selectedSlugs.length" color="error" :loading="batchDeleting" @click="removeSelected">{{ $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}</UButton>
-        <UButton :disabled="!categories.length" @click="startCreate">{{ $t('admin.products.new') }}</UButton>
+      <UInput v-model="searchInput" type="search" class="w-full" :placeholder="$t('admin.common.searchPlaceholder')"
+        @keyup.enter="applyFilters" />
+      <USelect v-model="filterCategory" :items="categoryOptions" class="w-full" @update:model-value="applyFilters" />
+      <USelect v-model="filterStatus" :items="statusOptions" class="w-full" @update:model-value="applyFilters" />
+      <UButton color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}</UButton>
+      <UButton v-if="selectedSlugs.length" color="error" :loading="batchDeleting" @click="removeSelected">{{
+        $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}</UButton>
+      <UButton :disabled="!categories.length" @click="startCreate">{{ $t('admin.products.new') }}</UButton>
     </div>
-    <UModal v-model:open="formOpen" :title="editingSlug ? $t('admin.products.editTitle') : $t('admin.products.createTitle')" scrollable :ui="{ content: 'max-w-7xl' }">
+    <UModal v-model:open="formOpen"
+      :title="editingSlug ? $t('admin.products.editTitle') : $t('admin.products.createTitle')" scrollable
+      :ui="{ content: 'max-w-7xl' }">
       <template #body>
-      <UForm :state="form" class="grid grid-cols-1 gap-4 md:grid-cols-4" @submit="save">
-        <UFormField :label="$t('admin.common.nameEn')" name="nameEn" required><UInput v-model="form.nameEn" class="w-full"/></UFormField>
-        <UFormField :label="$t('admin.common.nameZh')" name="nameZh" required><UInput v-model="form.nameZh" class="w-full" /></UFormField>
-        <UFormField :label="$t('admin.products.category')" name="categorySlug" required><USelect v-model="form.categorySlug" :items="productCategoryOptions" class="w-full" /></UFormField>
-        <UFormField :label="$t('admin.common.published')" name="isPublished"><USelect v-model="form.isPublished" :items="publishOptions" class="w-full" /></UFormField>
-        <UFormField class="md:col-span-2" :label="$t('admin.products.summaryEn')" name="summaryEn"><UTextarea v-model="form.summaryEn" class="w-full" :rows="2" /></UFormField>
-        <UFormField class="md:col-span-2" :label="$t('admin.products.summaryZh')" name="summaryZh"><UTextarea v-model="form.summaryZh" class="w-full" :rows="2" /></UFormField>
-        <UFormField class="md:col-span-2" :label="$t('admin.products.descriptionEn')" name="descriptionEn"><UTextarea v-model="form.descriptionEn" class="w-full" :rows="4" /></UFormField>
-        <UFormField class="md:col-span-2" :label="$t('admin.products.descriptionZh')" name="descriptionZh"><UTextarea v-model="form.descriptionZh" class="w-full" :rows="4" /></UFormField>
-        <div class="md:col-span-2">
-          <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.coverUrl') }}</div>
-          <UFileUpload
-            :model-value="coverUploadItem"
-            :accept="imageAccept"
-            :label="uploadingCover ? $t('admin.upload.uploading') : (form.coverUrl ? $t('admin.upload.replace') : $t('admin.upload.button'))"
-            :disabled="uploadingCover"
-            @update:model-value="onCoverUpload"
-          />
-        </div>
-        <div class="md:col-span-2">
-          <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.products.images') }}</div>
-          <UFileUpload
-            :model-value="imageUploadItems"
-            :accept="imageAccept"
-            :label="uploadingImages ? $t('admin.upload.uploading') : $t('admin.upload.addImage')"
-            multiple
-            :disabled="uploadingImages"
-            @update:model-value="onImageUpload"
-          />
-        </div>
-        <UFormField class="md:col-span-2" :label="$t('admin.products.specsEn')" name="specsEnText"><UTextarea v-model="form.specsEnText" class="w-full" :rows="3" /></UFormField>
-        <UFormField class="md:col-span-2" :label="$t('admin.products.specsZh')" name="specsZhText"><UTextarea v-model="form.specsZhText" class="w-full" :rows="3" /></UFormField>
-        <p v-if="formError" class="col-span-full text-sm text-error">{{ formError }}</p>
-        <div class="col-span-full flex justify-end gap-2"><UButton color="neutral" variant="ghost" @click="closeForm">{{ $t('admin.common.cancel') }}</UButton><UButton type="submit">{{ $t('admin.common.save') }}</UButton></div>
-      </UForm>
+        <UForm :state="form" class="grid grid-cols-1 gap-4 md:grid-cols-4" @submit="save">
+          <UFormField :label="$t('admin.common.nameEn')" name="nameEn" required>
+            <UInput v-model="form.nameEn" class="w-full" />
+          </UFormField>
+          <UFormField :label="$t('admin.common.nameZh')" name="nameZh" required>
+            <UInput v-model="form.nameZh" class="w-full" />
+          </UFormField>
+          <UFormField :label="$t('admin.products.category')" name="categorySlug" required>
+            <USelect v-model="form.categorySlug" :items="productCategoryOptions" class="w-full" />
+          </UFormField>
+          <UFormField :label="$t('admin.common.published')" name="isPublished">
+            <USelect v-model="form.isPublished" :items="publishOptions" class="w-full" />
+          </UFormField>
+          <UFormField class="md:col-span-2" :label="$t('admin.products.summaryEn')" name="summaryEn">
+            <UTextarea v-model="form.summaryEn" class="w-full" :rows="2" />
+          </UFormField>
+          <UFormField class="md:col-span-2" :label="$t('admin.products.summaryZh')" name="summaryZh">
+            <UTextarea v-model="form.summaryZh" class="w-full" :rows="2" />
+          </UFormField>
+          <UFormField class="md:col-span-2" :label="$t('admin.products.descriptionEn')" name="descriptionEn">
+            <UTextarea v-model="form.descriptionEn" class="w-full" :rows="4" />
+          </UFormField>
+          <UFormField class="md:col-span-2" :label="$t('admin.products.descriptionZh')" name="descriptionZh">
+            <UTextarea v-model="form.descriptionZh" class="w-full" :rows="4" />
+          </UFormField>
+          <div class="md:col-span-2">
+            <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.coverUrl') }}</div>
+            <UFileUpload :model-value="coverUploadItem" :accept="imageAccept"
+              :label="uploadingCover ? $t('admin.upload.uploading') : (form.coverUrl ? $t('admin.upload.replace') : $t('admin.upload.button'))"
+              :disabled="uploadingCover" @update:model-value="onCoverUpload" />
+          </div>
+          <div class="md:col-span-2">
+            <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.products.images') }}</div>
+            <UFileUpload :model-value="imageUploadItems" :accept="imageAccept"
+              :label="uploadingImages ? $t('admin.upload.uploading') : $t('admin.upload.addImage')" multiple
+              :disabled="uploadingImages" @update:model-value="onImageUpload" />
+          </div>
+          <UFormField class="md:col-span-2" :label="$t('admin.products.specsEn')" name="specsEnText">
+            <UTextarea v-model="form.specsEnText" class="w-full" :rows="3" />
+          </UFormField>
+          <UFormField class="md:col-span-2" :label="$t('admin.products.specsZh')" name="specsZhText">
+            <UTextarea v-model="form.specsZhText" class="w-full" :rows="3" />
+          </UFormField>
+          <p v-if="formError" class="col-span-full text-sm text-error">{{ formError }}</p>
+          <div class="col-span-full flex justify-end gap-2">
+            <UButton color="neutral" variant="ghost" @click="closeForm">{{ $t('admin.common.cancel') }}</UButton>
+            <UButton type="submit">{{ $t('admin.common.save') }}</UButton>
+          </div>
+        </UForm>
       </template>
     </UModal>
 
     <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">
-      <div v-if="pending" class="text-sm text-gray-500">{{ $t('admin.common.loading') }}</div>
-      <div v-else-if="!items.length" class="text-sm text-gray-500">{{ $t('admin.products.empty') }}</div>
-      <div v-else class="min-h-0 flex-1 overflow-auto [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-white"><UTable :data="items" :columns="columns" :ui="{ base: 'w-full table-fixed' }">
+      <UTable :data="items" :columns="columns" :loading="pending" :empty="$t('admin.products.empty')" sticky="header"
+        :ui="{ base: 'w-full table-fixed' }" class="min-h-0 flex-1">
         <template #select-header>
           <UCheckbox :model-value="allSelected" @update:model-value="toggleSelectAll(Boolean($event))" />
         </template>
-        <template #select-cell="{ row }"><UCheckbox :model-value="selectedSlugs.includes(row.original.slug)" @update:model-value="toggleSelect(row.original.slug, Boolean($event))" /></template>
-        <template #name-cell="{ row }"><div class="font-semibold">{{ lt(row.original.name) }}</div></template>
+        <template #select-cell="{ row }">
+          <UCheckbox :model-value="selectedSlugs.includes(row.original.slug)"
+            @update:model-value="toggleSelect(row.original.slug, Boolean($event))" />
+        </template>
+        <template #name-cell="{ row }">
+          <div class="font-semibold">{{ lt(row.original.name) }}</div>
+        </template>
         <template #category-cell="{ row }">{{ row.original.category ? lt(row.original.category.name) : '-' }}</template>
-        <template #status-cell="{ row }"><UBadge :color="row.original.isPublished ? 'success' : 'neutral'" variant="subtle">{{ row.original.isPublished ? $t('admin.common.published') : $t('admin.common.draft') }}</UBadge></template>
-        <template #actions-cell="{ row }"><div class="flex justify-end gap-1"><UButton :to="`/products/${row.original.slug}`" target="_blank" color="primary" variant="ghost" size="xs">{{ $t('admin.common.view') }}</UButton><UButton color="neutral" variant="ghost" size="xs" @click="startEdit(row.original)">{{ $t('admin.common.edit') }}</UButton><UButton color="error" variant="ghost" size="xs" @click="remove(row.original)">{{ $t('admin.common.delete') }}</UButton></div></template>
-      </UTable></div>
+        <template #status-cell="{ row }">
+          <UBadge :color="row.original.isPublished ? 'success' : 'neutral'" variant="subtle">{{ row.original.isPublished
+            ? $t('admin.common.published') : $t('admin.common.draft') }}</UBadge>
+        </template>
+        <template #actions-cell="{ row }">
+          <div class="flex justify-end gap-1">
+            <UButton :to="`/products/${row.original.slug}`" target="_blank" color="primary" variant="ghost" size="xs">{{
+              $t('admin.common.view') }}</UButton>
+            <UButton color="neutral" variant="ghost" size="xs" @click="startEdit(row.original)">{{
+              $t('admin.common.edit') }}</UButton>
+            <UButton color="error" variant="ghost" size="xs" @click="remove(row.original)">{{ $t('admin.common.delete')
+              }}</UButton>
+          </div>
+        </template>
+      </UTable>
 
-      <div v-if="totalPages > 1" class="mt-4 flex justify-end"><UPagination v-model:page="page" :total="total" :items-per-page="pageSize" @update:page="load" /></div>
+      <div v-if="totalPages > 1" class="mt-4 flex justify-end">
+        <UPagination v-model:page="page" :total="total" :items-per-page="pageSize" @update:page="load" />
+      </div>
     </UCard>
   </div>
 </template>
@@ -373,7 +409,7 @@ async function save() {
     }
     closeForm()
     await load()
-  } catch {}
+  } catch { }
 }
 
 async function remove(item: ProductItem) {
@@ -383,7 +419,7 @@ async function remove(item: ProductItem) {
       method: 'DELETE'
     })
     await load()
-  } catch {}
+  } catch { }
 }
 
 async function removeSelected() {
