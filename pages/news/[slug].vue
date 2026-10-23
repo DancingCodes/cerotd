@@ -14,15 +14,6 @@
 
     <section class="bg-white py-18 pb-24">
       <UContainer class="max-w-205 px-6">
-        <img
-          v-if="article.coverUrl"
-          class="mb-7 block max-h-115 w-full rounded-xl object-cover"
-          :src="article.coverUrl"
-          :alt="t(article.title)"
-          fetchpriority="high"
-          decoding="async"
-          loading="eager"
-        />
         <article ref="articleBody" class="text-[17px] leading-[1.8] text-[#1f2937] [&_a]:text-[#3f7f88] [&_h2]:my-7 [&_h2]:mb-3 [&_h2]:text-[#111827] [&_h3]:my-7 [&_h3]:mb-3 [&_h3]:text-[#111827] [&_img]:my-6 [&_img]:block [&_img]:h-auto [&_img]:w-full [&_img]:rounded-[10px] [&_li]:mb-2 [&_ol]:mb-4.5 [&_ol]:list-decimal [&_ol]:pl-5.5 [&_p]:mb-4.5 [&_ul]:mb-4.5 [&_ul]:list-disc [&_ul]:pl-5.5" v-html="t(article.content)"></article>
         <div class="mt-9">
           <NuxtLink to="/contact" class="inline-flex min-h-11.5 items-center justify-center rounded-full bg-[#070b12] px-5 text-[14px] font-semibold text-white no-underline">{{ $t('news.detailCta') }}</NuxtLink>
