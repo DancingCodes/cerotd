@@ -67,7 +67,7 @@
       <div v-else class="min-h-0 flex-1 overflow-auto [&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-white"><UTable :data="items" :columns="columns">
         <template #select-header><UCheckbox :model-value="allSelected" @update:model-value="toggleSelectAll(Boolean($event))" /></template>
         <template #select-cell="{ row }"><UCheckbox :model-value="selectedSlugs.includes(row.original.slug)" @update:model-value="toggleSelect(row.original.slug, Boolean($event))" /></template>
-        <template #title-cell="{ row }"><div class="font-semibold">{{ lt(row.original.title) }}</div><div class="text-xs text-gray-500">{{ row.original.slug }}</div></template>
+        <template #title-cell="{ row }"><div class="font-semibold">{{ lt(row.original.title) }}</div></template>
         <template #category-cell="{ row }">{{ categoryLabel(row.original.category) }}</template>
         <template #publishedAt-cell="{ row }">{{ formatDate(row.original.publishedAt) }}</template>
         <template #status-cell="{ row }"><UBadge :color="row.original.isPublished ? 'success' : 'neutral'" variant="subtle">{{ row.original.isPublished ? $t('admin.common.published') : $t('admin.common.draft') }}</UBadge></template>

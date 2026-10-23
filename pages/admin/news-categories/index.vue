@@ -83,7 +83,6 @@ const emptyForm = () => ({
 const form = reactive(emptyForm())
 const columns = computed<TableColumn<CategoryItem>[]>(() => [
   { accessorKey: 'name', header: t('admin.common.name') },
-  { accessorKey: 'slug', header: t('admin.common.slug') },
   { accessorKey: 'sortOrder', header: t('admin.common.sort') },
   { id: 'actions', header: '' }
 ])

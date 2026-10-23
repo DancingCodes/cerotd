@@ -16,7 +16,6 @@
           <div class="text-xs text-gray-500">{{ row.original.company || $t('admin.inquiries.noCompany') }}</div>
         </template>
         <template #contact-cell="{ row }"><div>{{ row.original.email || '-' }}</div><div class="text-xs text-gray-500">{{ row.original.phone || '-' }}</div></template>
-        <template #product-cell="{ row }">{{ row.original.productSlug || '-' }}</template>
         <template #createdAt-cell="{ row }">{{ formatDate(row.original.createdAt) }}</template>
         <template #status-cell="{ row }"><UBadge :color="row.original.isRead ? 'neutral' : 'primary'" variant="subtle">{{ row.original.isRead ? $t('admin.inquiries.read') : $t('admin.inquiries.unread') }}</UBadge></template>
         <template #actions-cell="{ row }">
@@ -70,7 +69,6 @@ const range = ref<RangeFilter>('all')
 const columns = computed<TableColumn<InquiryItem>[]>(() => [
   { accessorKey: 'name', header: t('admin.inquiries.name') },
   { id: 'contact', header: t('admin.inquiries.email') },
-  { accessorKey: 'productSlug', id: 'product', header: t('admin.inquiries.product') },
   { accessorKey: 'createdAt', header: t('admin.inquiries.createdAt') },
   { id: 'status', header: t('admin.inquiries.status') },
   { id: 'actions', header: '' }

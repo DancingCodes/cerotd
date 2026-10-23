@@ -56,7 +56,7 @@
           <UCheckbox :model-value="allSelected" @update:model-value="toggleSelectAll(Boolean($event))" />
         </template>
         <template #select-cell="{ row }"><UCheckbox :model-value="selectedSlugs.includes(row.original.slug)" @update:model-value="toggleSelect(row.original.slug, Boolean($event))" /></template>
-        <template #name-cell="{ row }"><div class="font-semibold">{{ lt(row.original.name) }}</div><div class="text-xs text-gray-500">{{ row.original.slug }}</div></template>
+        <template #name-cell="{ row }"><div class="font-semibold">{{ lt(row.original.name) }}</div></template>
         <template #category-cell="{ row }">{{ row.original.category ? lt(row.original.category.name) : '-' }}</template>
         <template #status-cell="{ row }"><UBadge :color="row.original.isPublished ? 'success' : 'neutral'" variant="subtle">{{ row.original.isPublished ? $t('admin.common.published') : $t('admin.common.draft') }}</UBadge></template>
         <template #actions-cell="{ row }"><div class="flex justify-end gap-1"><UButton :to="`/products/${row.original.slug}`" target="_blank" color="primary" variant="ghost" size="xs">{{ $t('admin.common.view') }}</UButton><UButton color="neutral" variant="ghost" size="xs" @click="startEdit(row.original)">{{ $t('admin.common.edit') }}</UButton><UButton color="error" variant="ghost" size="xs" @click="remove(row.original)">{{ $t('admin.common.delete') }}</UButton></div></template>
