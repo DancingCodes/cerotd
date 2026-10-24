@@ -79,7 +79,7 @@
         <template #name-cell="{ row }">
           <div class="font-semibold">{{ lt(row.original.name) }}</div>
         </template>
-        <template #category-cell="{ row }">{{ row.original.category ? lt(row.original.category.name) : '-' }}</template>
+        <template #category-cell="{ row }">{{ row.original.category ? lt(row.original.category.name) : '' }}</template>
         <template #status-cell="{ row }">
           <UBadge :color="row.original.isPublished ? 'success' : 'neutral'" variant="subtle">{{ row.original.isPublished
             ? $t('admin.common.published') : $t('admin.common.draft') }}</UBadge>
@@ -163,9 +163,9 @@ const statusOptions = computed(() => [
 ])
 const columns = computed<TableColumn<ProductItem>[]>(() => [
   { id: 'select', header: '', meta: { style: { th: { width: '3rem' }, td: { width: '3rem' } } } },
-  { accessorKey: 'name', header: t('admin.common.name'), meta: { style: { th: { width: 'calc((100% - 15rem) / 3)' }, td: { width: 'calc((100% - 15rem) / 3)' } } } },
-  { id: 'category', header: t('admin.products.category'), meta: { style: { th: { width: 'calc((100% - 15rem) / 3)' }, td: { width: 'calc((100% - 15rem) / 3)' } } } },
-  { id: 'status', header: t('admin.common.status'), meta: { style: { th: { width: 'calc((100% - 15rem) / 3)' }, td: { width: 'calc((100% - 15rem) / 3)' } } } },
+  { accessorKey: 'name', header: t('admin.common.name') },
+  { id: 'category', header: t('admin.products.category') },
+  { id: 'status', header: t('admin.common.status') },
   { id: 'actions', header: '', meta: { style: { th: { width: '12rem' }, td: { width: '12rem' } } } }
 ])
 const formOpen = ref(false)

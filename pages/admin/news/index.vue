@@ -123,10 +123,10 @@ const statusOptions = computed(() => [
 ])
 const columns = computed<TableColumn<NewsItem>[]>(() => [
   { id: 'select', header: '', meta: { style: { th: { width: '3rem' }, td: { width: '3rem' } } } },
-  { accessorKey: 'title', header: t('admin.common.name'), meta: { style: { th: { width: 'calc((100% - 15rem) / 4)' }, td: { width: 'calc((100% - 15rem) / 4)' } } } },
-  { id: 'category', header: t('admin.news.category'), meta: { style: { th: { width: 'calc((100% - 15rem) / 4)' }, td: { width: 'calc((100% - 15rem) / 4)' } } } },
-  { accessorKey: 'publishedAt', header: t('admin.news.publishedAt'), meta: { style: { th: { width: 'calc((100% - 15rem) / 4)' }, td: { width: 'calc((100% - 15rem) / 4)' } } } },
-  { id: 'status', header: t('admin.common.status'), meta: { style: { th: { width: 'calc((100% - 15rem) / 4)' }, td: { width: 'calc((100% - 15rem) / 4)' } } } },
+  { accessorKey: 'title', header: t('admin.common.name') },
+  { id: 'category', header: t('admin.news.category') },
+  { accessorKey: 'publishedAt', header: t('admin.news.publishedAt') },
+  { id: 'status', header: t('admin.common.status') },
   { id: 'actions', header: '', meta: { style: { th: { width: '12rem' }, td: { width: '12rem' } } } }
 ])
 const selectedSlugs = ref<string[]>([])
