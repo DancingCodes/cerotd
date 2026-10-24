@@ -99,6 +99,7 @@ type NewsItem = {
 
 const { t } = useI18n()
 const lt = useLocalized()
+const toast = useToast()
 
 type CategoryItem = {
   slug: string

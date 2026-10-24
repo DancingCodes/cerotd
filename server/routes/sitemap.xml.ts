@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
         `SELECT slug, updated_at
          FROM products
          WHERE is_published = 1
-         ORDER BY sort_order ASC, id ASC`
+         ORDER BY updated_at DESC, id DESC`
       )
       .all<{ slug: string; updated_at: string }>()
 

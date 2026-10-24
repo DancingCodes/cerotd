@@ -23,7 +23,7 @@ export default defineApiHandler(async (event) => {
   }
 
   if (category) {
-    const found = await findNewsCategory(db, category, { publishedOnly: !includeUnpublished })
+    const found = await findNewsCategory(db, category)
     if (!found) {
       throw createError({ statusCode: 500, statusMessage: 'invalid category' })
     }
