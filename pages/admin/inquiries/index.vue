@@ -1,9 +1,9 @@
 <template>
   <div class="flex h-full min-h-0 flex-col">
     <div class="mb-4 grid grid-cols-1 gap-2.5 md:grid-cols-[1fr_1fr_auto]">
-      <USelect v-model="status" :items="statusFilters" class="w-full" @update:model-value="applyFilters" />
-      <USelect v-model="range" :items="rangeFilters" class="w-full" @update:model-value="applyFilters" />
-      <UButton color="neutral" variant="soft" @click="load">{{ $t('admin.inquiries.refresh') }}</UButton>
+      <USelect v-model="status" :items="statusFilters" class="w-full" />
+      <USelect v-model="range" :items="rangeFilters" class="w-full" />
+      <UButton color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}</UButton>
     </div>
 
     <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">

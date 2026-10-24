@@ -636,6 +636,7 @@
     "products": {
       "title": "产品管理",
       "subtitle": "管理前台产品页使用的内容",
+      "searchPlaceholder": "搜索名称",
       "new": "新建产品",
       "editTitle": "编辑产品",
       "createTitle": "新建产品",
@@ -723,6 +724,7 @@
     "productCategories": {
       "title": "产品分类",
       "subtitle": "管理产品页面与询盘表单使用的分类",
+      "searchPlaceholder": "搜索名称",
       "new": "新建分类",
       "editTitle": "编辑分类",
       "createTitle": "新建分类",
@@ -732,6 +734,7 @@
     "newsCategories": {
       "title": "新闻分类",
       "subtitle": "管理新闻文章使用的分类",
+      "searchPlaceholder": "搜索名称",
       "new": "新建分类",
       "editTitle": "编辑分类",
       "createTitle": "新建分类",

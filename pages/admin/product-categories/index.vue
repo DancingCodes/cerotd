@@ -1,7 +1,9 @@
 <template>
   <div class="flex h-full min-h-0 flex-col">
-    <div class="mb-4 flex justify-end">
-      <UButton @click="startCreate">{{ $t('admin.productCategories.new') }}</UButton>
+    <div class="mb-4 flex gap-2.5">
+      <UInput v-model="searchInput" type="search" class="w-full" :placeholder="$t('admin.productCategories.searchPlaceholder')" @keyup.enter="applyFilters" />
+      <UButton class="shrink-0" color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}</UButton>
+      <UButton class="shrink-0" @click="startCreate">{{ $t('admin.productCategories.new') }}</UButton>
     </div>
 
     <UModal v-model:open="formOpen"
@@ -28,7 +30,7 @@
     </UModal>
 
     <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">
-      <UTable :data="items" :columns="columns" :loading="pending" :empty="$t('admin.productCategories.empty')"
+      <UTable :data="filteredItems" :columns="columns" :loading="pending" :empty="$t('admin.productCategories.empty')"
         sticky="header" class="min-h-0 flex-1">
         <template #name-cell="{ row }">
           <div class="font-semibold">{{ lt(row.original.name) }}</div>
@@ -58,6 +60,8 @@ const { t, locale } = useI18n()
 const lt = useLocalized()
 const items = ref<CategoryItem[]>([])
 const pending = ref(true)
+const searchInput = ref('')
+const search = ref('')
 const formOpen = ref(false)
 const editingSlug = ref('')
 const formError = ref('')
@@ -67,8 +71,14 @@ const columns = computed<TableColumn<CategoryItem>[]>(() => [
   { accessorKey: 'sortOrder', header: t('admin.common.sort') },
   { id: 'actions', header: '' }
 ])
+const filteredItems = computed(() => {
+  const keyword = search.value.trim().toLowerCase()
+  if (!keyword) return items.value
+  return items.value.filter((item) => lt(item.name).toLowerCase().includes(keyword))
+})
 
 function secondaryName(name: Localized) { return locale.value === 'zh' ? name.en : name.zh }
+function applyFilters() { search.value = searchInput.value }
 function resetForm() { Object.assign(form, { nameEn: '', nameZh: '', sortOrder: 0 }) }
 async function load() { pending.value = true; try { items.value = (await apiFetch<{ items: CategoryItem[] }>('/api/product-categories')).items } finally { pending.value = false } }
 function startCreate() { editingSlug.value = ''; resetForm(); formError.value = ''; formOpen.value = true }

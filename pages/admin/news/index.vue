@@ -2,8 +2,8 @@
   <div class="flex h-full min-h-0 flex-col">
     <div class="mb-4 grid grid-cols-1 gap-2.5 md:grid-cols-[1.4fr_1fr_1fr_auto_auto_auto] md:items-center">
         <UInput v-model="searchInput" type="search" class="w-full" :placeholder="$t('admin.news.searchPlaceholder')" @keyup.enter="applyFilters" />
-        <USelect v-model="filterCategory" :items="categoryOptions" class="w-full" @update:model-value="applyFilters" />
-        <USelect v-model="filterStatus" :items="statusOptions" class="w-full" @update:model-value="applyFilters" />
+        <USelect v-model="filterCategory" :items="categoryOptions" class="w-full" />
+        <USelect v-model="filterStatus" :items="statusOptions" class="w-full" />
         <UButton color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}</UButton>
         <UButton v-if="selectedSlugs.length" color="error" :loading="batchDeleting" @click="removeSelected">{{ $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}</UButton>
         <UButton :disabled="!categories.length" @click="startCreate">{{ $t('admin.news.new') }}</UButton>
