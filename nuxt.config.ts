@@ -3,7 +3,8 @@ export default defineNuxtConfig({
   modules: ['@nuxt/ui', '@nuxtjs/i18n', 'nitro-cloudflare-dev'],
   colorMode: {
     preference: 'light',
-    fallback: 'light'
+    fallback: 'light',
+    storageKey: 'cerotd-color-mode'
   },
   fonts: {
     providers: {
