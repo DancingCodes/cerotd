@@ -624,7 +624,7 @@
       "nextPage": "下一页",
       "pageStatus": "第 {page} / {totalPages} 页",
       "search": "搜索",
-      "searchPlaceholder": "搜索名称 / slug",
+      "searchPlaceholder": "搜索名称",
       "filterAll": "全部",
       "filterPublished": "已发布",
       "filterDraft": "未发布",
@@ -672,7 +672,7 @@
       "deleteConfirm": "确认删除文章“{name}”？",
       "requiredTitleEn": "请填写英文标题。",
       "requiredTitleZh": "请填写中文标题。",
-      "searchPlaceholder": "搜索标题 / slug",
+      "searchPlaceholder": "搜索标题",
       "needCategoryFirst": "请先创建新闻分类，再添加新闻。"
     },
     "inquiries": {

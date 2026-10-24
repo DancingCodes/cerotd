@@ -1,79 +1,125 @@
 <template>
   <div class="flex h-full min-h-0 flex-col">
     <div class="mb-4 grid grid-cols-[1.4fr_1fr_1fr_auto_auto_auto] items-center gap-2.5">
-        <UInput v-model="searchInput" type="search" class="w-full" :placeholder="$t('admin.news.searchPlaceholder')" @keyup.enter="applyFilters" />
-        <USelect v-model="filterCategory" :items="categoryOptions" class="w-full" />
-        <USelect v-model="filterStatus" :items="statusOptions" class="w-full" />
-        <UButton color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}</UButton>
-        <UButton v-if="selectedSlugs.length" color="error" :loading="batchDeleting" @click="removeSelected">{{ $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}</UButton>
-        <UButton :disabled="!categories.length" @click="startCreate">{{ $t('admin.news.new') }}</UButton>
+      <UInput v-model="searchInput" type="search" class="w-full" :placeholder="$t('admin.news.searchPlaceholder')"
+        @keyup.enter="applyFilters" />
+      <USelect v-model="filterCategory" :items="categoryOptions" class="w-full" />
+      <USelect v-model="filterStatus" :items="statusOptions" class="w-full" />
+      <UButton color="neutral" variant="soft" @click="applyFilters">
+        {{ $t('admin.common.search') }}
+      </UButton>
+      <UButton v-if="selectedSlugs.length" color="error" :loading="batchDeleting" @click="removeSelected">
+        {{ $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}
+      </UButton>
+      <UButton :disabled="!categories.length" @click="startCreate">
+        {{ $t('admin.news.new') }}
+      </UButton>
     </div>
-    <UModal v-model:open="formOpen" :title="editingSlug ? $t('admin.news.editTitle') : $t('admin.news.createTitle')" scrollable :ui="{ content: 'max-w-7xl' }">
-      <template #body>
-      <UForm :state="form" class="grid grid-cols-4 gap-4" @submit="save">
-        <UFormField :label="$t('admin.news.titleEn')" name="titleEn" required><UInput v-model="form.titleEn" class="w-full" /></UFormField>
-        <UFormField :label="$t('admin.news.titleZh')" name="titleZh" required><UInput v-model="form.titleZh" class="w-full" /></UFormField>
-        <UFormField :label="$t('admin.news.category')" name="category" required><USelect v-model="form.category" :items="newsCategoryOptions" class="w-full" /></UFormField>
-        <UFormField :label="$t('admin.common.published')" name="isPublished"><USelect v-model="form.isPublished" :items="publishOptions" class="w-full" /></UFormField>
-        <div class="col-span-full">
-          <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.coverUrl') }}</div>
-          <UFileUpload
-            :model-value="coverUploadItem"
-            :accept="imageAccept"
-            :label="uploadingCover ? $t('admin.upload.uploading') : (form.coverUrl ? $t('admin.upload.replace') : $t('admin.upload.button'))"
-            :disabled="uploadingCover"
-            @update:model-value="onCoverUpload"
-          />
-        </div>
-        <UFormField class="col-span-2" :label="$t('admin.news.summaryEn')" name="summaryEn"><UTextarea v-model="form.summaryEn" class="w-full" :rows="2" /></UFormField>
-        <UFormField class="col-span-2" :label="$t('admin.news.summaryZh')" name="summaryZh"><UTextarea v-model="form.summaryZh" class="w-full" :rows="2" /></UFormField>
-        <div class="col-span-2">
-          <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.news.contentEn') }}</div>
-          <ClientOnly>
-            <UEditor v-model="form.contentEn" class="min-h-100" content-type="html" :image="{ inline: false, allowBase64: false }">
-              <template #default="{ editor }">
-                <div class="flex flex-wrap items-center gap-1 border-b border-[#e5eaf0] p-2">
-                  <UEditorToolbar :editor="editor" :items="editorToolbarItems" />
-                  <UButton icon="i-lucide-image-plus" color="neutral" variant="ghost" size="sm" @click="uploadEditorImage(editor)" />
-                </div>
-              </template>
-            </UEditor>
-            <p class="mt-2 text-xs text-gray-500">{{ $t('admin.news.imageHint') }}</p>
-          </ClientOnly>
-        </div>
-        <div class="col-span-2">
-          <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.news.contentZh') }}</div>
-          <ClientOnly>
-            <UEditor v-model="form.contentZh" class="min-h-100" content-type="html" :image="{ inline: false, allowBase64: false }">
-              <template #default="{ editor }">
-                <div class="flex flex-wrap items-center gap-1 border-b border-[#e5eaf0] p-2">
-                  <UEditorToolbar :editor="editor" :items="editorToolbarItems" />
-                  <UButton icon="i-lucide-image-plus" color="neutral" variant="ghost" size="sm" @click="uploadEditorImage(editor)" />
-                </div>
-              </template>
-            </UEditor>
-            <p class="mt-2 text-xs text-gray-500">{{ $t('admin.news.imageHint') }}</p>
-          </ClientOnly>
-        </div>
-        <p v-if="formError" class="col-span-full text-sm text-error">{{ formError }}</p>
-        <div class="col-span-full flex justify-end gap-2"><UButton color="neutral" variant="ghost" @click="closeForm">{{ $t('admin.common.cancel') }}</UButton><UButton type="submit">{{ $t('admin.common.save') }}</UButton></div>
-      </UForm>
-      </template>
-    </UModal>
+
 
     <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">
-      <UTable :data="items" :columns="columns" :loading="pending" :empty="$t('admin.news.empty')" sticky="header" :ui="{ base: 'w-full table-fixed' }" class="min-h-0 flex-1">
-        <template #select-header><UCheckbox :model-value="allSelected" @update:model-value="toggleSelectAll(Boolean($event))" /></template>
-        <template #select-cell="{ row }"><UCheckbox :model-value="selectedSlugs.includes(row.original.slug)" @update:model-value="toggleSelect(row.original.slug, Boolean($event))" /></template>
-        <template #title-cell="{ row }"><div class="font-semibold">{{ lt(row.original.title) }}</div></template>
+      <UTable :data="items" :columns="columns" :loading="pending" :empty="$t('admin.news.empty')" sticky="header"
+        :ui="{ base: 'w-full table-fixed' }" class="min-h-0 flex-1">
+        <template #select-header>
+          <UCheckbox :model-value="allSelected" @update:model-value="toggleSelectAll(Boolean($event))" />
+        </template>
+        <template #select-cell="{ row }">
+          <UCheckbox :model-value="selectedSlugs.includes(row.original.slug)"
+            @update:model-value="toggleSelect(row.original.slug, Boolean($event))" />
+        </template>
+        <template #title-cell="{ row }">
+          <div class="font-semibold">{{ lt(row.original.title) }}</div>
+        </template>
         <template #category-cell="{ row }">{{ categoryLabel(row.original.category) }}</template>
         <template #publishedAt-cell="{ row }">{{ formatDateTime(row.original.publishedAt) }}</template>
-        <template #status-cell="{ row }"><UBadge :color="row.original.isPublished ? 'success' : 'neutral'" variant="subtle">{{ row.original.isPublished ? $t('admin.common.published') : $t('admin.common.draft') }}</UBadge></template>
-        <template #actions-cell="{ row }"><div class="flex justify-end gap-1"><UButton :to="`/news/${row.original.slug}`" target="_blank" color="primary" variant="ghost" size="xs">{{ $t('admin.common.view') }}</UButton><UButton color="neutral" variant="ghost" size="xs" @click="startEdit(row.original)">{{ $t('admin.common.edit') }}</UButton><UButton color="error" variant="ghost" size="xs" @click="remove(row.original)">{{ $t('admin.common.delete') }}</UButton></div></template>
+        <template #status-cell="{ row }">
+          <UBadge :color="row.original.isPublished ? 'success' : 'neutral'" variant="subtle">
+            {{ row.original.isPublished ? $t('admin.common.published') : $t('admin.common.draft') }}</UBadge>
+        </template>
+        <template #actions-cell="{ row }">
+          <div class="flex justify-end gap-1">
+            <UButton :to="`/news/${row.original.slug}`" target="_blank" color="primary" variant="ghost" size="xs">
+              {{ $t('admin.common.view') }}</UButton>
+            <UButton color="neutral" variant="ghost" size="xs" @click="startEdit(row.original)">
+              {{ $t('admin.common.edit') }}</UButton>
+            <UButton color="error" variant="ghost" size="xs" @click="remove(row.original)">
+              {{ $t('admin.common.delete') }}</UButton>
+          </div>
+        </template>
       </UTable>
 
-      <div v-if="totalPages > 1" class="mt-4 flex justify-end"><UPagination v-model:page="page" :total="total" :items-per-page="pageSize" @update:page="load" /></div>
+      <div v-if="totalPages > 1" class="mt-4 flex justify-end">
+        <UPagination v-model:page="page" :total="total" :items-per-page="pageSize" @update:page="load" />
+      </div>
     </UCard>
+
+
+    <UModal v-model:open="formOpen" :title="editingSlug ? $t('admin.news.editTitle') : $t('admin.news.createTitle')"
+      scrollable :ui="{ content: 'max-w-7xl' }">
+      <template #body>
+        <UForm :state="form" class="grid grid-cols-4 gap-4" @submit="save">
+          <UFormField :label="$t('admin.news.titleEn')" name="titleEn" required>
+            <UInput v-model="form.titleEn" class="w-full" />
+          </UFormField>
+          <UFormField :label="$t('admin.news.titleZh')" name="titleZh" required>
+            <UInput v-model="form.titleZh" class="w-full" />
+          </UFormField>
+          <UFormField :label="$t('admin.news.category')" name="category" required>
+            <USelect v-model="form.category" :items="newsCategoryOptions" class="w-full" />
+          </UFormField>
+          <UFormField :label="$t('admin.common.published')" name="isPublished">
+            <USelect v-model="form.isPublished" :items="publishOptions" class="w-full" />
+          </UFormField>
+          <div class="col-span-full">
+            <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.coverUrl') }}</div>
+            <UFileUpload :model-value="coverUploadItem" :accept="imageAccept"
+              :label="uploadingCover ? $t('admin.upload.uploading') : (form.coverUrl ? $t('admin.upload.replace') : $t('admin.upload.button'))"
+              :disabled="uploadingCover" @update:model-value="onCoverUpload" />
+          </div>
+          <UFormField class="col-span-2" :label="$t('admin.news.summaryEn')" name="summaryEn">
+            <UTextarea v-model="form.summaryEn" class="w-full" :rows="2" />
+          </UFormField>
+          <UFormField class="col-span-2" :label="$t('admin.news.summaryZh')" name="summaryZh">
+            <UTextarea v-model="form.summaryZh" class="w-full" :rows="2" />
+          </UFormField>
+          <div class="col-span-2">
+            <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.news.contentEn') }}</div>
+            <ClientOnly>
+              <UEditor v-model="form.contentEn" content-type="html" :image="{ inline: false, allowBase64: false }">
+                <template #default="{ editor }">
+                  <div class="flex flex-wrap items-center gap-1 border-b border-[#e5eaf0] p-2">
+                    <UEditorToolbar :editor="editor" :items="editorToolbarItems" />
+                    <UButton icon="i-lucide-image-plus" color="neutral" variant="ghost" size="sm"
+                      @click="uploadEditorImage(editor)" />
+                  </div>
+                </template>
+              </UEditor>
+              <p class="mt-2 text-xs text-gray-500">{{ $t('admin.news.imageHint') }}</p>
+            </ClientOnly>
+          </div>
+          <div class="col-span-2">
+            <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.news.contentZh') }}</div>
+            <ClientOnly>
+              <UEditor v-model="form.contentZh" content-type="html" :image="{ inline: false, allowBase64: false }">
+                <template #default="{ editor }">
+                  <div class="flex flex-wrap items-center gap-1 border-b border-[#e5eaf0] p-2">
+                    <UEditorToolbar :editor="editor" :items="editorToolbarItems" />
+                    <UButton icon="i-lucide-image-plus" color="neutral" variant="ghost" size="sm"
+                      @click="uploadEditorImage(editor)" />
+                  </div>
+                </template>
+              </UEditor>
+              <p class="mt-2 text-xs text-gray-500">{{ $t('admin.news.imageHint') }}</p>
+            </ClientOnly>
+          </div>
+          <p v-if="formError" class="col-span-full text-sm text-error">{{ formError }}</p>
+          <div class="col-span-full flex justify-end gap-2">
+            <UButton color="neutral" variant="ghost" @click="closeForm">{{ $t('admin.common.cancel') }}</UButton>
+            <UButton type="submit">{{ $t('admin.common.save') }}</UButton>
+          </div>
+        </UForm>
+      </template>
+    </UModal>
   </div>
 </template>
 
@@ -127,7 +173,7 @@ const columns = computed<TableColumn<NewsItem>[]>(() => [
   { id: 'category', header: t('admin.news.category') },
   { accessorKey: 'publishedAt', header: t('admin.news.publishedAt') },
   { id: 'status', header: t('admin.common.status') },
-  { id: 'actions', header: '', meta: { style: { th: { width: '12rem' }, td: { width: '12rem' } } } }
+  { id: 'actions', header: '' }
 ])
 const selectedSlugs = ref<string[]>([])
 const batchDeleting = ref(false)
@@ -226,7 +272,7 @@ function uploadEditorImage(editor: any) {
     try {
       const url = await uploadImage(file)
       editor.chain().focus().setImage({ src: url }).run()
-    } catch {}
+    } catch { }
   }
   input.click()
 }
@@ -391,7 +437,7 @@ async function save() {
     }
     closeForm()
     await load()
-  } catch {}
+  } catch { }
 }
 
 async function remove(item: NewsItem) {
@@ -401,7 +447,7 @@ async function remove(item: NewsItem) {
       method: 'DELETE'
     })
     await load()
-  } catch {}
+  } catch { }
 }
 
 async function removeSelected() {

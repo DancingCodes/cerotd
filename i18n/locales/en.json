@@ -624,7 +624,7 @@
       "nextPage": "Next",
       "pageStatus": "Page {page} / {totalPages}",
       "search": "Search",
-      "searchPlaceholder": "Search name / slug",
+      "searchPlaceholder": "Search name",
       "filterAll": "All",
       "filterPublished": "Published",
       "filterDraft": "Unpublished",
@@ -672,7 +672,7 @@
       "deleteConfirm": "Delete article \"{name}\"?",
       "requiredTitleEn": "Please enter the English title.",
       "requiredTitleZh": "Please enter the Chinese title.",
-      "searchPlaceholder": "Search title / slug",
+      "searchPlaceholder": "Search title",
       "needCategoryFirst": "Create a news category before adding news."
     },
     "inquiries": {
