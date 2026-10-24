@@ -693,7 +693,6 @@
       "message": "Message",
       "createdAt": "Received",
       "status": "Status",
-      "noMessage": "No message",
       "bulkYes": "Yes",
       "bulkNo": "No",
       "deleteConfirm": "Delete inquiry from \"{name}\"?",

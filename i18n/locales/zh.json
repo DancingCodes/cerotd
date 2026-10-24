@@ -693,7 +693,6 @@
       "message": "留言内容",
       "createdAt": "提交时间",
       "status": "状态",
-      "noMessage": "无留言内容",
       "bulkYes": "是",
       "bulkNo": "否",
       "deleteConfirm": "确认删除来自“{name}”的留言？",

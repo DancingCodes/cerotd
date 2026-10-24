@@ -7,18 +7,19 @@
     </div>
 
     <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">
-      <UTable :data="items" :columns="columns" :loading="pending" :empty="$t('admin.inquiries.empty')" sticky="header"
+      <UTable v-model:expanded="expandedRows" :data="items" :columns="columns" :loading="pending"
+        :empty="$t('admin.inquiries.empty')" sticky="header" :expanded-options="{ getRowCanExpand: () => true }"
         :ui="{ base: 'w-full table-fixed' }" class="min-h-0 flex-1">
         <template #name-cell="{ row }">
           <div class="font-semibold">
             <span v-if="!row.original.isRead" class="mr-2 inline-block size-2 rounded-full bg-primary"></span>
             {{ row.original.name }}
           </div>
-          <div class="text-xs text-gray-500">{{ row.original.company || '-' }}</div>
+          <div class="text-xs text-gray-500">{{ row.original.company }}</div>
         </template>
         <template #contact-cell="{ row }">
-          <div>{{ row.original.email || '-' }}</div>
-          <div class="text-xs text-gray-500">{{ row.original.phone || '-' }}</div>
+          <div>{{ row.original.email }}</div>
+          <div class="text-xs text-gray-500">{{ row.original.phone }}</div>
         </template>
         <template #createdAt-cell="{ row }">{{ formatDateTime(row.original.createdAt) }}</template>
         <template #status-cell="{ row }">
@@ -28,8 +29,8 @@
         </template>
         <template #actions-cell="{ row }">
           <div class="flex justify-end gap-1">
-            <UButton color="primary" variant="ghost" size="xs" @click="toggle(row.original)">
-              {{ openId === row.original.id ? $t('admin.inquiries.hide') : $t('admin.inquiries.view') }}
+            <UButton color="primary" variant="ghost" size="xs" @click="toggle(row)">
+              {{ row.getIsExpanded() ? $t('admin.inquiries.hide') : $t('admin.inquiries.view') }}
             </UButton>
             <UButton color="neutral" variant="ghost" size="xs" @click="setRead(row.original, !row.original.isRead)">
               {{ row.original.isRead ? $t('admin.inquiries.markUnread') : $t('admin.inquiries.markRead') }}
@@ -39,34 +40,35 @@
             </UButton>
           </div>
         </template>
+        <template #expanded="{ row }">
+          <div class="rounded-lg border border-default bg-muted/30 p-4">
+            <div class="grid grid-cols-2 gap-2 text-sm text-gray-700">
+              <div>
+                <span class="font-semibold text-gray-500"> {{ $t('admin.inquiries.country') }}:</span>
+                {{ row.original.country }}
+              </div>
+              <div>
+                <span class="font-semibold text-gray-500">{{ $t('admin.inquiries.im') }}:</span>
+                {{ row.original.im }}
+              </div>
+              <div>
+                <span class="font-semibold text-gray-500">{{ $t('admin.inquiries.bulk') }}:</span>
+                {{ row.original.bulkIntent === 'yes' ? $t('admin.inquiries.bulkYes') : row.original.bulkIntent === 'no'
+                  ? $t('admin.inquiries.bulkNo') : '' }}
+              </div>
+              <div>
+                <span class="font-semibold text-gray-500">{{ $t('admin.inquiries.locale') }}:</span>
+                {{ row.original.locale }}
+              </div>
+            </div>
+            <div class="mt-3 rounded-md bg-default p-3">
+              <div class="mb-1 text-xs font-semibold text-gray-500 uppercase">{{ $t('admin.inquiries.message') }}</div>
+              <p class="whitespace-pre-wrap text-sm text-gray-900">
+                {{ row.original.message }}</p>
+            </div>
+          </div>
+        </template>
       </UTable>
-
-      <div v-if="selectedItem" class="mt-4 rounded-lg border border-default p-4">
-        <div class="mb-3 flex items-center justify-between">
-          <div class="font-semibold">{{ selectedItem.name }}</div>
-          <UButton color="neutral" variant="ghost" size="xs" @click="openId = null">{{ $t('admin.inquiries.hide') }}
-          </UButton>
-        </div>
-        <div class="grid grid-cols-2 gap-2 text-sm text-gray-700">
-          <div><span class="font-semibold text-gray-500">{{ $t('admin.inquiries.country') }}:</span> {{
-            selectedItem.country
-            || '-' }}</div>
-          <div><span class="font-semibold text-gray-500">{{ $t('admin.inquiries.im') }}:</span> {{ selectedItem.im ||
-            '-' }}
-          </div>
-          <div><span class="font-semibold text-gray-500">{{ $t('admin.inquiries.bulk') }}:</span> {{
-            formatBulk(selectedItem.bulkIntent) }}</div>
-          <div><span class="font-semibold text-gray-500">{{ $t('admin.inquiries.locale') }}:</span> {{
-            selectedItem.locale }}
-          </div>
-        </div>
-        <div class="mt-3 rounded-md bg-muted p-3">
-          <div class="mb-1 text-xs font-semibold text-gray-500 uppercase">{{ $t('admin.inquiries.message') }}</div>
-          <p class="whitespace-pre-wrap text-sm text-gray-900">{{ selectedItem.message ||
-            $t('admin.inquiries.noMessage') }}
-          </p>
-        </div>
-      </div>
 
       <div v-if="totalPages > 1" class="mt-4 flex justify-end">
         <UPagination v-model:page="page" :total="total" :items-per-page="pageSize" @update:page="load" />
@@ -91,17 +93,16 @@ const page = ref(1)
 const pageSize = 10
 const total = ref(0)
 const totalPages = computed(() => Math.max(1, Math.ceil(total.value / pageSize)))
-const openId = ref<number | null>(null)
-const selectedItem = computed(() => items.value.find(item => item.id === openId.value))
+const expandedRows = ref<Record<string, boolean>>({})
 const status = ref<StatusFilter>('all')
 const range = ref<RangeFilter>('all')
 
 const columns = computed<TableColumn<InquiryItem>[]>(() => [
-  { accessorKey: 'name', header: t('admin.inquiries.name'), meta: { style: { th: { width: 'calc((100% - 12rem) / 4)' }, td: { width: 'calc((100% - 12rem) / 4)' } } } },
-  { id: 'contact', header: t('admin.inquiries.email'), meta: { style: { th: { width: 'calc((100% - 12rem) / 4)' }, td: { width: 'calc((100% - 12rem) / 4)' } } } },
-  { accessorKey: 'createdAt', header: t('admin.inquiries.createdAt'), meta: { style: { th: { width: 'calc((100% - 12rem) / 4)' }, td: { width: 'calc((100% - 12rem) / 4)' } } } },
-  { id: 'status', header: t('admin.inquiries.status'), meta: { style: { th: { width: 'calc((100% - 12rem) / 4)' }, td: { width: 'calc((100% - 12rem) / 4)' } } } },
-  { id: 'actions', header: '', meta: { style: { th: { width: '12rem' }, td: { width: '12rem' } } } }
+  { accessorKey: 'name', header: t('admin.inquiries.name') },
+  { id: 'contact', header: t('admin.inquiries.email') },
+  { accessorKey: 'createdAt', header: t('admin.inquiries.createdAt') },
+  { id: 'status', header: t('admin.inquiries.status') },
+  { id: 'actions', header: '' }
 ])
 const statusFilters = computed(() => [
   { value: 'all' as const, label: t('admin.inquiries.filterAll') },
@@ -115,12 +116,12 @@ const rangeFilters = computed(() => [
   { value: '30d' as const, label: t('admin.inquiries.range30d') }
 ])
 
-function formatBulk(value: string) { return value === 'yes' ? t('admin.inquiries.bulkYes') : value === 'no' ? t('admin.inquiries.bulkNo') : '-' }
 function applyFilters() { page.value = 1; load() }
 
-async function toggle(item: InquiryItem) {
-  openId.value = openId.value === item.id ? null : item.id
-  if (openId.value === item.id && !item.isRead) await setRead(item, true, false)
+async function toggle(row: any) {
+  const isExpanded = row.getIsExpanded()
+  expandedRows.value = isExpanded ? {} : { [row.id]: true }
+  if (!isExpanded && !row.original.isRead) await setRead(row.original, true, false)
 }
 
 async function load() {
@@ -145,7 +146,7 @@ async function remove(item: InquiryItem) {
   if (!window.confirm(t('admin.inquiries.deleteConfirm', { name: item.name }))) return
   try {
     await apiFetch('/api/inquiries/' + item.id, { method: 'DELETE' })
-    if (openId.value === item.id) openId.value = null
+    expandedRows.value = {}
     await load()
   } catch { }
 }
