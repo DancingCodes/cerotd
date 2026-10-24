@@ -5,7 +5,7 @@
         <NuxtLink to="/news" class="mb-4.5 inline-block text-[14px] font-semibold text-[#c8ced6] no-underline">{{ $t('news.backToList') }}</NuxtLink>
         <div class="mb-3.5 flex gap-3.5 text-[13px] font-semibold tracking-[.04em] text-[#b7c0cb] uppercase">
           <span>{{ categoryLabel(article.category) }}</span>
-          <time :datetime="article.publishedAt">{{ formatDate(article.publishedAt) }}</time>
+          <time :datetime="article.publishedAt">{{ formatLocalizedDate(article.publishedAt, locale) }}</time>
         </div>
         <h1 class="mb-4 max-w-[18ch] text-[48px] leading-[1.1] tracking-normal">{{ t(article.title) }}</h1>
         <p class="max-w-[48ch] text-[18px] leading-[1.7] text-[#c8ced6]">{{ t(article.summary) }}</p>
@@ -160,13 +160,4 @@ useHead({
   })
 })
 
-function formatDate(value: string) {
-  const date = new Date(value.includes('T') ? value : value.replace(' ', 'T') + 'Z')
-  if (Number.isNaN(date.getTime())) return value.slice(0, 10)
-  return new Intl.DateTimeFormat(locale.value === 'zh' ? 'zh-CN' : 'en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
-  }).format(date)
-}
 </script>

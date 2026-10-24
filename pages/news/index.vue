@@ -60,7 +60,7 @@
               <div class="p-6">
                 <div class="mb-3 flex items-center justify-between gap-3">
                   <span class="text-[12px] font-bold tracking-[.04em] text-[#0f4c56] uppercase">{{ categoryLabel(item.category) }}</span>
-                  <time class="text-[13px] text-[#6b7280]" :datetime="item.publishedAt">{{ formatDate(item.publishedAt) }}</time>
+                  <time class="text-[13px] text-[#6b7280]" :datetime="item.publishedAt">{{ formatLocalizedDate(item.publishedAt, locale) }}</time>
                 </div>
                 <h3 class="mb-2.5 text-[22px] tracking-normal text-[#111827]">{{ t(item.title) }}</h3>
                 <p class="mb-4 text-[14px] leading-[1.7] text-[#4b5563]">{{ t(item.summary) }}</p>
@@ -129,15 +129,6 @@ function setCategory(slug: string) {
   })
 }
 
-function formatDate(value: string) {
-  const date = new Date(value.includes('T') ? value : value.replace(' ', 'T') + 'Z')
-  if (Number.isNaN(date.getTime())) return value.slice(0, 10)
-  return new Intl.DateTimeFormat(locale.value === 'zh' ? 'zh-CN' : 'en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
-  }).format(date)
-}
 
 const pageSize = 6
 type NewsListResponse = {

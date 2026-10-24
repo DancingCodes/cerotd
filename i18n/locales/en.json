@@ -693,7 +693,6 @@
       "message": "Message",
       "createdAt": "Received",
       "status": "Status",
-      "noCompany": "No company",
       "noMessage": "No message",
       "bulkYes": "Yes",
       "bulkNo": "No",

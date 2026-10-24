@@ -67,7 +67,7 @@
         <template #select-cell="{ row }"><UCheckbox :model-value="selectedSlugs.includes(row.original.slug)" @update:model-value="toggleSelect(row.original.slug, Boolean($event))" /></template>
         <template #title-cell="{ row }"><div class="font-semibold">{{ lt(row.original.title) }}</div></template>
         <template #category-cell="{ row }">{{ categoryLabel(row.original.category) }}</template>
-        <template #publishedAt-cell="{ row }">{{ formatDate(row.original.publishedAt) }}</template>
+        <template #publishedAt-cell="{ row }">{{ formatDateTime(row.original.publishedAt) }}</template>
         <template #status-cell="{ row }"><UBadge :color="row.original.isPublished ? 'success' : 'neutral'" variant="subtle">{{ row.original.isPublished ? $t('admin.common.published') : $t('admin.common.draft') }}</UBadge></template>
         <template #actions-cell="{ row }"><div class="flex justify-end gap-1"><UButton :to="`/news/${row.original.slug}`" target="_blank" color="primary" variant="ghost" size="xs">{{ $t('admin.common.view') }}</UButton><UButton color="neutral" variant="ghost" size="xs" @click="startEdit(row.original)">{{ $t('admin.common.edit') }}</UButton><UButton color="error" variant="ghost" size="xs" @click="remove(row.original)">{{ $t('admin.common.delete') }}</UButton></div></template>
       </UTable>
@@ -246,9 +246,6 @@ function fromLocalInput(value: string) {
   return value.length === 16 ? `${value.replace('T', ' ')}:00` : value.replace('T', ' ')
 }
 
-function formatDate(value: string) {
-  return value ? value.slice(0, 16).replace('T', ' ') : ''
-}
 
 function resetForm() {
   Object.assign(form, {
