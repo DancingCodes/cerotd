@@ -22,5 +22,16 @@ export default defineApiHandler(async (event) => {
     throw createError({ statusCode: 500, statusMessage: 'News not found' })
   }
 
-  return mapNews(row)
+  const category = await findNewsCategory(db, row.category)
+  if (!category) {
+    throw createError({ statusCode: 500, statusMessage: 'News category not found' })
+  }
+
+  return {
+    ...mapNews(row),
+    category: {
+      slug: category.slug,
+      name: { en: category.name_en, zh: category.name_zh }
+    }
+  }
 })

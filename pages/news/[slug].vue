@@ -1,10 +1,12 @@
 <template>
   <div v-if="article">
-    <section class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,#070b12_0%,#121821_100%)] py-16 text-white md:py-18">
+    <section
+      class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,#070b12_0%,#121821_100%)] py-16 text-white md:py-18">
       <UContainer class="max-w-295 px-6">
-        <NuxtLink to="/news" class="mb-4.5 inline-block text-[14px] font-semibold text-[#c8ced6] no-underline">{{ $t('news.backToList') }}</NuxtLink>
+        <NuxtLink to="/news" class="mb-4.5 inline-block text-[14px] font-semibold text-[#c8ced6] no-underline">
+          {{ $t('news.backToList') }}</NuxtLink>
         <div class="mb-3.5 flex gap-3.5 text-[13px] font-semibold tracking-[.04em] text-[#b7c0cb] uppercase">
-          <span>{{ categoryLabel(article.category) }}</span>
+          <span>{{ t(article.category.name) }}</span>
           <time :datetime="article.publishedAt">{{ formatLocalizedDate(article.publishedAt, locale) }}</time>
         </div>
         <h1 class="mb-4 max-w-[18ch] text-[48px] leading-[1.1] tracking-normal">{{ t(article.title) }}</h1>
@@ -14,10 +16,9 @@
 
     <section class="bg-white py-18 pb-24">
       <UContainer class="max-w-205 px-6">
-        <article ref="articleBody" class="text-[17px] leading-[1.8] text-[#1f2937] [&_a]:text-[#3f7f88] [&_h2]:my-7 [&_h2]:mb-3 [&_h2]:text-[#111827] [&_h3]:my-7 [&_h3]:mb-3 [&_h3]:text-[#111827] [&_img]:my-6 [&_img]:block [&_img]:h-auto [&_img]:w-full [&_img]:rounded-[10px] [&_li]:mb-2 [&_ol]:mb-4.5 [&_ol]:list-decimal [&_ol]:pl-5.5 [&_p]:mb-4.5 [&_ul]:mb-4.5 [&_ul]:list-disc [&_ul]:pl-5.5" v-html="t(article.content)"></article>
-        <div class="mt-9">
-          <NuxtLink to="/contact" class="inline-flex min-h-11.5 items-center justify-center rounded-full bg-[#070b12] px-5 text-[14px] font-semibold text-white no-underline">{{ $t('news.detailCta') }}</NuxtLink>
-        </div>
+        <article
+          class="text-[17px] leading-[1.8] text-[#1f2937] [&_a]:text-[#3f7f88] [&_h2]:my-7 [&_h2]:mb-3 [&_h2]:text-[#111827] [&_h3]:my-7 [&_h3]:mb-3 [&_h3]:text-[#111827] [&_img]:my-6 [&_img]:block [&_img]:h-auto [&_img]:w-full [&_img]:rounded-[10px] [&_li]:mb-2 [&_ol]:mb-4.5 [&_ol]:list-decimal [&_ol]:pl-5.5 [&_p]:mb-4.5 [&_ul]:mb-4.5 [&_ul]:list-disc [&_ul]:pl-5.5"
+          v-html="t(article.content)"></article>
       </UContainer>
     </section>
   </div>
@@ -28,7 +29,7 @@ type Localized = { en: string; zh: string }
 
 type NewsItem = {
   slug: string
-  category: string
+  category: { slug: string; name: Localized }
   title: Localized
   summary: Localized
   content: Localized
@@ -40,14 +41,6 @@ type NewsItem = {
 const route = useRoute()
 const t = useLocalized()
 const { locale, t: i18nT } = useI18n()
-type CategoryItem = { slug: string; name: { en: string; zh: string } }
-const { data: categoriesData } = await useApiFetch<{ items: CategoryItem[] }>('/api/news-categories', {
-  key: 'news-categories'
-})
-function categoryLabel(slug: string) {
-  const found = (categoriesData.value?.items || []).find((item) => item.slug === slug)
-  return found ? t(found.name) : slug
-}
 const slug = computed(() => String(route.params.slug || ''))
 
 const { data: article, error } = await useApiFetch<NewsItem>(() => `/api/news/${slug.value}`, {
@@ -66,24 +59,6 @@ usePageSeo({
 })
 
 const siteUrl = useSiteUrl()
-const articleBody = ref<HTMLElement | null>(null)
-const imageFallback = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=='
-
-function bindContentImages() {
-  const rootEl = articleBody.value
-  if (!rootEl) return
-  rootEl.querySelectorAll('img').forEach((img) => {
-    if (img.dataset.fallbackBound === '1') return
-    img.dataset.fallbackBound = '1'
-    img.addEventListener('error', () => {
-      if (img.getAttribute('src') === imageFallback) return
-      img.setAttribute('src', imageFallback)
-    })
-  })
-}
-
-onMounted(bindContentImages)
-onUpdated(bindContentImages)
 
 const articleJsonLd = computed(() => {
   if (!article.value) return null
