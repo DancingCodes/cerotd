@@ -30,7 +30,7 @@
       :title="editingSlug ? $t('admin.newsCategories.editTitle') : $t('admin.newsCategories.createTitle')"
       :ui="{ content: 'max-w-2xl' }">
       <template #body>
-        <UForm :state="form" class="grid grid-cols-2 gap-4" @submit="save">
+        <UForm :state="form" :validate="validateForm" class="grid grid-cols-2 gap-4" @submit="save">
           <UFormField :label="$t('admin.common.nameEn')" name="nameEn" required>
             <UInput v-model="form.nameEn" class="w-full" />
           </UFormField>
@@ -40,7 +40,6 @@
           <UFormField class="col-span-2" :label="$t('admin.common.sort')" name="sortOrder">
             <UInput v-model.number="form.sortOrder" type="number" class="w-full" />
           </UFormField>
-          <p v-if="formError" class="col-span-full text-sm text-error">{{ formError }}</p>
           <div class="col-span-full flex justify-end gap-2">
             <UButton color="neutral" variant="ghost" @click="closeForm">{{ $t('admin.common.cancel') }}</UButton>
             <UButton type="submit">{{ $t('admin.common.save') }}</UButton>
@@ -74,7 +73,6 @@ const searchInput = ref('')
 const search = ref('')
 const formOpen = ref(false)
 const editingSlug = ref('')
-const formError = ref('')
 
 const emptyForm = () => ({
   slug: '',
@@ -116,7 +114,6 @@ async function load() {
 function startCreate() {
   editingSlug.value = ''
   Object.assign(form, emptyForm())
-  formError.value = ''
   formOpen.value = true
 }
 
@@ -128,26 +125,21 @@ function startEdit(item: CategoryItem) {
     nameZh: item.name.zh,
     sortOrder: item.sortOrder,
   })
-  formError.value = ''
   formOpen.value = true
 }
 
 function closeForm() {
   formOpen.value = false
-  formError.value = ''
+}
+
+function validateForm() {
+  const errors = []
+  if (!form.nameEn.trim()) errors.push({ name: 'nameEn', message: t('admin.common.requiredNameEn') })
+  if (!form.nameZh.trim()) errors.push({ name: 'nameZh', message: t('admin.common.requiredNameZh') })
+  return errors
 }
 
 async function save() {
-  formError.value = ''
-  if (!form.nameEn.trim()) {
-    formError.value = t('admin.common.requiredNameEn')
-    return
-  }
-  if (!form.nameZh.trim()) {
-    formError.value = t('admin.common.requiredNameZh')
-    return
-  }
-
   const payload = {
     nameEn: form.nameEn,
     nameZh: form.nameZh,

@@ -32,7 +32,7 @@
       :title="editingSlug ? $t('admin.productCategories.editTitle') : $t('admin.productCategories.createTitle')"
       :ui="{ content: 'max-w-2xl' }">
       <template #body>
-        <UForm :state="form" class="grid grid-cols-2 gap-4" @submit="save">
+        <UForm :state="form" :validate="validateForm" class="grid grid-cols-2 gap-4" @submit="save">
           <UFormField :label="$t('admin.common.nameEn')" name="nameEn" required>
             <UInput v-model="form.nameEn" class="w-full" />
           </UFormField>
@@ -42,7 +42,6 @@
           <UFormField class="col-span-2" :label="$t('admin.common.sort')" name="sortOrder">
             <UInput v-model.number="form.sortOrder" type="number" class="w-full" />
           </UFormField>
-          <p v-if="formError" class="col-span-full text-sm text-error">{{ formError }}</p>
           <div class="col-span-full flex justify-end gap-2">
             <UButton color="neutral" variant="ghost" @click="closeForm">{{ $t('admin.common.cancel') }}</UButton>
             <UButton type="submit">{{ $t('admin.common.save') }}</UButton>
@@ -68,7 +67,6 @@ const searchInput = ref('')
 const search = ref('')
 const formOpen = ref(false)
 const editingSlug = ref('')
-const formError = ref('')
 const form = reactive({ nameEn: '', nameZh: '', sortOrder: 0 })
 const columns = computed<TableColumn<CategoryItem>[]>(() => [
   { accessorKey: 'name', header: t('admin.common.name') },
@@ -85,14 +83,17 @@ function secondaryName(name: Localized) { return locale.value === 'zh' ? name.en
 function applyFilters() { search.value = searchInput.value }
 function resetForm() { Object.assign(form, { nameEn: '', nameZh: '', sortOrder: 0 }) }
 async function load() { pending.value = true; try { items.value = (await apiFetch<{ items: CategoryItem[] }>('/api/product-categories')).items } finally { pending.value = false } }
-function startCreate() { editingSlug.value = ''; resetForm(); formError.value = ''; formOpen.value = true }
-function startEdit(item: CategoryItem) { editingSlug.value = item.slug; Object.assign(form, { nameEn: item.name.en, nameZh: item.name.zh, sortOrder: item.sortOrder }); formError.value = ''; formOpen.value = true }
-function closeForm() { formOpen.value = false; formError.value = '' }
+function startCreate() { editingSlug.value = ''; resetForm(); formOpen.value = true }
+function startEdit(item: CategoryItem) { editingSlug.value = item.slug; Object.assign(form, { nameEn: item.name.en, nameZh: item.name.zh, sortOrder: item.sortOrder }); formOpen.value = true }
+function closeForm() { formOpen.value = false }
+function validateForm() {
+  const errors = []
+  if (!form.nameEn.trim()) errors.push({ name: 'nameEn', message: t('admin.common.requiredNameEn') })
+  if (!form.nameZh.trim()) errors.push({ name: 'nameZh', message: t('admin.common.requiredNameZh') })
+  return errors
+}
 
 async function save() {
-  formError.value = ''
-  if (!form.nameEn.trim()) { formError.value = t('admin.common.requiredNameEn'); return }
-  if (!form.nameZh.trim()) { formError.value = t('admin.common.requiredNameZh'); return }
   const body = { nameEn: form.nameEn, nameZh: form.nameZh, sortOrder: Number(form.sortOrder) || 0 }
   try {
     if (editingSlug.value) await apiFetch(`/api/product-categories/${editingSlug.value}`, { method: 'PUT', body })

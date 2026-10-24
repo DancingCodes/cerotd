@@ -57,7 +57,7 @@
     <UModal v-model:open="formOpen" :title="editingSlug ? $t('admin.news.editTitle') : $t('admin.news.createTitle')"
       scrollable :ui="{ content: 'max-w-7xl' }">
       <template #body>
-        <UForm :state="form" class="grid grid-cols-4 gap-4" @submit="save">
+        <UForm :state="form" :validate="validateForm" class="grid grid-cols-4 gap-4" @submit="save">
           <UFormField :label="$t('admin.news.titleEn')" name="titleEn" required>
             <UInput v-model="form.titleEn" class="w-full" />
           </UFormField>
@@ -112,7 +112,6 @@
               <p class="mt-2 text-xs text-gray-500">{{ $t('admin.news.imageHint') }}</p>
             </ClientOnly>
           </div>
-          <p v-if="formError" class="col-span-full text-sm text-error">{{ formError }}</p>
           <div class="col-span-full flex justify-end gap-2">
             <UButton color="neutral" variant="ghost" @click="closeForm">{{ $t('admin.common.cancel') }}</UButton>
             <UButton type="submit">{{ $t('admin.common.save') }}</UButton>
@@ -190,7 +189,6 @@ const total = ref(0)
 const totalPages = computed(() => Math.max(1, Math.ceil(total.value / pageSize.value)))
 const formOpen = ref(false)
 const editingSlug = ref('')
-const formError = ref('')
 
 const form = reactive({
   titleEn: '',
@@ -367,7 +365,6 @@ async function startCreate() {
   editingSlug.value = ''
   resetForm()
   if (categories.value[0]) form.category = categories.value[0].slug
-  formError.value = ''
   formOpen.value = true
 }
 
@@ -386,30 +383,22 @@ function startEdit(item: NewsItem) {
     publishedAt: toLocalInput(item.publishedAt),
     isPublished: item.isPublished
   })
-  formError.value = ''
   formOpen.value = true
 }
 
 function closeForm() {
   formOpen.value = false
-  formError.value = ''
+}
+
+function validateForm() {
+  const errors = []
+  if (!form.titleEn.trim()) errors.push({ name: 'titleEn', message: t('admin.news.requiredTitleEn') })
+  if (!form.titleZh.trim()) errors.push({ name: 'titleZh', message: t('admin.news.requiredTitleZh') })
+  if (!form.category.trim()) errors.push({ name: 'category', message: t('admin.common.requiredCategory') })
+  return errors
 }
 
 async function save() {
-  formError.value = ''
-  if (!form.titleEn.trim()) {
-    formError.value = t('admin.news.requiredTitleEn')
-    return
-  }
-  if (!form.titleZh.trim()) {
-    formError.value = t('admin.news.requiredTitleZh')
-    return
-  }
-  if (!form.category.trim()) {
-    formError.value = t('admin.common.requiredCategory')
-    return
-  }
-
   const payload = {
     category: form.category,
     titleEn: form.titleEn,
