@@ -26,5 +26,4 @@ remote = false
 [[r2_buckets]]
 binding = "MEDIA"
 bucket_name = "cerotd-media"
-preview_bucket_name = "cerotd-media"
 remote = false
