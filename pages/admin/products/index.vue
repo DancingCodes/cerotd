@@ -25,7 +25,7 @@
         <template #name-cell="{ row }">
           <div class="font-semibold">{{ lt(row.original.name) }}</div>
         </template>
-        <template #category-cell="{ row }">{{ lt(row.original.category.name) }}</template>
+        <template #category-cell="{ row }">{{ lt(row.original.category?.name ?? null) }}</template>
         <template #status-cell="{ row }">
           <UBadge :color="row.original.isPublished ? 'success' : 'neutral'" variant="subtle">
             {{ row.original.isPublished ? $t('admin.common.published') : $t('admin.common.draft') }}</UBadge>

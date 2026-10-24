@@ -1,10 +1,32 @@
 <template>
   <div class="flex h-full min-h-0 flex-col">
     <div class="mb-4 flex gap-2.5">
-      <UInput v-model="searchInput" type="search" class="w-full" :placeholder="$t('admin.productCategories.searchPlaceholder')" @keyup.enter="applyFilters" />
-      <UButton class="shrink-0" color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}</UButton>
+      <UInput v-model="searchInput" type="search" class="w-full"
+        :placeholder="$t('admin.productCategories.searchPlaceholder')" @keyup.enter="applyFilters" />
+      <UButton class="shrink-0" color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}
+      </UButton>
       <UButton class="shrink-0" @click="startCreate">{{ $t('admin.productCategories.new') }}</UButton>
     </div>
+
+
+    <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">
+      <UTable :data="filteredItems" :columns="columns" :loading="pending" :empty="$t('admin.productCategories.empty')"
+        sticky="header" class="min-h-0 flex-1">
+        <template #name-cell="{ row }">
+          <div class="font-semibold">{{ lt(row.original.name) }}</div>
+          <div class="text-xs text-gray-500">{{ secondaryName(row.original.name) }}</div>
+        </template>
+        <template #actions-cell="{ row }">
+          <div class="flex justify-end gap-1">
+            <UButton color="neutral" variant="ghost" size="xs" @click="startEdit(row.original)">
+              {{ $t('admin.common.edit') }}</UButton>
+            <UButton color="error" variant="ghost" size="xs" @click="remove(row.original)">
+              {{ $t('admin.common.delete') }}</UButton>
+          </div>
+        </template>
+      </UTable>
+    </UCard>
+
 
     <UModal v-model:open="formOpen"
       :title="editingSlug ? $t('admin.productCategories.editTitle') : $t('admin.productCategories.createTitle')"
@@ -28,24 +50,6 @@
         </UForm>
       </template>
     </UModal>
-
-    <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">
-      <UTable :data="filteredItems" :columns="columns" :loading="pending" :empty="$t('admin.productCategories.empty')"
-        sticky="header" class="min-h-0 flex-1">
-        <template #name-cell="{ row }">
-          <div class="font-semibold">{{ lt(row.original.name) }}</div>
-          <div class="text-xs text-gray-500">{{ secondaryName(row.original.name) }}</div>
-        </template>
-        <template #actions-cell="{ row }">
-          <div class="flex justify-end gap-1">
-            <UButton color="neutral" variant="ghost" size="xs" @click="startEdit(row.original)">{{
-              $t('admin.common.edit') }}</UButton>
-            <UButton color="error" variant="ghost" size="xs" @click="remove(row.original)">{{
-              $t('admin.common.delete') }}</UButton>
-          </div>
-        </template>
-      </UTable>
-    </UCard>
   </div>
 </template>
 
