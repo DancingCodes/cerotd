@@ -6,10 +6,47 @@
       <USelect v-model="filterCategory" :items="categoryOptions" class="w-full" />
       <USelect v-model="filterStatus" :items="statusOptions" class="w-full" />
       <UButton color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}</UButton>
-      <UButton v-if="selectedSlugs.length" color="error" :loading="batchDeleting" @click="removeSelected">{{
-        $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}</UButton>
+      <UButton v-if="selectedSlugs.length" color="error" :loading="batchDeleting" @click="removeSelected">
+        {{ $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}</UButton>
       <UButton :disabled="!categories.length" @click="startCreate">{{ $t('admin.products.new') }}</UButton>
     </div>
+
+
+    <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">
+      <UTable :data="items" :columns="columns" :loading="pending" :empty="$t('admin.products.empty')" sticky="header"
+        :ui="{ base: 'w-full table-fixed' }" class="min-h-0 flex-1">
+        <template #select-header>
+          <UCheckbox :model-value="allSelected" @update:model-value="toggleSelectAll(Boolean($event))" />
+        </template>
+        <template #select-cell="{ row }">
+          <UCheckbox :model-value="selectedSlugs.includes(row.original.slug)"
+            @update:model-value="toggleSelect(row.original.slug, Boolean($event))" />
+        </template>
+        <template #name-cell="{ row }">
+          <div class="font-semibold">{{ lt(row.original.name) }}</div>
+        </template>
+        <template #category-cell="{ row }">{{ lt(row.original.category.name) }}</template>
+        <template #status-cell="{ row }">
+          <UBadge :color="row.original.isPublished ? 'success' : 'neutral'" variant="subtle">
+            {{ row.original.isPublished ? $t('admin.common.published') : $t('admin.common.draft') }}</UBadge>
+        </template>
+        <template #actions-cell="{ row }">
+          <div class="flex justify-end gap-1">
+            <UButton :to="`/products/${row.original.slug}`" target="_blank" color="primary" variant="ghost" size="xs">{{
+              $t('admin.common.view') }}</UButton>
+            <UButton color="neutral" variant="ghost" size="xs" @click="startEdit(row.original)">{{
+              $t('admin.common.edit') }}</UButton>
+            <UButton color="error" variant="ghost" size="xs" @click="remove(row.original)">{{ $t('admin.common.delete')
+            }}</UButton>
+          </div>
+        </template>
+      </UTable>
+
+      <div v-if="totalPages > 1" class="mt-4 flex justify-end">
+        <UPagination v-model:page="page" :total="total" :items-per-page="pageSize" @update:page="load" />
+      </div>
+    </UCard>
+
     <UModal v-model:open="formOpen"
       :title="editingSlug ? $t('admin.products.editTitle') : $t('admin.products.createTitle')" scrollable
       :ui="{ content: 'max-w-7xl' }">
@@ -65,41 +102,6 @@
         </UForm>
       </template>
     </UModal>
-
-    <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">
-      <UTable :data="items" :columns="columns" :loading="pending" :empty="$t('admin.products.empty')" sticky="header"
-        :ui="{ base: 'w-full table-fixed' }" class="min-h-0 flex-1">
-        <template #select-header>
-          <UCheckbox :model-value="allSelected" @update:model-value="toggleSelectAll(Boolean($event))" />
-        </template>
-        <template #select-cell="{ row }">
-          <UCheckbox :model-value="selectedSlugs.includes(row.original.slug)"
-            @update:model-value="toggleSelect(row.original.slug, Boolean($event))" />
-        </template>
-        <template #name-cell="{ row }">
-          <div class="font-semibold">{{ lt(row.original.name) }}</div>
-        </template>
-        <template #category-cell="{ row }">{{ row.original.category ? lt(row.original.category.name) : '' }}</template>
-        <template #status-cell="{ row }">
-          <UBadge :color="row.original.isPublished ? 'success' : 'neutral'" variant="subtle">{{ row.original.isPublished
-            ? $t('admin.common.published') : $t('admin.common.draft') }}</UBadge>
-        </template>
-        <template #actions-cell="{ row }">
-          <div class="flex justify-end gap-1">
-            <UButton :to="`/products/${row.original.slug}`" target="_blank" color="primary" variant="ghost" size="xs">{{
-              $t('admin.common.view') }}</UButton>
-            <UButton color="neutral" variant="ghost" size="xs" @click="startEdit(row.original)">{{
-              $t('admin.common.edit') }}</UButton>
-            <UButton color="error" variant="ghost" size="xs" @click="remove(row.original)">{{ $t('admin.common.delete')
-              }}</UButton>
-          </div>
-        </template>
-      </UTable>
-
-      <div v-if="totalPages > 1" class="mt-4 flex justify-end">
-        <UPagination v-model:page="page" :total="total" :items-per-page="pageSize" @update:page="load" />
-      </div>
-    </UCard>
   </div>
 </template>
 
