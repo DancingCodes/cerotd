@@ -25,7 +25,7 @@
 ## 目录说明
 
 - `pages/` — 前台页面与 `/admin/**` 后台页
-- `components/` — 通用组件（`Header`、`Footer`、`BackToTop`）；后台直接使用 Nuxt UI 组件
+- `components/` — 通用前台与可复用交互组件（如 `Header`、`Footer`、`BackToTop`、`ImageLightbox`）；后台直接使用 Nuxt UI 组件
 - `assets/css/main.css` — Tailwind CSS 与 Nuxt UI 的全局样式入口
 - `composables/` — `useAdminAuth`、`useLocalized`、`usePageSeo`
 - `server/api/` — Nitro API 路由
@@ -43,6 +43,11 @@
 - 英文文案优先服务 Google 搜索与询盘转化，中文保持同步即可。
 - 优先沿用附近文件已有写法，不要随意引入新抽象。
 - 样式使用 Tailwind utility 与 Nuxt UI；不要新增 Sass / SCSS 或重建已删除的手写后台基础组件。
+- `/admin/**` 只面向桌面端；不编写或保留移动端响应式布局、断点降级样式。
+- 能使用 Nuxt UI 现有组件能力时优先使用；不要手写同类基础弹层、表单错误展示或控件。
+- 后台表单必填校验使用 `UForm` / `UFormField` 的字段级提示；接口错误由现有 toast 展示，不保留重复的 `formError` 文本区。
+- 后台列表与详情的空字段默认留白；不要使用 `-`、`No message` 等占位文案，除非业务明确要求。
+- 相同前台交互优先抽成组件；仅使用一次且逻辑简单的映射直接写在模板中，不额外封装函数。
 - 对照旧版视觉时，明确还原其字号、颜色、边框、圆角、尺寸和断点；优先使用 Tailwind 的规范等价类。
 - 未经明确要求，不要提交代码、创建分支或部署。
 - 未经明确要求，不要修改 `.dev.vars`、密钥或 Cloudflare binding ID。
