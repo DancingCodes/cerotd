@@ -1,10 +1,8 @@
 export default defineNuxtConfig({
   compatibilityDate: '2026-09-23',
   modules: ['@nuxt/ui', '@nuxtjs/i18n', 'nitro-cloudflare-dev'],
-  colorMode: {
-    preference: 'light',
-    fallback: 'light',
-    storageKey: 'cerotd-color-mode'
+  ui: {
+    colorMode: false
   },
   fonts: {
     providers: {
