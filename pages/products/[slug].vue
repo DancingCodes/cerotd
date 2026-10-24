@@ -1,8 +1,10 @@
 <template>
   <div v-if="product" class="pb-[calc(70px+env(safe-area-inset-bottom))] md:pb-0">
-    <section class="bg-[radial-gradient(circle_at_20%_20%,rgba(95,208,220,.16),transparent_28%),linear-gradient(180deg,#070b12_0%,#121821_100%)] py-18 text-white md:py-22">
+    <section
+      class="bg-[radial-gradient(circle_at_20%_20%,rgba(95,208,220,.16),transparent_28%),linear-gradient(180deg,#070b12_0%,#121821_100%)] py-18 text-white md:py-22">
       <UContainer class="max-w-295 px-6">
-        <NuxtLink to="/products" class="mb-6 inline-block text-[14px] font-semibold text-[#5fd0dc] no-underline">{{ $t('products.backToList') }}</NuxtLink>
+        <NuxtLink to="/products" class="mb-6 inline-block text-[14px] font-semibold text-[#5fd0dc] no-underline">{{
+          $t('products.backToList') }}</NuxtLink>
         <h1 class="mb-4.5 text-[48px] leading-[1.1] tracking-normal">{{ t(product.name) }}</h1>
         <p class="max-w-[40ch] text-[18px] leading-[1.7] text-[#c8ced6]">{{ t(product.summary) }}</p>
       </UContainer>
@@ -12,28 +14,22 @@
       <UContainer class="max-w-295 grid grid-cols-1 gap-6 px-6 min-[960px]:grid-cols-[1.2fr_.8fr] min-[960px]:gap-8">
         <div class="min-w-0">
           <div class="mb-6">
-            <button type="button" class="flex min-h-80 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-xl bg-[#f3f5f7]" @click="openPreview(activeIndex)">
-              <img
-                v-if="product.images[activeIndex]"
-                class="block max-h-105 w-full object-contain"
-                :src="product.images[activeIndex]"
-                :alt="t(product.name)"
-                fetchpriority="high"
-                decoding="async"
-                loading="eager"
-              />
-              <span v-else class="flex min-h-80 size-full items-center justify-center bg-[#e8edf2] text-xs tracking-[.06em] text-[#98a2b3] uppercase">{{ $t('common.mediaBlank') }}</span>
+            <button type="button"
+              class="flex min-h-80 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-xl bg-[#f3f5f7]"
+              @click="openPreview(activeIndex)">
+              <img v-if="product.images[activeIndex]" class="block max-h-105 w-full object-contain"
+                :src="product.images[activeIndex]" :alt="t(product.name)" fetchpriority="high" decoding="async"
+                loading="eager" />
+              <span v-else
+                class="flex min-h-80 size-full items-center justify-center bg-[#e8edf2] text-xs tracking-[.06em] text-[#98a2b3] uppercase">{{
+                  $t('common.mediaBlank') }}</span>
             </button>
             <div v-if="product.images.length > 1" class="mt-3 grid grid-cols-4 gap-2.5">
-              <button
-                v-for="(img, index) in product.images"
-                :key="img"
-                type="button"
+              <button v-for="(img, index) in product.images" :key="img" type="button"
                 class="aspect-square cursor-pointer overflow-hidden rounded-xl border border-[#e8edf2] bg-[#f3f5f7]"
-                :class="{ 'border-primary': index === activeIndex }"
-                @click="activeIndex = index"
-              >
-                <img class="block size-full object-contain" :src="img" :alt="t(product.name)" loading="lazy" decoding="async" />
+                :class="{ 'border-primary': index === activeIndex }" @click="activeIndex = index">
+                <img class="block size-full object-contain" :src="img" :alt="t(product.name)" loading="lazy"
+                  decoding="async" />
               </button>
             </div>
           </div>
@@ -44,12 +40,16 @@
           <div class="rounded-xl bg-[#070b12] p-7 text-white">
             <h2 class="mb-5 text-[22px] tracking-normal">{{ $t('products.specsTitle') }}</h2>
             <ul class="mb-6 grid gap-3">
-              <li v-if="product.category" class="rounded-[10px] bg-white/5 px-4 py-3.5 text-[14px] leading-[1.6] text-[#c8ced6]">{{ t(product.category.name) }}</li>
+              <li v-if="product.category"
+                class="rounded-[10px] bg-white/5 px-4 py-3.5 text-[14px] leading-[1.6] text-[#c8ced6]">{{
+                  t(product.category.name) }}</li>
               <li v-for="(spec, index) in localizedSpecs" :key="`${spec}-${index}`" class="specs-item">
                 {{ spec }}
               </li>
             </ul>
-            <NuxtLink to="/contact" class="inline-flex min-h-12 items-center justify-center rounded-full bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] px-6 text-[14px] font-semibold text-white no-underline">{{ $t('products.detailCta') }}</NuxtLink>
+            <NuxtLink to="/contact"
+              class="inline-flex min-h-12 items-center justify-center rounded-full bg-linear-to-br from-[#0f9aa8] to-[#3dd6e0] px-6 text-[14px] font-semibold text-white no-underline">
+              {{ $t('products.detailCta') }}</NuxtLink>
           </div>
         </aside>
       </UContainer>
@@ -59,12 +59,8 @@
       <UContainer class="max-w-295 px-6">
         <h2 class="mb-6 text-[28px] tracking-normal text-[#111827]">{{ $t('products.relatedTitle') }}</h2>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-          <NuxtLink
-            v-for="item in relatedProducts"
-            :key="item.slug"
-            :to="`/products/${item.slug}`"
-            class="rounded-xl border border-[#e8edf2] bg-white p-5.5 no-underline"
-          >
+          <NuxtLink v-for="item in relatedProducts" :key="item.slug" :to="`/products/${item.slug}`"
+            class="rounded-xl border border-[#e8edf2] bg-white p-5.5 no-underline">
             <h3 class="mb-2 text-[18px] font-semibold tracking-normal text-[#111827]">{{ t(item.name) }}</h3>
             <p class="text-[14px] leading-[1.6] text-[#4b5563]">{{ t(item.summary) }}</p>
           </NuxtLink>
@@ -72,30 +68,11 @@
       </UContainer>
     </section>
 
-    <NuxtLink to="/contact" class="fixed inset-x-0 bottom-0 z-40 flex min-h-14.5 items-center justify-center border-t border-slate-900/10 bg-white/95 px-5 pt-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] text-3.75 font-bold text-[#0f4c56] no-underline backdrop-blur md:hidden">{{ $t('products.detailCta') }}</NuxtLink>
+    <NuxtLink to="/contact"
+      class="fixed inset-x-0 bottom-0 z-40 flex min-h-14.5 items-center justify-center border-t border-slate-900/10 bg-white/95 px-5 pt-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] text-3.75 font-bold text-[#0f4c56] no-underline backdrop-blur md:hidden">
+      {{ $t('products.detailCta') }}</NuxtLink>
 
-    <div v-if="previewOpen" class="fixed inset-0 z-80 flex items-center justify-center bg-linear-to-b from-[#070b12]/70 to-[#070b12]/90 p-6 backdrop-blur-2.5" @click.self="closePreview">
-      <div class="relative flex w-full max-w-240 items-center justify-center">
-        <button type="button" class="absolute -top-10 right-0 z-20 cursor-pointer text-8 leading-none text-white" @click="closePreview">×</button>
-        <button
-          v-if="product.images.length > 1"
-          type="button"
-          class="absolute -left-2 top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white"
-          @click="prevImage"
-        >
-          ‹
-        </button>
-        <img class="relative z-10 max-h-[80vh] max-w-full rounded-xl bg-white object-contain shadow-[0_24px_64px_rgba(0,0,0,.45)]" :src="product.images[previewIndex]" :alt="t(product.name)" loading="eager" decoding="async" />
-        <button
-          v-if="product.images.length > 1"
-          type="button"
-          class="absolute -right-2 top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white"
-          @click="nextImage"
-        >
-          ›
-        </button>
-      </div>
-    </div>
+    <ImageLightbox v-model:open="previewOpen" v-model:index="previewIndex" :items="previewItems" />
   </div>
 </template>
 
@@ -230,12 +207,13 @@ const localizedSpecs = computed(() => {
 const activeIndex = ref(0)
 const previewOpen = ref(false)
 const previewIndex = ref(0)
+const previewItems = computed(() => product.value ? product.value.images.map((src) => ({ src, alt: t(product.value!.name) })) : [])
 
 watch(
   () => product.value?.slug,
   () => {
     activeIndex.value = 0
-    closePreview()
+    previewOpen.value = false
   }
 )
 
@@ -244,17 +222,4 @@ function openPreview(index: number) {
   previewOpen.value = true
 }
 
-function closePreview() {
-  previewOpen.value = false
-}
-
-function prevImage() {
-  if (!product.value) return
-  previewIndex.value = (previewIndex.value - 1 + product.value.images.length) % product.value.images.length
-}
-
-function nextImage() {
-  if (!product.value) return
-  previewIndex.value = (previewIndex.value + 1) % product.value.images.length
-}
 </script>
