@@ -1,6 +1,6 @@
 <template>
   <div class="flex h-full min-h-0 flex-col">
-    <div class="mb-4 grid grid-cols-1 gap-2.5 md:grid-cols-[1.4fr_1fr_1fr_auto_auto_auto] md:items-center">
+    <div class="mb-4 grid grid-cols-[1.4fr_1fr_1fr_auto_auto_auto] items-center gap-2.5">
         <UInput v-model="searchInput" type="search" class="w-full" :placeholder="$t('admin.news.searchPlaceholder')" @keyup.enter="applyFilters" />
         <USelect v-model="filterCategory" :items="categoryOptions" class="w-full" />
         <USelect v-model="filterStatus" :items="statusOptions" class="w-full" />
@@ -10,7 +10,7 @@
     </div>
     <UModal v-model:open="formOpen" :title="editingSlug ? $t('admin.news.editTitle') : $t('admin.news.createTitle')" scrollable :ui="{ content: 'max-w-7xl' }">
       <template #body>
-      <UForm :state="form" class="grid grid-cols-1 gap-4 md:grid-cols-4" @submit="save">
+      <UForm :state="form" class="grid grid-cols-4 gap-4" @submit="save">
         <UFormField :label="$t('admin.news.titleEn')" name="titleEn" required><UInput v-model="form.titleEn" class="w-full" /></UFormField>
         <UFormField :label="$t('admin.news.titleZh')" name="titleZh" required><UInput v-model="form.titleZh" class="w-full" /></UFormField>
         <UFormField :label="$t('admin.news.category')" name="category" required><USelect v-model="form.category" :items="newsCategoryOptions" class="w-full" /></UFormField>
@@ -25,9 +25,9 @@
             @update:model-value="onCoverUpload"
           />
         </div>
-        <UFormField class="md:col-span-2" :label="$t('admin.news.summaryEn')" name="summaryEn"><UTextarea v-model="form.summaryEn" class="w-full" :rows="2" /></UFormField>
-        <UFormField class="md:col-span-2" :label="$t('admin.news.summaryZh')" name="summaryZh"><UTextarea v-model="form.summaryZh" class="w-full" :rows="2" /></UFormField>
-        <div class="md:col-span-2">
+        <UFormField class="col-span-2" :label="$t('admin.news.summaryEn')" name="summaryEn"><UTextarea v-model="form.summaryEn" class="w-full" :rows="2" /></UFormField>
+        <UFormField class="col-span-2" :label="$t('admin.news.summaryZh')" name="summaryZh"><UTextarea v-model="form.summaryZh" class="w-full" :rows="2" /></UFormField>
+        <div class="col-span-2">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.news.contentEn') }}</div>
           <ClientOnly>
             <UEditor v-model="form.contentEn" class="min-h-100" content-type="html" :image="{ inline: false, allowBase64: false }">
@@ -41,7 +41,7 @@
             <p class="mt-2 text-xs text-gray-500">{{ $t('admin.news.imageHint') }}</p>
           </ClientOnly>
         </div>
-        <div class="md:col-span-2">
+        <div class="col-span-2">
           <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.news.contentZh') }}</div>
           <ClientOnly>
             <UEditor v-model="form.contentZh" class="min-h-100" content-type="html" :image="{ inline: false, allowBase64: false }">

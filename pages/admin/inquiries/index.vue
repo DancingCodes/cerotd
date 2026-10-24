@@ -1,6 +1,6 @@
 <template>
   <div class="flex h-full min-h-0 flex-col">
-    <div class="mb-4 grid grid-cols-1 gap-2.5 md:grid-cols-[1fr_1fr_auto]">
+    <div class="mb-4 grid grid-cols-[1fr_1fr_auto] gap-2.5">
       <USelect v-model="status" :items="statusFilters" class="w-full" />
       <USelect v-model="range" :items="rangeFilters" class="w-full" />
       <UButton color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}</UButton>
@@ -42,7 +42,7 @@
           <UButton color="neutral" variant="ghost" size="xs" @click="openId = null">{{ $t('admin.inquiries.hide') }}
           </UButton>
         </div>
-        <div class="grid gap-2 text-sm text-gray-700 md:grid-cols-2">
+        <div class="grid grid-cols-2 gap-2 text-sm text-gray-700">
           <div><span class="font-semibold text-gray-500">{{ $t('admin.inquiries.country') }}:</span> {{
             selectedItem.country
             || '-' }}</div>
