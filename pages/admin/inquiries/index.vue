@@ -8,9 +8,9 @@
 
     <UCard class="lg:min-h-0 lg:flex-1" :ui="{ body: 'flex flex-col lg:h-full lg:min-h-0' }">
       <div class="overflow-x-auto lg:min-h-0 lg:flex-1">
-        <UTable v-model:expanded="expandedRows" :data="items" :columns="columns" :loading="pending"
-        :empty="$t('admin.inquiries.empty')" sticky="header" :expanded-options="{ getRowCanExpand: () => true }"
-          :ui="{ base: 'w-full min-w-200 table-fixed' }" class="lg:min-h-0 lg:flex-1">
+        <UTable :data="items" :columns="columns" :loading="pending"
+        :empty="$t('admin.inquiries.empty')" sticky="header"
+          :ui="{ base: 'w-full' }" class="lg:min-h-0 lg:flex-1">
         <template #name-cell="{ row }">
           <div class="font-semibold">
             <span v-if="!row.original.isRead" class="mr-2 inline-block size-2 rounded-full bg-primary"></span>
@@ -22,6 +22,9 @@
           <div>{{ row.original.email }}</div>
           <div class="text-xs text-gray-500">{{ row.original.phone }}</div>
         </template>
+        <template #message-cell="{ row }">
+          <p class="whitespace-pre-wrap text-sm text-gray-700">{{ row.original.message }}</p>
+        </template>
         <template #createdAt-cell="{ row }">{{ formatDateTime(row.original.createdAt) }}</template>
         <template #status-cell="{ row }">
           <UBadge :color="row.original.isRead ? 'neutral' : 'primary'" variant="subtle">
@@ -30,24 +33,12 @@
         </template>
         <template #actions-cell="{ row }">
           <div class="flex justify-end gap-1">
-            <UButton color="primary" variant="ghost" size="xs" @click="toggle(row)">
-              {{ row.getIsExpanded() ? $t('admin.inquiries.hide') : $t('admin.inquiries.view') }}
-            </UButton>
             <UButton color="neutral" variant="ghost" size="xs" @click="setRead(row.original, !row.original.isRead)">
               {{ row.original.isRead ? $t('admin.inquiries.markUnread') : $t('admin.inquiries.markRead') }}
             </UButton>
             <UButton color="error" variant="ghost" size="xs" @click="remove(row.original)">
               {{ $t('admin.common.delete') }}
             </UButton>
-          </div>
-        </template>
-        <template #expanded="{ row }">
-          <div v-if="row.original.message" class="rounded-lg border border-default bg-muted/30 p-4">
-            <div class="rounded-md bg-default p-3">
-              <div class="mb-1 text-xs font-semibold text-gray-500 uppercase">{{ $t('admin.inquiries.message') }}</div>
-              <p class="whitespace-pre-wrap text-sm text-gray-900">
-                {{ row.original.message }}</p>
-            </div>
           </div>
         </template>
         </UTable>
@@ -76,13 +67,13 @@ const page = ref(1)
 const pageSize = 10
 const total = ref(0)
 const totalPages = computed(() => Math.max(1, Math.ceil(total.value / pageSize)))
-const expandedRows = ref<Record<string, boolean>>({})
 const status = ref<StatusFilter>('all')
 const range = ref<RangeFilter>('all')
 
 const columns = computed<TableColumn<InquiryItem>[]>(() => [
   { accessorKey: 'name', header: t('admin.inquiries.name') },
   { id: 'contact', header: t('admin.inquiries.email') },
+  { id: 'message', header: t('admin.inquiries.message') },
   { accessorKey: 'createdAt', header: t('admin.inquiries.createdAt') },
   { id: 'status', header: t('admin.inquiries.status') },
   { id: 'actions', header: '' }
@@ -100,12 +91,6 @@ const rangeFilters = computed(() => [
 ])
 
 function applyFilters() { page.value = 1; load() }
-
-async function toggle(row: any) {
-  const isExpanded = row.getIsExpanded()
-  expandedRows.value = isExpanded ? {} : { [row.id]: true }
-  if (!isExpanded && !row.original.isRead) await setRead(row.original, true, false)
-}
 
 async function load() {
   pending.value = true
@@ -129,7 +114,6 @@ async function remove(item: InquiryItem) {
   if (!window.confirm(t('admin.inquiries.deleteConfirm', { name: item.name }))) return
   try {
     await apiFetch('/api/inquiries/' + item.id, { method: 'DELETE' })
-    expandedRows.value = {}
     await load()
   } catch { }
 }
