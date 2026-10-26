@@ -107,33 +107,8 @@
     </UContainer>
   </section>
 
-  <div v-if="facilityPreviewOpen && facilityPreviewImage"
-    class="fixed inset-0 z-80 flex items-center justify-center bg-linear-to-b from-[#070b12]/70 to-[#070b12]/90 p-6 backdrop-blur-2.5 max-md:p-4"
-    role="dialog" aria-modal="true" @click.self="closeFacility">
-    <div class="relative flex w-full max-w-240 items-center justify-center px-12 max-md:px-2">
-      <button type="button"
-        class="absolute -top-10 right-0 z-20 cursor-pointer text-8 leading-none text-white max-md:top-2 max-md:right-3.5"
-        @click="closeFacility">
-        ×
-      </button>
-      <button type="button"
-        class="absolute -left-2 top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white max-md:left-3.5"
-        @click="prevFacility">
-        ‹
-      </button>
-      <img
-        class="relative z-10 max-h-[80vh] max-w-full rounded-xl bg-[#0d1524] object-contain shadow-[0_24px_64px_rgba(0,0,0,.45)]"
-        :src="facilityPreviewImage.src" :alt="facilityPreviewImage.caption" loading="eager" decoding="async" />
-      <p
-        class="absolute -bottom-8.5 left-12 right-12 text-center text-3.25 text-white/80 max-md:-bottom-7.5 max-md:left-2 max-md:right-2">
-        {{ facilityPreviewImage.caption }}</p>
-      <button type="button"
-        class="absolute -right-2 top-1/2 z-20 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-7 text-white max-md:right-3.5"
-        @click="nextFacility">
-        ›
-      </button>
-    </div>
-  </div>
+  <ImageLightbox v-model:open="facilityPreviewOpen" v-model:index="facilityPreviewIndex"
+    :items="facilityPreviewItems" />
 
   <section class="bg-[#070b12] py-24 md:py-28">
     <UContainer class="max-w-295 px-6">
@@ -332,7 +307,10 @@ const facilityImages = computed<FacilityImage[]>(() => {
 })
 
 const facilityVisibleImages = computed(() => facilityImages.value.filter((item) => item.tab === activeTab.value))
-const facilityPreviewImage = computed(() => facilityVisibleImages.value[facilityPreviewIndex.value] || null)
+const facilityPreviewItems = computed(() => facilityVisibleImages.value.map((item) => ({
+  src: item.src,
+  alt: item.caption
+})))
 
 function setFacilityTab(tab: FacilityTab) {
   activeTab.value = tab
@@ -344,44 +322,6 @@ function openFacility(index: number) {
   facilityPreviewIndex.value = index
   facilityPreviewOpen.value = true
 }
-
-function closeFacility() {
-  facilityPreviewOpen.value = false
-}
-
-function prevFacility() {
-  const total = facilityVisibleImages.value.length
-  if (!total) return
-  facilityPreviewIndex.value = (facilityPreviewIndex.value - 1 + total) % total
-}
-
-function nextFacility() {
-  const total = facilityVisibleImages.value.length
-  if (!total) return
-  facilityPreviewIndex.value = (facilityPreviewIndex.value + 1) % total
-}
-
-function onFacilityKeydown(event: KeyboardEvent) {
-  if (!facilityPreviewOpen.value) return
-  if (event.key === 'Escape') closeFacility()
-  if (event.key === 'ArrowLeft') prevFacility()
-  if (event.key === 'ArrowRight') nextFacility()
-}
-
-watch(facilityPreviewOpen, (open) => {
-  if (import.meta.client) {
-    document.body.style.overflow = open ? 'hidden' : ''
-  }
-})
-
-onMounted(() => {
-  window.addEventListener('keydown', onFacilityKeydown)
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('keydown', onFacilityKeydown)
-  if (import.meta.client) document.body.style.overflow = ''
-})
 
 const exportServices = computed(() => {
   locale.value
