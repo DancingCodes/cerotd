@@ -64,51 +64,16 @@
               <input v-model="form.name" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" type="text" name="name" autocomplete="name" required :placeholder="$t('contact.form.name')" />
             </label>
             <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
-              <span class="text-[13px] font-semibold text-[#374151]">{{ $t('contact.form.company') }}</span>
-              <input v-model="form.company" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" type="text" name="company" autocomplete="organization" :placeholder="$t('contact.form.company')" />
-            </label>
-            <div class="col-span-full flex min-w-0 flex-col gap-2 border-0 p-0">
-              <div class="grid grid-cols-1 gap-4 min-[720px]:grid-cols-2">
-                <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
-                  <span class="text-[13px] font-semibold text-[#374151]">{{ $t('contact.form.email') }}</span>
-                  <input v-model="form.email" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" type="email" name="email" autocomplete="email" :placeholder="$t('contact.form.email')" />
-                </label>
-                <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
-                  <span class="text-[13px] font-semibold text-[#374151]">{{ $t('contact.form.phone') }}</span>
-                  <input v-model="form.phone" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" type="tel" name="phone" autocomplete="tel" :placeholder="$t('contact.form.phone')" />
-                </label>
-              </div>
-              <p class="text-[12px] text-[#6b7280]">{{ $t('contact.form.emailOrPhoneHint') }}</p>
-            </div>
-            <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
-              <span class="text-[13px] font-semibold text-[#374151]">{{ $t('contact.form.country') }}</span>
-              <input v-model="form.country" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" type="text" name="country" autocomplete="country-name" :placeholder="$t('contact.form.country')" />
+              <span class="text-[13px] font-semibold text-[#374151] after:text-[#b42318] after:content-['_*']">{{ $t('contact.form.company') }}</span>
+              <input v-model="form.company" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" type="text" name="company" autocomplete="organization" required :placeholder="$t('contact.form.company')" />
             </label>
             <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
-              <span class="text-[13px] font-semibold text-[#374151]">{{ $t('contact.form.im') }}</span>
-              <input v-model="form.im" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" type="text" name="im" :placeholder="$t('contact.form.im')" />
+              <span class="text-[13px] font-semibold text-[#374151] after:text-[#b42318] after:content-['_*']">{{ $t('contact.form.email') }}</span>
+              <input v-model="form.email" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" type="email" name="email" autocomplete="email" required :placeholder="$t('contact.form.email')" />
             </label>
-            <fieldset class="col-span-full flex min-w-0 flex-col gap-2 border-0 p-0">
-              <legend class="text-[13px] font-semibold text-[#374151]">{{ $t('contact.form.bulk') }}</legend>
-              <div class="flex flex-wrap gap-3">
-                <label class="flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-[#e2e6eb] bg-[#f3f4f6] px-3.5 text-[14px] text-[#111827]">
-                  <input v-model="form.bulk" type="radio" name="bulk" value="yes" />
-                  <span>{{ $t('contact.form.bulkYes') }}</span>
-                </label>
-                <label class="flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-[#e2e6eb] bg-[#f3f4f6] px-3.5 text-[14px] text-[#111827]">
-                  <input v-model="form.bulk" type="radio" name="bulk" value="no" />
-                  <span>{{ $t('contact.form.bulkNo') }}</span>
-                </label>
-              </div>
-            </fieldset>
-            <label class="col-span-full flex min-w-0 flex-col gap-2 border-0 p-0">
-              <span class="text-[13px] font-semibold text-[#374151]">{{ $t('contact.form.product') }}</span>
-              <select v-model="form.product" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" name="product">
-                <option value="">{{ $t('contact.form.productPlaceholder') }}</option>
-                <option v-for="category in productOptions" :key="category.slug" :value="category.slug">
-                  {{ t(category.name) }}
-                </option>
-              </select>
+            <label class="flex min-w-0 flex-col gap-2 border-0 p-0">
+              <span class="text-[13px] font-semibold text-[#374151] after:text-[#b42318] after:content-['_*']">{{ $t('contact.form.phone') }}</span>
+              <input v-model="form.phone" class="w-full rounded-[14px] border border-[#e2e6eb] bg-[#f3f4f6] px-4 py-3.5 text-[#111827] outline-none transition focus:border-[#1aa6b8]/[.55] focus:bg-white focus:ring-4 focus:ring-[#1aa6b8]/12" type="tel" name="phone" autocomplete="tel" required :placeholder="$t('contact.form.phone')" />
             </label>
             <label class="col-span-full flex min-w-0 flex-col gap-2 border-0 p-0">
               <span class="text-[13px] font-semibold text-[#374151]">{{ $t('contact.form.message') }}</span>
@@ -128,7 +93,6 @@
 
 
 <script setup lang="ts">
-const t = useLocalized()
 const { locale, t: i18nT } = useI18n()
 
 usePageSeo({
@@ -137,19 +101,11 @@ usePageSeo({
   path: '/contact'
 })
 
-type ProductCategory = { slug: string; name: { en: string; zh: string } }
-const { data: productCategories } = await useApiFetch<{ items: ProductCategory[] }>('/api/product-categories')
-const productOptions = computed(() => productCategories.value?.items || [])
-
 const form = reactive({
   name: '',
   company: '',
   email: '',
   phone: '',
-  country: '',
-  im: '',
-  bulk: '',
-  product: '',
   message: ''
 })
 
@@ -162,10 +118,6 @@ function resetForm() {
   form.company = ''
   form.email = ''
   form.phone = ''
-  form.country = ''
-  form.im = ''
-  form.bulk = ''
-  form.product = ''
   form.message = ''
 }
 
@@ -178,14 +130,24 @@ async function onSubmit() {
     submitError.value = i18nT('contact.form.requiredName')
     return
   }
-  if (!form.email.trim() && !form.phone.trim()) {
+  if (!form.company.trim()) {
     submitStatus.value = 'error'
-    submitError.value = i18nT('contact.form.requiredContact')
+    submitError.value = i18nT('contact.form.requiredCompany')
     return
   }
-  if (form.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
+  if (!form.email.trim()) {
+    submitStatus.value = 'error'
+    submitError.value = i18nT('contact.form.requiredEmail')
+    return
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
     submitStatus.value = 'error'
     submitError.value = i18nT('contact.form.invalidEmail')
+    return
+  }
+  if (!form.phone.trim()) {
+    submitStatus.value = 'error'
+    submitError.value = i18nT('contact.form.requiredPhone')
     return
   }
 
@@ -198,10 +160,6 @@ async function onSubmit() {
         company: form.company,
         email: form.email,
         phone: form.phone,
-        country: form.country,
-        im: form.im,
-        bulk: form.bulk,
-        product: form.product,
         message: form.message,
         locale: locale.value
       }
