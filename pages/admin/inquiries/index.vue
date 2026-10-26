@@ -42,27 +42,8 @@
           </div>
         </template>
         <template #expanded="{ row }">
-          <div class="rounded-lg border border-default bg-muted/30 p-4">
-            <div class="grid grid-cols-1 gap-2 text-sm text-gray-700 sm:grid-cols-2">
-              <div v-if="row.original.country">
-                <span class="font-semibold text-gray-500"> {{ $t('admin.inquiries.country') }}:</span>
-                {{ row.original.country }}
-              </div>
-              <div v-if="row.original.im">
-                <span class="font-semibold text-gray-500">{{ $t('admin.inquiries.im') }}:</span>
-                {{ row.original.im }}
-              </div>
-              <div v-if="row.original.bulkIntent">
-                <span class="font-semibold text-gray-500">{{ $t('admin.inquiries.bulk') }}:</span>
-                {{ row.original.bulkIntent === 'yes' ? $t('admin.inquiries.bulkYes') : row.original.bulkIntent === 'no'
-                  ? $t('admin.inquiries.bulkNo') : '' }}
-              </div>
-              <div>
-                <span class="font-semibold text-gray-500">{{ $t('admin.inquiries.locale') }}:</span>
-                {{ row.original.locale }}
-              </div>
-            </div>
-            <div v-if="row.original.message" class="mt-3 rounded-md bg-default p-3">
+          <div v-if="row.original.message" class="rounded-lg border border-default bg-muted/30 p-4">
+            <div class="rounded-md bg-default p-3">
               <div class="mb-1 text-xs font-semibold text-gray-500 uppercase">{{ $t('admin.inquiries.message') }}</div>
               <p class="whitespace-pre-wrap text-sm text-gray-900">
                 {{ row.original.message }}</p>
@@ -84,7 +65,7 @@ import type { TableColumn } from '@nuxt/ui'
 
 definePageMeta({ layout: 'admin' })
 
-type InquiryItem = { id: number; name: string; company: string; email: string; phone: string; country: string; im: string; bulkIntent: string; message: string; locale: string; isRead: boolean; createdAt: string }
+type InquiryItem = { id: number; name: string; company: string; email: string; phone: string; message: string; isRead: boolean; createdAt: string }
 type StatusFilter = 'all' | 'unread' | 'read'
 type RangeFilter = 'all' | 'today' | '7d' | '30d'
 
