@@ -51,9 +51,9 @@
 
     <UModal v-model:open="formOpen"
       :title="editingSlug ? $t('admin.products.editTitle') : $t('admin.products.createTitle')" scrollable
-      :ui="{ content: 'max-w-7xl' }">
+      :ui="{ content: 'w-[calc(100vw-2rem)] max-w-7xl' }">
       <template #body>
-        <UForm :state="form" :validate="validateForm" class="grid grid-cols-4 gap-4" @submit="save">
+        <UForm :state="form" :validate="validateForm" class="grid grid-cols-1 gap-4 lg:grid-cols-4" @submit="save">
           <UFormField :label="$t('admin.common.nameEn')" name="nameEn" required>
             <UInput v-model="form.nameEn" class="w-full" />
           </UFormField>
@@ -66,34 +66,34 @@
           <UFormField :label="$t('admin.common.published')" name="isPublished">
             <USelect v-model="form.isPublished" :items="publishOptions" class="w-full" />
           </UFormField>
-          <UFormField class="col-span-2" :label="$t('admin.products.summaryEn')" name="summaryEn">
+          <UFormField class="min-w-0 lg:col-span-2" :label="$t('admin.products.summaryEn')" name="summaryEn">
             <UTextarea v-model="form.summaryEn" class="w-full" :rows="2" />
           </UFormField>
-          <UFormField class="col-span-2" :label="$t('admin.products.summaryZh')" name="summaryZh">
+          <UFormField class="min-w-0 lg:col-span-2" :label="$t('admin.products.summaryZh')" name="summaryZh">
             <UTextarea v-model="form.summaryZh" class="w-full" :rows="2" />
           </UFormField>
-          <UFormField class="col-span-2" :label="$t('admin.products.descriptionEn')" name="descriptionEn">
+          <UFormField class="min-w-0 lg:col-span-2" :label="$t('admin.products.descriptionEn')" name="descriptionEn">
             <UTextarea v-model="form.descriptionEn" class="w-full" :rows="4" />
           </UFormField>
-          <UFormField class="col-span-2" :label="$t('admin.products.descriptionZh')" name="descriptionZh">
+          <UFormField class="min-w-0 lg:col-span-2" :label="$t('admin.products.descriptionZh')" name="descriptionZh">
             <UTextarea v-model="form.descriptionZh" class="w-full" :rows="4" />
           </UFormField>
-          <div class="col-span-2">
+          <div class="min-w-0 lg:col-span-2">
             <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.coverUrl') }}</div>
             <UFileUpload :model-value="coverUploadItem" :accept="imageAccept"
               :label="uploadingCover ? $t('admin.upload.uploading') : (form.coverUrl ? $t('admin.upload.replace') : $t('admin.upload.button'))"
               :disabled="uploadingCover" @update:model-value="onCoverUpload" />
           </div>
-          <div class="col-span-2">
+          <div class="min-w-0 lg:col-span-2">
             <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.products.images') }}</div>
             <UFileUpload :model-value="imageUploadItems" :accept="imageAccept"
               :label="uploadingImages ? $t('admin.upload.uploading') : $t('admin.upload.addImage')" multiple
               :disabled="uploadingImages" @update:model-value="onImageUpload" />
           </div>
-          <UFormField class="col-span-2" :label="$t('admin.products.specsEn')" name="specsEnText">
+          <UFormField class="min-w-0 lg:col-span-2" :label="$t('admin.products.specsEn')" name="specsEnText">
             <UTextarea v-model="form.specsEnText" class="w-full" :rows="3" />
           </UFormField>
-          <UFormField class="col-span-2" :label="$t('admin.products.specsZh')" name="specsZhText">
+          <UFormField class="min-w-0 lg:col-span-2" :label="$t('admin.products.specsZh')" name="specsZhText">
             <UTextarea v-model="form.specsZhText" class="w-full" :rows="3" />
           </UFormField>
           <div class="col-span-full flex justify-end gap-2">

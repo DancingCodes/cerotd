@@ -57,9 +57,9 @@
 
 
     <UModal v-model:open="formOpen" :title="editingSlug ? $t('admin.news.editTitle') : $t('admin.news.createTitle')"
-      scrollable :ui="{ content: 'max-w-7xl' }">
+      scrollable :ui="{ content: 'w-[calc(100vw-2rem)] max-w-7xl' }">
       <template #body>
-        <UForm :state="form" :validate="validateForm" class="grid grid-cols-4 gap-4" @submit="save">
+        <UForm :state="form" :validate="validateForm" class="grid grid-cols-1 gap-4 lg:grid-cols-4" @submit="save">
           <UFormField :label="$t('admin.news.titleEn')" name="titleEn" required>
             <UInput v-model="form.titleEn" class="w-full" />
           </UFormField>
@@ -78,13 +78,13 @@
               :label="uploadingCover ? $t('admin.upload.uploading') : (form.coverUrl ? $t('admin.upload.replace') : $t('admin.upload.button'))"
               :disabled="uploadingCover" @update:model-value="onCoverUpload" />
           </div>
-          <UFormField class="col-span-2" :label="$t('admin.news.summaryEn')" name="summaryEn">
+          <UFormField class="min-w-0 lg:col-span-2" :label="$t('admin.news.summaryEn')" name="summaryEn">
             <UTextarea v-model="form.summaryEn" class="w-full" :rows="2" />
           </UFormField>
-          <UFormField class="col-span-2" :label="$t('admin.news.summaryZh')" name="summaryZh">
+          <UFormField class="min-w-0 lg:col-span-2" :label="$t('admin.news.summaryZh')" name="summaryZh">
             <UTextarea v-model="form.summaryZh" class="w-full" :rows="2" />
           </UFormField>
-          <div class="col-span-2">
+          <div class="min-w-0 lg:col-span-2">
             <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.news.contentEn') }}</div>
             <ClientOnly>
               <UEditor v-model="form.contentEn" content-type="html" :image="{ inline: false, allowBase64: false }">
@@ -99,7 +99,7 @@
               <p class="mt-2 text-xs text-gray-500">{{ $t('admin.news.imageHint') }}</p>
             </ClientOnly>
           </div>
-          <div class="col-span-2">
+          <div class="min-w-0 lg:col-span-2">
             <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.news.contentZh') }}</div>
             <ClientOnly>
               <UEditor v-model="form.contentZh" content-type="html" :image="{ inline: false, allowBase64: false }">
