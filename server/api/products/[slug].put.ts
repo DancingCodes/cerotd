@@ -31,7 +31,6 @@ export default defineApiHandler(async (event) => {
   }
 
   const body = await readBody<UpdateProductBody>(event)
-  const nextSlug = current.slug
   const nameEn = body.nameEn?.trim() ?? current.name_en
   const nameZh = body.nameZh?.trim() ?? current.name_zh
   const summaryEn = body.summaryEn?.trim() ?? current.summary_en
@@ -61,20 +60,19 @@ export default defineApiHandler(async (event) => {
   const coverUrl =
     body.coverUrl === undefined ? current.cover_url || images[0] || null : body.coverUrl || images[0] || null
 
-  if (!nextSlug || !nameEn || !nameZh) {
-    throw createError({ statusCode: 500, statusMessage: 'slug, nameEn and nameZh are required' })
+  if (!nameEn || !nameZh) {
+    throw createError({ statusCode: 500, statusMessage: 'nameEn and nameZh are required' })
   }
 
   await db
     .prepare(
       `UPDATE products
-       SET slug = ?, category_id = ?, name_en = ?, name_zh = ?, summary_en = ?, summary_zh = ?,
+       SET category_id = ?, name_en = ?, name_zh = ?, summary_en = ?, summary_zh = ?,
            description_en = ?, description_zh = ?, cover_url = ?, images_json = ?, specs_en_json = ?,
            specs_zh_json = ?, is_published = ?, updated_at = datetime('now')
        WHERE id = ?`
     )
     .bind(
-      nextSlug,
       categoryId,
       nameEn,
       nameZh,

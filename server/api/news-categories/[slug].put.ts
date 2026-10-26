@@ -1,5 +1,4 @@
 type UpdateNewsCategoryBody = {
-  slug?: string
   nameEn?: string
   nameZh?: string
   sortOrder?: number
@@ -23,23 +22,22 @@ export default defineApiHandler(async (event) => {
   }
 
   const body = await readBody<UpdateNewsCategoryBody>(event)
-  const nextSlug = current.slug
   const nameEn = body.nameEn?.trim() ?? current.name_en
   const nameZh = body.nameZh?.trim() ?? current.name_zh
   const sortOrder = body.sortOrder === undefined ? current.sort_order : Number(body.sortOrder)
 
-  if (!nextSlug || !nameEn || !nameZh) {
-    throw createError({ statusCode: 500, statusMessage: 'slug, nameEn and nameZh are required' })
+  if (!nameEn || !nameZh) {
+    throw createError({ statusCode: 500, statusMessage: 'nameEn and nameZh are required' })
   }
 
   const updated = await db
     .prepare(
       `UPDATE news_categories
-       SET slug = ?, name_en = ?, name_zh = ?, sort_order = ?, updated_at = datetime('now')
+       SET name_en = ?, name_zh = ?, sort_order = ?, updated_at = datetime('now')
        WHERE id = ?
        RETURNING *`
     )
-    .bind(nextSlug, nameEn, nameZh, sortOrder, current.id)
+    .bind(nameEn, nameZh, sortOrder, current.id)
     .first<NewsCategoryRow>()
 
   if (!updated) {

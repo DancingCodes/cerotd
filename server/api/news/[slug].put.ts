@@ -25,7 +25,6 @@ export default defineApiHandler(async (event) => {
   }
 
   const body = await readBody<UpdateNewsBody>(event)
-  const nextSlug = current.slug
   const titleEn = body.titleEn?.trim() ?? current.title_en
   const titleZh = body.titleZh?.trim() ?? current.title_zh
   const summaryEn = body.summaryEn?.trim() ?? current.summary_en
@@ -44,20 +43,19 @@ export default defineApiHandler(async (event) => {
     throw createError({ statusCode: 500, statusMessage: 'Create a news category first.' })
   }
 
-  if (!nextSlug || !titleEn || !titleZh) {
-    throw createError({ statusCode: 500, statusMessage: 'slug, titleEn and titleZh are required' })
+  if (!titleEn || !titleZh) {
+    throw createError({ statusCode: 500, statusMessage: 'titleEn and titleZh are required' })
   }
 
   await db
     .prepare(
       `UPDATE news
-       SET slug = ?, category = ?, title_en = ?, title_zh = ?, summary_en = ?, summary_zh = ?,
+       SET category = ?, title_en = ?, title_zh = ?, summary_en = ?, summary_zh = ?,
            content_en = ?, content_zh = ?, cover_url = ?, is_published = ?, published_at = ?,
            updated_at = datetime('now')
        WHERE id = ?`
     )
     .bind(
-      nextSlug,
       category,
       titleEn,
       titleZh,
