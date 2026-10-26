@@ -1,5 +1,4 @@
 type CreateNewsCategoryBody = {
-  slug?: string
   nameEn?: string
   nameZh?: string
   sortOrder?: number
