@@ -82,13 +82,13 @@
             <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.coverUrl') }}</div>
             <UFileUpload :model-value="coverUploadItem" :accept="imageAccept"
               :label="uploadingCover ? $t('admin.upload.uploading') : (form.coverUrl ? $t('admin.upload.replace') : $t('admin.upload.button'))"
-              :disabled="uploadingCover" @update:model-value="onCoverUpload" />
+              :disabled="uploadingCover || saving" @update:model-value="onCoverUpload" />
           </div>
           <div class="min-w-0 lg:col-span-2">
             <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.products.images') }}</div>
             <UFileUpload :model-value="imageUploadItems" :accept="imageAccept"
               :label="uploadingImages ? $t('admin.upload.uploading') : $t('admin.upload.addImage')" multiple
-              :disabled="uploadingImages" @update:model-value="onImageUpload" />
+              :disabled="uploadingImages || saving" @update:model-value="onImageUpload" />
           </div>
           <UFormField class="min-w-0 lg:col-span-2" :label="$t('admin.products.specsEn')" name="specsEnText">
             <UTextarea v-model="form.specsEnText" class="w-full" :rows="3" />
@@ -97,8 +97,8 @@
             <UTextarea v-model="form.specsZhText" class="w-full" :rows="3" />
           </UFormField>
           <div class="col-span-full flex justify-end gap-2">
-            <UButton color="neutral" variant="ghost" @click="closeForm">{{ $t('admin.common.cancel') }}</UButton>
-            <UButton type="submit">{{ $t('admin.common.save') }}</UButton>
+            <UButton color="neutral" variant="ghost" :disabled="saving" @click="closeForm">{{ $t('admin.common.cancel') }}</UButton>
+            <UButton type="submit" :loading="saving" :disabled="uploadingCover || uploadingImages">{{ $t('admin.common.save') }}</UButton>
           </div>
         </UForm>
       </template>
@@ -210,6 +210,7 @@ const form = reactive(emptyForm())
 const imageAccept = 'image/jpeg,image/png,image/webp,image/gif,image/avif'
 const uploadingCover = ref(false)
 const uploadingImages = ref(false)
+const saving = ref(false)
 
 type UploadedImage = {
   name: string
@@ -238,6 +239,7 @@ async function uploadImage(file: File) {
 }
 
 async function onCoverUpload(value: File | UploadedImage | null | undefined) {
+  if (uploadingCover.value || saving.value) return
   if (!value) {
     form.coverUrl = ''
     return
@@ -257,6 +259,7 @@ async function onCoverUpload(value: File | UploadedImage | null | undefined) {
 }
 
 async function onImageUpload(value: Array<File | UploadedImage> | null | undefined) {
+  if (uploadingImages.value || saving.value) return
   const entries = value || []
   const retained = entries
     .filter((item): item is UploadedImage => !(item instanceof File))
@@ -373,6 +376,8 @@ function validateForm() {
 }
 
 async function save() {
+  if (saving.value || uploadingCover.value || uploadingImages.value) return
+  saving.value = true
   const payload = {
     categorySlug: form.categorySlug,
     nameEn: form.nameEn,
@@ -402,7 +407,10 @@ async function save() {
     }
     closeForm()
     await load()
-  } catch { }
+  } catch {
+  } finally {
+    saving.value = false
+  }
 }
 
 async function remove(item: ProductItem) {

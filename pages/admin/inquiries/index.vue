@@ -44,15 +44,15 @@
         <template #expanded="{ row }">
           <div class="rounded-lg border border-default bg-muted/30 p-4">
             <div class="grid grid-cols-1 gap-2 text-sm text-gray-700 sm:grid-cols-2">
-              <div>
+              <div v-if="row.original.country">
                 <span class="font-semibold text-gray-500"> {{ $t('admin.inquiries.country') }}:</span>
                 {{ row.original.country }}
               </div>
-              <div>
+              <div v-if="row.original.im">
                 <span class="font-semibold text-gray-500">{{ $t('admin.inquiries.im') }}:</span>
                 {{ row.original.im }}
               </div>
-              <div>
+              <div v-if="row.original.bulkIntent">
                 <span class="font-semibold text-gray-500">{{ $t('admin.inquiries.bulk') }}:</span>
                 {{ row.original.bulkIntent === 'yes' ? $t('admin.inquiries.bulkYes') : row.original.bulkIntent === 'no'
                   ? $t('admin.inquiries.bulkNo') : '' }}
@@ -62,7 +62,7 @@
                 {{ row.original.locale }}
               </div>
             </div>
-            <div class="mt-3 rounded-md bg-default p-3">
+            <div v-if="row.original.message" class="mt-3 rounded-md bg-default p-3">
               <div class="mb-1 text-xs font-semibold text-gray-500 uppercase">{{ $t('admin.inquiries.message') }}</div>
               <p class="whitespace-pre-wrap text-sm text-gray-900">
                 {{ row.original.message }}</p>

@@ -76,7 +76,7 @@
             <div class="mb-1.5 text-3.25 font-semibold text-gray-600">{{ $t('admin.common.coverUrl') }}</div>
             <UFileUpload :model-value="coverUploadItem" :accept="imageAccept"
               :label="uploadingCover ? $t('admin.upload.uploading') : (form.coverUrl ? $t('admin.upload.replace') : $t('admin.upload.button'))"
-              :disabled="uploadingCover" @update:model-value="onCoverUpload" />
+              :disabled="uploadingCover || saving" @update:model-value="onCoverUpload" />
           </div>
           <UFormField class="min-w-0 lg:col-span-2" :label="$t('admin.news.summaryEn')" name="summaryEn">
             <UTextarea v-model="form.summaryEn" class="w-full" :rows="2" />
@@ -92,7 +92,7 @@
                   <div class="flex flex-wrap items-center gap-1 border-b border-[#e5eaf0] p-2">
                     <UEditorToolbar :editor="editor" :items="editorToolbarItems" />
                     <UButton icon="i-lucide-image-plus" color="neutral" variant="ghost" size="sm"
-                      @click="uploadEditorImage(editor)" />
+                      :loading="uploadingEditorImage" :disabled="uploadingEditorImage || saving" @click="uploadEditorImage(editor)" />
                   </div>
                 </template>
               </UEditor>
@@ -107,7 +107,7 @@
                   <div class="flex flex-wrap items-center gap-1 border-b border-[#e5eaf0] p-2">
                     <UEditorToolbar :editor="editor" :items="editorToolbarItems" />
                     <UButton icon="i-lucide-image-plus" color="neutral" variant="ghost" size="sm"
-                      @click="uploadEditorImage(editor)" />
+                      :loading="uploadingEditorImage" :disabled="uploadingEditorImage || saving" @click="uploadEditorImage(editor)" />
                   </div>
                 </template>
               </UEditor>
@@ -115,8 +115,8 @@
             </ClientOnly>
           </div>
           <div class="col-span-full flex justify-end gap-2">
-            <UButton color="neutral" variant="ghost" @click="closeForm">{{ $t('admin.common.cancel') }}</UButton>
-            <UButton type="submit">{{ $t('admin.common.save') }}</UButton>
+            <UButton color="neutral" variant="ghost" :disabled="saving" @click="closeForm">{{ $t('admin.common.cancel') }}</UButton>
+            <UButton type="submit" :loading="saving" :disabled="uploadingCover || uploadingEditorImage">{{ $t('admin.common.save') }}</UButton>
           </div>
         </UForm>
       </template>
@@ -208,6 +208,8 @@ const form = reactive({
 
 const imageAccept = 'image/jpeg,image/png,image/webp,image/gif,image/avif'
 const uploadingCover = ref(false)
+const uploadingEditorImage = ref(false)
+const saving = ref(false)
 const editorToolbarItems = [[
   { icon: 'i-lucide-bold', kind: 'mark', mark: 'bold' },
   { icon: 'i-lucide-italic', kind: 'mark', mark: 'italic' },
@@ -244,6 +246,7 @@ async function uploadImage(file: File) {
 }
 
 async function onCoverUpload(value: File | UploadedImage | null | undefined) {
+  if (uploadingCover.value || saving.value) return
   if (!value) {
     form.coverUrl = ''
     return
@@ -263,16 +266,21 @@ async function onCoverUpload(value: File | UploadedImage | null | undefined) {
 }
 
 function uploadEditorImage(editor: any) {
+  if (uploadingEditorImage.value || saving.value) return
   const input = document.createElement('input')
   input.type = 'file'
   input.accept = imageAccept
   input.onchange = async () => {
     const file = input.files?.[0]
     if (!file) return
+    uploadingEditorImage.value = true
     try {
       const url = await uploadImage(file)
       editor.chain().focus().setImage({ src: url }).run()
-    } catch { }
+    } catch {
+    } finally {
+      uploadingEditorImage.value = false
+    }
   }
   input.click()
 }
@@ -401,6 +409,8 @@ function validateForm() {
 }
 
 async function save() {
+  if (saving.value || uploadingCover.value || uploadingEditorImage.value) return
+  saving.value = true
   const payload = {
     category: form.category,
     titleEn: form.titleEn,
@@ -428,7 +438,10 @@ async function save() {
     }
     closeForm()
     await load()
-  } catch { }
+  } catch {
+  } finally {
+    saving.value = false
+  }
 }
 
 async function remove(item: NewsItem) {
