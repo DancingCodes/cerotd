@@ -33,7 +33,7 @@
 - `database/migrations/` — D1 数据库结构
 - `i18n/locales/` — `en.json`、`zh.json`
 - `layouts/` — `default`、`admin`
-- `middleware/admin.ts` — 后台客户端鉴权
+- `middleware/admin.global.ts` — 后台客户端鉴权
 - `sucai/` — 本地素材（已 gitignore，不要提交）
 
 ## 协作规则
