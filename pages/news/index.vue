@@ -1,4 +1,5 @@
 <template>
+  <div>
   <section
     class="bg-[radial-gradient(circle_at_80%_10%,rgba(139,154,171,.14),transparent_26%),linear-gradient(180deg,#070b12_0%,#121821_100%)] py-18 text-white md:py-22">
     <UContainer class="max-w-295 px-6">
@@ -62,6 +63,7 @@
       </template>
     </UContainer>
   </section>
+  </div>
 </template>
 
 <script setup lang="ts">

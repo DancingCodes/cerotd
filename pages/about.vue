@@ -1,4 +1,5 @@
 <template>
+  <div>
   <section
     class="bg-[radial-gradient(circle_at_15%_20%,rgba(95,208,220,.16),transparent_30%),linear-gradient(180deg,#070b12_0%,#121821_100%)] py-18 text-white md:py-22">
     <UContainer class="max-w-295 px-6">
@@ -91,6 +92,7 @@
     :items="certificateItems" />
 
 
+  </div>
 </template>
 
 <script setup lang="ts">
