@@ -1,20 +1,21 @@
 <template>
   <div class="flex h-full min-h-0 flex-col">
-    <div class="mb-4 grid grid-cols-[1.4fr_1fr_1fr_auto_auto_auto] items-center gap-2.5">
+    <div class="mb-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_auto_auto_auto] lg:items-center">
       <UInput v-model="searchInput" type="search" class="w-full" :placeholder="$t('admin.products.searchPlaceholder')"
         @keyup.enter="applyFilters" />
       <USelect v-model="filterCategory" :items="categoryOptions" class="w-full" />
       <USelect v-model="filterStatus" :items="statusOptions" class="w-full" />
-      <UButton color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}</UButton>
-      <UButton v-if="selectedSlugs.length" color="error" :loading="batchDeleting" @click="removeSelected">
+      <UButton class="w-full justify-center lg:w-auto" color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}</UButton>
+      <UButton v-if="selectedSlugs.length" class="w-full justify-center lg:w-auto" color="error" :loading="batchDeleting" @click="removeSelected">
         {{ $t('admin.common.batchDelete') }} · {{ selectedSlugs.length }}</UButton>
-      <UButton :disabled="!categories.length" @click="startCreate">{{ $t('admin.products.new') }}</UButton>
+      <UButton class="w-full justify-center lg:w-auto" :disabled="!categories.length" @click="startCreate">{{ $t('admin.products.new') }}</UButton>
     </div>
 
 
-    <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">
-      <UTable :data="items" :columns="columns" :loading="pending" :empty="$t('admin.products.empty')" sticky="header"
-        :ui="{ base: 'w-full table-fixed' }" class="min-h-0 flex-1">
+    <UCard class="lg:min-h-0 lg:flex-1" :ui="{ body: 'flex flex-col lg:h-full lg:min-h-0' }">
+      <div class="overflow-x-auto lg:min-h-0 lg:flex-1">
+        <UTable :data="items" :columns="columns" :loading="pending" :empty="$t('admin.products.empty')" sticky="header"
+          :ui="{ base: 'w-full min-w-176 table-fixed' }" class="lg:min-h-0 lg:flex-1">
         <template #select-header>
           <UCheckbox :model-value="allSelected" @update:model-value="toggleSelectAll(Boolean($event))" />
         </template>
@@ -40,7 +41,8 @@
             }}</UButton>
           </div>
         </template>
-      </UTable>
+        </UTable>
+      </div>
 
       <div v-if="totalPages > 1" class="mt-4 flex justify-end">
         <UPagination v-model:page="page" :total="total" :items-per-page="pageSize" @update:page="load" />

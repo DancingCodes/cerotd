@@ -1,15 +1,16 @@
 <template>
   <div class="flex h-full min-h-0 flex-col">
-    <div class="mb-4 grid grid-cols-[1fr_1fr_auto] gap-2.5">
+    <div class="mb-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_auto]">
       <USelect v-model="status" :items="statusFilters" class="w-full" />
       <USelect v-model="range" :items="rangeFilters" class="w-full" />
-      <UButton color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}</UButton>
+      <UButton class="w-full justify-center lg:w-auto" color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}</UButton>
     </div>
 
-    <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">
-      <UTable v-model:expanded="expandedRows" :data="items" :columns="columns" :loading="pending"
+    <UCard class="lg:min-h-0 lg:flex-1" :ui="{ body: 'flex flex-col lg:h-full lg:min-h-0' }">
+      <div class="overflow-x-auto lg:min-h-0 lg:flex-1">
+        <UTable v-model:expanded="expandedRows" :data="items" :columns="columns" :loading="pending"
         :empty="$t('admin.inquiries.empty')" sticky="header" :expanded-options="{ getRowCanExpand: () => true }"
-        :ui="{ base: 'w-full table-fixed' }" class="min-h-0 flex-1">
+          :ui="{ base: 'w-full min-w-200 table-fixed' }" class="lg:min-h-0 lg:flex-1">
         <template #name-cell="{ row }">
           <div class="font-semibold">
             <span v-if="!row.original.isRead" class="mr-2 inline-block size-2 rounded-full bg-primary"></span>
@@ -42,7 +43,7 @@
         </template>
         <template #expanded="{ row }">
           <div class="rounded-lg border border-default bg-muted/30 p-4">
-            <div class="grid grid-cols-2 gap-2 text-sm text-gray-700">
+            <div class="grid grid-cols-1 gap-2 text-sm text-gray-700 sm:grid-cols-2">
               <div>
                 <span class="font-semibold text-gray-500"> {{ $t('admin.inquiries.country') }}:</span>
                 {{ row.original.country }}
@@ -68,7 +69,8 @@
             </div>
           </div>
         </template>
-      </UTable>
+        </UTable>
+      </div>
 
       <div v-if="totalPages > 1" class="mt-4 flex justify-end">
         <UPagination v-model:page="page" :total="total" :items-per-page="pageSize" @update:page="load" />

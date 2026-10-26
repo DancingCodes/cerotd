@@ -1,16 +1,17 @@
 <template>
   <div class="flex h-full min-h-0 flex-col">
-    <div class="mb-4 flex gap-2.5">
+    <div class="mb-4 grid grid-cols-1 gap-2.5 sm:grid-cols-[1fr_auto_auto]">
       <UInput v-model="searchInput" type="search" class="w-full"
         :placeholder="$t('admin.newsCategories.searchPlaceholder')" @keyup.enter="applyFilters" />
-      <UButton class="shrink-0" color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}
+      <UButton class="w-full justify-center sm:w-auto" color="neutral" variant="soft" @click="applyFilters">{{ $t('admin.common.search') }}
       </UButton>
-      <UButton class="shrink-0" @click="startCreate">{{ $t('admin.newsCategories.new') }}</UButton>
+      <UButton class="w-full justify-center sm:w-auto" @click="startCreate">{{ $t('admin.newsCategories.new') }}</UButton>
     </div>
 
-    <UCard class="min-h-0 flex-1" :ui="{ body: 'flex h-full min-h-0 flex-col' }">
-      <UTable :data="filteredItems" :columns="columns" :loading="pending" :empty="$t('admin.newsCategories.empty')"
-        sticky="header" class="min-h-0 flex-1">
+    <UCard class="lg:min-h-0 lg:flex-1" :ui="{ body: 'flex flex-col lg:h-full lg:min-h-0' }">
+      <div class="overflow-x-auto lg:min-h-0 lg:flex-1">
+        <UTable :data="filteredItems" :columns="columns" :loading="pending" :empty="$t('admin.newsCategories.empty')"
+          sticky="header" :ui="{ base: 'w-full min-w-150' }" class="lg:min-h-0 lg:flex-1">
         <template #name-cell="{ row }">
           <div class="font-semibold">{{ lt(row.original.name) }}</div>
           <div class="text-xs text-gray-500">{{ secondaryName(row.original.name) }}</div>
@@ -23,7 +24,8 @@
               {{ $t('admin.common.delete') }}</UButton>
           </div>
         </template>
-      </UTable>
+        </UTable>
+      </div>
     </UCard>
 
     <UModal v-model:open="formOpen"
