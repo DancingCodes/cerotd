@@ -37,16 +37,6 @@
     "trustLink": "查看证书"
   },
   "home": {
-    "badge": "工业润滑油制造商",
-    "hero": {
-      "title": "工厂直供工业润滑油与润滑脂",
-      "subtitle": "面向经销商与车队采购的车用、工业与工程机械润滑方案，支持批量供货、批次稳定与 OEM。",
-      "ctaPrimary": "查看产品",
-      "ctaSecondary": "获取报价",
-      "trust1": "ISO 9001",
-      "trust2": "ISO 14001",
-      "trust3": "ISO 45001"
-    },
     "services": {
       "title": "合作支持",
       "subtitle": "首页只看要点，完整流程在服务页。",
@@ -556,7 +546,8 @@
       "inquiries": "留言",
       "menu": "菜单",
       "newsCategories": "新闻分类",
-      "productCategories": "产品分类"
+      "productCategories": "产品分类",
+      "content": "页面内容"
     },
     "login": {
       "title": "后台登录",
@@ -713,6 +704,37 @@
       "addImage": "上传图片",
       "empty": "暂无图片，点击上方上传",
       "replace": "更换图片"
+    },
+    "pageContent": {
+      "title": "页面内容",
+      "subtitle": "只编辑已有文字和图片，不改变页面布局。",
+      "pages": "页面",
+      "sections": "分区",
+      "home": "首页",
+      "hero": "首屏横幅",
+      "heroDescription": "编辑首页现有首屏内容。布局、样式和响应式行为保持固定。",
+      "image": "背景图片",
+      "imageHint": "建议使用横向宽幅图片，优先 WebP 或 JPEG。",
+      "text": "文字内容",
+      "badgeEn": "标签（英文）",
+      "badgeZh": "标签（中文）",
+      "titleEn": "标题（英文）",
+      "titleZh": "标题（中文）",
+      "subtitleEn": "副标题（英文）",
+      "subtitleZh": "副标题（中文）",
+      "buttons": "按钮",
+      "primaryTextEn": "主按钮文字（英文）",
+      "primaryTextZh": "主按钮文字（中文）",
+      "primaryLink": "主按钮链接",
+      "secondaryTextEn": "次按钮文字（英文）",
+      "secondaryTextZh": "次按钮文字（中文）",
+      "secondaryLink": "次按钮链接",
+      "trustLabels": "信任标签",
+      "trustEn": "信任标签 {n}（英文）",
+      "trustZh": "信任标签 {n}（中文）",
+      "required": "请填写{field}。",
+      "internalLinkRequired": "请填写以 / 开头的站内链接。",
+      "saved": "首屏内容已保存"
     },
     "productCategories": {
       "title": "产品分类",

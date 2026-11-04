@@ -37,16 +37,6 @@
     "trustLink": "View certificates"
   },
   "home": {
-    "badge": "Industrial Lubricant Manufacturer",
-    "hero": {
-      "title": "Factory-Direct Industrial Oils & Greases",
-      "subtitle": "Automotive, industrial and construction lubricants for distributors and fleet buyers — bulk supply, stable batches, OEM available.",
-      "ctaPrimary": "View Products",
-      "ctaSecondary": "Request a Quote",
-      "trust1": "ISO 9001",
-      "trust2": "ISO 14001",
-      "trust3": "ISO 45001"
-    },
     "services": {
       "title": "How we support buyers",
       "subtitle": "Key points here — full process on the Services page.",
@@ -556,7 +546,8 @@
       "inquiries": "Inquiries",
       "menu": "Menu",
       "newsCategories": "News Categories",
-      "productCategories": "Product Categories"
+      "productCategories": "Product Categories",
+      "content": "Page Content"
     },
     "login": {
       "title": "Admin Login",
@@ -713,6 +704,37 @@
       "addImage": "Upload image",
       "empty": "No image yet. Click upload above.",
       "replace": "Replace image"
+    },
+    "pageContent": {
+      "title": "Page Content",
+      "subtitle": "Edit existing text and images without changing the page layout.",
+      "pages": "Pages",
+      "sections": "Sections",
+      "home": "Home",
+      "hero": "Hero",
+      "heroDescription": "Edit the existing home-page hero content. Layout, styling and responsive behavior stay fixed.",
+      "image": "Background image",
+      "imageHint": "Use a wide landscape image. WebP or JPEG is recommended.",
+      "text": "Text",
+      "badgeEn": "Badge (English)",
+      "badgeZh": "Badge (Chinese)",
+      "titleEn": "Title (English)",
+      "titleZh": "Title (Chinese)",
+      "subtitleEn": "Subtitle (English)",
+      "subtitleZh": "Subtitle (Chinese)",
+      "buttons": "Buttons",
+      "primaryTextEn": "Primary button text (English)",
+      "primaryTextZh": "Primary button text (Chinese)",
+      "primaryLink": "Primary button link",
+      "secondaryTextEn": "Secondary button text (English)",
+      "secondaryTextZh": "Secondary button text (Chinese)",
+      "secondaryLink": "Secondary button link",
+      "trustLabels": "Trust labels",
+      "trustEn": "Trust label {n} (English)",
+      "trustZh": "Trust label {n} (Chinese)",
+      "required": "{field} is required.",
+      "internalLinkRequired": "Use a site-relative link starting with /.",
+      "saved": "Hero content saved"
     },
     "productCategories": {
       "title": "Product Categories",

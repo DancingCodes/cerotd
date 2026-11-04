@@ -46,6 +46,7 @@ const mobileNavOpen = ref(false)
 
 const navItems = [
   { to: '/admin/product-categories', label: 'admin.nav.productCategories' },
+  { to: '/admin/content', label: 'admin.nav.content' },
   { to: '/admin/products', label: 'admin.nav.products' },
   { to: '/admin/news-categories', label: 'admin.nav.newsCategories' },
   { to: '/admin/news', label: 'admin.nav.news' },

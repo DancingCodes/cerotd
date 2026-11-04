@@ -3,37 +3,36 @@
   <section
     class="relative flex min-h-[78vh] items-center overflow-hidden bg-[#070b12] py-24 pt-30 text-white max-md:min-h-[86vh] max-md:py-22 max-md:pt-27.5">
     <div class="absolute inset-0" aria-hidden="true">
-      <img class="size-full scale-[1.04] object-cover object-[center_40%] saturate-[.78] contrast-[1.05]"
-        src="/images/hero-bg.webp" alt="" fetchpriority="high" decoding="async" />
+      <img v-if="heroContent.backgroundImage" class="size-full scale-[1.04] object-cover object-[center_40%] saturate-[.78] contrast-[1.05]"
+        :src="heroContent.backgroundImage" alt="" fetchpriority="high" decoding="async" />
     </div>
     <div
       class="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,11,18,.88)_0%,rgba(7,11,18,.72)_42%,rgba(7,11,18,.34)_100%),linear-gradient(180deg,rgba(7,11,18,.28)_0%,rgba(7,11,18,.78)_100%)]"
       aria-hidden="true"></div>
     <UContainer class="relative z-10 max-w-205 px-6">
-      <p class="mb-5 text-[12px] font-semibold tracking-[.16em] text-[#a8b0ba] uppercase">{{ $t('home.badge') }}</p>
+      <p v-if="heroContent.badge" class="mb-5 text-[12px] font-semibold tracking-[.16em] text-[#a8b0ba] uppercase">{{ heroContent.badge }}</p>
       <h1
         class="mb-4.5 max-w-[18ch] text-[64px] leading-[1.06] font-semibold tracking-normal max-md:max-w-none max-md:text-[42px]">
-        {{ $t('home.hero.title') }}</h1>
-      <p class="mb-7 max-w-[44ch] text-[18px] leading-[1.7] font-normal text-white/78 max-md:text-[16px]">{{
-        $t('home.hero.subtitle') }}</p>
+        {{ heroContent.title }}</h1>
+      <p class="mb-7 max-w-[44ch] text-[18px] leading-[1.7] font-normal text-white/78 max-md:text-[16px]">{{ heroContent.subtitle }}</p>
       <div class="mb-7 flex flex-wrap gap-3">
-        <NuxtLink to="/products"
+        <NuxtLink v-if="heroContent.ctaPrimary.text && heroContent.ctaPrimary.href" :to="heroContent.ctaPrimary.href"
           class="flex min-h-12 items-center justify-center rounded-full bg-white px-5.5 text-[14px] font-semibold tracking-[.01em] text-[#070b12] no-underline transition hover:bg-[#e8eef3]">
-          {{ $t('home.hero.ctaPrimary') }}</NuxtLink>
-        <NuxtLink to="/contact"
+          {{ heroContent.ctaPrimary.text }}</NuxtLink>
+        <NuxtLink v-if="heroContent.ctaSecondary.text && heroContent.ctaSecondary.href" :to="heroContent.ctaSecondary.href"
           class="flex min-h-12 items-center justify-center rounded-full border border-white/[.28] bg-transparent px-5.5 text-[14px] font-semibold tracking-[.01em] text-white no-underline transition hover:border-white/[.55] hover:bg-white/4">
-          {{ $t('home.hero.ctaSecondary') }}</NuxtLink>
+          {{ heroContent.ctaSecondary.text }}</NuxtLink>
       </div>
       <ul class="flex flex-wrap gap-2.5">
-        <li
+        <li v-if="heroContent.trust1"
           class="rounded-full border border-white/16 bg-white/4 px-3 py-2 text-[12px] font-medium tracking-[.04em] text-white/82">
-          {{ $t('home.hero.trust1') }}</li>
-        <li
+          {{ heroContent.trust1 }}</li>
+        <li v-if="heroContent.trust2"
           class="rounded-full border border-white/16 bg-white/4 px-3 py-2 text-[12px] font-medium tracking-[.04em] text-white/82">
-          {{ $t('home.hero.trust2') }}</li>
-        <li
+          {{ heroContent.trust2 }}</li>
+        <li v-if="heroContent.trust3"
           class="rounded-full border border-white/16 bg-white/4 px-3 py-2 text-[12px] font-medium tracking-[.04em] text-white/82">
-          {{ $t('home.hero.trust3') }}</li>
+          {{ heroContent.trust3 }}</li>
       </ul>
     </UContainer>
   </section>
@@ -223,6 +222,62 @@
 <script setup lang="ts">
 const { t, locale } = useI18n()
 const tLocal = useLocalized()
+
+type LocalizedText = { en: string; zh: string }
+type HomeHeroContent = {
+  backgroundImage: string
+  badge: string
+  title: string
+  subtitle: string
+  ctaPrimary: { text: string; href: string }
+  ctaSecondary: { text: string; href: string }
+  trust1: string
+  trust2: string
+  trust3: string
+}
+
+type HomeHeroResponse = {
+  content: {
+    backgroundImage: string
+    badge: LocalizedText
+    title: LocalizedText
+    subtitle: LocalizedText
+    ctaPrimary: { text: LocalizedText; href: string }
+    ctaSecondary: { text: LocalizedText; href: string }
+    trust1: LocalizedText
+    trust2: LocalizedText
+    trust3: LocalizedText
+  } | null
+}
+
+const { data: homeHeroData } = await useApiFetch<HomeHeroResponse>('/api/page-content/home/hero')
+const emptyHeroContent = computed(() => ({
+  backgroundImage: '',
+  badge: '',
+  title: '',
+  subtitle: '',
+  ctaPrimary: { text: '', href: '' },
+  ctaSecondary: { text: '', href: '' },
+  trust1: '',
+  trust2: '',
+  trust3: ''
+}))
+const localizedHero = (value: LocalizedText) => locale.value === 'zh' ? value.zh : value.en
+const heroContent = computed<HomeHeroContent>(() => {
+  const content = homeHeroData.value?.content
+  if (!content) return emptyHeroContent.value
+  return {
+    backgroundImage: content.backgroundImage || '',
+    badge: localizedHero(content.badge),
+    title: localizedHero(content.title),
+    subtitle: localizedHero(content.subtitle),
+    ctaPrimary: { text: localizedHero(content.ctaPrimary.text), href: content.ctaPrimary.href || '' },
+    ctaSecondary: { text: localizedHero(content.ctaSecondary.text), href: content.ctaSecondary.href || '' },
+    trust1: localizedHero(content.trust1),
+    trust2: localizedHero(content.trust2),
+    trust3: localizedHero(content.trust3)
+  }
+})
 
 usePageSeo({
   title: t('seo.home.title'),
