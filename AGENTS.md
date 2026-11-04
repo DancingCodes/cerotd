@@ -11,7 +11,7 @@
 - 目标：面向海外分销商 / 工业采购方，靠 Google 自然搜索拿询盘
 - 技术栈：Nuxt 4、Vue 3、TypeScript、Tailwind CSS 4、Nuxt UI、Cloudflare Workers / D1 / R2
 - 语言：`en`（默认，SEO 主语言）、`zh`（辅助）
-- 当前部署域名：`moonc.love`
+- 当前部署域名：`dcodes.top`
 - 原网站地址：https://www.cerotd.com/
 
 ## 常用命令

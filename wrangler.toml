@@ -9,11 +9,11 @@ main = "./.output/server/index.mjs"
 directory = "./.output/public"
 
 [[routes]]
-pattern = "moonc.love"
+pattern = "dcodes.top"
 custom_domain = true
 
 [[routes]]
-pattern = "www.moonc.love"
+pattern = "www.dcodes.top"
 custom_domain = true
 
 [[d1_databases]]
