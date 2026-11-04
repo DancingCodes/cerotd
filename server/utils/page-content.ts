@@ -89,12 +89,7 @@ function internalPath(value: unknown, fallback = '') {
 }
 
 function imageUrl(value: unknown, fallback: string) {
-  const url = clean(value, 1000)
-  if (!url) return fallback
-  if (!url.startsWith('/') && !/^https:\/\//i.test(url)) {
-    throw createError({ statusCode: 500, statusMessage: 'Hero image URL is invalid' })
-  }
-  return url
+  return clean(value, 1000) || fallback
 }
 
 export function normalizeHomeHeroContent(body: Record<string, unknown>): HomeHeroContent {

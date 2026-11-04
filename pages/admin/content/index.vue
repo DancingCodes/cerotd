@@ -29,15 +29,12 @@
         <UForm :state="form" :validate="validateForm" class="space-y-6" @submit="save">
           <section class="space-y-4">
             <h2 class="border-b border-gray-200 pb-2 text-sm font-semibold text-gray-800">{{ $t('admin.pageContent.image') }}</h2>
-            <div class="grid grid-cols-2 items-start gap-5">
+            <div>
               <div>
                 <UFileUpload :model-value="backgroundUploadItem" :accept="imageAccept"
                   :label="uploadingImage ? $t('admin.upload.uploading') : (form.backgroundImage ? $t('admin.upload.replace') : $t('admin.upload.button'))"
                   :disabled="uploadingImage || saving" @update:model-value="onBackgroundUpload" />
                 <p class="mt-2 text-xs text-gray-500">{{ $t('admin.pageContent.imageHint') }}</p>
-              </div>
-              <div v-if="form.backgroundImage" class="overflow-hidden rounded-lg border border-gray-200 bg-gray-100">
-                <img :src="form.backgroundImage" alt="" class="h-36 w-full object-cover" />
               </div>
             </div>
           </section>
