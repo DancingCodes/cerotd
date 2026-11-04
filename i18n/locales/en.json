@@ -732,6 +732,8 @@
       "trustLabels": "Trust labels",
       "trustEn": "Trust label {n} (English)",
       "trustZh": "Trust label {n} (Chinese)",
+      "addTrust": "Add trust label",
+      "removeTrust": "Remove trust label",
       "required": "{field} is required.",
       "internalLinkRequired": "Use a site-relative link starting with /.",
       "saved": "Hero content saved"

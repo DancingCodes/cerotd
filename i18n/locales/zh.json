@@ -732,6 +732,8 @@
       "trustLabels": "信任标签",
       "trustEn": "信任标签 {n}（英文）",
       "trustZh": "信任标签 {n}（中文）",
+      "addTrust": "添加信任标签",
+      "removeTrust": "删除信任标签",
       "required": "请填写{field}。",
       "internalLinkRequired": "请填写以 / 开头的站内链接。",
       "saved": "首屏内容已保存"

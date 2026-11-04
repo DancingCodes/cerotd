@@ -6,9 +6,6 @@
       <img v-if="heroContent.backgroundImage" class="size-full scale-[1.04] object-cover object-[center_40%] saturate-[.78] contrast-[1.05]"
         :src="heroContent.backgroundImage" alt="" fetchpriority="high" decoding="async" />
     </div>
-    <div
-      class="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,11,18,.88)_0%,rgba(7,11,18,.72)_42%,rgba(7,11,18,.34)_100%),linear-gradient(180deg,rgba(7,11,18,.28)_0%,rgba(7,11,18,.78)_100%)]"
-      aria-hidden="true"></div>
     <UContainer class="relative z-10 max-w-205 px-6">
       <p v-if="heroContent.badge" class="mb-5 text-[12px] font-semibold tracking-[.16em] text-[#a8b0ba] uppercase">{{ heroContent.badge }}</p>
       <h1
@@ -24,15 +21,9 @@
           {{ heroContent.ctaSecondary.text }}</NuxtLink>
       </div>
       <ul class="flex flex-wrap gap-2.5">
-        <li v-if="heroContent.trust1"
+        <li v-for="(label, index) in heroContent.trustLabels" :key="index"
           class="rounded-full border border-white/16 bg-white/4 px-3 py-2 text-[12px] font-medium tracking-[.04em] text-white/82">
-          {{ heroContent.trust1 }}</li>
-        <li v-if="heroContent.trust2"
-          class="rounded-full border border-white/16 bg-white/4 px-3 py-2 text-[12px] font-medium tracking-[.04em] text-white/82">
-          {{ heroContent.trust2 }}</li>
-        <li v-if="heroContent.trust3"
-          class="rounded-full border border-white/16 bg-white/4 px-3 py-2 text-[12px] font-medium tracking-[.04em] text-white/82">
-          {{ heroContent.trust3 }}</li>
+          {{ label }}</li>
       </ul>
     </UContainer>
   </section>
@@ -231,9 +222,7 @@ type HomeHeroContent = {
   subtitle: string
   ctaPrimary: { text: string; href: string }
   ctaSecondary: { text: string; href: string }
-  trust1: string
-  trust2: string
-  trust3: string
+  trustLabels: string[]
 }
 
 type HomeHeroResponse = {
@@ -244,9 +233,7 @@ type HomeHeroResponse = {
     subtitle: LocalizedText
     ctaPrimary: { text: LocalizedText; href: string }
     ctaSecondary: { text: LocalizedText; href: string }
-    trust1: LocalizedText
-    trust2: LocalizedText
-    trust3: LocalizedText
+    trustLabels: LocalizedText[]
   } | null
 }
 
@@ -258,9 +245,7 @@ const emptyHeroContent = computed(() => ({
   subtitle: '',
   ctaPrimary: { text: '', href: '' },
   ctaSecondary: { text: '', href: '' },
-  trust1: '',
-  trust2: '',
-  trust3: ''
+  trustLabels: []
 }))
 const localizedHero = (value: LocalizedText) => locale.value === 'zh' ? value.zh : value.en
 const heroContent = computed<HomeHeroContent>(() => {
@@ -273,9 +258,7 @@ const heroContent = computed<HomeHeroContent>(() => {
     subtitle: localizedHero(content.subtitle),
     ctaPrimary: { text: localizedHero(content.ctaPrimary.text), href: content.ctaPrimary.href || '' },
     ctaSecondary: { text: localizedHero(content.ctaSecondary.text), href: content.ctaSecondary.href || '' },
-    trust1: localizedHero(content.trust1),
-    trust2: localizedHero(content.trust2),
-    trust3: localizedHero(content.trust3)
+    trustLabels: (content.trustLabels || []).map(localizedHero).filter(Boolean)
   }
 })
 

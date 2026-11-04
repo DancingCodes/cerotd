@@ -90,14 +90,16 @@
 
           <section class="space-y-4">
             <h2 class="border-b border-gray-200 pb-2 text-sm font-semibold text-gray-800">{{ $t('admin.pageContent.trustLabels') }}</h2>
-            <div v-for="n in 3" :key="n" class="grid grid-cols-2 gap-4">
-              <UFormField :label="$t('admin.pageContent.trustEn', { n })" :name="`trust${n}En`">
-                <UInput v-model="form[`trust${n}En` as TrustField]" class="w-full" />
+            <div v-for="(label, index) in form.trustLabels" :key="index" class="grid grid-cols-[1fr_1fr_auto] gap-4">
+              <UFormField :label="$t('admin.pageContent.trustEn', { n: index + 1 })">
+                <UInput v-model="label.en" class="w-full" />
               </UFormField>
-              <UFormField :label="$t('admin.pageContent.trustZh', { n })" :name="`trust${n}Zh`">
-                <UInput v-model="form[`trust${n}Zh` as TrustField]" class="w-full" />
+              <UFormField :label="$t('admin.pageContent.trustZh', { n: index + 1 })">
+                <UInput v-model="label.zh" class="w-full" />
               </UFormField>
+              <UButton class="self-end" color="error" variant="ghost" icon="i-lucide-trash-2" :aria-label="$t('admin.pageContent.removeTrust')" @click="removeTrustLabel(index)" />
             </div>
+            <UButton color="neutral" variant="soft" icon="i-lucide-plus" @click="addTrustLabel">{{ $t('admin.pageContent.addTrust') }}</UButton>
           </section>
 
           <div class="flex justify-end border-t border-gray-200 pt-4">
@@ -113,7 +115,6 @@
 definePageMeta({ layout: 'admin' })
 
 type LocalizedText = { en: string; zh: string }
-type TrustField = 'trust1En' | 'trust1Zh' | 'trust2En' | 'trust2Zh' | 'trust3En' | 'trust3Zh'
 type HeroForm = {
   backgroundImage: string
   badgeEn: string
@@ -128,12 +129,7 @@ type HeroForm = {
   ctaSecondaryEn: string
   ctaSecondaryZh: string
   ctaSecondaryHref: string
-  trust1En: string
-  trust1Zh: string
-  trust2En: string
-  trust2Zh: string
-  trust3En: string
-  trust3Zh: string
+  trustLabels: LocalizedText[]
 }
 type HomeHeroContent = {
   backgroundImage: string
@@ -142,9 +138,7 @@ type HomeHeroContent = {
   subtitle: LocalizedText
   ctaPrimary: { text: LocalizedText; href: string }
   ctaSecondary: { text: LocalizedText; href: string }
-  trust1: LocalizedText
-  trust2: LocalizedText
-  trust3: LocalizedText
+  trustLabels: LocalizedText[]
 }
 type HomeHeroResponse = { content: HomeHeroContent | null; updatedAt: string | null }
 type UploadedImage = { name: string; avatar: { src: string } }
@@ -170,12 +164,7 @@ function emptyForm(): HeroForm {
     ctaSecondaryEn: '',
     ctaSecondaryZh: '',
     ctaSecondaryHref: '',
-    trust1En: '',
-    trust1Zh: '',
-    trust2En: '',
-    trust2Zh: '',
-    trust3En: '',
-    trust3Zh: ''
+    trustLabels: []
   }
 }
 
@@ -204,13 +193,16 @@ function readContent(content: HomeHeroContent) {
     ctaSecondaryEn: content.ctaSecondary.text.en,
     ctaSecondaryZh: content.ctaSecondary.text.zh,
     ctaSecondaryHref: content.ctaSecondary.href,
-    trust1En: content.trust1.en,
-    trust1Zh: content.trust1.zh,
-    trust2En: content.trust2.en,
-    trust2Zh: content.trust2.zh,
-    trust3En: content.trust3.en,
-    trust3Zh: content.trust3.zh
+    trustLabels: (content.trustLabels || []).map((label) => ({ en: label.en, zh: label.zh }))
   })
+}
+
+function addTrustLabel() {
+  form.trustLabels.push({ en: '', zh: '' })
+}
+
+function removeTrustLabel(index: number) {
+  form.trustLabels.splice(index, 1)
 }
 
 async function load() {
@@ -244,7 +236,7 @@ async function onBackgroundUpload(value: File | UploadedImage | null | undefined
 
 function validateForm() {
   const errors = []
-  const required: Array<[keyof HeroForm, string]> = [
+  const required: Array<[Exclude<keyof HeroForm, 'trustLabels'>, string]> = [
     ['titleEn', 'titleEn'], ['titleZh', 'titleZh'], ['subtitleEn', 'subtitleEn'], ['subtitleZh', 'subtitleZh'],
     ['ctaPrimaryEn', 'ctaPrimaryEn'], ['ctaPrimaryZh', 'ctaPrimaryZh'], ['ctaSecondaryEn', 'ctaSecondaryEn'], ['ctaSecondaryZh', 'ctaSecondaryZh']
   ]
@@ -277,12 +269,7 @@ async function save() {
     ctaSecondaryEn: form.ctaSecondaryEn,
     ctaSecondaryZh: form.ctaSecondaryZh,
     ctaSecondaryHref: form.ctaSecondaryHref,
-    trust1En: form.trust1En,
-    trust1Zh: form.trust1Zh,
-    trust2En: form.trust2En,
-    trust2Zh: form.trust2Zh,
-    trust3En: form.trust3En,
-    trust3Zh: form.trust3Zh
+    trustLabels: form.trustLabels
   }
   try {
     const result = await apiFetch<HomeHeroResponse>('/api/page-content/home/hero', { method: 'PUT', body })

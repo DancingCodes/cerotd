@@ -18,9 +18,7 @@ export type HomeHeroContent = {
     text: LocalizedPageText
     href: string
   }
-  trust1: LocalizedPageText
-  trust2: LocalizedPageText
-  trust3: LocalizedPageText
+  trustLabels: LocalizedPageText[]
 }
 
 type PageContentRow = {
@@ -106,9 +104,12 @@ export function normalizeHomeHeroContent(body: Record<string, unknown>): HomeHer
       text: localized(body, 'ctaSecondary', true),
       href: internalPath(body.ctaSecondaryHref)
     },
-    trust1: localized(body, 'trust1'),
-    trust2: localized(body, 'trust2'),
-    trust3: localized(body, 'trust3')
+    trustLabels: Array.isArray(body.trustLabels)
+      ? body.trustLabels.slice(0, 12).map((item) => {
+          const label = item && typeof item === 'object' ? item as Record<string, unknown> : {}
+          return { en: clean(label.en, 240), zh: clean(label.zh, 240) }
+        }).filter((item) => item.en || item.zh)
+      : []
   }
 }
 
