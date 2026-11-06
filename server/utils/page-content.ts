@@ -131,6 +131,31 @@ export async function findPageContent(event: H3Event, page: string, section: str
   return row ? { content: parsePageContent(row), updatedAt: row.updated_at } : { content: null, updatedAt: null }
 }
 
+export async function findPageContents(event: H3Event, page: 'home') {
+  const db = useDB(event)
+  const sections = Object.fromEntries(
+    PAGE_CONTENT_KEYS[page].map((section) => [section, { content: null, updatedAt: null }])
+  ) as Record<string, { content: unknown; updatedAt: string | null }>
+
+  try {
+    const { results } = await db
+      .prepare('SELECT page_key, section_key, content_json, updated_at FROM page_content WHERE page_key = ?')
+      .bind(page)
+      .all<PageContentRow>()
+
+    for (const row of results || []) {
+      if (PAGE_CONTENT_KEYS[page].includes(row.section_key as typeof PAGE_CONTENT_KEYS.home[number])) {
+        sections[row.section_key] = { content: parsePageContent(row), updatedAt: row.updated_at }
+      }
+    }
+  } catch (error: any) {
+    // Keep the public page available until the new table exists in the target D1 database.
+    if (!/no such table/i.test(String(error?.message || error))) throw error
+  }
+
+  return sections
+}
+
 function clean(value: unknown, maxLength: number) {
   return String(value ?? '').trim().slice(0, maxLength)
 }

@@ -272,30 +272,32 @@ type FacilityContentResponse = {
     images: Array<{ categoryId: string; src: string; caption: LocalizedText }>
   } | null
 }
+type HomePageContentResponse = {
+  sections: {
+    hero: HomeHeroResponse['content']
+    stats: HomeStatsResponse['content']
+    lab: HomeLabResponse['content']
+    facility: FacilityContentResponse['content']
+    'export-services': ExportServicesResponse['content']
+    'product-lines': ProductLinesResponse['content']
+    advantages: AdvantagesResponse['content']
+    partners: PartnersResponse['content']
+    cta: CtaResponse['content']
+  }
+  productCategories: ProductCategory[]
+}
 
-const [
-  { data: homeHeroData },
-  { data: homeStatsData },
-  { data: homeLabData },
-  { data: homeFacilityData },
-  { data: exportServicesData },
-  { data: productLinesData },
-  { data: advantagesData },
-  { data: partnersData },
-  { data: ctaData },
-  { data: productCategories }
-] = await Promise.all([
-  useApiFetch<HomeHeroResponse>('/api/page-content/home/hero'),
-  useApiFetch<HomeStatsResponse>('/api/page-content/home/stats'),
-  useApiFetch<HomeLabResponse>('/api/page-content/home/lab'),
-  useApiFetch<FacilityContentResponse>('/api/page-content/home/facility'),
-  useApiFetch<ExportServicesResponse>('/api/page-content/home/export-services'),
-  useApiFetch<ProductLinesResponse>('/api/page-content/home/product-lines'),
-  useApiFetch<AdvantagesResponse>('/api/page-content/home/advantages'),
-  useApiFetch<PartnersResponse>('/api/page-content/home/partners'),
-  useApiFetch<CtaResponse>('/api/page-content/home/cta'),
-  useApiFetch<{ items: ProductCategory[] }>('/api/product-categories')
-])
+const { data: homePageData } = await useApiFetch<HomePageContentResponse>('/api/page-content/home')
+const homeHeroData = computed<HomeHeroResponse>(() => ({ content: homePageData.value?.sections.hero || null }))
+const homeStatsData = computed<HomeStatsResponse>(() => ({ content: homePageData.value?.sections.stats || null }))
+const homeLabData = computed<HomeLabResponse>(() => ({ content: homePageData.value?.sections.lab || null }))
+const homeFacilityData = computed<FacilityContentResponse>(() => ({ content: homePageData.value?.sections.facility || null }))
+const exportServicesData = computed<ExportServicesResponse>(() => ({ content: homePageData.value?.sections['export-services'] || null }))
+const productLinesData = computed<ProductLinesResponse>(() => ({ content: homePageData.value?.sections['product-lines'] || null }))
+const advantagesData = computed<AdvantagesResponse>(() => ({ content: homePageData.value?.sections.advantages || null }))
+const partnersData = computed<PartnersResponse>(() => ({ content: homePageData.value?.sections.partners || null }))
+const ctaData = computed<CtaResponse>(() => ({ content: homePageData.value?.sections.cta || null }))
+const productCategories = computed(() => ({ items: homePageData.value?.productCategories || [] }))
 
 const emptyHeroContent = computed(() => ({
   backgroundImage: '',
