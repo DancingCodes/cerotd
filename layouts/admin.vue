@@ -2,7 +2,7 @@
   <div class="flex min-h-screen flex-col bg-[#f5f7fa] text-gray-900 lg:h-screen lg:overflow-hidden">
     <div v-if="route.path !== '/admin'" class="border-b border-[#e5eaf0] bg-white">
       <div class="mx-auto flex min-h-16 w-full max-w-295 items-center justify-between gap-3 px-4 sm:px-6">
-        <NuxtLink to="/admin/product-categories" class="shrink-0"><img src="/images/logo.webp" alt="Cerotd" class="h-8.5 w-auto" /></NuxtLink>
+        <NuxtLink to="/admin/content" class="shrink-0"><img src="/images/logo.webp" alt="Cerotd" class="h-8.5 w-auto" /></NuxtLink>
         <div class="hidden min-w-0 items-center justify-end gap-2 lg:flex">
           <template v-if="token">
             <NuxtLink v-for="item in navItems" :key="item.to" :to="item.to"
@@ -45,8 +45,8 @@ const route = useRoute()
 const mobileNavOpen = ref(false)
 
 const navItems = [
-  { to: '/admin/product-categories', label: 'admin.nav.productCategories' },
   { to: '/admin/content', label: 'admin.nav.content' },
+  { to: '/admin/product-categories', label: 'admin.nav.productCategories' },
   { to: '/admin/products', label: 'admin.nav.products' },
   { to: '/admin/news-categories', label: 'admin.nav.newsCategories' },
   { to: '/admin/news', label: 'admin.nav.news' },

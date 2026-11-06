@@ -9,6 +9,7 @@
     "learnMore": "了解更多",
     "viewProducts": "查看产品",
     "mediaBlank": "图片",
+    "partnerWebsite": "合作伙伴网站",
     "news": "新闻",
     "showMore": "加载更多",
     "loadingMore": "加载中...",
@@ -55,134 +56,6 @@
         }
       },
       "link": "查看服务流程"
-    },
-    "advantages": {
-      "title": "为什么选择我们",
-      "subtitle": "工厂直供、批次稳定与可核验的质量体系。",
-      "items": {
-        "item1": {
-          "name": "工厂直供",
-          "desc": "制造商供货，适合整柜与长期采购。"
-        },
-        "item2": {
-          "name": "批次稳定",
-          "desc": "产线与检测闭环，降低供货波动。"
-        },
-        "item3": {
-          "name": "工况匹配",
-          "desc": "按真实使用场景给方案，不只报目录价。"
-        },
-        "item4": {
-          "name": "体系可核验",
-          "desc": "认证、证书与检测能力可公开核查。"
-        }
-      },
-      "link": "查看核心优势"
-    },
-    "cta": {
-      "title": "准备开始合作？",
-      "subtitle": "告诉我们市场、牌号与用量，销售团队会尽快回复。",
-      "button": "联系我们"
-    },
-    "stats": {
-      "item1": {
-        "value": "28,000㎡",
-        "label": "厂区面积"
-      },
-      "item2": {
-        "value": "15,000m³",
-        "label": "基础油储存能力"
-      },
-      "item3": {
-        "value": "20+",
-        "label": "条生产线"
-      },
-      "item4": {
-        "value": "100,000+",
-        "label": "吨年产能"
-      }
-    },
-    "lab": {
-      "title": "自有化验室",
-      "subtitle": "研发中心配备专业检测设备，覆盖原料核验到成品放行。",
-      "point1": "研发中心占地 800 余平方米，现有研发人员 7 名。",
-      "point2": "分析仪器 72 台（套），其中润滑油检测设备 41 台（套）。",
-      "point3": "可对润滑油 21 项产品指标进行检测，保障批次稳定。",
-      "link": "查看公司实力与证书",
-      "items": {
-        "item1": {
-          "name": "原料检测",
-          "desc": "基础油与添加剂在调合前完成核验。"
-        },
-        "item2": {
-          "name": "过程管控",
-          "desc": "生产过程中跟踪关键质量指标。"
-        },
-        "item3": {
-          "name": "成品检测",
-          "desc": "每一批次放行前完成化验检测。"
-        },
-        "item4": {
-          "name": "出货放行",
-          "desc": "检测合格后再发货，记录可追溯。"
-        }
-      }
-    },
-    "facility": {
-      "title": "工厂实拍，看得见的供货能力",
-      "subtitle": "厂区、生产线与化验室画面，方便海外买家评估工厂实力。",
-      "cta": "查看公司介绍",
-      "close": "关闭",
-      "open": "打开图片",
-      "tabs": {
-        "plant": "厂区",
-        "production": "生产",
-        "laboratory": "化验室"
-      },
-      "captions": {
-        "plant1": "厂区外景",
-        "plant2": "室外储罐区",
-        "plant3": "桶装与仓储区",
-        "production1": "生产反应/调合设备",
-        "production2": "室内储罐与工艺罐",
-        "lab1": "水分分析",
-        "lab2": "滴定检测台",
-        "lab3": "分析天平",
-        "lab4": "低温检测",
-        "lab5": "闪点检测",
-        "lab6": "质检仪器运行中"
-      }
-    },
-    "exportServices": {
-      "title": "面向海外客户的出口服务",
-      "subtitle": "从定制包装到整柜装运，协助海外客户把大宗润滑油订单从工厂交付到目的地。",
-      "items": {
-        "item1": {
-          "name": "定制包装",
-          "desc": "根据目标市场协调包装规格、标签、纸箱及贴牌需求。"
-        },
-        "item2": {
-          "name": "整柜出口",
-          "desc": "支持托盘化与整柜装运，适合稳定批量供货和长期复购。"
-        },
-        "item3": {
-          "name": "报关资料",
-          "desc": "配合准备商业发票、装箱单及出运所需的相关出口文件。"
-        },
-        "item4": {
-          "name": "物流协同",
-          "desc": "协同货代与物流伙伴，跟进订舱、装柜和运输节点。"
-        }
-      },
-      "cta": "沟通您的出口需求"
-    },
-    "partners": {
-      "title": "原料与技术伙伴",
-      "subtitle": "与国际基础油、添加剂伙伴合作，支撑配方与品质稳定。"
-    },
-    "lines": {
-      "title": "核心产品线",
-      "subtitle": "浏览车用、工业与特种润滑应用的产品分类。"
     }
   },
   "about": {
@@ -712,7 +585,128 @@
       "sections": "分区",
       "home": "首页",
       "hero": "首屏横幅",
+      "stats": "关键数据",
       "heroDescription": "编辑首页现有首屏内容。布局、样式和响应式行为保持固定。",
+      "statsDescription": "编辑首页现有关键数据栏。布局和样式保持固定。",
+      "statsItems": "数据项",
+      "statValueEn": "数据 {n}（英文）",
+      "statValueZh": "数据 {n}（中文）",
+      "statLabelEn": "说明 {n}（英文）",
+      "statLabelZh": "说明 {n}（中文）",
+      "addStat": "添加数据项",
+      "removeStat": "删除数据项",
+      "statsSaved": "关键数据已保存",
+      "lab": "自有化验室",
+      "labDescription": "编辑现有化验室介绍、要点和流程卡片，页面布局保持固定。",
+      "labTitleEn": "区块标题（英文）",
+      "labTitleZh": "区块标题（中文）",
+      "labSubtitleEn": "区块说明（英文）",
+      "labSubtitleZh": "区块说明（中文）",
+      "labPoints": "关键要点",
+      "labPointEn": "要点 {n}（英文）",
+      "labPointZh": "要点 {n}（中文）",
+      "labLink": "区块链接",
+      "labLinkEn": "链接文字（英文）",
+      "labLinkZh": "链接文字（中文）",
+      "labLinkHref": "链接地址",
+      "labCards": "实验室流程卡片",
+      "labCardNameEn": "卡片 {n} 标题（英文）",
+      "labCardNameZh": "卡片 {n} 标题（中文）",
+      "labCardDescEn": "卡片 {n} 说明（英文）",
+      "labCardDescZh": "卡片 {n} 说明（中文）",
+      "labSaved": "化验室区块已保存",
+      "facility": "工厂实拍",
+      "facilityDescription": "编辑工厂实拍区块的文字、分类、图片和说明，页面布局保持固定。",
+      "facilityTitleEn": "区块标题（英文）",
+      "facilityTitleZh": "区块标题（中文）",
+      "facilitySubtitleEn": "区块说明（英文）",
+      "facilitySubtitleZh": "区块说明（中文）",
+      "facilityTabs": "图库分类",
+      "facilityCategoryEn": "分类 {n}（英文）",
+      "facilityCategoryZh": "分类 {n}（中文）",
+      "addCategory": "添加分类",
+      "removeCategory": "删除分类",
+      "facilityTabEn": "{tab} 分类（英文）",
+      "facilityTabZh": "{tab} 分类（中文）",
+      "facilityLink": "区块链接",
+      "facilityLinkEn": "链接文字（英文）",
+      "facilityLinkZh": "链接文字（中文）",
+      "facilityLinkHref": "链接地址",
+      "facilityImages": "图库图片",
+      "captionEn": "说明（英文）",
+      "captionZh": "说明（中文）",
+      "addImage": "添加图片",
+      "removeImage": "删除图片",
+      "facilitySaved": "工厂实拍已保存",
+      "exportServices": "出口服务",
+      "exportServicesDescription": "编辑现有出口服务区块，页面布局保持固定。",
+      "exportTitleEn": "区块标题（英文）",
+      "exportTitleZh": "区块标题（中文）",
+      "exportSubtitleEn": "区块说明（英文）",
+      "exportSubtitleZh": "区块说明（中文）",
+      "exportItems": "服务卡片",
+      "exportItemNameEn": "卡片 {n} 标题（英文）",
+      "exportItemNameZh": "卡片 {n} 标题（中文）",
+      "exportItemDescEn": "卡片 {n} 说明（英文）",
+      "exportItemDescZh": "卡片 {n} 说明（中文）",
+      "addExportItem": "添加服务卡片",
+      "removeExportItem": "删除服务卡片",
+      "exportLink": "区块链接",
+      "exportLinkEn": "链接文字（英文）",
+      "exportLinkZh": "链接文字（中文）",
+      "exportLinkHref": "链接地址",
+      "exportServicesSaved": "出口服务已保存",
+      "productLines": "核心产品线",
+      "productLinesDescription": "编辑区块标题和全部产品链接。产品分类仍在产品分类管理中维护。",
+      "productLinesTitleEn": "区块标题（英文）",
+      "productLinesTitleZh": "区块标题（中文）",
+      "productLinesSubtitleEn": "区块说明（英文）",
+      "productLinesSubtitleZh": "区块说明（中文）",
+      "productLinesLink": "查看全部产品链接",
+      "productLinesLinkEn": "链接文字（英文）",
+      "productLinesLinkZh": "链接文字（中文）",
+      "productLinesLinkHref": "链接地址",
+      "productLinesSource": "分类卡片来自产品分类接口，不在此处编辑。",
+      "productLinesSaved": "核心产品线已保存",
+      "advantages": "核心优势",
+      "advantagesDescription": "编辑卡片文字和图片，并可添加或删除卡片，不改变布局。",
+      "advantagesTitleEn": "区块标题（英文）",
+      "advantagesTitleZh": "区块标题（中文）",
+      "advantagesSubtitleEn": "区块说明（英文）",
+      "advantagesSubtitleZh": "区块说明（中文）",
+      "advantagesCards": "优势卡片",
+      "advantageNameEn": "第 {n} 张卡片标题（英文）",
+      "advantageNameZh": "第 {n} 张卡片标题（中文）",
+      "advantageDescEn": "第 {n} 张卡片说明（英文）",
+      "advantageDescZh": "第 {n} 张卡片说明（中文）",
+      "addAdvantage": "添加优势卡片",
+      "removeAdvantage": "删除第 {n} 张优势卡片",
+      "advantagesLink": "区块链接",
+      "advantagesLinkEn": "链接文字（英文）",
+      "advantagesLinkZh": "链接文字（中文）",
+      "advantagesLinkHref": "链接地址",
+      "advantagesSaved": "核心优势已保存",
+      "partners": "合作伙伴",
+      "partnersDescription": "编辑区块标题、伙伴 Logo 和链接，不改变布局。",
+      "partnersTitleEn": "区块标题（英文）",
+      "partnersTitleZh": "区块标题（中文）",
+      "partnersSubtitleEn": "区块说明（英文）",
+      "partnersSubtitleZh": "区块说明（中文）",
+      "partnerItems": "伙伴 Logo",
+      "partnerHref": "第 {n} 个伙伴网站链接",
+      "addPartner": "添加伙伴",
+      "removePartner": "删除第 {n} 个伙伴",
+      "partnersSaved": "合作伙伴已保存",
+      "cta": "行动号召区块",
+      "ctaDescription": "编辑现有行动号召文字和按钮链接，不改变布局。",
+      "ctaTitleEn": "标题（英文）",
+      "ctaTitleZh": "标题（中文）",
+      "ctaSubtitleEn": "说明（英文）",
+      "ctaSubtitleZh": "说明（中文）",
+      "ctaButtonEn": "按钮文字（英文）",
+      "ctaButtonZh": "按钮文字（中文）",
+      "ctaHref": "按钮链接地址",
+      "ctaSaved": "行动号召区块已保存",
       "image": "背景图片",
       "imageHint": "建议使用横向宽幅图片，优先 WebP 或 JPEG。",
       "text": "文字内容",
