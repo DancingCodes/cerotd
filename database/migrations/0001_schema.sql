@@ -96,7 +96,7 @@ CREATE TABLE page_content (
 
 CREATE INDEX idx_page_content_lookup ON page_content (page_key, section_key);
 
--- Fixed product categories used by both frontend and backend.
+-- Initial product categories used by both frontend and backend.
 INSERT INTO products_categories (slug, name_en, name_zh, sort_order)
 VALUES
   ('gasoline-engine-oil', 'Gasoline Engine Oil', '汽油机油', 1),
@@ -107,4 +107,7 @@ VALUES
   ('new-energy-oil', 'New Energy Oil', '新能源专用油', 6),
   ('antifreeze-coolant', 'Antifreeze / Coolant', '防冻液/冷却液', 7),
   ('transmission-oil', 'Transmission Oil', '变速箱油', 8),
-  ('grease', 'Grease', '润滑脂', 9);
+  ('grease', 'Grease', '润滑脂', 9),
+  ('hydraulic-transmission-fluid', 'Hydraulic Transmission Fluid', '液力传动油', 10),
+  ('brake-fluid', 'Brake Fluid', '制动液', 11),
+  ('tractor-universal-oil', 'Tractor Universal Oil', '拖拉机多用途油', 12);
