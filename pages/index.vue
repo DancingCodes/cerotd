@@ -260,16 +260,43 @@ type HomeLabResponse = {
   } | null
 }
 
-const { data: homeHeroData } = await useApiFetch<HomeHeroResponse>('/api/page-content/home/hero')
-const { data: homeStatsData } = await useApiFetch<HomeStatsResponse>('/api/page-content/home/stats')
-const { data: homeLabData } = await useApiFetch<HomeLabResponse>('/api/page-content/home/lab')
-const { data: exportServicesData } = await useApiFetch<ExportServicesResponse>('/api/page-content/home/export-services')
-const { data: productLinesData } = await useApiFetch<ProductLinesResponse>('/api/page-content/home/product-lines')
-const { data: advantagesData } = await useApiFetch<AdvantagesResponse>('/api/page-content/home/advantages')
 type PartnersResponse = { content: { title: LocalizedText; subtitle: LocalizedText; items: Array<{ logo: string; href: string }> } | null }
-const { data: partnersData } = await useApiFetch<PartnersResponse>('/api/page-content/home/partners')
 type CtaResponse = { content: { title: LocalizedText; subtitle: LocalizedText; button: LocalizedText; href: string } | null }
-const { data: ctaData } = await useApiFetch<CtaResponse>('/api/page-content/home/cta')
+type ProductCategory = { slug: string; name: { en: string; zh: string } }
+type FacilityContentResponse = {
+  content: {
+    title: LocalizedText
+    subtitle: LocalizedText
+    categories: Array<{ id: string; name: LocalizedText }>
+    link: { text: LocalizedText; href: string }
+    images: Array<{ categoryId: string; src: string; caption: LocalizedText }>
+  } | null
+}
+
+const [
+  { data: homeHeroData },
+  { data: homeStatsData },
+  { data: homeLabData },
+  { data: homeFacilityData },
+  { data: exportServicesData },
+  { data: productLinesData },
+  { data: advantagesData },
+  { data: partnersData },
+  { data: ctaData },
+  { data: productCategories }
+] = await Promise.all([
+  useApiFetch<HomeHeroResponse>('/api/page-content/home/hero'),
+  useApiFetch<HomeStatsResponse>('/api/page-content/home/stats'),
+  useApiFetch<HomeLabResponse>('/api/page-content/home/lab'),
+  useApiFetch<FacilityContentResponse>('/api/page-content/home/facility'),
+  useApiFetch<ExportServicesResponse>('/api/page-content/home/export-services'),
+  useApiFetch<ProductLinesResponse>('/api/page-content/home/product-lines'),
+  useApiFetch<AdvantagesResponse>('/api/page-content/home/advantages'),
+  useApiFetch<PartnersResponse>('/api/page-content/home/partners'),
+  useApiFetch<CtaResponse>('/api/page-content/home/cta'),
+  useApiFetch<{ items: ProductCategory[] }>('/api/product-categories')
+])
+
 const emptyHeroContent = computed(() => ({
   backgroundImage: '',
   badge: '',
@@ -364,8 +391,6 @@ const ctaContent = computed(() => {
   return localized.title || localized.subtitle || (localized.button && localized.href) ? localized : null
 })
 
-type ProductCategory = { slug: string; name: { en: string; zh: string } }
-const { data: productCategories } = await useApiFetch<{ items: ProductCategory[] }>('/api/product-categories')
 const productLines = computed(() => productCategories.value?.items.map((item) => ({
   slug: item.slug,
   name: tLocal(item.name)
@@ -404,16 +429,6 @@ type FacilityImage = {
   caption: string
 }
 
-type FacilityContentResponse = {
-  content: {
-    title: LocalizedText
-    subtitle: LocalizedText
-    categories: Array<{ id: string; name: LocalizedText }>
-    link: { text: LocalizedText; href: string }
-    images: Array<{ categoryId: string; src: string; caption: LocalizedText }>
-  } | null
-}
-const { data: homeFacilityData } = await useApiFetch<FacilityContentResponse>('/api/page-content/home/facility')
 const localizeFacilityText = (value: LocalizedText) => locale.value === 'zh' ? value.zh : value.en
 const facilityContent = computed(() => {
   const content = homeFacilityData.value?.content
